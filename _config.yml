@@ -2,8 +2,8 @@ auto: true
 
 exclude: ["README.md", "LICENSE.md", "TODO.md", "build", "test"]
 
-owner-name: your name
-owner-page: your homepage
-owner-email: your email
+owner-name: brendan forster
+owner-page: http://brendanforster.com
+owner-email: me@brendanforster.com
 
-license: your license of choice
+license: bsd

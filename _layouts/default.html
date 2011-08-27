@@ -30,17 +30,21 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <div class="content clearfix">
 
-<article role="main">
-{{ content }}
-</article>
+	<article role="main">
+	{{ content }}
+	</article>
 
-<aside role="complementary">
-</aside>
+	<aside role="complementary">
+	some words go here
+	</aside>
 
 </div>
 
 <footer role="contentinfo" class="clearfix">
-  <p>{{ site.license }} <a href="{{ site.owner-page }}">{{ site.owner-name}}</a></p>
+  <p>
+  	{{ site.license }} 
+  	<a href="{{ site.owner-page }}">{{ site.owner-name}}</a>
+  </p>
 </footer>
 
 {% include boilerplate_analytics_scripts.html %}
