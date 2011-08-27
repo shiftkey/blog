@@ -45,6 +45,7 @@ module Jekyll
 				data = {
 				 'layout' => 'post',
 				 'title' => post[:title].to_s,
+				 'permalink' => post[:name].to_s,
 				 'description' => post[:metadescription].to_s,
 				 'funnelweb_id' => post[:id],
 				 'date' => date,

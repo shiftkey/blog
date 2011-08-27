@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: projects
+permalink: projects
 description: my projects and code samples
 funnelweb_id: 2
 date: 2010-09-23 10:57:41 +10:00

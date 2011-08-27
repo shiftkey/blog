@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: WP7
+permalink: wp7
 description: A collection of posts about my adventures with Windows Phone 7.
 funnelweb_id: 7
 date: 2011-01-22 14:00:00 +11:00
