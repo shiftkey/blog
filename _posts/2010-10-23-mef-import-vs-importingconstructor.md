@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: MEF - [Import] vs [ImportingConstructor]
+permalink: mef-import-vs-importingconstructor
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for
 funnelweb_id: 5
 date: 2010-10-23 14:00:00 +11:00
@@ -22,13 +23,13 @@ The [Import] version...
 
     public class TwitterPlugin : IMicroblog
     {
-        [Import]
+        &#91;Import&#92;
         private IApplicationSettingsService _applicationSettings;
 
-        [Import]
+        &#91;Import&#92;
         private IStatusUpdatesService _statusUpdatesService;
 
-        [Import]
+        &#91;Import&#92;
         private IContactsService _contacts;
 
         public TwitterPlugin()
@@ -45,7 +46,7 @@ Or the [ImportingConstructor] version...
         private readonly IStatusUpdateService _statusUpdatesService;
         private readonly IContactsService _contactsService;
 
-        [ImportingConstructor]
+        &#91;ImportingConstructor&#92;
         public Twitter(IApplicationSettingsProvider applicationSettings,
                        IStatusUpdateService statusUpdateService
                        IContactsService contactsService)
@@ -64,15 +65,15 @@ Other differences:
 
 **Design - Constructor Injection versus Property Setters**
 
-With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the [ImportingConstructor] approach.
+With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the &#91;ImportingConstructor&#92; approach.
 
-By using the [ImportingConstructor] attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.
+By using the &#91;ImportingConstructor&#92; attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.
 
 **Maintainability**
 
 Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach. 
 
-I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another [Import] attribute should be considered a code smell, just like adding an additional parameter to a constructor.
+I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another &#91;Import&#92; attribute should be considered a code smell, just like adding an additional parameter to a constructor.
 
 If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.
 
@@ -80,12 +81,12 @@ If your dependency count is more than a handful, then you should review the inte
 
 Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:
 
-For example, using [ImportMany]
+For example, using &#91;ImportMany&#92;
 
     private readonly IEnumerable<ICreditService> _creditServices;
 
-    [ImportingConstructor]
-    public BankService([ImportMany] IEnumerable<IProductServices> productServices)
+    &#91;ImportingConstructor&#92;
+    public BankService(&#91;ImportMany&#92; IEnumerable&lt;IProductServices&gt; productServices)
     {
         _productServices = productServices;
         
@@ -96,8 +97,8 @@ Or using AllowDefault to allow for scenarios where a component is not known:
 
     private readonly ILogger _logger;
 
-    [ImportingConstructor]
-    public BankService([Import(AllowDefault=true)] ILogger logger)
+    &#91;ImportingConstructor&#92;
+    public BankService(&#91;Import(AllowDefault=true)&#92; ILogger logger)
     {
         if (logger == null)
             _logger = new DefaultLogger();
@@ -113,7 +114,7 @@ And this still keeps all the composition "magic" in one location. MEF supports i
 
 Ultimately, I guess I'm advocating the [ImportingConstructor] approach because once a class grows to a significant complexity (requiring some parts and providing other parts) I feel that it is the saner approach.
 
-For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A <-> B <-> C <-> D - then I'd start simplifying the classes and pushing more "magic" into the constructor for readability's sake.
+For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A &lt;-&gt; B &lt;-&gt; C &lt;-&gt; D - then I'd start simplifying the classes and pushing more "magic" into the constructor for readability's sake.
 
 While we're talking managing MEF parts
 ----------------------------------------
@@ -130,14 +131,14 @@ For an upcoming release, I'm currently refactoring the MahTweets internals to re
 
 On the Autofac side, we can declare components in the container to be available for MEF composition. 
 
-    container.RegisterType<ApplicationSettingsProvider>()
-             .As<IApplicationSettingsProvider>()
-             .Exported(x => x.As<IApplicationSettingsProvider>()) // make this part visible to MEF components
+    container.RegisterType&lt;ApplicationSettingsProvider&gt;()
+             .As&lt;IApplicationSettingsProvider&gt;()
+             .Exported(x =&gt; x.As&lt;IApplicationSettingsProvider&gt;()) // make this part visible to MEF components
              .SingleInstance();
 
-    container.RegisterType<PluginSettingsProvider>()
-             .As<IPluginSettingsProvider>()
-             .Exported(x => x.As<IPluginSettingsProvider>())
+    container.RegisterType&lt;PluginSettingsProvider&gt;()
+             .As&lt;IPluginSettingsProvider&gt;()
+             .Exported(x => x.As&lt;IPluginSettingsProvider&gt;())
              .SingleInstance();
 
     ...

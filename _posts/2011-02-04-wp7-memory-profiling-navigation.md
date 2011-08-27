@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: WP7 - Memory Profiling Adventures - Navigation (Updated)
+permalink: wp7-memory-profiling-navigation
 description: The joys of a new platform... documenting a strange behaviour found when profiling a WP7 app. Somewhat resolved...
 funnelweb_id: 8
 date: 2011-02-04 14:00:00 +11:00

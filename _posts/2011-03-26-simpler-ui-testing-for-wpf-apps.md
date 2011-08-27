@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: Musing - Simpler UI Testing for WPF Apps
+permalink: simpler-ui-testing-for-wpf-apps
 description: Instead of the existing tools, why not try some IronRuby and rspec code?
 funnelweb_id: 12
 date: 2011-03-26 14:00:00 +11:00

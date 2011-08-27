@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: Doing the build server dance with NuGet
+permalink: doing-the-build-server-dance-with-nuget
 description: After a few hours of hacking, I've put together a guide for setting up TeamCity to consume NuGet packages as part of a build.
 funnelweb_id: 17
 date: 2011-07-08 14:00:00 +10:00
@@ -30,7 +31,7 @@ After a couple of hours work, I'm 95% of the way there.
 
 As I wasn't really familiar with the process of creating the .nuspec file (sorry [Damo][2], your NDC talk was a long time ago :)) I decided to go and craft it by hand. I used this [blog post][3] by [Joshua Flanagan][4] (including a good reference [nuspec file][5]) to get started.
 
-And that's about it. Put that into my build folder along with the NuGet.exe - I grabbed the latest one from the 1.4 OOB build on [NuGet CI server][6] due to an issue with how it parses the <files> element. This should be part of the next release.
+And that's about it. Put that into my build folder along with the NuGet.exe - I grabbed the latest one from the 1.4 OOB build on [NuGet CI server][6] due to an issue with how it parses the &lt;files&gt; element. This should be part of the next release.
 
 ## Building the package on the server
 

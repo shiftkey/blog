@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: IoC Tips - Autofac Factory Adapters
+permalink: ioc-tips-autofac-factory-adapters
 description: A recap of leveraging inversion of control techniques to simplify an existing application
 funnelweb_id: 4
 date: 2010-10-23 14:00:00 +11:00
@@ -27,11 +28,11 @@ As the application was already using an IoC container (Autofac), and a timer was
 
 And from there they added in the additional code required, and the business was happy. And there was much rejoicing. But the team noticed that they were duplicating the same type in the constructor. Can the team do it better?
 
-Rather than explicitly defining the two instances, the team can replace both instances with a factory adapter. In .NET, this can be represented as a Func&lt;T&gt; object - a method which requires no inputs and returns an instance of type T:
+Rather than explicitly defining the two instances, the team can replace both instances with a factory adapter. In .NET, this can be represented as a Func%lt;T%gt; object - a method which requires no inputs and returns an instance of type T:
 
 	public ScheduledBackupService(
 	      ... , 
-	      Func&lt;ITimer&gt; createTimer)
+	      Func<ITimer> createTimer)
 	{
 	      ...                 
 	      elapsedTimer = createTimer();
@@ -44,7 +45,7 @@ To fix the compiler error from changing the constructor signature, the test code
 	{
 		return new ScheduledBackupService(
 		            ... ,
-		            () => MockRepository.GenerateStub&lt;ITimer&gt;());
+		            () => MockRepository.GenerateStub<ITimer>());
 	}
 
 
@@ -55,18 +56,18 @@ What if we need to use the mock object in a unit test - to raise events or stub 
 
 As our existing tests relied on verifying the messages displayed using ITimer instances, I wrote a custom function to mimic the function behaviour and support the unit tests.
 
-    private Func&lt;IDispatcherTimer&gt; createTimers = () =&gt;
+    private Func<IDispatcherTimer> createTimers = () =>
     {
         if (elapsedTimer == null) 
         {
-            // first call -&gt; mock “elapsed” timer
-            elapsedTimer = MockRepository.GenerateStub&lt;ITimer&gt;();
+            // first call -> mock “elapsed” timer
+            elapsedTimer = MockRepository.GenerateStub<ITimer>();
             return elapsedTimer;
         }
         if (pausedTimer == null) 
         {
             // second call -> mock “paused" timer
-            pausedTimer = MockRepository.GenerateStub&lt;ITimer&gt;(); 
+            pausedTimer = MockRepository.GenerateStub<ITimer>(); 
             return pausedTimer;
         }
 	      
@@ -95,8 +96,8 @@ And our tests remain clean and readable:
         service.Resume();
 
         // assert
-        elapsedTimer.AssertWasCalled(s =&gt; s.Start(), m =&gt; m.Repeat.Twice());
-        elapsedTimer.AssertWasCalled(s =&gt; s.Stop(), m =&gt; m.Repeat.Once());
+        elapsedTimer.AssertWasCalled(s => s.Start(), m => m.Repeat.Twice());
+        elapsedTimer.AssertWasCalled(s => s.Stop(), m => m.Repeat.Once());
     }
 
 

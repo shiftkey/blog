@@ -1,6 +1,7 @@
 --- 
 layout: post
 title: slsvcutil - Workaround StackOverflowException
+permalink: slsvcutil-stackoverflowexception-workaround
 description: Mental reminder for an issue I hit today with generating Silverlight proxies using slsvcutil
 funnelweb_id: 14
 date: 2011-05-06 14:00:00 +10:00
