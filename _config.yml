@@ -1,0 +1,9 @@
+auto: true
+
+exclude: ["README.md", "LICENSE.md", "TODO.md", "build", "test"]
+
+owner-name: your name
+owner-page: your homepage
+owner-email: your email
+
+license: your license of choice
