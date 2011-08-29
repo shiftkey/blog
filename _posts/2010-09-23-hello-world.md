@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Hello World
-permalink: hello-world
+permalink: hello-world.html
 description: Just a quick introductory post to kick things off.
 funnelweb_id: 1
 date: 2010-09-23 10:50:44 +10:00

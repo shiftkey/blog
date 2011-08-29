@@ -1,5 +1,7 @@
 auto: true
 
+markdown: rdiscount
+
 exclude: ["README.md", "LICENSE.md", "TODO.md", "build", "test"]
 
 owner-name: brendan forster

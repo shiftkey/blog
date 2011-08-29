@@ -1,0 +1,20 @@
+aside {
+	display: table-cell;
+	width: 300px;
+}
+
+#content {
+	display: table;
+}
+
+#main {
+	display: table-cell;
+	width: 620px;
+	padding-right: 22px;
+}
+
+
+.post img {
+	margin: 22px 0;
+	box-shadow: 3px 3px 7px #777;
+}

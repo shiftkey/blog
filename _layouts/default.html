@@ -25,18 +25,105 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 <body class="clearfix">
 
 <header role="banner" class="clearfix">
-<h1>{{ page.title }}</h1>
+	<h1>{{ page.title }}</h1>
 </header>
+
+<nav>
+	<!-- navigation -->
+</nav>
 
 <div class="content clearfix">
 
+<section id="main">
+	<!-- important stuff -->
+
+	<section>
+		<header class="post-header">
+			<hgroup>
+			    <img src="/img/main/1.jpg" />
+				<h3><a href="#">slsvcutil - Workaround StackOverflowException</a></h3>
+				<p>A quick tip for those who might have seen this on Windows 7 + x64 dev environments</p>
+			</hgroup>
+		</header>
+	</section>
+
+	<section>
+		<header class="post-header">
+			<hgroup>
+			    <img src="/img/main/2.jpg" />
+				<h3><a href="#">MEF and Chaining Dependencies</a></h3>
+				<p>Breaking out of the conventional one-way importing of components using MEF</p>
+			</hgroup>
+		</header>
+	</section>
+
+	<section>
+		<header class="post-header">
+			<hgroup>
+			    <img src="/img/main/3.jpg" />
+				<h3><a href="#">Arguments about Project Structure</a></h3>
+				<p>A debate I had a while back around "the right way" to structure projects</p>
+			</hgroup>
+		</header>
+	</section>
+</section>
+
+
+<aside role="complementary">
+	<section>
+			<header>
+				<h3>Categories</h3>
+			</header>
+			<ul>
+				<li><a href="#">Lorem ipsum dolor</a></li>
+				<li><a href="#">Sit amet consectetur</a></li>
+
+				<li><a href="#">Adipisicing elit sed</a></li>
+				<li><a href="#">Do eiusmod tempor</a></li>
+				<li><a href="#">Incididunt ut labore</a></li>
+			</ul>
+		</section>
+		<section>
+			<header>
+
+				<h3>Archives</h3>
+			</header>
+			<ul>
+				<li><a href="#">December 2008</a></li>
+				<li><a href="#">January 2009</a></li>
+				<li><a href="#">February 2009</a></li>
+				<li><a href="#">March 2009</a></li>
+
+				<li><a href="#">April 2009</a></li>
+				<li><a href="#">May 2009</a></li>
+				<li><a href="#">June 2009</a></li>
+			</ul>
+		</section>
+</aside>
+
+<section id="below">
+<!-- other articles -->
+</section>
+
+
+
 	<article role="main">
+	
 	{{ content }}
+
+	{% for ps in site.posts %}
+		<section>
+			<header class="post-header">
+				<hgroup>
+				    <img src="{{ ps.icon-source }}" />
+					<h3><a href="{{ ps.url }}">{{ ps.title }}</a></h3>
+					<p>{{ ps.excerpt }} </p>
+				</hgroup>
+			</header>
+		</section>
+	{% endfor %}
 	</article>
 
-	<aside role="complementary">
-	some words go here
-	</aside>
 
 </div>
 

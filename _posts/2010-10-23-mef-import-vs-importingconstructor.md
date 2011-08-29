@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: MEF - [Import] vs [ImportingConstructor]
-permalink: mef-import-vs-importingconstructor
+permalink: mef-import-vs-importingconstructor.html
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for
 funnelweb_id: 5
 date: 2010-10-23 14:00:00 +11:00
@@ -155,3 +155,4 @@ I'll blog some more in the future on how you can use these parts to help manage 
   [2]: http://mef.codeplex.com/wikipage?title=Declaring%20Imports&referringTitle=Guide
   [3]: http://www.mahtweets.com/
   [4]: http://code.google.com/p/autofac/wiki/MefIntegration
+  

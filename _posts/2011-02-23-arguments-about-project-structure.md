@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Arguments about Project Structure
-permalink: arguments-about-project-structure
+permalink: arguments-about-project-structure.html
 description: Putting pen to paper about some back and forth I've been having over IM about the 'right' way to set up projects...
 funnelweb_id: 11
 date: 2011-02-23 14:00:00 +11:00

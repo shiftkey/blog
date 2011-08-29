@@ -1,5 +1,5 @@
 ---
-layout: frontpage
+layout: default
 title: brendan forster
 ---
 ### Welcome to the blog of Florian Holzner
