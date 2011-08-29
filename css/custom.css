@@ -1,6 +1,25 @@
 aside {
 	display: table-cell;
 	width: 300px;
+	vertical-align: top;
+}
+
+aside section
+{
+	margin-bottom: 10px;
+
+}
+
+aside .vevent
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+}
+ 
+aside h3, aside h4
+{
+	margin-bottom: 0.5em;
 }
 
 #content {
@@ -18,3 +37,5 @@ aside {
 	margin: 22px 0;
 	box-shadow: 3px 3px 7px #777;
 }
+
+.vevent abbr{border:0}
