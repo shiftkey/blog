@@ -16,6 +16,40 @@ aside .vevent
 	margin-bottom: 10px;
 
 }
+
+#below
+{
+	display: table;
+	
+}
+
+#below article
+{
+	display: table-row;
+}
+
+#below section
+{
+	display: table-cell;
+	width: 450px;
+
+}
+
+#below img
+{
+	margin: 20px;
+}
+
+#below h3
+{
+	font-size: 1.1em;
+	margin: 0 20px;
+}
+
+#below p
+{
+	margin: 20px;
+}
  
 aside h3, aside h4
 {
@@ -28,10 +62,9 @@ aside h3, aside h4
 
 #main {
 	display: table-cell;
-	width: 620px;
+	min-width: 620px;
 	padding-right: 22px;
 }
-
 
 .post img {
 	margin: 22px 0;
@@ -39,3 +72,13 @@ aside h3, aside h4
 }
 
 .vevent abbr{border:0}
+
+body
+{
+	width: 1000px;
+}
+
+footer
+{
+	margin: 0 20px;
+}
