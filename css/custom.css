@@ -49,19 +49,20 @@ aside h3
 
 #below img
 {
-	margin: 20px 11px;
+	margin: 0px 11px 0px 11px;
     width: 290px;
 }
 
 #below h3
 {
 	font-size: 1.1em;
-	margin: 0 20px;
+	margin: 0 11px;
 }
 
-#below p
+#below p.date
 {
-	margin: 20px;
+	float:right;
+	margin:0 11px;
 }
  
 aside h3, aside h4
