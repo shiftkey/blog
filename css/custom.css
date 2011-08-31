@@ -49,8 +49,8 @@ aside h3
 
 #below img
 {
-	width: 290px;
-	margin: 20px;
+	margin: 20px 11px;
+    width: 290px;
 }
 
 #below h3
@@ -75,8 +75,6 @@ aside h3, aside h4
 
 #main {
 	display: table-cell;
-	
-	padding-right: 22px;
 }
 
 #main section
@@ -129,7 +127,12 @@ body
 
 footer
 {
-	margin: 0 20px;
+	
+}
+
+footer h4
+{
+	float:right;
 }
 
 header h1
