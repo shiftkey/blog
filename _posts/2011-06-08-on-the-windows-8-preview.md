@@ -5,6 +5,7 @@ permalink: on-the-windows-8-preview.html
 funnelweb_id: 15
 date: 2011-06-08 14:00:00 +10:00
 tags: "windows windows8 wpf silverlight "
+description: Ground round venison brisket chuck flank ham hock turducken andouille, shoulder hamburger. Corned beef drumstick chicken ham. Hamburger capicola filet mignon, meatball tenderloin pastrami chuck brisket pork swine prosciutto venison meatloaf jerky.
 comments: true
 ---
 For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: [http://www.youtube.com/watch?v=p92QfWOw88I][1]

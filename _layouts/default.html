@@ -35,13 +35,15 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 		{{ content }}
 
 
-		{% for ps in site.posts limit:3 %}
+		{% for ps in site.posts limit:4 %}
 			<section>
 				<header class="post-header">
 					<hgroup>
+					    <p class="date">{{ ps.date | date:"%Y-%m-%d"}}</p>
 					    <img src="/img/main/1.jpg" />
 						<h3><a href="{{ ps.url }}">{{ ps.title }}</a></h3>
-						<p>Ground round venison brisket chuck flank ham hock turducken andouille, shoulder hamburger. Corned beef drumstick chicken ham. Hamburger capicola filet mignon, meatball tenderloin pastrami chuck brisket pork swine prosciutto venison meatloaf jerky.</p>
+
+						<p>{{ps.description}}</p>
 					</hgroup>
 				</header>
 			</section>
@@ -51,6 +53,10 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 
 	<aside role="complementary">
+		<section>
+		 	{% render_time Last updated: %}
+		</section>
+
 		<section>
 			<header>
 				<h3>about</h3>
@@ -69,12 +75,12 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 		</section>
 		<section>
 			<header>
-				<h3>upcoming events</h3>
+				<h3>you might see me at</h3>
 			</header>
 
 			<div class="vevent">
 				<img src="/img/main/4.jpg" width="200" />
-				<h4>BUILD Conference</h4>
+				<h4>BUILD</h4>
 				<span class="vevent">
 				 <span class="summary">I'll be attending the <a href="http://www.buildwindows.com/" class="summary url">BUILD conference</a> in 
 				 	<span class="location">Los Angeles, CA, USA</span>
@@ -109,7 +115,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 	<section id="below">
 	
 		<article role="main">
-	 	{% for ps in site.posts offset:3 limit:3 %}
+	 	{% for ps in site.posts offset:4 limit:3 %}
 			<section>
 				<header class="post-header">
 					<hgroup>
@@ -123,7 +129,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 		</article>
 
 		<article role="main">
-	 	{% for ps in site.posts offset:6 limit:3 %}
+	 	{% for ps in site.posts offset:7 limit:3 %}
 			<section>
 				<header class="post-header">
 					<hgroup>
@@ -137,29 +143,13 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 		</article>
 
 		<article role="main">
-	 	{% for ps in site.posts offset:9 limit:3 %}
+	 	{% for ps in site.posts offset:10 limit:3 %}
 			<section>
 				<header class="post-header">
 					<hgroup>
 					     <img src="/img/main/4.jpg" />
 						<h3><a href="{{ ps.url }}">{{ ps.title }}</a></h3>
 						<!--<p>Swine flank pancetta, ribeye spare ribs fatback pig. Strip steak frankfurter turkey tail. Pig turducken venison, tri-tip swine rump beef shankle jerky flank spare ribs.</p>-->
-					</hgroup>
-				</header>
-			</section>
-		{% endfor %}
-		</article>
-
-		<article role="main">
-	 	{% for ps in site.posts offset:12 limit:3 %}
-			<section>
-				<header class="post-header">
-					<hgroup>
-					    <!--<img src="{{ ps.icon-source }}" />-->
-					        <img src="/img/main/4.jpg" />
-						<h3><a href="{{ ps.url }}">{{ ps.title }}</a></h3>
-						<!--<p>{{ ps.excerpt }} </p>-->
-						<!--<p>Strip steak bacon turkey, filet mignon chicken venison fatback shoulder. Brisket pastrami leberkäse, drumstick meatloaf kielbasa frankfurter chuck boudin ribeye rump tail salami shank sausage.</p>-->
 					</hgroup>
 				</header>
 			</section>
