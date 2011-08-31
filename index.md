@@ -1,6 +1,7 @@
 ---
 layout: default
-title: brendan forster
+title: brendan forster .com
 ---
-### Welcome to the blog of Florian Holzner
-Behold, epic tales of awesomeness await thee who enters my realm!
+
+## yes, i don't blog as often as i should
+
