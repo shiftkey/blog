@@ -5,7 +5,7 @@ permalink: using-rx-to-implement-filtering-in-mahtweets.html
 description: A thought process about leveraging the Rx Framework to implement a new filtering solution for MahTweets vNext.
 funnelweb_id: 10
 date: 2011-02-19 14:00:00 +11:00
-tags: "mahtweets reactive-extensions brain-dump "
+tags: "mahtweets reactive-extensions "
 comments: true
 ---
 As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.

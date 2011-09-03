@@ -5,7 +5,7 @@ permalink: simpler-ui-testing-for-wpf-apps.html
 description: Instead of the existing tools, why not try some IronRuby and rspec code?
 funnelweb_id: 12
 date: 2011-03-26 14:00:00 +11:00
-tags: "wpf testing "
+tags: "wpf testing"
 comments: true
 ---
 After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen

@@ -5,7 +5,7 @@ permalink: mef-and-chaining-dependencies.html
 description: A quick blog example of how to use contracts within MEF to handle complex dependency chains
 funnelweb_id: 6
 date: 2010-12-20 14:00:00 +11:00
-tags: "mef composition dependencies .net "
+tags: "mef composition .net "
 comments: true
 ---
 A [question][1] came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.

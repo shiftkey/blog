@@ -5,7 +5,7 @@ permalink: slsvcutil-stackoverflowexception-workaround.html
 description: Mental reminder for an issue I hit today with generating Silverlight proxies using slsvcutil
 funnelweb_id: 14
 date: 2011-05-06 14:00:00 +10:00
-tags: "silverlight "
+tags: "silverlight"
 comments: true
 ---
 I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called [stackoverflow][1] came into the mix :)

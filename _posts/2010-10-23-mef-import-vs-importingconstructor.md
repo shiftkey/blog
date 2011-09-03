@@ -5,7 +5,7 @@ permalink: mef-import-vs-importingconstructor.html
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for
 funnelweb_id: 5
 date: 2010-10-23 14:00:00 +11:00
-tags: "mef import importingconstructor .net "
+tags: "mef .net "
 comments: true
 ---
 A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at [InformIT][1]. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.

@@ -5,7 +5,7 @@ permalink: wp7-memory-profiling-navigation.html
 description: The joys of a new platform... documenting a strange behaviour found when profiling a WP7 app. Somewhat resolved...
 funnelweb_id: 8
 date: 2011-02-04 14:00:00 +11:00
-tags: "wp7 memory profiling "
+tags: "wp7 profiling"
 comments: true
 ---
 In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...

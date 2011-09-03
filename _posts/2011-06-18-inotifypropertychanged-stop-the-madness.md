@@ -5,7 +5,7 @@ permalink: inotifypropertychanged-stop-the-madness.html
 description: Just wanted to recap why I see the argument over INotifyPropertyChanged usage as absurd.
 funnelweb_id: 16
 date: 2011-06-18 14:00:00 +10:00
-tags: "wpf silverlight wp7 soapbox "
+tags: "wpf silverlight wp7 soapbox"
 comments: true
 ---
 Its time to stop with this madness.

@@ -5,7 +5,7 @@ permalink: amped-web-2010-recap.html
 description: The Amped Web day is a hack event for developers and designers to throw ideas around. This is the story of what happened to me and my team.
 funnelweb_id: 3
 date: 2010-10-16 14:00:00 +11:00
-tags: "amped hack day "
+tags: "amped"
 comments: true
 ---
 **Disclaimer:** I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including [@Rog42][1]'s crazy photography experiments!
