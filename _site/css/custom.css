@@ -219,3 +219,10 @@ blockquote cite:before {
 blockquote cite {
     font-style: italic;
 }
+
+pre, code {
+    font: 1em/1.5 'andale mono','lucida console',monospace;
+	margin-left: 10px;
+	margin-right:10px;
+	color: #B8CFF2;
+}
