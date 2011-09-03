@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>your page's title</title>
- <link href="http://your.pages.url/atom.xml" rel="self" />
- <link href="http://your.pages.url/" />
- <updated>2011-09-03T17:16:48+10:00</updated>
+ <title>brendan forster</title>
+ <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
+ <link href="http://shiftkey.heroku.com/" />
+ <updated>2011-09-03T17:24:49+10:00</updated>
  <id>http://your.pages.url<id>
  <author>
    <name>site.owner-name</name>
@@ -17,121 +17,123 @@
    <link href="http://your.pages.urldoing-the-build-server-dance-with-nuget.html" />
    <updated>2011-07-08T14:00:00+10:00</updated>
    <id>http://lebobs.ch/./doing-the-build-server-dance-with-nuget</id>
-   <content type="html">&lt;p&gt;I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.</p>
 
-&lt;p&gt;And with NuGet in the enterprise being the &lt;a href=&quot;http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx&quot;&gt;upcoming hotness&lt;/a&gt;, I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.&lt;/p&gt;
+<p>And with NuGet in the enterprise being the <a href="http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx">upcoming hotness</a>, I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.</p>
 
-&lt;h2&gt;The Goal&lt;/h2&gt;
+<h2>The Goal</h2>
 
-&lt;p&gt;I have two projects, A and B. A has no upstream dependencies (that have NuGet packages, anyway), but B requires A.&lt;/p&gt;
+<p>I have two projects, A and B. A has no upstream dependencies (that have NuGet packages, anyway), but B requires A.</p>
 
-&lt;p&gt;So, after A builds and passes its tests, I want to:&lt;/p&gt;
+<p>So, after A builds and passes its tests, I want to:</p>
 
-&lt;ul&gt;
-&lt;li&gt;Create a new package for A, using it's build number.&lt;/li&gt;
-&lt;li&gt;Publish the package for A somewhere&lt;/li&gt;
-&lt;li&gt;Trigger a new build for B, using the newest version of A.&lt;/li&gt;
-&lt;li&gt;Verify B builds and passes tests.&lt;/li&gt;
-&lt;li&gt;Create a new package for B, using it's build number.&lt;/li&gt;
-&lt;li&gt;Publish the package for B somewhere.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;After a couple of hours work, I'm 95% of the way there.&lt;/p&gt;
-
-&lt;h2&gt;Defining the package specification&lt;/h2&gt;
-
-&lt;p&gt;As I wasn't really familiar with the process of creating the .nuspec file (sorry &lt;a href=&quot;http://twitter.com/damianedwards&quot;&gt;Damo&lt;/a&gt;, your NDC talk was a long time ago :)) I decided to go and craft it by hand. I used this &lt;a href=&quot;http://lostechies.com/joshuaflanagan/2011/06/23/tips-for-building-nuget-packages/&quot;&gt;blog post&lt;/a&gt; by &lt;a href=&quot;http://twitter.com/jflanagan&quot;&gt;Joshua Flanagan&lt;/a&gt; (including a good reference &lt;a href=&quot;https://github.com/DarthFubuMVC/bottles/blob/6d82e063fd889ac1909c98adc369a97b4c1e377e/packaging/nuget/bottles.nuspec&quot;&gt;nuspec file&lt;/a&gt;) to get started.&lt;/p&gt;
-
-&lt;p&gt;And that's about it. Put that into my build folder along with the NuGet.exe - I grabbed the latest one from the 1.4 OOB build on &lt;a href=&quot;http://ci.nuget.org:8080/&quot;&gt;NuGet CI server&lt;/a&gt; due to an issue with how it parses the &amp;lt;files&amp;gt; element. This should be part of the next release.&lt;/p&gt;
-
-&lt;h2&gt;Building the package on the server&lt;/h2&gt;
-
-&lt;p&gt;So, I'm using TeamCity to build the project. Thus, I can use the build number directly against the NuGet package.&lt;/p&gt;
-
-&lt;p&gt;NOTE: Using the default value TeamCity provides for a project, which is just an incrementing integer, will fail with a &quot;Version string portion was too short or too long&quot; error. To fix that, go to General Settings and make it something more descriptive:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;img/posts/NuGet/buildnumber.png&quot; alt=&quot;General Settings&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With that in place, the next step is to add in a post-build step:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/img/posts/NuGet/packagestep.png&quot;&gt;&lt;img src=&quot;/img/posts/NuGet/packagestep-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+<ul>
+<li>Create a new package for A, using it's build number.</li>
+<li>Publish the package for A somewhere</li>
+<li>Trigger a new build for B, using the newest version of A.</li>
+<li>Verify B builds and passes tests.</li>
+<li>Create a new package for B, using it's build number.</li>
+<li>Publish the package for B somewhere.</li>
+</ul>
 
 
-&lt;p&gt;The script I've used (duplicated for two different packages):&lt;/p&gt;
+<p>After a couple of hours work, I'm 95% of the way there.</p>
 
-&lt;pre&gt;&lt;code&gt;del *.nupkg
+<h2>Defining the package specification</h2>
 
-.\NuGet.exe pack Package.nuspec -Version %system.build.number%
-&lt;/code&gt;&lt;/pre&gt;
+<p>As I wasn't really familiar with the process of creating the .nuspec file (sorry <a href="http://twitter.com/damianedwards">Damo</a>, your NDC talk was a long time ago :)) I decided to go and craft it by hand. I used this <a href="http://lostechies.com/joshuaflanagan/2011/06/23/tips-for-building-nuget-packages/">blog post</a> by <a href="http://twitter.com/jflanagan">Joshua Flanagan</a> (including a good reference <a href="https://github.com/DarthFubuMVC/bottles/blob/6d82e063fd889ac1909c98adc369a97b4c1e377e/packaging/nuget/bottles.nuspec">nuspec file</a>) to get started.</p>
 
-&lt;p&gt;That script is courtesy of Scott Kirkland, who also has a decent guide to using NuGet on TC &lt;a href=&quot;http://weblogs.asp.net/srkirkland/archive/2011/03/29/deploy-nuget-packages-during-ci-build-with-teamcity.aspx&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+<p>And that's about it. Put that into my build folder along with the NuGet.exe - I grabbed the latest one from the 1.4 OOB build on <a href="http://ci.nuget.org:8080/">NuGet CI server</a> due to an issue with how it parses the &lt;files&gt; element. This should be part of the next release.</p>
 
-&lt;h2&gt;Publishing the package&lt;/h2&gt;
+<h2>Building the package on the server</h2>
 
-&lt;p&gt;I didn't want to publish these packages to the NuGet gallery immediately, so what other options do I have? I could set up my own NuGet gallery. Or I could use &lt;a href=&quot;http://www.myget.org/&quot;&gt;MyGet&lt;/a&gt; and skip all the hassle.&lt;/p&gt;
+<p>So, I'm using TeamCity to build the project. Thus, I can use the build number directly against the NuGet package.</p>
 
-&lt;p&gt;For those who aren't familiar with MyGet, its a service to create custom NuGet feeds. All I've done so far is create a private feed (which anyone can consume) and obtained an API key.&lt;/p&gt;
+<p>NOTE: Using the default value TeamCity provides for a project, which is just an incrementing integer, will fail with a "Version string portion was too short or too long" error. To fix that, go to General Settings and make it something more descriptive:</p>
 
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/myget.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/myget-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+<p><img src="img/posts/NuGet/buildnumber.png" alt="General Settings" /></p>
+
+<p>With that in place, the next step is to add in a post-build step:</p>
+
+<p><a href="/img/posts/NuGet/packagestep.png"><img src="/img/posts/NuGet/packagestep-small.png" alt="Post Build Step" /></a></p>
 
 
-&lt;p&gt;While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server.&lt;/p&gt;
+<p>The script I've used (duplicated for two different packages):</p>
 
-&lt;p&gt;This required an additional line in the script:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;del *.nupkg
+<pre><code>del *.nupkg
 
 .\NuGet.exe pack Package.nuspec -Version %system.build.number%
+</code></pre>
 
-forfiles /m *.nupkg /c &quot;cmd /c NuGet.exe push @FILE &amp;lt;your-key&amp;gt; -Source https://www.myget.org/F/mahapps/&quot;
-&lt;/code&gt;&lt;/pre&gt;
+<p>That script is courtesy of Scott Kirkland, who also has a decent guide to using NuGet on TC <a href="http://weblogs.asp.net/srkirkland/archive/2011/03/29/deploy-nuget-packages-during-ci-build-with-teamcity.aspx">here</a></p>
 
-&lt;p&gt;which will find all .nupkg files and invoke &lt;em&gt;push&lt;/em&gt; against the specific repository - in this case, my private feed.&lt;/p&gt;
+<h2>Publishing the package</h2>
 
-&lt;h2&gt;Trigger a new build&lt;/h2&gt;
+<p>I didn't want to publish these packages to the NuGet gallery immediately, so what other options do I have? I could set up my own NuGet gallery. Or I could use <a href="http://www.myget.org/">MyGet</a> and skip all the hassle.</p>
 
-&lt;p&gt;This isn't directly related to NuGet, but I wanted to force a new build when upstream packages change in TeamCity.&lt;/p&gt;
+<p>For those who aren't familiar with MyGet, its a service to create custom NuGet feeds. All I've done so far is create a private feed (which anyone can consume) and obtained an API key.</p>
 
-&lt;p&gt;Under Build Triggering in the Project Configuration, add a trigger for &quot;Finish Build&quot; and select the upstream project.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/buildtriggering.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/buildtriggering-small.png&quot; alt=&quot;Add Build Trigger&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+<p><a href="img/posts/NuGet/myget.png"><img src="img/posts/NuGet/myget-small.png" alt="Post Build Step" /></a></p>
 
 
-&lt;h2&gt;Update the package for A and test&lt;/h2&gt;
+<p>While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server.</p>
 
-&lt;p&gt;Right, this is where things get rough.&lt;/p&gt;
+<p>This required an additional line in the script:</p>
 
-&lt;p&gt;I added a step before building the project, and executed this command:&lt;/p&gt;
+<pre><code>del *.nupkg
 
-&lt;pre&gt;&lt;code&gt;.\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps
-&lt;/code&gt;&lt;/pre&gt;
+.\NuGet.exe pack Package.nuspec -Version %system.build.number%
 
-&lt;p&gt;which will look through all the projects in my solution and update to the newest packages it can find. I've added in my MyGet feed URL to grab the latest packages from the specific feed.&lt;/p&gt;
+forfiles /m *.nupkg /c "cmd /c NuGet.exe push @FILE &lt;your-key&gt; -Source https://www.myget.org/F/mahapps/"
+</code></pre>
 
-&lt;p&gt;And this works. Kinda.&lt;/p&gt;
+<p>which will find all .nupkg files and invoke <em>push</em> against the specific repository - in this case, my private feed.</p>
 
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/updatescripts.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/updatescripts-small.png&quot; alt=&quot;Success?&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+<h2>Trigger a new build</h2>
+
+<p>This isn't directly related to NuGet, but I wanted to force a new build when upstream packages change in TeamCity.</p>
+
+<p>Under Build Triggering in the Project Configuration, add a trigger for "Finish Build" and select the upstream project.</p>
+
+<p><a href="img/posts/NuGet/buildtriggering.png"><img src="img/posts/NuGet/buildtriggering-small.png" alt="Add Build Trigger" /></a></p>
 
 
-&lt;p&gt;It updates my projects, but doesn't store updated packages locally.
-Which causes my build to break.&lt;/p&gt;
+<h2>Update the package for A and test</h2>
 
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/compileerrors.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/compileerrors-small.png&quot; alt=&quot;Oops&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+<p>Right, this is where things get rough.</p>
+
+<p>I added a step before building the project, and executed this command:</p>
+
+<pre><code>.\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps
+</code></pre>
+
+<p>which will look through all the projects in my solution and update to the newest packages it can find. I've added in my MyGet feed URL to grab the latest packages from the specific feed.</p>
+
+<p>And this works. Kinda.</p>
+
+<p><a href="img/posts/NuGet/updatescripts.png"><img src="img/posts/NuGet/updatescripts-small.png" alt="Success?" /></a></p>
 
 
-&lt;p&gt;Scouring the forums produced &lt;a href=&quot;http://nuget.codeplex.com/discussions/264082&quot;&gt;this discussion&lt;/a&gt; on this issue, which recommended this workaround:&lt;/p&gt;
+<p>It updates my projects, but doesn't store updated packages locally.
+Which causes my build to break.</p>
 
-&lt;pre&gt;&lt;code&gt;nuget install MyProj\packages.config -o packages
-&lt;/code&gt;&lt;/pre&gt;
+<p><a href="img/posts/NuGet/compileerrors.png"><img src="img/posts/NuGet/compileerrors-small.png" alt="Oops" /></a></p>
 
-&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: a minor grievance with the &lt;em&gt;install&lt;/em&gt; command. Unlike the &lt;em&gt;update&lt;/em&gt; command, this works against a project's repository. This seems subpar, when I can call &lt;em&gt;update&lt;/em&gt; against a solution file. Can we get some consistency with this? Or have I missed something with how install behaves?&lt;/p&gt;
 
-&lt;p&gt;Fine, not all workarounds are pretty.&lt;/p&gt;
+<p>Scouring the forums produced <a href="http://nuget.codeplex.com/discussions/264082">this discussion</a> on this issue, which recommended this workaround:</p>
 
-&lt;p&gt;Let's modify my script to suit:&lt;/p&gt;
+<pre><code>nuget install MyProj\packages.config -o packages
+</code></pre>
 
-&lt;pre&gt;&lt;code&gt;.\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
+<p><strong>NOTE</strong>: a minor grievance with the <em>install</em> command. Unlike the <em>update</em> command, this works against a project's repository. This seems subpar, when I can call <em>update</em> against a solution file. Can we get some consistency with this? Or have I missed something with how install behaves?</p>
+
+<p>Fine, not all workarounds are pretty.</p>
+
+<p>Let's modify my script to suit:</p>
+
+<pre><code>.\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
 
 .\Nuget.exe install ..\src\Identica\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
 
@@ -140,28 +142,31 @@ Which causes my build to break.&lt;/p&gt;
 .\Nuget.exe install ..\src\Tests\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
 
 .\Nuget.exe install ..\src\WP7\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Icky. Whatever, I've got awesome to do.&lt;/p&gt;
+<p>Icky. Whatever, I've got awesome to do.</p>
 
-&lt;p&gt;&lt;em&gt;https://go.microsoft.com/fwlink/?LinkID=206669&lt;/em&gt; is the path to the official NuGet feed (the build server couldn't find some packages), and it is explicitly after my local feed (I may have some custom packages which I prefer). And I've added the &quot;-o&quot; parameter to point to the default packages location, just in case.&lt;/p&gt;
+<p><em>https://go.microsoft.com/fwlink/?LinkID=206669</em> is the path to the official NuGet feed (the build server couldn't find some packages), and it is explicitly after my local feed (I may have some custom packages which I prefer). And I've added the "-o" parameter to point to the default packages location, just in case.</p>
 
-&lt;p&gt;Aaaaand...&lt;/p&gt;
+<p>Aaaaand...</p>
 
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/installedpackages.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/installedpackages-small.png&quot; alt=&quot;Success!&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+<p><a href="img/posts/NuGet/installedpackages.png"><img src="img/posts/NuGet/installedpackages-small.png" alt="Success!" /></a></p>
 
 
-&lt;p&gt;Booyah!&lt;/p&gt;
+<p>Booyah!</p>
 
-&lt;h2&gt;TODO&lt;/h2&gt;
+<h2>TODO</h2>
 
-&lt;ul&gt;
-&lt;li&gt;submit patch for making update more &quot;correct&quot; ?&lt;/li&gt;
-&lt;li&gt;demonstrate how to add to VS tooling and how it changes dev story&lt;/li&gt;
-&lt;li&gt;some documentation on managing upstream dependencies&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>submit patch for making update more "correct" ?</li>
+<li>demonstrate how to add to VS tooling and how it changes dev story</li>
+<li>some documentation on managing upstream dependencies</li>
+</ul>
 
-</content>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -169,59 +174,61 @@ Which causes my build to break.&lt;/p&gt;
    <link href="http://your.pages.urlinotifypropertychanged-stop-the-madness.html" />
    <updated>2011-06-18T14:00:00+10:00</updated>
    <id>http://lebobs.ch/./inotifypropertychanged-stop-the-madness</id>
-   <content type="html">&lt;p&gt;Its time to stop with this madness.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>Its time to stop with this madness.</p>
 
-&lt;p&gt;Apologies again to &lt;a href=&quot;http://twitter.com/kiwipom&quot;&gt;Ian&lt;/a&gt; as I picked on him unnecessarily when I read yet another &quot;Let's make OnPropertyChanged compile safe&quot; &lt;a href=&quot;http://xaml.geek.nz/binding/5&quot;&gt;blog post&lt;/a&gt; yesterday.&lt;/p&gt;
+<p>Apologies again to <a href="http://twitter.com/kiwipom">Ian</a> as I picked on him unnecessarily when I read yet another "Let's make OnPropertyChanged compile safe" <a href="http://xaml.geek.nz/binding/5">blog post</a> yesterday.</p>
 
-&lt;p&gt;I don't have an issue with the approach, but I had an issue with the bigger picture - how little had changed for XAML developers in this regard. Keep in mind that lambdas were first made available in C# 3.0 - which itself was made available in 2007, with .NET 3.5.&lt;/p&gt;
+<p>I don't have an issue with the approach, but I had an issue with the bigger picture - how little had changed for XAML developers in this regard. Keep in mind that lambdas were first made available in C# 3.0 - which itself was made available in 2007, with .NET 3.5.</p>
 
-&lt;p&gt;I've been summoned into this debate &lt;a href=&quot;http://www.mail-archive.com/ozdotnet@ozdotnet.com/msg03903.html&quot;&gt;before&lt;/a&gt; (and was assumed to be a &quot;cool kid&quot;) so I thought I'd put down some thoughts on the issue, and what I think needs to change:&lt;/p&gt;
+<p>I've been summoned into this debate <a href="http://www.mail-archive.com/ozdotnet@ozdotnet.com/msg03903.html">before</a> (and was assumed to be a "cool kid") so I thought I'd put down some thoughts on the issue, and what I think needs to change:</p>
 
-&lt;h2&gt;Stop writing plumbing code&lt;/h2&gt;
+<h2>Stop writing plumbing code</h2>
 
-&lt;p&gt;Every time you write logic in the setter of a property, an angel disappoints her family by taking up stripping.&lt;/p&gt;
+<p>Every time you write logic in the setter of a property, an angel disappoints her family by taking up stripping.</p>
 
-&lt;p&gt;There have been compelling reasons to do so. After dealing with the resulting pain, I've explored other options to take all those needs away. So let's break it down:&lt;/p&gt;
+<p>There have been compelling reasons to do so. After dealing with the resulting pain, I've explored other options to take all those needs away. So let's break it down:</p>
 
-&lt;p&gt;To start off with the &lt;em&gt;worst&lt;/em&gt; case scenario, we have:&lt;/p&gt;
+<p>To start off with the <em>worst</em> case scenario, we have:</p>
 
-&lt;pre&gt;&lt;code&gt;private string _someProperty;
+<pre><code>private string _someProperty;
 public string SomeProperty
 {
     get { return _someProperty; }
     set 
     { 
         _someProperty = value;
-        OnPropertyChanged(&quot;SomeProperty&quot;);
+        OnPropertyChanged("SomeProperty");
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h3&gt;Make it refactor-friendly - let's use a lambda instead!&lt;/h3&gt;
+<h3>Make it refactor-friendly - let's use a lambda instead!</h3>
 
-&lt;p&gt;Yes, this is better than magic strings - that's about it. Don't you get that sinking feeling when adding a new property to the viewmodel, and the code inside the setter looks almost identical to all the others?&lt;/p&gt;
+<p>Yes, this is better than magic strings - that's about it. Don't you get that sinking feeling when adding a new property to the viewmodel, and the code inside the setter looks almost identical to all the others?</p>
 
-&lt;p&gt;So let's change the property to look like:&lt;/p&gt;
+<p>So let's change the property to look like:</p>
 
-&lt;pre&gt;&lt;code&gt;private string _someProperty;
+<pre><code>private string _someProperty;
 public string SomeProperty
 {
     get { return _someProperty; }
     set 
     { 
         _someProperty = value;
-        OnPropertyChanged(() =&amp;gt; SomeProperty);
+        OnPropertyChanged(() =&gt; SomeProperty);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;For an example implementation that accepts lambda statements, &lt;a href=&quot;http://stackoverflow.com/questions/141370/inotifypropertychanged-property-name-hardcode-vs-reflection/1209104#1209104&quot;&gt;this Stackoverflow answer&lt;/a&gt; is a good starting point.&lt;/p&gt;
+<p>For an example implementation that accepts lambda statements, <a href="http://stackoverflow.com/questions/141370/inotifypropertychanged-property-name-hardcode-vs-reflection/1209104#1209104">this Stackoverflow answer</a> is a good starting point.</p>
 
-&lt;h3&gt;I only want to raise the change when the backing value actually changes!&lt;/h3&gt;
+<h3>I only want to raise the change when the backing value actually changes!</h3>
 
-&lt;p&gt;&quot;Wait,&quot; the audience exlaims in shock, &quot;you're going to raise the event each time now.&quot; The author relents, and adds some code to end the pain for the audience:&lt;/p&gt;
+<p>"Wait," the audience exlaims in shock, "you're going to raise the event each time now." The author relents, and adds some code to end the pain for the audience:</p>
 
-&lt;pre&gt;&lt;code&gt;private string _someProperty;
+<pre><code>private string _someProperty;
 public string SomeProperty
 {
     get { return _someProperty; }
@@ -231,14 +238,14 @@ public string SomeProperty
             return;
 
         _someProperty = value;
-        OnPropertyChanged(() =&amp;gt; SomeProperty);
+        OnPropertyChanged(() =&gt; SomeProperty);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;I'd better ensure this is defined in all the setters, and that the right backing field is used in each case. I'd look pretty silly if I'd used the wrong field, like this:&lt;/p&gt;
+<p>I'd better ensure this is defined in all the setters, and that the right backing field is used in each case. I'd look pretty silly if I'd used the wrong field, like this:</p>
 
-&lt;pre&gt;&lt;code&gt;// elsewhere in the codebase
+<pre><code>// elsewhere in the codebase
 private string _someOtherProperty;
 
 // ...
@@ -253,27 +260,27 @@ public string SomeProperty
             return;
 
         _someProperty = value;
-        OnPropertyChanged(() =&amp;gt; SomeProperty);
+        OnPropertyChanged(() =&gt; SomeProperty);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;so I'd better do it real carefully...&lt;/p&gt;
+<p>so I'd better do it real carefully...</p>
 
-&lt;h3&gt;We need caching now!&lt;/h3&gt;
+<h3>We need caching now!</h3>
 
-&lt;p&gt;Really? That's what comes to mind next? You crazy developers.&lt;/p&gt;
+<p>Really? That's what comes to mind next? You crazy developers.</p>
 
-&lt;p&gt;Fine, let's add a dictionary to capture the event arguments, instead of recreating them each time (adapted from this &lt;a href=&quot;http://www.paulstovell.com/strong-property-names&quot;&gt;blog post&lt;/a&gt;):&lt;/p&gt;
+<p>Fine, let's add a dictionary to capture the event arguments, instead of recreating them each time (adapted from this <a href="http://www.paulstovell.com/strong-property-names">blog post</a>):</p>
 
-&lt;pre&gt;&lt;code&gt;public class ViewModelBase
+<pre><code>public class ViewModelBase
 {
-    protected void OnPropertyChanged(Expression&amp;lt;Func&amp;lt;object&amp;gt;&amp;gt; lambda)
+    protected void OnPropertyChanged(Expression&lt;Func&lt;object&gt;&gt; lambda)
     {
         // Go read Paul (and especially Miguel's comment) about this [here][6]. I'll wait...
     }
 
-    private IDictionary&amp;lt;string, PropertyChangedEventArgs&amp;gt; _handlers = new Dictionary&amp;lt;string, PropertyChangedEventArgs&amp;gt;      
+    private IDictionary&lt;string, PropertyChangedEventArgs&gt; _handlers = new Dictionary&lt;string, PropertyChangedEventArgs&gt;      
 
     protected void OnPropertyChanged(string propertyName)
     {
@@ -289,42 +296,45 @@ public string SomeProperty
         PropertyChanged(this, args);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Have we saved much? Perhaps. Perhaps not...&lt;/p&gt;
+<p>Have we saved much? Perhaps. Perhaps not...</p>
 
-&lt;h3&gt;Wait, what about cross-thread issues? I do a lot on the background thread!&lt;/h3&gt;
+<h3>Wait, what about cross-thread issues? I do a lot on the background thread!</h3>
 
-&lt;p&gt;Ah yes. Have you ever been bitten by this one - a background thread updates a property, which triggers the PropertyChanged event, which asplodes because the UI can only be updated from the main thread?&lt;/p&gt;
+<p>Ah yes. Have you ever been bitten by this one - a background thread updates a property, which triggers the PropertyChanged event, which asplodes because the UI can only be updated from the main thread?</p>
 
-&lt;h2&gt;Stop. Put down the keyboard for a minute.&lt;/h2&gt;
+<h2>Stop. Put down the keyboard for a minute.</h2>
 
-&lt;p&gt;See how quickly all these features around INotifyPropertyChanged can spiral out of control? You've worked out the code and classes necessary to solve a common problem, but some overhead remains for writing boilerplate code everywhere the solution is required. And while it is a manual process, it is prone to human error.&lt;/p&gt;
+<p>See how quickly all these features around INotifyPropertyChanged can spiral out of control? You've worked out the code and classes necessary to solve a common problem, but some overhead remains for writing boilerplate code everywhere the solution is required. And while it is a manual process, it is prone to human error.</p>
 
-&lt;p&gt;Go back and read that last sentence again. Did something click about what you've been doing all along with INotifyPropertyChanged?&lt;/p&gt;
+<p>Go back and read that last sentence again. Did something click about what you've been doing all along with INotifyPropertyChanged?</p>
 
-&lt;p&gt;&lt;img src=&quot;/img/posts/Achievement.jpg&quot; alt=&quot;Huzzah!&quot; /&gt;&lt;/p&gt;
+<p><img src="/img/posts/Achievement.jpg" alt="Huzzah!" /></p>
 
-&lt;h2&gt;A what?&lt;/h2&gt;
+<h2>A what?</h2>
 
-&lt;p&gt;INotifyPropertyChanged is a very specialised example of a cross-cutting concern.&lt;/p&gt;
+<p>INotifyPropertyChanged is a very specialised example of a cross-cutting concern.</p>
 
-&lt;p&gt;We use INotifyPropertyChanged in many places when doing XAML-based applications - as it is critical when databinding POCO objects without requiring the use of DependencyProperty instances. Although we spent a lot of time optimising the behaviour of invoking INotifyPropertyChanged, we didn't improve &lt;strong&gt;how&lt;/strong&gt; this code is used - we're still copying-and-pasting the same code around, and having to make manual changes to each instance to suit the property.&lt;/p&gt;
+<p>We use INotifyPropertyChanged in many places when doing XAML-based applications - as it is critical when databinding POCO objects without requiring the use of DependencyProperty instances. Although we spent a lot of time optimising the behaviour of invoking INotifyPropertyChanged, we didn't improve <strong>how</strong> this code is used - we're still copying-and-pasting the same code around, and having to make manual changes to each instance to suit the property.</p>
 
-&lt;p&gt;We need the ability to apply the INotifyPropertyChanged behaviour in an automatic way. Of course, there are various tradeoffs to consider - which I'll outline from my experiences.&lt;/p&gt;
+<p>We need the ability to apply the INotifyPropertyChanged behaviour in an automatic way. Of course, there are various tradeoffs to consider - which I'll outline from my experiences.</p>
 
-&lt;h2&gt;What Next?&lt;/h2&gt;
+<h2>What Next?</h2>
 
-&lt;p&gt;I need to wrap this post up before it becomes even longer, so until my next post - where I'll discuss how AOP flips all this discussion on its ear - readers can get ahead by reading these links:&lt;/p&gt;
+<p>I need to wrap this post up before it becomes even longer, so until my next post - where I'll discuss how AOP flips all this discussion on its ear - readers can get ahead by reading these links:</p>
 
-&lt;p&gt;&lt;strong&gt;Sacha Barber - &lt;a href=&quot;http://www.codeproject.com/KB/library/Aspects.aspx&quot;&gt;Aspect Examples (INotifyPropertyChanged via Aspects)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Sacha Barber - <a href="http://www.codeproject.com/KB/library/Aspects.aspx">Aspect Examples (INotifyPropertyChanged via Aspects)</a></strong></p>
 
-&lt;p&gt;&lt;a href=&quot;http://twitter.com/philiplaureano&quot;&gt;Philip Laureano&lt;/a&gt; linked me this yesterday. A large read, but lots of demo code for people who want to see something more concrete.&lt;/p&gt;
+<p><a href="http://twitter.com/philiplaureano">Philip Laureano</a> linked me this yesterday. A large read, but lots of demo code for people who want to see something more concrete.</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://code.google.com/p/notifypropertyweaver/&quot;&gt;NotifyPropertyWeaver&lt;/a&gt; - a .NET library for weaving INotifyPropertyChanged code into IL&lt;/strong&gt;&lt;/p&gt;
+<p><strong><a href="http://code.google.com/p/notifypropertyweaver/">NotifyPropertyWeaver</a> - a .NET library for weaving INotifyPropertyChanged code into IL</strong></p>
 
-&lt;p&gt;This is my library of choice for automating INotifyPropertyChanged usage. I definitely owe &lt;a href=&quot;http://twitter.com/simoncropp&quot;&gt;Simon&lt;/a&gt; a beer (or drink of choice) next time we cross paths - its been a joy to use.&lt;/p&gt;
-</content>
+<p>This is my library of choice for automating INotifyPropertyChanged usage. I definitely owe <a href="http://twitter.com/simoncropp">Simon</a> a beer (or drink of choice) next time we cross paths - its been a joy to use.</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -332,72 +342,77 @@ public string SomeProperty
    <link href="http://your.pages.urlon-the-windows-8-preview.html" />
    <updated>2011-06-08T14:00:00+10:00</updated>
    <id>http://lebobs.ch/./on-the-windows-8-preview</id>
-   <content type="html">&lt;p&gt;For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: &lt;a href=&quot;http://www.youtube.com/watch?v=p92QfWOw88I&quot;&gt;http://www.youtube.com/watch?v=p92QfWOw88I&lt;/a&gt;&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: <a href="http://www.youtube.com/watch?v=p92QfWOw88I">http://www.youtube.com/watch?v=p92QfWOw88I</a></p>
 
-&lt;p&gt;It was the trigger for significant backlash - and not for what was said, but for what wasn't said around the other options available for building Windows applications.&lt;/p&gt;
+<p>It was the trigger for significant backlash - and not for what was said, but for what wasn't said around the other options available for building Windows applications.</p>
 
-&lt;h2&gt;Yes, MSFT could have handled it better&lt;/h2&gt;
+<h2>Yes, MSFT could have handled it better</h2>
 
-&lt;p&gt;Since the video dropped, developers and possibly everyone with a blog has been raising concerns about the other options available to developers for building Windows apps. The underlying vibe has been &quot;everything else has been abandoned, the only option is now HTML5, the sky is falling and I have nothing to wear&quot;. I haven't watched the Sinofsky video (if it was even recorded), but when you see reporting like:&lt;/p&gt;
+<p>Since the video dropped, developers and possibly everyone with a blog has been raising concerns about the other options available to developers for building Windows apps. The underlying vibe has been "everything else has been abandoned, the only option is now HTML5, the sky is falling and I have nothing to wear". I haven't watched the Sinofsky video (if it was even recorded), but when you see reporting like:</p>
 
-&lt;blockquote&gt;&lt;p&gt;&quot;The development platform is based on HTML5 and JavaScript.&quot; &lt;a href=&quot;http://news.cnet.com/8301-31021_3-20068119-260/sinofsky-shows-off-windows-8-at-d9/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>"The development platform is based on HTML5 and JavaScript." <a href="http://news.cnet.com/8301-31021_3-20068119-260/sinofsky-shows-off-windows-8-at-d9/">Source</a></p></blockquote>
 
-&lt;p&gt;and constrast with a different source:&lt;/p&gt;
+<p>and constrast with a different source:</p>
 
-&lt;blockquote&gt;&lt;p&gt;&quot;Windows 8 essentially supports two kinds of applications. One is the classic Windows application, which runs in a desktop very similar to the Windows 7 desktop.&quot; &lt;a href=&quot;http://allthingsd.com/20110601/exclusive-making-sense-of-what-we-just-learned-about-windows-8/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>"Windows 8 essentially supports two kinds of applications. One is the classic Windows application, which runs in a desktop very similar to the Windows 7 desktop." <a href="http://allthingsd.com/20110601/exclusive-making-sense-of-what-we-just-learned-about-windows-8/">Source</a></p></blockquote>
 
-&lt;p&gt;then you know something got lost in the message.&lt;/p&gt;
+<p>then you know something got lost in the message.</p>
 
-&lt;h2&gt;The sky is falling for &lt;em&gt;insert technology here&lt;/em&gt;&lt;/h2&gt;
+<h2>The sky is falling for <em>insert technology here</em></h2>
 
-&lt;p&gt;&lt;a href=&quot;http://forums.silverlight.net/forums/t/230502.aspx&quot;&gt;That thread&lt;/a&gt;. Oh dear $deity, &lt;a href=&quot;http://forums.silverlight.net/forums/p/230725/563975.aspx&quot;&gt;that thread&lt;/a&gt;.&lt;/p&gt;
+<p><a href="http://forums.silverlight.net/forums/t/230502.aspx">That thread</a>. Oh dear $deity, <a href="http://forums.silverlight.net/forums/p/230725/563975.aspx">that thread</a>.</p>
 
-&lt;p&gt;I appreciate that the MSFT guys &quot;in the field&quot; are stuck between a rock and a hard place currently - they cannot provide details to answer people's concerns or questions, but are dealing with a large backlash due to the large amount that is not know currently.&lt;/p&gt;
+<p>I appreciate that the MSFT guys "in the field" are stuck between a rock and a hard place currently - they cannot provide details to answer people's concerns or questions, but are dealing with a large backlash due to the large amount that is not know currently.</p>
 
-&lt;p&gt;As one of those in the audience who has to wait, in uncertainty, between now and &lt;a href=&quot;http://www.buildwindows.com/&quot;&gt;BUILD&lt;/a&gt; to have these questions answered, I wish they would rethink this decision and respond to questions and help change the course of discussion.&lt;/p&gt;
+<p>As one of those in the audience who has to wait, in uncertainty, between now and <a href="http://www.buildwindows.com/">BUILD</a> to have these questions answered, I wish they would rethink this decision and respond to questions and help change the course of discussion.</p>
 
-&lt;p&gt;While the video does mention:&lt;/p&gt;
+<p>While the video does mention:</p>
 
-&lt;blockquote&gt;&lt;p&gt;&quot;Windows 8 also runs the existing Windows apps that you know and that you love&quot;&lt;/p&gt;&lt;/blockquote&gt;
+<blockquote><p>"Windows 8 also runs the existing Windows apps that you know and that you love"</p></blockquote>
 
-&lt;p&gt;it then follows up with running Excel.&lt;/p&gt;
+<p>it then follows up with running Excel.</p>
 
-&lt;p&gt;Yep. Excel.&lt;/p&gt;
+<p>Yep. Excel.</p>
 
-&lt;p&gt;While an Excel demo is a good indicator of the backwards compatibility that Windows is famous for, it was a jarring change from the rest of the video, and I'm not sure it was the best application to demonstrate.&lt;/p&gt;
+<p>While an Excel demo is a good indicator of the backwards compatibility that Windows is famous for, it was a jarring change from the rest of the video, and I'm not sure it was the best application to demonstrate.</p>
 
-&lt;p&gt;Perhaps the developer story is not ready to show. Perhaps it was supposed to be about the shell, and HTML5 was only mentioned in passing. Perhaps, perhaps, perhaps. I suspect a demonstration of how a WPF/SL/Winforms/native application &lt;strong&gt;could&lt;/strong&gt; look/feel/behave within the new shell would provide some information without giving much away.&lt;/p&gt;
+<p>Perhaps the developer story is not ready to show. Perhaps it was supposed to be about the shell, and HTML5 was only mentioned in passing. Perhaps, perhaps, perhaps. I suspect a demonstration of how a WPF/SL/Winforms/native application <strong>could</strong> look/feel/behave within the new shell would provide some information without giving much away.</p>
 
-&lt;p&gt;The video was about creating interest in the new platform and discussing the opportunities it provides. Now is the time to talk more broadly, while everyone is talking about it.&lt;/p&gt;
+<p>The video was about creating interest in the new platform and discussing the opportunities it provides. Now is the time to talk more broadly, while everyone is talking about it.</p>
 
-&lt;p&gt;So instead of &lt;a href=&quot;http://forums.silverlight.net/forums/t/230744.aspx&quot;&gt;drumming up more drama&lt;/a&gt;, I thought I'd share some takeaways for both sides on this:&lt;/p&gt;
+<p>So instead of <a href="http://forums.silverlight.net/forums/t/230744.aspx">drumming up more drama</a>, I thought I'd share some takeaways for both sides on this:</p>
 
-&lt;h2&gt;Devs: pay attention to the user experience&lt;/h2&gt;
+<h2>Devs: pay attention to the user experience</h2>
 
-&lt;p&gt;I hope developers took away from this story how the user experience of applications has changed, and how the classic WIMP (Windows, Icons, Menu, Pointer) applications will be impacted. Much like the transition from Windows Mobile 6.5 to Windows Phone 7, I anticipate some growing pains once developers get their hands on the development tools.&lt;/p&gt;
+<p>I hope developers took away from this story how the user experience of applications has changed, and how the classic WIMP (Windows, Icons, Menu, Pointer) applications will be impacted. Much like the transition from Windows Mobile 6.5 to Windows Phone 7, I anticipate some growing pains once developers get their hands on the development tools.</p>
 
-&lt;p&gt;Touch input is also something that many Windows developers may not be familiar with. While it has been available to native developers since Windows 7 launched, and was added to WPF and Silverlight with subsequent product releases, it hasn't really been utilized to anywhere near its full potential.&lt;/p&gt;
+<p>Touch input is also something that many Windows developers may not be familiar with. While it has been available to native developers since Windows 7 launched, and was added to WPF and Silverlight with subsequent product releases, it hasn't really been utilized to anywhere near its full potential.</p>
 
-&lt;p&gt;Get familiar with how gestures work - as a starting point, the WP7 emulator turns mouse inputs into touch inputs. Touch will be mandatory if you want an application to be usable on different form factors (Windows 8 is taking an iOS-ish route with the same codebase running on desktops, tablets and devices).&lt;/p&gt;
+<p>Get familiar with how gestures work - as a starting point, the WP7 emulator turns mouse inputs into touch inputs. Touch will be mandatory if you want an application to be usable on different form factors (Windows 8 is taking an iOS-ish route with the same codebase running on desktops, tablets and devices).</p>
 
-&lt;h2&gt;MSFT: don't let the echo chamber continue&lt;/h2&gt;
+<h2>MSFT: don't let the echo chamber continue</h2>
 
-&lt;p&gt;I'm still baffled by the decision to stonewall. Developers are customers, and they have questions. Why not be pro-active and help smooth the transition over the coming months?&lt;/p&gt;
+<p>I'm still baffled by the decision to stonewall. Developers are customers, and they have questions. Why not be pro-active and help smooth the transition over the coming months?</p>
 
-&lt;p&gt;With all the strong and passionate opinions flying around, wouldn't it be good to plant some seeds of confidence and turn the conversation from &quot;Where is XYZ?&quot; to &quot;What can I do with Windows 8 using XYZ?&quot;&lt;/p&gt;
+<p>With all the strong and passionate opinions flying around, wouldn't it be good to plant some seeds of confidence and turn the conversation from "Where is XYZ?" to "What can I do with Windows 8 using XYZ?"</p>
 
-&lt;p&gt;Give the community a baseline of information so they can start planning and start providing feedback. It doesn't have to be revealing all the cards, but the developer story for Windows 8 is (mostly) unknown currently. That's why people are concerned.&lt;/p&gt;
+<p>Give the community a baseline of information so they can start planning and start providing feedback. It doesn't have to be revealing all the cards, but the developer story for Windows 8 is (mostly) unknown currently. That's why people are concerned.</p>
 
-&lt;h2&gt;MSFT: don't forget the hardware&lt;/h2&gt;
+<h2>MSFT: don't forget the hardware</h2>
 
-&lt;p&gt;I've been looking for a kick-arse tablet device to run Windows on for a while, but have been stuck in Goldilocks-mode - &quot;too large, too heavy, the battery is too short, etc&quot; - and continue to sit on the fence. Much like with WP7, I'm curious about the involvement of hardware vendors to support the new features coming in Windows 8.&lt;/p&gt;
+<p>I've been looking for a kick-arse tablet device to run Windows on for a while, but have been stuck in Goldilocks-mode - "too large, too heavy, the battery is too short, etc" - and continue to sit on the fence. Much like with WP7, I'm curious about the involvement of hardware vendors to support the new features coming in Windows 8.</p>
 
-&lt;p&gt;Windows 7 was launched with support for touch input, but it never really gained traction due to lack of a compelling tablet device - the Touchsmarts were a nice device, but were primarily for kiosks, rather than daily usage.&lt;/p&gt;
+<p>Windows 7 was launched with support for touch input, but it never really gained traction due to lack of a compelling tablet device - the Touchsmarts were a nice device, but were primarily for kiosks, rather than daily usage.</p>
 
-&lt;p&gt;Compare Windows 7 to the WP7 launches - which have been done with device announcements involving hardware vendors - and it gives me hope that the launch can be done in a more &quot;complete&quot; fashion.&lt;/p&gt;
+<p>Compare Windows 7 to the WP7 launches - which have been done with device announcements involving hardware vendors - and it gives me hope that the launch can be done in a more "complete" fashion.</p>
 
-&lt;p&gt;And I want to see more presentations from MSFT about Windows 8 using touch - drive the presentations from a tablet, demonstrate how the new UI supports touch, and compel me to put it everywhere.&lt;/p&gt;
-</content>
+<p>And I want to see more presentations from MSFT about Windows 8 using touch - drive the presentations from a tablet, demonstrate how the new UI supports touch, and compel me to put it everywhere.</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -405,28 +420,33 @@ public string SomeProperty
    <link href="http://your.pages.urlslsvcutil-stackoverflowexception-workaround.html" />
    <updated>2011-05-06T14:00:00+10:00</updated>
    <id>http://lebobs.ch/./slsvcutil-stackoverflowexception-workaround</id>
-   <content type="html">&lt;p&gt;I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called &lt;a href=&quot;http://www.stackoverflow.com/&quot;&gt;stackoverflow&lt;/a&gt; came into the mix :)&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called <a href="http://www.stackoverflow.com/">stackoverflow</a> came into the mix :)</p>
 
-&lt;pre&gt;&lt;code&gt;D:\Readify\Hg\ReadifySample\src&amp;gt;&quot;C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Tools\Slsvcutil.exe&quot; http://localhost:47862/Services/ParentService.svc
+<pre><code>D:\Readify\Hg\ReadifySample\src&gt;"C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Tools\Slsvcutil.exe" http://localhost:47862/Services/ParentService.svc
 
 Process is terminated due to StackOverflowException.
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;No configuration options set. No informative error message. Annoying.&lt;/p&gt;
+<p>No configuration options set. No informative error message. Annoying.</p>
 
-&lt;p&gt;The solution, which was initially posted &lt;a href=&quot;http://blogs.msdn.com/b/silverlightws/archive/2010/04/30/workaround-for-stackoverflowexception-when-using-slsvcutil-exe.aspx&quot;&gt;here&lt;/a&gt; over a year ago, is to add in a configuration file alongside slsvcutil.exe, called &lt;strong&gt;slsvcutil.exe.config&lt;/strong&gt;, which will point to the neutral-culture assembly.&lt;/p&gt;
+<p>The solution, which was initially posted <a href="http://blogs.msdn.com/b/silverlightws/archive/2010/04/30/workaround-for-stackoverflowexception-when-using-slsvcutil-exe.aspx">here</a> over a year ago, is to add in a configuration file alongside slsvcutil.exe, called <strong>slsvcutil.exe.config</strong>, which will point to the neutral-culture assembly.</p>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
-  &amp;lt;satelliteassemblies&amp;gt;
-    &amp;lt;assembly name=&quot;SlSvcUtil, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&amp;gt;
-  &amp;lt;/satelliteassemblies&amp;gt;
-&amp;lt;/configuration&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>&lt;configuration&gt;
+  &lt;satelliteassemblies&gt;
+    &lt;assembly name="SlSvcUtil, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" /&gt;
+  &lt;/satelliteassemblies&gt;
+&lt;/configuration&gt;
+</code></pre>
 
-&lt;p&gt;That's right. If you have set your system language to something &lt;strong&gt;other than US English&lt;/strong&gt;, you will probably encounter this issue.&lt;/p&gt;
+<p>That's right. If you have set your system language to something <strong>other than US English</strong>, you will probably encounter this issue.</p>
 
-&lt;p&gt;Enjoy.&lt;/p&gt;
-</content>
+<p>Enjoy.</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -434,114 +454,119 @@ Process is terminated due to StackOverflowException.
    <link href="http://your.pages.urlsimpler-ui-testing-for-wpf-apps.html" />
    <updated>2011-03-26T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./simpler-ui-testing-for-wpf-apps</id>
-   <content type="html">&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
-to paper and revisit why I started down this path.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
+to paper and revisit why I started down this path.</p>
 
-&lt;p&gt;&lt;strong&gt;Some background&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Some background</strong></p>
 
-&lt;p&gt;The current project I am working on is a large data-driven WPF application, with a lot of complex scenarios to
+<p>The current project I am working on is a large data-driven WPF application, with a lot of complex scenarios to
 identify, develop and test. There is a group of testers on the project, but I can see an opportunity to use
-automated testing to verify functionality and allow testers to focus on areas of better value - exploratory testing, for example.&lt;/p&gt;
+automated testing to verify functionality and allow testers to focus on areas of better value - exploratory testing, for example.</p>
 
-&lt;p&gt;Yes, there are frameworks like &lt;a href=&quot;http://white.codeplex.com/&quot;&gt;White&lt;/a&gt; or Coded UI Tests, but these tools were designed with developers in mind.
-You have to write code like &lt;a href=&quot;http://msdn.microsoft.com/en-us/magazine/dd483216.aspx&quot;&gt;this&lt;/a&gt; to drive the tests, and the tests are commonly written after the feature is implemented.&lt;/p&gt;
+<p>Yes, there are frameworks like <a href="http://white.codeplex.com/">White</a> or Coded UI Tests, but these tools were designed with developers in mind.
+You have to write code like <a href="http://msdn.microsoft.com/en-us/magazine/dd483216.aspx">this</a> to drive the tests, and the tests are commonly written after the feature is implemented.</p>
 
-&lt;p&gt;&lt;strong&gt;Enter Automated Acceptance Testing&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Enter Automated Acceptance Testing</strong></p>
 
-&lt;p&gt;In an ideal world, business users would define tests in an English-like language, which can then be translated into an executable
-script and run against the application.&lt;/p&gt;
+<p>In an ideal world, business users would define tests in an English-like language, which can then be translated into an executable
+script and run against the application.</p>
 
-&lt;p&gt;What I'm looking for in a framework for defining use cases:&lt;/p&gt;
+<p>What I'm looking for in a framework for defining use cases:</p>
 
-&lt;ul&gt;
-&lt;li&gt;define the test first, so that the high-level scenario is set before development occurs&lt;/li&gt;
-&lt;li&gt;flexible with syntax for test cases - tailor scripts to suit people involved, while remaining declarative&lt;/li&gt;
-&lt;li&gt;integrate into deployment process to verify builds automated&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>define the test first, so that the high-level scenario is set before development occurs</li>
+<li>flexible with syntax for test cases - tailor scripts to suit people involved, while remaining declarative</li>
+<li>integrate into deployment process to verify builds automated</li>
+</ul>
 
 
-&lt;p&gt;&lt;strong&gt;Some inspiration from obscure corners&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Some inspiration from obscure corners</strong></p>
 
-&lt;p&gt;When I first saw the syntax for &lt;a href=&quot;http://msdn.microsoft.com/en-us/magazine/dd483216.aspx&quot;&gt;webrat&lt;/a&gt;, I was intrigued and jealous. To declare a test like this:&lt;/p&gt;
+<p>When I first saw the syntax for <a href="http://msdn.microsoft.com/en-us/magazine/dd483216.aspx">webrat</a>, I was intrigued and jealous. To declare a test like this:</p>
 
-&lt;pre&gt;&lt;code&gt;class SignupTest &amp;lt; ActionController::IntegrationTest
+<pre><code>class SignupTest &lt; ActionController::IntegrationTest
 
     def test_trial_account_sign_up
         visit home_path
-        click_link &quot;Sign up&quot;
-        fill_in &quot;Email&quot;, :with =&amp;gt; &quot;good@example.com&quot;
-        select &quot;Free account&quot;
-        click_button &quot;Register&quot;
+        click_link "Sign up"
+        fill_in "Email", :with =&gt; "good@example.com"
+        select "Free account"
+        click_button "Register"
     end
 end
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;was not far off what I'd had in mind for something that was easy to follow and easy to write.&lt;/p&gt;
+<p>was not far off what I'd had in mind for something that was easy to follow and easy to write.</p>
 
-&lt;p&gt;So I spent some time this week experimenting with various ways of achieving this against a sample WPF application.&lt;/p&gt;
+<p>So I spent some time this week experimenting with various ways of achieving this against a sample WPF application.</p>
 
-&lt;p&gt;I'm using rspec at the moment to run the test cases, and IronRuby and White to support the integration with the hosted WPF application.&lt;/p&gt;
+<p>I'm using rspec at the moment to run the test cases, and IronRuby and White to support the integration with the hosted WPF application.</p>
 
-&lt;p&gt;&lt;strong&gt;What does a test for the WPF application look like?&lt;/strong&gt;&lt;/p&gt;
+<p><strong>What does a test for the WPF application look like?</strong></p>
 
-&lt;pre&gt;&lt;code&gt;describe &quot;new customers screen&quot; do
+<pre><code>describe "new customers screen" do
 
     subject { Host.new(File.expand_path('./app/WpfTestApp.exe', File.dirname(__FILE__)))
 
     before(:each) do
-        click &quot;Add Customer&quot;
+        click "Add Customer"
     end
 
-    it &quot;cannot save empty form&quot; do
-        cannot_click &quot;Save&quot;
-        can_click &quot;Cancel&quot;
+    it "cannot save empty form" do
+        cannot_click "Save"
+        can_click "Cancel"
     end
 
-    it &quot;can enter details for customer&quot; do
-        fill &quot;FirstName&quot;, :with =&amp;gt; &quot;Brendan&quot;
-        fill &quot;LastName&quot;, :with =&amp;gt; &quot;Forster&quot;
+    it "can enter details for customer" do
+        fill "FirstName", :with =&gt; "Brendan"
+        fill "LastName", :with =&gt; "Forster"
         # and some other fields
-        can_click &quot;Save&quot;
+        can_click "Save"
     end
 
-    it &quot;can save and return to main screen&quot; do
-        fill &quot;FirstName&quot;, :with =&amp;gt; &quot;Brendan&quot;
-        fill &quot;LastName&quot;, :with =&amp;gt; &quot;Forster&quot;
+    it "can save and return to main screen" do
+        fill "FirstName", :with =&gt; "Brendan"
+        fill "LastName", :with =&gt; "Forster"
         # and some other fields
-        click &quot;Save&quot;
-        assert_title &quot;Dashboard&quot;
+        click "Save"
+        assert_title "Dashboard"
     end
 
     after(:each) do
         cleanup
     end
 
-    def method_missing(sym, *args, &amp;amp;block)
-        subject.send sym, *args, &amp;amp;block
+    def method_missing(sym, *args, &amp;block)
+        subject.send sym, *args, &amp;block
     end
 end
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;The fields used here are based off the UI Automation features of the .NET Framework (some reading &lt;a href=&quot;http://white.codeplex.com/&quot;&gt;here&lt;/a&gt; on recommendations)
-which I'll dig into a bit later if people are interested.&lt;/p&gt;
+<p>The fields used here are based off the UI Automation features of the .NET Framework (some reading <a href="http://white.codeplex.com/">here</a> on recommendations)
+which I'll dig into a bit later if people are interested.</p>
 
-&lt;p&gt;The method_missing method is used to reduce the noise of writing &quot;subject.&quot; to start each line - I'm not quite sold on the approach, but it was cleaner than the previous approaches I'd tried.
-Also, rspec has a &lt;a href=&quot;https://gist.github.com/663876&quot;&gt;huge set of features&lt;/a&gt; which I've barely scratched the surface on.&lt;/p&gt;
+<p>The method_missing method is used to reduce the noise of writing "subject." to start each line - I'm not quite sold on the approach, but it was cleaner than the previous approaches I'd tried.
+Also, rspec has a <a href="https://gist.github.com/663876">huge set of features</a> which I've barely scratched the surface on.</p>
 
-&lt;p&gt;So with a set of files like the file above, the testrunner is a simple script to load specific files found in the current directory:&lt;/p&gt;
+<p>So with a set of files like the file above, the testrunner is a simple script to load specific files found in the current directory:</p>
 
-&lt;pre&gt;&lt;code&gt;require 'rubygems'
+<pre><code>require 'rubygems'
 require 'rspec'
 require 'host'
 
 Dir[File.dirname(__FILE__) + '/*tests.rb'].each do |file| 
     load file
 end
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code),
-just needed to write this post.&lt;/p&gt;
-</content>
+<p>I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code),
+just needed to write this post.</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -549,104 +574,109 @@ just needed to write this post.&lt;/p&gt;
    <link href="http://your.pages.urlarguments-about-project-structure.html" />
    <updated>2011-02-23T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./arguments-about-project-structure</id>
-   <content type="html">&lt;p&gt;Whenever it comes time to kick off a new project, how do you structure it?&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>Whenever it comes time to kick off a new project, how do you structure it?</p>
 
-&lt;p&gt;Given a greenfields situation - or even one of my side projects - I go for this layout:&lt;/p&gt;
+<p>Given a greenfields situation - or even one of my side projects - I go for this layout:</p>
 
-&lt;ul&gt;
-&lt;li&gt;build&lt;/li&gt;
-&lt;li&gt;lib&lt;/li&gt;
-&lt;li&gt;licenses&lt;/li&gt;
-&lt;li&gt;samples&lt;/li&gt;
-&lt;li&gt;src
+<ul>
+<li>build</li>
+<li>lib</li>
+<li>licenses</li>
+<li>samples</li>
+<li>src
 
-&lt;ul&gt;
-&lt;li&gt;Project.ModuleA&lt;/li&gt;
-&lt;li&gt;Project.ModuleB&lt;/li&gt;
-&lt;li&gt;Project.Shell&lt;/li&gt;
-&lt;li&gt;Project.sln&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;tools&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;And what do those these folders represent?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build&lt;/strong&gt; - scripts for building and deploying the application. As soon as the application is required to be deployed to different environments, this should be scripted and added to source control.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;lib&lt;/strong&gt; - dependencies required by the application. I generally group the dependent assemblies if required, but will generally drop the dll-xml combination into the root folder.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;licenses&lt;/strong&gt; - when doing OSS development, this is a must. I should bring this into my general projects, especially if it has a significant mix of dependencies and licenses to manage.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;samples&lt;/strong&gt; - once the main solution gets beyond a specific size, it may be beneficial to separate the sample code out rather than compiling it within the main build.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;src&lt;/strong&gt; - there be code.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;tools&lt;/strong&gt; - dependencies required to build the application. This does not mean including every tool required to set up the developer baseline, but any special tools used during the build process&lt;/p&gt;
-
-&lt;p&gt;For example, these would not belong:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Visual Studio&lt;/li&gt;
-&lt;li&gt;.NET Framework&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>Project.ModuleA</li>
+<li>Project.ModuleB</li>
+<li>Project.Shell</li>
+<li>Project.sln</li>
+</ul>
+</li>
+<li>tools</li>
+</ul>
 
 
-&lt;p&gt;But I'd happily include these tools:&lt;/p&gt;
+<p>And what do those these folders represent?</p>
 
-&lt;ul&gt;
-&lt;li&gt;FxCop&lt;/li&gt;
-&lt;li&gt;NCover&lt;/li&gt;
-&lt;li&gt;MSBuild Community Tasks&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>build</strong> - scripts for building and deploying the application. As soon as the application is required to be deployed to different environments, this should be scripted and added to source control.</p>
 
+<p><strong>lib</strong> - dependencies required by the application. I generally group the dependent assemblies if required, but will generally drop the dll-xml combination into the root folder.</p>
 
-&lt;p&gt;as not all developers would have them installed on their machines.&lt;/p&gt;
+<p><strong>licenses</strong> - when doing OSS development, this is a must. I should bring this into my general projects, especially if it has a significant mix of dependencies and licenses to manage.</p>
 
-&lt;h2&gt;Why this structure?&lt;/h2&gt;
+<p><strong>samples</strong> - once the main solution gets beyond a specific size, it may be beneficial to separate the sample code out rather than compiling it within the main build.</p>
 
-&lt;p&gt;&lt;strong&gt;Folder Names&lt;/strong&gt;&lt;/p&gt;
+<p><strong>src</strong> - there be code.</p>
 
-&lt;p&gt;Remember the days of 8.3 filesystems? I do. But thankfully this isn't about that.&lt;/p&gt;
+<p><strong>tools</strong> - dependencies required to build the application. This does not mean including every tool required to set up the developer baseline, but any special tools used during the build process</p>
 
-&lt;p&gt;This structure also borrows from Unix conventions for arranging their codebases. I don't like how the necessary make files are hosted at the root.&lt;/p&gt;
+<p>For example, these would not belong:</p>
 
-&lt;p&gt;As we're using Mercurial, we don't need to worry about using trunks or tags in the structure.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Experience&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;When I challenged &lt;a href=&quot;http://twitter.com/aeoth&quot;&gt;@aeoth's&lt;/a&gt; project structure for the next version of MahTweets, he wanted to make it so that a developer with little experience in .NET (or programming) could download the source and try it out.&lt;/p&gt;
-
-&lt;p&gt;I'd argue the best introduction to a codebase is two things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a README file to provide some notes about the application&lt;/li&gt;
-&lt;li&gt;a batch file or script to run the application and execute tests&lt;/li&gt;
-&lt;li&gt;sample projects to complement the source&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>Visual Studio</li>
+<li>.NET Framework</li>
+</ul>
 
 
-&lt;p&gt;&lt;strong&gt;The build is important&lt;/strong&gt;&lt;/p&gt;
+<p>But I'd happily include these tools:</p>
 
-&lt;p&gt;We had various pain points with the last version of MahTweets around managing loosely-coupled modules under development, and then building a signed ClickOnce installer with a custom script.&lt;/p&gt;
-
-&lt;p&gt;It ended up being a painful few nights bashing against MSBuild (have you ever tried to use SignFile manually?), but the effort burnt reminds me everytime I come across a new team or project to ask two simple questions:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;how can someone build and run the application with limited knowledge of the codebase?&lt;/li&gt;
-&lt;li&gt;how can someone test the application with limited knowledge of the codebase?&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>FxCop</li>
+<li>NCover</li>
+<li>MSBuild Community Tasks</li>
+</ul>
 
 
-&lt;p&gt;If that process is known and documented, it highlights all the quirks with getting the application out. If it isn't documented, then typically you need to find the right person at the right time...&lt;/p&gt;
+<p>as not all developers would have them installed on their machines.</p>
 
-&lt;p&gt;Putting the build components separate, but easily visible, makes everyone's life easier.&lt;/p&gt;
+<h2>Why this structure?</h2>
 
-&lt;p&gt;&lt;strong&gt;Habit&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Folder Names</strong></p>
 
-&lt;p&gt;And lastly, this is my personal opinion. Having spent a lot of time playing around with Linux OSS in the past, I keep coming back to that style of structure when setting up my own projects. Seeing things like uppercase folder names at the root just feel odd.&lt;/p&gt;
-</content>
+<p>Remember the days of 8.3 filesystems? I do. But thankfully this isn't about that.</p>
+
+<p>This structure also borrows from Unix conventions for arranging their codebases. I don't like how the necessary make files are hosted at the root.</p>
+
+<p>As we're using Mercurial, we don't need to worry about using trunks or tags in the structure.</p>
+
+<p><strong>Experience</strong></p>
+
+<p>When I challenged <a href="http://twitter.com/aeoth">@aeoth's</a> project structure for the next version of MahTweets, he wanted to make it so that a developer with little experience in .NET (or programming) could download the source and try it out.</p>
+
+<p>I'd argue the best introduction to a codebase is two things:</p>
+
+<ul>
+<li>a README file to provide some notes about the application</li>
+<li>a batch file or script to run the application and execute tests</li>
+<li>sample projects to complement the source</li>
+</ul>
+
+
+<p><strong>The build is important</strong></p>
+
+<p>We had various pain points with the last version of MahTweets around managing loosely-coupled modules under development, and then building a signed ClickOnce installer with a custom script.</p>
+
+<p>It ended up being a painful few nights bashing against MSBuild (have you ever tried to use SignFile manually?), but the effort burnt reminds me everytime I come across a new team or project to ask two simple questions:</p>
+
+<ul>
+<li>how can someone build and run the application with limited knowledge of the codebase?</li>
+<li>how can someone test the application with limited knowledge of the codebase?</li>
+</ul>
+
+
+<p>If that process is known and documented, it highlights all the quirks with getting the application out. If it isn't documented, then typically you need to find the right person at the right time...</p>
+
+<p>Putting the build components separate, but easily visible, makes everyone's life easier.</p>
+
+<p><strong>Habit</strong></p>
+
+<p>And lastly, this is my personal opinion. Having spent a lot of time playing around with Linux OSS in the past, I keep coming back to that style of structure when setting up my own projects. Seeing things like uppercase folder names at the root just feel odd.</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -654,123 +684,128 @@ just needed to write this post.&lt;/p&gt;
    <link href="http://your.pages.urlusing-rx-to-implement-filtering-in-mahtweets.html" />
    <updated>2011-02-19T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./using-rx-to-implement-filtering-in-mahtweets</id>
-   <content type="html">&lt;p&gt;As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.</p>
 
-&lt;p&gt;Filtering is one of the things that MahTweets is famous for, but we're always looking for ways to make it better and easier. We've been experimenting with using the &lt;a href=&quot;http://msdn.microsoft.com/en-us/devlabs/ee794896&quot;&gt;Reactive Extensions (Rx) for .NET&lt;/a&gt; to simplify the entire pipeline and provide more freedom in the application.&lt;/p&gt;
+<p>Filtering is one of the things that MahTweets is famous for, but we're always looking for ways to make it better and easier. We've been experimenting with using the <a href="http://msdn.microsoft.com/en-us/devlabs/ee794896">Reactive Extensions (Rx) for .NET</a> to simplify the entire pipeline and provide more freedom in the application.</p>
 
-&lt;h2&gt;The Current Status&lt;/h2&gt;
+<h2>The Current Status</h2>
 
-&lt;p&gt;MahTweets allow the user to filter streams by update type, contact or text. Filters can be applied to individual streams or globally.&lt;/p&gt;
+<p>MahTweets allow the user to filter streams by update type, contact or text. Filters can be applied to individual streams or globally.</p>
 
-&lt;p&gt;Roughly speaking, this is how the filters are applied.&lt;/p&gt;
+<p>Roughly speaking, this is how the filters are applied.</p>
 
-&lt;center&gt;&lt;a href=&quot;http://brendanforster.com/files/images/FiltersClassic.png&quot;&gt;&lt;img src=&quot;http://brendanforster.com/files/images/FiltersClassic.png&quot; width=&quot;700&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters.&lt;/p&gt;
-
-&lt;p&gt;Limitations about this approach:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Global Ignores were implemented separately.&lt;/li&gt;
-&lt;li&gt;Custom filtering was implemented per update type.&lt;/li&gt;
-&lt;li&gt;UI was coupled to stream container and specific parameters.&lt;/li&gt;
-&lt;/ul&gt;
+<center><a href="http://brendanforster.com/files/images/FiltersClassic.png"><img src="http://brendanforster.com/files/images/FiltersClassic.png" width="700" /></a></center>
 
 
-&lt;h2&gt;First Cut using Rx&lt;/h2&gt;
+<p>Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters.</p>
 
-&lt;p&gt;FYI: If you're not familiar with the Observer Pattern, check out the &lt;a href=&quot;http://en.wikipedia.org/wiki/Observer_pattern&quot;&gt;Wikipedia article&lt;/a&gt; for starters. Rx uses the Observer pattern heavily.&lt;/p&gt;
+<p>Limitations about this approach:</p>
 
-&lt;p&gt;We had a habit of using the phrase &quot;filter&quot; in many places of the application. To clarify our intent, we introduced two specific interfaces:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;IStatusSubscriber&lt;/strong&gt; - an extension which subscribes to a stream of incoming requests.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;IConditionalSubscriber&lt;/strong&gt; : &lt;strong&gt;IStatusSubscriber&lt;/strong&gt; - an extension which filters the updates before propogating to its consumers. Pass-thru or exclude filters can be specified.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;Replacing the Queue of messages with an IObservable/IObserver dual allows the application to leverage the Subject&amp;lt;T&amp;gt; class to manage the interactions between the services and the clients. This class resides in System.Reactive.dll and implements both IObservable&amp;lt;T&amp;gt; and IObserver&amp;lt;T&amp;gt;.&lt;/p&gt;
-
-&lt;p&gt;MahTweets also had some demo plugins for stream analytics, and abstracting away the queue support allows the application to plug in additional &quot;global&quot; services, using the same interfaces. Rx also allows observers to specify which thread to execute on, so the usage of the Dispatcher, TaskPool or ThreadPool (depending on scenario) can be configured without any plumbing code.&lt;/p&gt;
-
-&lt;p&gt;The interactions between these components now looks like:&lt;/p&gt;
-
-&lt;center&gt;&lt;a href=&quot;http://brendanforster.com/files/images/RxFirstCut.png&quot;&gt;&lt;img src=&quot;http://brendanforster.com/files/images/RxFirstCut.png&quot; width=&quot;700&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
+<ul>
+<li>Global Ignores were implemented separately.</li>
+<li>Custom filtering was implemented per update type.</li>
+<li>UI was coupled to stream container and specific parameters.</li>
+</ul>
 
 
-&lt;p&gt;The biggest change is that subscribers interact with the IObservable, rather than being encompassed within the view. Each list still combines a set of filters, which display the combined set of results on-screen. However, when multiple filters are run in parallel, invalid items may appear.&lt;/p&gt;
+<h2>First Cut using Rx</h2>
 
-&lt;p&gt;Limitations about this approach:&lt;/p&gt;
+<p>FYI: If you're not familiar with the Observer Pattern, check out the <a href="http://en.wikipedia.org/wiki/Observer_pattern">Wikipedia article</a> for starters. Rx uses the Observer pattern heavily.</p>
 
-&lt;ul&gt;
-&lt;li&gt;Excluded updates may be propogated through other subscribers in the same view.&lt;/li&gt;
-&lt;li&gt;Global Ignores still not supported.&lt;/li&gt;
-&lt;/ul&gt;
+<p>We had a habit of using the phrase "filter" in many places of the application. To clarify our intent, we introduced two specific interfaces:</p>
 
-
-&lt;h2&gt;Back to the Drawing Board&lt;/h2&gt;
-
-&lt;p&gt;So after some shut-eye and sun, I revisited the initial design for the IObservable implementation. What stood out to me was that:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Include and exclude side-by-side has always been somewhat complex - both for users to understand, and determining which takes priority.&lt;/li&gt;
-&lt;li&gt;Include and exclude filters didn't need to exist in the same location.&lt;/li&gt;
-&lt;li&gt;Rx can support chaining observers, however...&lt;/li&gt;
-&lt;li&gt;Chaining isn't what the Observer pattern is about.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li><strong>IStatusSubscriber</strong> - an extension which subscribes to a stream of incoming requests.</li>
+<li><strong>IConditionalSubscriber</strong> : <strong>IStatusSubscriber</strong> - an extension which filters the updates before propogating to its consumers. Pass-thru or exclude filters can be specified.</li>
+</ul>
 
 
-&lt;p&gt;After some more musing, I formed an opinion about subscriber rules (only mine so far):&lt;/p&gt;
+<p>Replacing the Queue of messages with an IObservable/IObserver dual allows the application to leverage the Subject&lt;T&gt; class to manage the interactions between the services and the clients. This class resides in System.Reactive.dll and implements both IObservable&lt;T&gt; and IObserver&lt;T&gt;.</p>
 
-&lt;p&gt;&lt;strong&gt;An exclude rule is applied globally. An include rule is applied locally.&lt;/strong&gt;&lt;/p&gt;
+<p>MahTweets also had some demo plugins for stream analytics, and abstracting away the queue support allows the application to plug in additional "global" services, using the same interfaces. Rx also allows observers to specify which thread to execute on, so the usage of the Dispatcher, TaskPool or ThreadPool (depending on scenario) can be configured without any plumbing code.</p>
 
-&lt;p&gt;From my experiences with using Twitter, the typical use cases for exclude filters are:&lt;/p&gt;
+<p>The interactions between these components now looks like:</p>
 
-&lt;ul&gt;
-&lt;li&gt;&quot;Great, another Twitter spam concept...&quot; &lt;em&gt;looks at paper.li&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&quot;Person XYZ is tweeting too much right now. I don't want to hear him for a while...&quot;&lt;/li&gt;
-&lt;li&gt;&quot;Oops, I said the i-word and the spammers are out and about...&quot;&lt;/li&gt;
-&lt;/ul&gt;
+<center><a href="http://brendanforster.com/files/images/RxFirstCut.png"><img src="http://brendanforster.com/files/images/RxFirstCut.png" width="700" /></a></center>
 
 
-&lt;p&gt;On the other hand, the use cases for include filters can be like:&lt;/p&gt;
+<p>The biggest change is that subscribers interact with the IObservable, rather than being encompassed within the view. Each list still combines a set of filters, which display the combined set of results on-screen. However, when multiple filters are run in parallel, invalid items may appear.</p>
 
-&lt;ul&gt;
-&lt;li&gt;&quot;I want to see what &lt;em&gt;this&lt;/em&gt; group of contacts is talking about...&quot;&lt;/li&gt;
-&lt;li&gt;&quot;I want to see tweets mentioning 'ABC' - (side note: more on search later)...&quot;&lt;/li&gt;
-&lt;li&gt;&quot;I want to see my mentions/messages...&quot;&lt;/li&gt;
-&lt;/ul&gt;
+<p>Limitations about this approach:</p>
 
-
-&lt;p&gt;Compare and contract (perhaps your experiences differ).&lt;/p&gt;
-
-&lt;h2&gt;Second Cut using Rx&lt;/h2&gt;
-
-&lt;p&gt;The second cut of the design allows for three subscriber hooks:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Subscribers register against the source observable, without any filtering applied.&lt;/li&gt;
-&lt;li&gt;Subscribers register against the output observable, with the global filtering applied.&lt;/li&gt;
-&lt;li&gt;Exclude rules are applied closer to the source.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>Excluded updates may be propogated through other subscribers in the same view.</li>
+<li>Global Ignores still not supported.</li>
+</ul>
 
 
-&lt;center&gt;&lt;a href=&quot;http://brendanforster.com/files/images/RxSecondCut.png&quot;&gt;&lt;img src=&quot;http://brendanforster.com/files/images/RxSecondCut.png&quot; width=&quot;700&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
+<h2>Back to the Drawing Board</h2>
+
+<p>So after some shut-eye and sun, I revisited the initial design for the IObservable implementation. What stood out to me was that:</p>
+
+<ul>
+<li>Include and exclude side-by-side has always been somewhat complex - both for users to understand, and determining which takes priority.</li>
+<li>Include and exclude filters didn't need to exist in the same location.</li>
+<li>Rx can support chaining observers, however...</li>
+<li>Chaining isn't what the Observer pattern is about.</li>
+</ul>
 
 
-&lt;p&gt;An internal subscriber verifies a status against a list of exclusions, and propogates the status further if it is valid. Each view only requires its inclusion rules (or a wildcard rule if no rules specified) to display results.&lt;/p&gt;
+<p>After some more musing, I formed an opinion about subscriber rules (only mine so far):</p>
 
-&lt;h2&gt;The Next Step&lt;/h2&gt;
+<p><strong>An exclude rule is applied globally. An include rule is applied locally.</strong></p>
 
-&lt;ul&gt;
-&lt;li&gt;Debate with &lt;a href=&quot;http://twitter.com/aeoth&quot;&gt;@aeoth&lt;/a&gt; on this&lt;/li&gt;
-&lt;li&gt;Performance Testing against a large set of data.&lt;/li&gt;
-&lt;li&gt;Demonstrating how external plugins can include their own rules.&lt;/li&gt;
-&lt;li&gt;Demonstrate user interface changes for vNext.&lt;/li&gt;
-&lt;/ul&gt;
+<p>From my experiences with using Twitter, the typical use cases for exclude filters are:</p>
 
-</content>
+<ul>
+<li>"Great, another Twitter spam concept..." <em>looks at paper.li</em></li>
+<li>"Person XYZ is tweeting too much right now. I don't want to hear him for a while..."</li>
+<li>"Oops, I said the i-word and the spammers are out and about..."</li>
+</ul>
+
+
+<p>On the other hand, the use cases for include filters can be like:</p>
+
+<ul>
+<li>"I want to see what <em>this</em> group of contacts is talking about..."</li>
+<li>"I want to see tweets mentioning 'ABC' - (side note: more on search later)..."</li>
+<li>"I want to see my mentions/messages..."</li>
+</ul>
+
+
+<p>Compare and contract (perhaps your experiences differ).</p>
+
+<h2>Second Cut using Rx</h2>
+
+<p>The second cut of the design allows for three subscriber hooks:</p>
+
+<ul>
+<li>Subscribers register against the source observable, without any filtering applied.</li>
+<li>Subscribers register against the output observable, with the global filtering applied.</li>
+<li>Exclude rules are applied closer to the source.</li>
+</ul>
+
+
+<center><a href="http://brendanforster.com/files/images/RxSecondCut.png"><img src="http://brendanforster.com/files/images/RxSecondCut.png" width="700" /></a></center>
+
+
+<p>An internal subscriber verifies a status against a list of exclusions, and propogates the status further if it is valid. Each view only requires its inclusion rules (or a wildcard rule if no rules specified) to display results.</p>
+
+<h2>The Next Step</h2>
+
+<ul>
+<li>Debate with <a href="http://twitter.com/aeoth">@aeoth</a> on this</li>
+<li>Performance Testing against a large set of data.</li>
+<li>Demonstrating how external plugins can include their own rules.</li>
+<li>Demonstrate user interface changes for vNext.</li>
+</ul>
+
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -778,117 +813,122 @@ just needed to write this post.&lt;/p&gt;
    <link href="http://your.pages.urlwp7-memory-profiling-navigation.html" />
    <updated>2011-02-04T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./wp7-memory-profiling-navigation</id>
-   <content type="html">&lt;p&gt;In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...</p>
 
-&lt;h2&gt;Updated&lt;/h2&gt;
+<h2>Updated</h2>
 
-&lt;p&gt;After going back and forth with local Windows Phone guru &lt;a href=&quot;http://nicksnettravels.builttoroam.com/&quot;&gt;Nick Randolph&lt;/a&gt; about the issue, and he &lt;a href=&quot;http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage.aspx&quot;&gt;blogged&lt;/a&gt; &lt;a href=&quot;http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx&quot;&gt;about&lt;/a&gt; the behaviour in more detail, we came to the conclusion that the garbage collection was not being triggered automatically. That's not necessarily a bad thing (see the &lt;a href=&quot;http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx&quot;&gt;conditions for triggering a garbage collection&lt;/a&gt; here) but is a concern for large WP7 applications.&lt;/p&gt;
+<p>After going back and forth with local Windows Phone guru <a href="http://nicksnettravels.builttoroam.com/">Nick Randolph</a> about the issue, and he <a href="http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage.aspx">blogged</a> <a href="http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx">about</a> the behaviour in more detail, we came to the conclusion that the garbage collection was not being triggered automatically. That's not necessarily a bad thing (see the <a href="http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx">conditions for triggering a garbage collection</a> here) but is a concern for large WP7 applications.</p>
 
-&lt;p&gt;The workaround I devised for this is to trigger a GC.Collect() after a number of page navigations. I would only add this to an application when absolutely necessary. The implementation of this I'll leave as an exercise to the reader.&lt;/p&gt;
+<p>The workaround I devised for this is to trigger a GC.Collect() after a number of page navigations. I would only add this to an application when absolutely necessary. The implementation of this I'll leave as an exercise to the reader.</p>
 
-&lt;p&gt;Side note: I've seen various samples floating around which will use a timer to invoke a garbage collection call. Ignoring the use of timers on the device (which will drain the battery), a garbage collection call at an arbitrary time will likely impact on the user experience. Be smart about it, if you need to work this into an application.&lt;/p&gt;
+<p>Side note: I've seen various samples floating around which will use a timer to invoke a garbage collection call. Ignoring the use of timers on the device (which will drain the battery), a garbage collection call at an arbitrary time will likely impact on the user experience. Be smart about it, if you need to work this into an application.</p>
 
-&lt;p&gt;Read on for the rest of the saga...&lt;/p&gt;
+<p>Read on for the rest of the saga...</p>
 
-&lt;h2&gt;Before We Begin...&lt;/h2&gt;
+<h2>Before We Begin...</h2>
 
-&lt;p&gt;One of the requirements a WP7 application needs to satisfy is around memory consumption&lt;/p&gt;
+<p>One of the requirements a WP7 application needs to satisfy is around memory consumption</p>
 
-&lt;h3&gt;5.2.5 Memory Consumption&lt;/h3&gt;
+<h3>5.2.5 Memory Consumption</h3>
 
 
-&lt;p&gt;&lt;em&gt;An application must not exceed 90 MB of RAM usage, except on devices that have more than 256 MB of memory. You can use the &lt;strong&gt;DeviceExtendedProperties&lt;/strong&gt; class to query the amount of memory that is available on the device and modify the application behavior at runtime to take advantage of additional memory. For more information, see the DeviceExtendedProperties class in MSDN.&lt;/em&gt;&lt;/p&gt;
+<p><em>An application must not exceed 90 MB of RAM usage, except on devices that have more than 256 MB of memory. You can use the <strong>DeviceExtendedProperties</strong> class to query the amount of memory that is available on the device and modify the application behavior at runtime to take advantage of additional memory. For more information, see the DeviceExtendedProperties class in MSDN.</em></p>
 
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+<p><em>Note:</em></p>
 
-&lt;p&gt;&lt;em&gt;The DeviceTotalMemory value returned by &lt;strong&gt;DeviceExtendedProperties&lt;/strong&gt; indicates the physical RAM size in bytes. This value is less than the actual amount of device memory. For an application to pass certification, Microsoft recommends that the value returned by ApplicationPeakMemoryUsage is less than 90 MB when the DeviceTotalMemory is less than or equal to 256 MB&lt;/em&gt;&lt;/p&gt;
+<p><em>The DeviceTotalMemory value returned by <strong>DeviceExtendedProperties</strong> indicates the physical RAM size in bytes. This value is less than the actual amount of device memory. For an application to pass certification, Microsoft recommends that the value returned by ApplicationPeakMemoryUsage is less than 90 MB when the DeviceTotalMemory is less than or equal to 256 MB</em></p>
 
-&lt;p&gt;Source &lt;a href=&quot;http://go.microsoft.com/?linkid=9730556&quot;&gt;Microsoft&lt;/a&gt;&lt;/p&gt;
+<p>Source <a href="http://go.microsoft.com/?linkid=9730556">Microsoft</a></p>
 
-&lt;p&gt;90 MB sounds like a lot of space - and yes, it is, when one remembers the era of 1.44MB diskettes (or earlier) you can't help but think that perhaps we are spoiled - but what can you do with that amount of memory?&lt;/p&gt;
+<p>90 MB sounds like a lot of space - and yes, it is, when one remembers the era of 1.44MB diskettes (or earlier) you can't help but think that perhaps we are spoiled - but what can you do with that amount of memory?</p>
 
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - Disregard the &quot;devices with &gt; 256MB&quot; exception mentioned, as I want to see how we can optimise memory usage on SL without sacrificing features.&lt;/p&gt;
+<p><strong>Note</strong> - Disregard the "devices with > 256MB" exception mentioned, as I want to see how we can optimise memory usage on SL without sacrificing features.</p>
 
-&lt;h2&gt;How Do I Work Out My Memory Usage?&lt;/h2&gt;
+<h2>How Do I Work Out My Memory Usage?</h2>
 
-&lt;p&gt;As mentioned above, the &lt;strong&gt;DeviceExtendedProperties&lt;/strong&gt; class contains a lot of runtime information about the application.&lt;/p&gt;
+<p>As mentioned above, the <strong>DeviceExtendedProperties</strong> class contains a lot of runtime information about the application.</p>
 
-&lt;p&gt;I drop this method into the App.xaml.cs class so that I can get statistics at any point of the application's lifecycle.&lt;/p&gt;
+<p>I drop this method into the App.xaml.cs class so that I can get statistics at any point of the application's lifecycle.</p>
 
-&lt;pre&gt;&lt;code&gt;public static void GetMemoryUsage(string task)
+<pre><code>public static void GetMemoryUsage(string task)
 {
-    var number = (long)DeviceExtendedProperties.GetValue(&quot;ApplicationCurrentMemoryUsage&quot;);
-    Debug.WriteLine(&quot;{0} - ApplicationCurrentMemoryUsage: {1}&quot;, task, number);
-    number = (long)DeviceExtendedProperties.GetValue(&quot;ApplicationPeakMemoryUsage&quot;);
-    Debug.WriteLine(&quot;{0} - ApplicationPeakMemoryUsage: {1}&quot;, task, number);
+    var number = (long)DeviceExtendedProperties.GetValue("ApplicationCurrentMemoryUsage");
+    Debug.WriteLine("{0} - ApplicationCurrentMemoryUsage: {1}", task, number);
+    number = (long)DeviceExtendedProperties.GetValue("ApplicationPeakMemoryUsage");
+    Debug.WriteLine("{0} - ApplicationPeakMemoryUsage: {1}", task, number);
 
-    Debug.WriteLine(&quot;&quot;);
+    Debug.WriteLine("");
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Oh, and don't forget the namespace&lt;/p&gt;
+<p>Oh, and don't forget the namespace</p>
 
-&lt;pre&gt;&lt;code&gt;using Microsoft.Phone.Info;
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>using Microsoft.Phone.Info;
+</code></pre>
 
-&lt;p&gt;This allows parts of the application to log diagnostics, like:&lt;/p&gt;
+<p>This allows parts of the application to log diagnostics, like:</p>
 
-&lt;pre&gt;&lt;code&gt;private void MainPageLoaded(object sender, RoutedEventArgs e)
+<pre><code>private void MainPageLoaded(object sender, RoutedEventArgs e)
 {
     if (!App.ViewModel.IsDataLoaded)
         App.ViewModel.LoadData();
 
-    App.GetMemoryUsage(&quot;Main - Loaded&quot;);
+    App.GetMemoryUsage("Main - Loaded");
 
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;and see a message like in the Output Window:&lt;/p&gt;
+<p>and see a message like in the Output Window:</p>
 
-&lt;pre&gt;&lt;code&gt;Main - Loaded - ApplicationCurrentMemoryUsage: 39870464
+<pre><code>Main - Loaded - ApplicationCurrentMemoryUsage: 39870464
 Main - Loaded - ApplicationPeakMemoryUsage: 39899136
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h2&gt;And now things get interesting...&lt;/h2&gt;
+<h2>And now things get interesting...</h2>
 
-&lt;p&gt;Testing out a simple application - two screens, both use the Panorama Control and independent ViewModels which display a &quot;large&quot; list of items (270-ish items, but text only).&lt;/p&gt;
+<p>Testing out a simple application - two screens, both use the Panorama Control and independent ViewModels which display a "large" list of items (270-ish items, but text only).</p>
 
-&lt;p&gt;Selecting an item in the main screen will navigate to the second screen. Pressing back will return the application to the main screen.&lt;/p&gt;
+<p>Selecting an item in the main screen will navigate to the second screen. Pressing back will return the application to the main screen.</p>
 
-&lt;p&gt;The code is &lt;a href=&quot;http://brendanforster.com/get/panoramasample.zip&quot;&gt;here&lt;/a&gt; and the sample output can be seen on &lt;a href=&quot;https://gist.github.com/812178&quot;&gt;Gist&lt;/a&gt;&lt;/p&gt;
+<p>The code is <a href="http://brendanforster.com/get/panoramasample.zip">here</a> and the sample output can be seen on <a href="https://gist.github.com/812178">Gist</a></p>
 
-&lt;p&gt;Graphing the memory at each step, the graph looks like this:&lt;/p&gt;
+<p>Graphing the memory at each step, the graph looks like this:</p>
 
-&lt;center&gt;&lt;a href=&quot;http://brendanforster.com/files/images/breakdown.png&quot;&gt;&lt;img src=&quot;http://brendanforster.com/files/images/breakdown.png&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;But why is the memory footprint larger (by almost 10 MB) on returning to the main screen?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Removing the Panorama Control did not change this behaviour - it just made the numbers smaller (a 5MB difference rather than 10MB). Just a sign that making screens leaner will certainly assist with reducing the overall footprint, but not the answer I was looking for.&lt;/p&gt;
-
-&lt;p&gt;Repeating the scenario a few times, and the behaviour is the same.&lt;/p&gt;
-
-&lt;center&gt;
-&lt;a href=&quot;http://brendanforster.com/files/images/pattern.png&quot;&gt;&lt;img src=&quot;http://brendanforster.com/files/images/pattern.png&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
+<center><a href="http://brendanforster.com/files/images/breakdown.png"><img src="http://brendanforster.com/files/images/breakdown.png" width="800" /></a></center>
 
 
-&lt;p&gt;Puzzling...&lt;/p&gt;
+<p>But why is the memory footprint larger (by almost 10 MB) on returning to the main screen?</p>
 
-&lt;h2&gt;And the adventure begins&lt;/h2&gt;
+<p><strong>Note:</strong> Removing the Panorama Control did not change this behaviour - it just made the numbers smaller (a 5MB difference rather than 10MB). Just a sign that making screens leaner will certainly assist with reducing the overall footprint, but not the answer I was looking for.</p>
 
-&lt;p&gt;The underlying &lt;em&gt;why&lt;/em&gt; is what I want to understand more. Even with this simple application - which is displaying a large list of items - the size of the application is already close to the 90MB limit.&lt;/p&gt;
+<p>Repeating the scenario a few times, and the behaviour is the same.</p>
 
-&lt;p&gt;I've only been able to throw a couple of hours of spare time at this so far, but here's some notes from my investigation currently:&lt;/p&gt;
+<center>
+<a href="http://brendanforster.com/files/images/pattern.png"><img src="http://brendanforster.com/files/images/pattern.png" width="800" /></a></center>
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Tested this with the &lt;a href=&quot;http://windowsteamblog.com/windows_phone/b/wpdev/archive/2011/02/04/windows-phone-developer-tools-january-update.aspx&quot;&gt;new emulator and SDK changes&lt;/a&gt;. No change to the behaviour.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Haven't found any memory profiling tools for SL &amp;amp; WP7 - if anyone has stuff in the works, I'd love to try them out. &lt;a href=&quot;http://eqatec.com/Profiler/Overview.aspx&quot;&gt;EQUATEC&lt;/a&gt; make a profiler for CPU performance, which works wonderfully from my limited testing.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Aggressive garbage collection helped somewhat, but this approach makes me feel unclean. Using timers on the device to trigger a GC Collect is bad for battery performance, and the demo above shows that memory usage can spike between events for a PhoneApplicationPage.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Paging data from isolated storage could be worth attempting, but I don't think this is a temporary fix - as the application would load the full file, select a subset of the data, and then dispose the file. Chunking data in isolated storage would increase complexity.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Avoiding the use of navigation - and rolling some custom controls to support transitions instead - is the method that needs most work, but gives more control back to the application.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
-</content>
+<p>Puzzling...</p>
+
+<h2>And the adventure begins</h2>
+
+<p>The underlying <em>why</em> is what I want to understand more. Even with this simple application - which is displaying a large list of items - the size of the application is already close to the 90MB limit.</p>
+
+<p>I've only been able to throw a couple of hours of spare time at this so far, but here's some notes from my investigation currently:</p>
+
+<ul>
+<li><p>Tested this with the <a href="http://windowsteamblog.com/windows_phone/b/wpdev/archive/2011/02/04/windows-phone-developer-tools-january-update.aspx">new emulator and SDK changes</a>. No change to the behaviour.</p></li>
+<li><p>Haven't found any memory profiling tools for SL &amp; WP7 - if anyone has stuff in the works, I'd love to try them out. <a href="http://eqatec.com/Profiler/Overview.aspx">EQUATEC</a> make a profiler for CPU performance, which works wonderfully from my limited testing.</p></li>
+<li><p>Aggressive garbage collection helped somewhat, but this approach makes me feel unclean. Using timers on the device to trigger a GC Collect is bad for battery performance, and the demo above shows that memory usage can spike between events for a PhoneApplicationPage.</p></li>
+<li><p>Paging data from isolated storage could be worth attempting, but I don't think this is a temporary fix - as the application would load the full file, select a subset of the data, and then dispose the file. Chunking data in isolated storage would increase complexity.</p></li>
+<li><p>Avoiding the use of navigation - and rolling some custom controls to support transitions instead - is the method that needs most work, but gives more control back to the application.</p></li>
+</ul>
+
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -896,138 +936,143 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
    <link href="http://your.pages.urlmef-and-chaining-dependencies.html" />
    <updated>2010-12-20T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./mef-and-chaining-dependencies</id>
-   <content type="html">&lt;p&gt;A &lt;a href=&quot;http://mef.codeplex.com/Thread/View&quot;&gt;question&lt;/a&gt; came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was &quot;solved&quot; - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>A <a href="http://mef.codeplex.com/Thread/View">question</a> came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.</p>
 
-&lt;h2&gt;Scenario&lt;/h2&gt;
+<h2>Scenario</h2>
 
-&lt;p&gt;Imagine you have an application that calls off different services to execute tasks. Rather than hard-coding the services into the application, these can be defined as parts which are composed at runtime using MEF.&lt;/p&gt;
+<p>Imagine you have an application that calls off different services to execute tasks. Rather than hard-coding the services into the application, these can be defined as parts which are composed at runtime using MEF.</p>
 
-&lt;p&gt;But the relationship between the application and the services is not straightforward, which gives a dependency graph similar to the below image:&lt;/p&gt;
+<p>But the relationship between the application and the services is not straightforward, which gives a dependency graph similar to the below image:</p>
 
-&lt;center&gt;&lt;img src=&quot;http://brendanforster.com/get/images/DependencyGraph.png&quot; height=&quot;500&quot;  /&gt;&lt;/center&gt;
+<center><img src="http://brendanforster.com/get/images/DependencyGraph.png" height="500"  /></center>
 
 
-&lt;p&gt;What should we do now?&lt;/p&gt;
+<p>What should we do now?</p>
 
-&lt;p&gt;As MEF uses the concept of a &quot;contract&quot; to resolve the &amp;#91;Import&amp;#92; and &amp;#91;Export&amp;#92; statements sprinkled within an application, this ultimately comes down to two similar approaches.&lt;/p&gt;
+<p>As MEF uses the concept of a "contract" to resolve the &#91;Import&#92; and &#91;Export&#92; statements sprinkled within an application, this ultimately comes down to two similar approaches.</p>
 
-&lt;h2&gt;Using Contract Names&lt;/h2&gt;
+<h2>Using Contract Names</h2>
 
-&lt;p&gt;If the Proxy and Service implementations are equivalent - so we can avoid using distinct interfaces for behaviour which is identical - then we can use the same interface and specify a different contract for each extensibiity point defined in the application.&lt;/p&gt;
+<p>If the Proxy and Service implementations are equivalent - so we can avoid using distinct interfaces for behaviour which is identical - then we can use the same interface and specify a different contract for each extensibiity point defined in the application.</p>
 
-&lt;pre&gt;&lt;code&gt;public class ConsumingApplication
+<pre><code>public class ConsumingApplication
 {
-    &amp;amp;#91;ImportMany(&quot;Contoso.Application&quot;, typeof(IServiceProxy))&amp;amp;#92;
-    public IEnumerable&amp;amp;lt;IServiceProxy&amp;amp;gt; Services { get; set; }
+    &amp;#91;ImportMany("Contoso.Application", typeof(IServiceProxy))&amp;#92;
+    public IEnumerable&amp;lt;IServiceProxy&amp;gt; Services { get; set; }
 
     // implementation here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;And our simple client can use the corresponding &amp;#91;Export&amp;#92; statement.&lt;/p&gt;
+<p>And our simple client can use the corresponding &#91;Export&#92; statement.</p>
 
-&lt;pre&gt;&lt;code&gt;&amp;amp;#91;Export(&quot;Contoso.Application&quot;, typeof(IServiceProxy))&amp;amp;#92;
+<pre><code>&amp;#91;Export("Contoso.Application", typeof(IServiceProxy))&amp;#92;
 public class StandaloneProxy : IServiceProxy
 {
     // implementation here 
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Our complex dependency has a bit more code, but it can be broken down into two main features:&lt;/p&gt;
+<p>Our complex dependency has a bit more code, but it can be broken down into two main features:</p>
 
-&lt;p&gt;The contract which it satisfies - &lt;strong&gt;Contoso.Application&lt;/strong&gt; and &lt;strong&gt;IServiceProxy&lt;/strong&gt;&lt;/p&gt;
+<p>The contract which it satisfies - <strong>Contoso.Application</strong> and <strong>IServiceProxy</strong></p>
 
-&lt;p&gt;The contract which it requires - &lt;strong&gt;Contoso.External&lt;/strong&gt; and &lt;strong&gt;IServiceProxy&lt;/strong&gt;&lt;/p&gt;
+<p>The contract which it requires - <strong>Contoso.External</strong> and <strong>IServiceProxy</strong></p>
 
-&lt;pre&gt;&lt;code&gt;&amp;amp;#91;Export(&quot;Contoso.Application&quot;, typeof(IServiceProxy))&amp;amp;#92;
+<pre><code>&amp;#91;Export("Contoso.Application", typeof(IServiceProxy))&amp;#92;
 public class ActualProxy : IServiceProxy
 {
-    &amp;amp;#91;ImportMany(&quot;Contoso.External&quot;)&amp;amp;#92;
-    public IEnumerable&amp;amp;lt;IServiceProxy&amp;amp;gt; Services { get; set; }
+    &amp;#91;ImportMany("Contoso.External")&amp;#92;
+    public IEnumerable&amp;lt;IServiceProxy&amp;gt; Services { get; set; }
 
     // implementation here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;So while reusing the same interface, we can specify &lt;em&gt;how&lt;/em&gt; the parts relate.&lt;/p&gt;
+<p>So while reusing the same interface, we can specify <em>how</em> the parts relate.</p>
 
-&lt;h2&gt;Using Contract Types&lt;/h2&gt;
+<h2>Using Contract Types</h2>
 
-&lt;p&gt;If the behaviour of the proxy and the actual service are different, then we can just use the types to represent the contract.&lt;/p&gt;
+<p>If the behaviour of the proxy and the actual service are different, then we can just use the types to represent the contract.</p>
 
-&lt;pre&gt;&lt;code&gt;public class ConsumingApplication
+<pre><code>public class ConsumingApplication
 {
-    &amp;amp;#91;ImportMany(typeof(IServiceProxy))&amp;amp;#92;
-    public IEnumerable&amp;amp;lt;IServiceProxy&amp;amp;gt; Services { get; set; }
+    &amp;#91;ImportMany(typeof(IServiceProxy))&amp;#92;
+    public IEnumerable&amp;lt;IServiceProxy&amp;gt; Services { get; set; }
 
     // implementation here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;The exported contract becomes:&lt;/p&gt;
+<p>The exported contract becomes:</p>
 
-&lt;pre&gt;&lt;code&gt;&amp;amp;#91;Export(typeof(IServiceProxy))&amp;amp;#92;
+<pre><code>&amp;#91;Export(typeof(IServiceProxy))&amp;#92;
 public class StandaloneProxy : IServiceProxy
 {
     // implementation here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;And our complex part still has two contracts:&lt;/p&gt;
+<p>And our complex part still has two contracts:</p>
 
-&lt;p&gt;The contract which it satisfies - the &lt;strong&gt;IServiceProxy&lt;/strong&gt; contract.&lt;/p&gt;
+<p>The contract which it satisfies - the <strong>IServiceProxy</strong> contract.</p>
 
-&lt;p&gt;The contract which it requires - the &lt;strong&gt;IService&lt;/strong&gt; contract (implicit due to the awesomeness of ImportMany)&lt;/p&gt;
+<p>The contract which it requires - the <strong>IService</strong> contract (implicit due to the awesomeness of ImportMany)</p>
 
-&lt;pre&gt;&lt;code&gt;&amp;amp;#91;Export(typeof(IServiceProxy))&amp;amp;#92;
+<pre><code>&amp;#91;Export(typeof(IServiceProxy))&amp;#92;
 public class ActualProxy : IServiceProxy
 {
-    &amp;amp;#91;ImportMany&amp;amp;#92;
-    public IEnumerable&amp;amp;lt;IService&amp;amp;gt; Services { get; set; }
+    &amp;#91;ImportMany&amp;#92;
+    public IEnumerable&amp;lt;IService&amp;gt; Services { get; set; }
 
     // implementation here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;No more magic strings, while still being able to declare&lt;/p&gt;
+<p>No more magic strings, while still being able to declare</p>
 
-&lt;h2&gt;And finally, InheritedExport&lt;/h2&gt;
+<h2>And finally, InheritedExport</h2>
 
-&lt;p&gt;To really simplify the contracts, you can use &amp;#91;InheritedExport&amp;#92; on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.&lt;/p&gt;
+<p>To really simplify the contracts, you can use &#91;InheritedExport&#92; on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.</p>
 
-&lt;p&gt;So I annotate both interfaces:&lt;/p&gt;
+<p>So I annotate both interfaces:</p>
 
-&lt;pre&gt;&lt;code&gt;&amp;amp;#91;InheritedExport&amp;amp;#92;
+<pre><code>&amp;#91;InheritedExport&amp;#92;
 public interface IServiceProxy
 {
     // code here
 }
 
-&amp;amp;#91;InheritedExport&amp;amp;#92;
+&amp;#91;InheritedExport&amp;#92;
 public interface IService
 {
     // code here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;and can eliminate all other &amp;#91;Export&amp;#92; attributes from the codebase:&lt;/p&gt;
+<p>and can eliminate all other &#91;Export&#92; attributes from the codebase:</p>
 
-&lt;pre&gt;&lt;code&gt;public class StandaloneProxy : IServiceProxy
+<pre><code>public class StandaloneProxy : IServiceProxy
 {
     // implementation here
 }
 
 public class ActualProxy : IServiceProxy
 {
-    &amp;amp;#91;ImportMany&amp;amp;#92;
-    public IEnumerable&amp;amp;lt;IService&amp;amp;gt; Services { get; set; }
+    &amp;#91;ImportMany&amp;#92;
+    public IEnumerable&amp;lt;IService&amp;gt; Services { get; set; }
 
     // implementation here
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Thoughts?&lt;/p&gt;
-</content>
+<p>Thoughts?</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -1035,27 +1080,29 @@ public class ActualProxy : IServiceProxy
    <link href="http://your.pages.urlmef-import-vs-importingconstructor.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./mef-import-vs-importingconstructor</id>
-   <content type="html">&lt;p&gt;A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at &lt;a href=&quot;http://www.informit.com/articles/article.aspx?p=1635818&quot;&gt;InformIT&lt;/a&gt;. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at <a href="http://www.informit.com/articles/article.aspx?p=1635818">InformIT</a>. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.</p>
 
-&lt;p&gt;The healthy debate was ultimately about [Import] being easier than [ImportingConstructor] to use. I disagreed, but at the time couldn't really put my finger on why I preferred it.&lt;/p&gt;
+<p>The healthy debate was ultimately about [Import] being easier than [ImportingConstructor] to use. I disagreed, but at the time couldn't really put my finger on why I preferred it.</p>
 
-&lt;p&gt;After a bit of pondering, this is what I've come up with.&lt;/p&gt;
+<p>After a bit of pondering, this is what I've come up with.</p>
 
-&lt;h2&gt;Compare and Contrast - [Import] versus [ImportingConstructor]&lt;/h2&gt;
+<h2>Compare and Contrast - [Import] versus [ImportingConstructor]</h2>
 
-&lt;p&gt;Compare these two segments of code:&lt;/p&gt;
+<p>Compare these two segments of code:</p>
 
-&lt;p&gt;The [Import] version...&lt;/p&gt;
+<p>The [Import] version...</p>
 
-&lt;pre&gt;&lt;code&gt;public class TwitterPlugin : IMicroblog
+<pre><code>public class TwitterPlugin : IMicroblog
 {
-    &amp;amp;#91;Import&amp;amp;#92;
+    &amp;#91;Import&amp;#92;
     private IApplicationSettingsService _applicationSettings;
 
-    &amp;amp;#91;Import&amp;amp;#92;
+    &amp;#91;Import&amp;#92;
     private IStatusUpdatesService _statusUpdatesService;
 
-    &amp;amp;#91;Import&amp;amp;#92;
+    &amp;#91;Import&amp;#92;
     private IContactsService _contacts;
 
     public TwitterPlugin()
@@ -1063,17 +1110,17 @@ public class ActualProxy : IServiceProxy
         // some constructor logic
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Or the [ImportingConstructor] version...&lt;/p&gt;
+<p>Or the [ImportingConstructor] version...</p>
 
-&lt;pre&gt;&lt;code&gt;public class TwitterPlugin : IMicroblog
+<pre><code>public class TwitterPlugin : IMicroblog
 {
     private readonly IApplicationSettingsProvider _applicationSettings;
     private readonly IStatusUpdateService _statusUpdatesService;
     private readonly IContactsService _contactsService;
 
-    &amp;amp;#91;ImportingConstructor&amp;amp;#92;
+    &amp;#91;ImportingConstructor&amp;#92;
     public Twitter(IApplicationSettingsProvider applicationSettings,
                    IStatusUpdateService statusUpdateService
                    IContactsService contactsService)
@@ -1085,49 +1132,49 @@ public class ActualProxy : IServiceProxy
        // some constructor logic
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;So the second approach requires more code, but a good tool should have you saving many keystrokes - even Visual Studio 2010 will help out with that.&lt;/p&gt;
+<p>So the second approach requires more code, but a good tool should have you saving many keystrokes - even Visual Studio 2010 will help out with that.</p>
 
-&lt;p&gt;Other differences:&lt;/p&gt;
+<p>Other differences:</p>
 
-&lt;p&gt;&lt;strong&gt;Design - Constructor Injection versus Property Setters&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Design - Constructor Injection versus Property Setters</strong></p>
 
-&lt;p&gt;With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the &amp;#91;ImportingConstructor&amp;#92; approach.&lt;/p&gt;
+<p>With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the &#91;ImportingConstructor&#92; approach.</p>
 
-&lt;p&gt;By using the &amp;#91;ImportingConstructor&amp;#92; attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.&lt;/p&gt;
+<p>By using the &#91;ImportingConstructor&#92; attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.</p>
 
-&lt;p&gt;&lt;strong&gt;Maintainability&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Maintainability</strong></p>
 
-&lt;p&gt;Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach.&lt;/p&gt;
+<p>Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach.</p>
 
-&lt;p&gt;I see the &quot;growing dependency count&quot; as a design issue rather than a technical issue. Tacking on another &amp;#91;Import&amp;#92; attribute should be considered a code smell, just like adding an additional parameter to a constructor.&lt;/p&gt;
+<p>I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another &#91;Import&#92; attribute should be considered a code smell, just like adding an additional parameter to a constructor.</p>
 
-&lt;p&gt;If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.&lt;/p&gt;
+<p>If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.</p>
 
-&lt;p&gt;&lt;strong&gt;You can still use attributes&lt;/strong&gt;&lt;/p&gt;
+<p><strong>You can still use attributes</strong></p>
 
-&lt;p&gt;Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:&lt;/p&gt;
+<p>Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:</p>
 
-&lt;p&gt;For example, using &amp;#91;ImportMany&amp;#92;&lt;/p&gt;
+<p>For example, using &#91;ImportMany&#92;</p>
 
-&lt;pre&gt;&lt;code&gt;private readonly IEnumerable&amp;lt;ICreditService&amp;gt; _creditServices;
+<pre><code>private readonly IEnumerable&lt;ICreditService&gt; _creditServices;
 
-&amp;amp;#91;ImportingConstructor&amp;amp;#92;
-public BankService(&amp;amp;#91;ImportMany&amp;amp;#92; IEnumerable&amp;amp;lt;IProductServices&amp;amp;gt; productServices)
+&amp;#91;ImportingConstructor&amp;#92;
+public BankService(&amp;#91;ImportMany&amp;#92; IEnumerable&amp;lt;IProductServices&amp;gt; productServices)
 {
     _productServices = productServices;
 
     // some constructor logic
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Or using AllowDefault to allow for scenarios where a component is not known:&lt;/p&gt;
+<p>Or using AllowDefault to allow for scenarios where a component is not known:</p>
 
-&lt;pre&gt;&lt;code&gt;private readonly ILogger _logger;
+<pre><code>private readonly ILogger _logger;
 
-&amp;amp;#91;ImportingConstructor&amp;amp;#92;
-public BankService(&amp;amp;#91;Import(AllowDefault=true)&amp;amp;#92; ILogger logger)
+&amp;#91;ImportingConstructor&amp;#92;
+public BankService(&amp;#91;Import(AllowDefault=true)&amp;#92; ILogger logger)
 {
     if (logger == null)
         _logger = new DefaultLogger();
@@ -1136,50 +1183,53 @@ public BankService(&amp;amp;#91;Import(AllowDefault=true)&amp;amp;#92; ILogger l
 
     // some constructor logic
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;And this still keeps all the composition &quot;magic&quot; in one location. MEF supports importing &lt;a href=&quot;http://mef.codeplex.com/wikipage?title=Declaring%20Imports&amp;amp;referringTitle=Guide&quot;&gt;properties, fields and collections&lt;/a&gt;, which could be scattered around the same class.&lt;/p&gt;
+<p>And this still keeps all the composition "magic" in one location. MEF supports importing <a href="http://mef.codeplex.com/wikipage?title=Declaring%20Imports&amp;referringTitle=Guide">properties, fields and collections</a>, which could be scattered around the same class.</p>
 
-&lt;p&gt;&lt;strong&gt;Closing Statements&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Closing Statements</strong></p>
 
-&lt;p&gt;Ultimately, I guess I'm advocating the [ImportingConstructor] approach because once a class grows to a significant complexity (requiring some parts and providing other parts) I feel that it is the saner approach.&lt;/p&gt;
+<p>Ultimately, I guess I'm advocating the [ImportingConstructor] approach because once a class grows to a significant complexity (requiring some parts and providing other parts) I feel that it is the saner approach.</p>
 
-&lt;p&gt;For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A &amp;lt;-&amp;gt; B &amp;lt;-&amp;gt; C &amp;lt;-&amp;gt; D - then I'd start simplifying the classes and pushing more &quot;magic&quot; into the constructor for readability's sake.&lt;/p&gt;
+<p>For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A &lt;-&gt; B &lt;-&gt; C &lt;-&gt; D - then I'd start simplifying the classes and pushing more "magic" into the constructor for readability's sake.</p>
 
-&lt;h2&gt;While we're talking managing MEF parts&lt;/h2&gt;
+<h2>While we're talking managing MEF parts</h2>
 
-&lt;p&gt;When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought &quot;&lt;em&gt;Why add a constructor parameter to the constructor when I can just add an attribute?&lt;/em&gt;&quot;&lt;/p&gt;
+<p>When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought "<em>Why add a constructor parameter to the constructor when I can just add an attribute?</em>"</p>
 
-&lt;p&gt;After all, it just worked.&lt;/p&gt;
+<p>After all, it just worked.</p>
 
-&lt;p&gt;It was easy to get started with MEF - as the application grows, you can sprinkle some more magic around.&lt;/p&gt;
+<p>It was easy to get started with MEF - as the application grows, you can sprinkle some more magic around.</p>
 
-&lt;p&gt;I've been using MEF since the early previews (Preview 6 i think was the first drop I tried out) for various apps. One of the bigger codebases running on MEF is &lt;a href=&quot;http://www.mahtweets.com/&quot;&gt;MahTweets&lt;/a&gt;, a pluggable WPF client for various social media services.&lt;/p&gt;
+<p>I've been using MEF since the early previews (Preview 6 i think was the first drop I tried out) for various apps. One of the bigger codebases running on MEF is <a href="http://www.mahtweets.com/">MahTweets</a>, a pluggable WPF client for various social media services.</p>
 
-&lt;p&gt;For an upcoming release, I'm currently refactoring the MahTweets internals to replace StructureMap with Autofac. The &lt;a href=&quot;http://code.google.com/p/autofac/wiki/MefIntegration&quot;&gt;MEF integration extensions for Autofac&lt;/a&gt; have been a great help to simplify the integration between Autofac's ContainerBuilder and MEF's ComposablePartCatalog, and I've found ways to reduce the required MEF syntax without changing existing functionality.&lt;/p&gt;
+<p>For an upcoming release, I'm currently refactoring the MahTweets internals to replace StructureMap with Autofac. The <a href="http://code.google.com/p/autofac/wiki/MefIntegration">MEF integration extensions for Autofac</a> have been a great help to simplify the integration between Autofac's ContainerBuilder and MEF's ComposablePartCatalog, and I've found ways to reduce the required MEF syntax without changing existing functionality.</p>
 
-&lt;p&gt;On the Autofac side, we can declare components in the container to be available for MEF composition.&lt;/p&gt;
+<p>On the Autofac side, we can declare components in the container to be available for MEF composition.</p>
 
-&lt;pre&gt;&lt;code&gt;container.RegisterType&amp;amp;lt;ApplicationSettingsProvider&amp;amp;gt;()
-         .As&amp;amp;lt;IApplicationSettingsProvider&amp;amp;gt;()
-         .Exported(x =&amp;amp;gt; x.As&amp;amp;lt;IApplicationSettingsProvider&amp;amp;gt;()) // make this part visible to MEF components
+<pre><code>container.RegisterType&amp;lt;ApplicationSettingsProvider&amp;gt;()
+         .As&amp;lt;IApplicationSettingsProvider&amp;gt;()
+         .Exported(x =&amp;gt; x.As&amp;lt;IApplicationSettingsProvider&amp;gt;()) // make this part visible to MEF components
          .SingleInstance();
 
-container.RegisterType&amp;amp;lt;PluginSettingsProvider&amp;amp;gt;()
-         .As&amp;amp;lt;IPluginSettingsProvider&amp;amp;gt;()
-         .Exported(x =&amp;gt; x.As&amp;amp;lt;IPluginSettingsProvider&amp;amp;gt;())
+container.RegisterType&amp;lt;PluginSettingsProvider&amp;gt;()
+         .As&amp;lt;IPluginSettingsProvider&amp;gt;()
+         .Exported(x =&gt; x.As&amp;lt;IPluginSettingsProvider&amp;gt;())
          .SingleInstance();
 
 ...
 
 // register external plugins for consumption
 container.RegisterComposablePartCatalog(catalog);
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;This allows for better separation between the application and external parts, and reduces effort required to register a component with both the IoC container and the CompositionContainer.&lt;/p&gt;
+<p>This allows for better separation between the application and external parts, and reduces effort required to register a component with both the IoC container and the CompositionContainer.</p>
 
-&lt;p&gt;I'll blog some more in the future on how you can use these parts to help manage MEF applications as they grow. I need to check out the MEF v2 drops first :)&lt;/p&gt;
-</content>
+<p>I'll blog some more in the future on how you can use these parts to help manage MEF applications as they grow. I need to check out the MEF v2 drops first :)</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -1187,13 +1237,15 @@ container.RegisterComposablePartCatalog(catalog);
    <link href="http://your.pages.urlioc-tips-autofac-factory-adapters.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./ioc-tips-autofac-factory-adapters</id>
-   <content type="html">&lt;h2&gt;Scenario&lt;/h2&gt;
+   <content type="html">
+   <![CDATA[
+			<h2>Scenario</h2>
 
-&lt;p&gt;A team has a change request come in from the business. For one of their screens, a timer should count up when a user pauses the current task.&lt;/p&gt;
+<p>A team has a change request come in from the business. For one of their screens, a timer should count up when a user pauses the current task.</p>
 
-&lt;p&gt;As the application was already using an IoC container (Autofac), and a timer was already implemented to provide the behaviour for a similar task in this class, the constructor was quickly changed to:&lt;/p&gt;
+<p>As the application was already using an IoC container (Autofac), and a timer was already implemented to provide the behaviour for a similar task in this class, the constructor was quickly changed to:</p>
 
-&lt;pre&gt;&lt;code&gt;public ScheduledBackupService(
+<pre><code>public ScheduledBackupService(
       ... ,
       ITimer elapsedTimer,
       ITimer pausedTimer)
@@ -1202,50 +1254,50 @@ container.RegisterComposablePartCatalog(catalog);
       this.elapsedTimer = elapsedTimer;
       this.pausedTimer = pausedTimer;
       ...
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;And from there they added in the additional code required, and the business was happy. And there was much rejoicing. But the team noticed that they were duplicating the same type in the constructor. Can the team do it better?&lt;/p&gt;
+<p>And from there they added in the additional code required, and the business was happy. And there was much rejoicing. But the team noticed that they were duplicating the same type in the constructor. Can the team do it better?</p>
 
-&lt;p&gt;Rather than explicitly defining the two instances, the team can replace both instances with a factory adapter. In .NET, this can be represented as a Func%lt;T%gt; object - a method which requires no inputs and returns an instance of type T:&lt;/p&gt;
+<p>Rather than explicitly defining the two instances, the team can replace both instances with a factory adapter. In .NET, this can be represented as a Func%lt;T%gt; object - a method which requires no inputs and returns an instance of type T:</p>
 
-&lt;pre&gt;&lt;code&gt;public ScheduledBackupService(
+<pre><code>public ScheduledBackupService(
       ... , 
-      Func&amp;lt;ITimer&amp;gt; createTimer)
+      Func&lt;ITimer&gt; createTimer)
 {
       ...                 
       elapsedTimer = createTimer();
       pausedTimer = createTimer();
       ...
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;To fix the compiler error from changing the constructor signature, the test code is updated to:&lt;/p&gt;
+<p>To fix the compiler error from changing the constructor signature, the test code is updated to:</p>
 
-&lt;pre&gt;&lt;code&gt;private IScheduledBackupService GetScheduledBackupService()
+<pre><code>private IScheduledBackupService GetScheduledBackupService()
 {
     return new ScheduledBackupService(
                 ... ,
-                () =&amp;gt; MockRepository.GenerateStub&amp;lt;ITimer&amp;gt;());
+                () =&gt; MockRepository.GenerateStub&lt;ITimer&gt;());
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h2&gt;What about those unit tests?&lt;/h2&gt;
+<h2>What about those unit tests?</h2>
 
-&lt;p&gt;What if we need to use the mock object in a unit test - to raise events or stub methods? We can’t track them if we use the function defined above...&lt;/p&gt;
+<p>What if we need to use the mock object in a unit test - to raise events or stub methods? We can’t track them if we use the function defined above...</p>
 
-&lt;p&gt;As our existing tests relied on verifying the messages displayed using ITimer instances, I wrote a custom function to mimic the function behaviour and support the unit tests.&lt;/p&gt;
+<p>As our existing tests relied on verifying the messages displayed using ITimer instances, I wrote a custom function to mimic the function behaviour and support the unit tests.</p>
 
-&lt;pre&gt;&lt;code&gt;private Func&amp;lt;IDispatcherTimer&amp;gt; createTimers = () =&amp;gt;
+<pre><code>private Func&lt;IDispatcherTimer&gt; createTimers = () =&gt;
 {
     if (elapsedTimer == null) 
     {
-        // first call -&amp;gt; mock “elapsed” timer
-        elapsedTimer = MockRepository.GenerateStub&amp;lt;ITimer&amp;gt;();
+        // first call -&gt; mock “elapsed” timer
+        elapsedTimer = MockRepository.GenerateStub&lt;ITimer&gt;();
         return elapsedTimer;
     }
     if (pausedTimer == null) 
     {
-        // second call -&amp;gt; mock “paused&quot; timer
-        pausedTimer = MockRepository.GenerateStub&amp;lt;ITimer&amp;gt;(); 
+        // second call -&gt; mock “paused" timer
+        pausedTimer = MockRepository.GenerateStub&lt;ITimer&gt;(); 
         return pausedTimer;
     }
 
@@ -1258,11 +1310,11 @@ private IScheduledBackupService GetScheduledBackupService()
                     ... ,
                     createTimers);
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;And our tests remain clean and readable:&lt;/p&gt;
+<p>And our tests remain clean and readable:</p>
 
-&lt;pre&gt;&lt;code&gt;[TestMethod]
+<pre><code>[TestMethod]
 public void ElapsedTimer_WhenServiceResumes_StartsAgain()
 {
     // arrange
@@ -1274,17 +1326,20 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
     service.Resume();
 
     // assert
-    elapsedTimer.AssertWasCalled(s =&amp;gt; s.Start(), m =&amp;gt; m.Repeat.Twice());
-    elapsedTimer.AssertWasCalled(s =&amp;gt; s.Stop(), m =&amp;gt; m.Repeat.Once());
+    elapsedTimer.AssertWasCalled(s =&gt; s.Start(), m =&gt; m.Repeat.Twice());
+    elapsedTimer.AssertWasCalled(s =&gt; s.Stop(), m =&gt; m.Repeat.Once());
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h2&gt;What else can I do from the container?&lt;/h2&gt;
+<h2>What else can I do from the container?</h2>
 
-&lt;p&gt;Nicholas Blumhardt, maintainer of Autofac, has a &lt;a href=&quot;http://nblumhardt.com/2010/01/the-relationship-zoo/&quot;&gt;detailed entry&lt;/a&gt; which discusses the different possible relationships between components, and how Autofac defines them. While the article is Autofac-centric, many of the other inversion of control containers for the .NET Framework support some of the features already.&lt;/p&gt;
+<p>Nicholas Blumhardt, maintainer of Autofac, has a <a href="http://nblumhardt.com/2010/01/the-relationship-zoo/">detailed entry</a> which discusses the different possible relationships between components, and how Autofac defines them. While the article is Autofac-centric, many of the other inversion of control containers for the .NET Framework support some of the features already.</p>
 
-&lt;p&gt;A great read if you want to dive deeper into inversion of control concepts.&lt;/p&gt;
-</content>
+<p>A great read if you want to dive deeper into inversion of control concepts.</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -1292,40 +1347,45 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
    <link href="http://your.pages.urlamped-web-2010-recap.html" />
    <updated>2010-10-16T14:00:00+11:00</updated>
    <id>http://lebobs.ch/./amped-web-2010-recap</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including &lt;a href=&quot;http://twitter.com/Rog42&quot;&gt;@Rog42&lt;/a&gt;'s crazy photography experiments!&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p><strong>Disclaimer:</strong> I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including <a href="http://twitter.com/Rog42">@Rog42</a>'s crazy photography experiments!</p>
 
-&lt;p&gt;Yesterday was the &lt;a href=&quot;http://www.ampedweb.org/&quot;&gt;Amped Web&lt;/a&gt; day, a hack day following the Web Directions South conference held in Sydney. The day is for teams to compete in specific categories - around design and development - and put together a solution in a few hours. It may have been an all-day event, but the time flew by. The solutions were reviewed by judges over the afternoon - providing feedback and suggestions as the teams polished their ideas.&lt;/p&gt;
+<p>Yesterday was the <a href="http://www.ampedweb.org/">Amped Web</a> day, a hack day following the Web Directions South conference held in Sydney. The day is for teams to compete in specific categories - around design and development - and put together a solution in a few hours. It may have been an all-day event, but the time flew by. The solutions were reviewed by judges over the afternoon - providing feedback and suggestions as the teams polished their ideas.</p>
 
-&lt;p&gt;I teamed up with &lt;a href=&quot;http://tath.am/&quot;&gt;Tatham Oddie&lt;/a&gt; (&lt;a href=&quot;http://twitter.com/tathamoddie&quot;&gt;@tathamoddie&lt;/a&gt;) and &lt;a href=&quot;http://aaron-powell.com/&quot;&gt;Aaron Powell&lt;/a&gt; (&lt;a href=&quot;http://twitter.com/slace&quot;&gt;@slace&lt;/a&gt;) to create a platform and prototype client for a specific problem.&lt;/p&gt;
+<p>I teamed up with <a href="http://tath.am/">Tatham Oddie</a> (<a href="http://twitter.com/tathamoddie">@tathamoddie</a>) and <a href="http://aaron-powell.com/">Aaron Powell</a> (<a href="http://twitter.com/slace">@slace</a>) to create a platform and prototype client for a specific problem.</p>
 
-&lt;p&gt;What was that problem? Check out the video!&lt;/p&gt;
+<p>What was that problem? Check out the video!</p>
 
-&lt;object width=&quot;480&quot; height=&quot;385&quot;&gt;
-    &lt;param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/2ln9cTSkNtI?fs=1&amp;amp;hl=en_US&amp;amp;rel=0&quot;&gt;&lt;/param&gt;
-    &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot;&gt;&lt;/param&gt;&lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot;&gt;&lt;/param&gt;
-    &lt;embed src=&quot;http://www.youtube.com/v/2ln9cTSkNtI?fs=1&amp;amp;hl=en_US&amp;amp;rel=0&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; width=&quot;480&quot; height=&quot;385&quot;&gt;
-    &lt;/embed&gt;
-&lt;/object&gt;
+<object width="480" height="385">
+    <param name="movie" value="http://www.youtube.com/v/2ln9cTSkNtI?fs=1&amp;hl=en_US&amp;rel=0"></param>
+    <param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+    <embed src="http://www.youtube.com/v/2ln9cTSkNtI?fs=1&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385">
+    </embed>
+</object>
 
 
-&lt;p&gt;All the details are available on &lt;a href=&quot;http://openconferenceprotocol.org/&quot;&gt;http://openconferenceprotocol.org/&lt;/a&gt;.&lt;/p&gt;
+<p>All the details are available on <a href="http://openconferenceprotocol.org/">http://openconferenceprotocol.org/</a>.</p>
 
-&lt;p&gt;Our solution won the Best Overall Windows Phone application, and the &quot;product launch&quot; was a pitch to win the Grand Prize - a trip to Tokyo next month for &lt;a href=&quot;http://east.webdirections.org/2010/&quot;&gt;Web Directions East&lt;/a&gt;.&lt;/p&gt;
+<p>Our solution won the Best Overall Windows Phone application, and the "product launch" was a pitch to win the Grand Prize - a trip to Tokyo next month for <a href="http://east.webdirections.org/2010/">Web Directions East</a>.</p>
 
-&lt;p&gt;When the dust settled and all the teams had their pitches, the judges decided to send us to Japan! I'm looking forward to seeing the Japanese development community in action, and it will be my first trip to Japan. Time to learn some more Ruby - and some Japanese won't hurt either!&lt;/p&gt;
+<p>When the dust settled and all the teams had their pitches, the judges decided to send us to Japan! I'm looking forward to seeing the Japanese development community in action, and it will be my first trip to Japan. Time to learn some more Ruby - and some Japanese won't hurt either!</p>
 
-&lt;p&gt;Special thanks to John Allsopp (&lt;a href=&quot;http://twitter.com/johnallsopp&quot;&gt;@johnallsopp&lt;/a&gt;) and the other organisers of Web Directions for putting together a great event. The sponsors of the event - Windows Phone, Adobe, Paypal, SBS, the Powerhouse Museum and others - also helped make the day awesome with food, swag and prizes.&lt;/p&gt;
+<p>Special thanks to John Allsopp (<a href="http://twitter.com/johnallsopp">@johnallsopp</a>) and the other organisers of Web Directions for putting together a great event. The sponsors of the event - Windows Phone, Adobe, Paypal, SBS, the Powerhouse Museum and others - also helped make the day awesome with food, swag and prizes.</p>
 
-&lt;p&gt;I'll have to check out the full conference - and return to defend our title - in 2011.&lt;/p&gt;
+<p>I'll have to check out the full conference - and return to defend our title - in 2011.</p>
 
-&lt;p&gt;But now, Tokyo awaits!&lt;/p&gt;
+<p>But now, Tokyo awaits!</p>
 
-&lt;p&gt;&lt;em&gt;Footnote:&lt;/em&gt;&lt;/p&gt;
+<p><em>Footnote:</em></p>
 
-&lt;p&gt;We'll continue to polish our idea over the coming weeks - adding features, enhancing the story, getting feedback from the community - so stay tuned for more. I'll put up a higher-res video of the WP7 application for those who are having troubles seeing it clearly in the pitch.&lt;/p&gt;
+<p>We'll continue to polish our idea over the coming weeks - adding features, enhancing the story, getting feedback from the community - so stay tuned for more. I'll put up a higher-res video of the WP7 application for those who are having troubles seeing it clearly in the pitch.</p>
 
-&lt;p&gt;For those who have specific questions, you can leave a comment here or reach me on Twitter (&lt;a href=&quot;http://twitter.com/shiftkey&quot;&gt;@shiftkey&lt;/a&gt;)&lt;/p&gt;
-</content>
+<p>For those who have specific questions, you can leave a comment here or reach me on Twitter (<a href="http://twitter.com/shiftkey">@shiftkey</a>)</p>
+
+   ]]>
+   </content>
+   
  </entry>
  
  <entry>
@@ -1333,16 +1393,21 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
    <link href="http://your.pages.urlhello-world.html" />
    <updated>2010-09-23T10:50:44+10:00</updated>
    <id>http://lebobs.ch/./hello-world</id>
-   <content type="html">&lt;p&gt;Starting off this blog with a simple post. More styling to come during the coming days.&lt;/p&gt;
+   <content type="html">
+   <![CDATA[
+			<p>Starting off this blog with a simple post. More styling to come during the coming days.</p>
 
-&lt;p&gt;&lt;strong&gt;Side note:&lt;/strong&gt; here's the Factorial function in F#:&lt;/p&gt;
+<p><strong>Side note:</strong> here's the Factorial function in F#:</p>
 
-&lt;pre&gt;&lt;code&gt;let rec factorial n =
+<pre><code>let rec factorial n =
 match n with
-| 0 -&amp;gt; 1
-| _ -&amp;gt; n * factorial (n - 1)
-&lt;/code&gt;&lt;/pre&gt;
-</content>
+| 0 -&gt; 1
+| _ -&gt; n * factorial (n - 1)
+</code></pre>
+
+   ]]>
+   </content>
+   
  </entry>
  
  

@@ -4,9 +4,9 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>your page's title</title>
- <link href="http://your.pages.url/atom.xml" rel="self" />
- <link href="http://your.pages.url/" />
+ <title>brendan forster</title>
+ <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
+ <link href="http://shiftkey.heroku.com/" />
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://your.pages.url<id>
  <author>
@@ -20,7 +20,12 @@ layout: nil
    <link href="http://your.pages.url{{ post.url }}" />
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>http://lebobs.ch/{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
+   <content type="html">
+   <![CDATA[
+			{{ post.content  }}
+   ]]>
+   </content>
+   
  </entry>
  {% endfor %}
  
