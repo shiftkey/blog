@@ -20,7 +20,7 @@ But the relationship between the application and the services is not straightfor
 
 What should we do now?
 
-As MEF uses the concept of a "contract" to resolve the &#91;Import&#92; and &#91;Export&#92; statements sprinkled within an application, this ultimately comes down to two similar approaches.
+As MEF uses the concept of a "contract" to resolve the [Import] and [Export]; statements sprinkled within an application, this ultimately comes down to two similar approaches.
 
 
 Using Contract Names
@@ -30,15 +30,15 @@ If the Proxy and Service implementations are equivalent - so we can avoid using 
 
     public class ConsumingApplication
     {
-        &#91;ImportMany("Contoso.Application", typeof(IServiceProxy))&#92;
+        [ImportMany("Contoso.Application", typeof(IServiceProxy))]
         public IEnumerable&lt;IServiceProxy&gt; Services { get; set; }
         
         // implementation here
     }
 
-And our simple client can use the corresponding &#91;Export&#92; statement.
+And our simple client can use the corresponding [Export] statement.
 
-    &#91;Export("Contoso.Application", typeof(IServiceProxy))&#92;
+    [Export("Contoso.Application", typeof(IServiceProxy))]
     public class StandaloneProxy : IServiceProxy
     {
         // implementation here 
@@ -50,10 +50,10 @@ The contract which it satisfies - **Contoso.Application** and **IServiceProxy**
 
 The contract which it requires - **Contoso.External** and **IServiceProxy**
     
-    &#91;Export("Contoso.Application", typeof(IServiceProxy))&#92;
+    [Export("Contoso.Application", typeof(IServiceProxy))]
     public class ActualProxy : IServiceProxy
     {
-        &#91;ImportMany("Contoso.External")&#92;
+        [ImportMany("Contoso.External")]
         public IEnumerable&lt;IServiceProxy&gt; Services { get; set; }
 
         // implementation here
@@ -70,7 +70,7 @@ If the behaviour of the proxy and the actual service are different, then we can 
 
     public class ConsumingApplication
     {
-        &#91;ImportMany(typeof(IServiceProxy))&#92;
+        [ImportMany(typeof(IServiceProxy))]
         public IEnumerable&lt;IServiceProxy&gt; Services { get; set; }
 
         // implementation here
@@ -78,7 +78,7 @@ If the behaviour of the proxy and the actual service are different, then we can 
 
 The exported contract becomes:
 
-    &#91;Export(typeof(IServiceProxy))&#92;
+    [Export(typeof(IServiceProxy))]
     public class StandaloneProxy : IServiceProxy
     {
         // implementation here
@@ -90,10 +90,10 @@ The contract which it satisfies - the **IServiceProxy** contract.
 
 The contract which it requires - the **IService** contract (implicit due to the awesomeness of ImportMany)
 
-    &#91;Export(typeof(IServiceProxy))&#92;
+    [Export(typeof(IServiceProxy))]
     public class ActualProxy : IServiceProxy
     {
-        &#91;ImportMany&#92;
+        [ImportMany]
         public IEnumerable&lt;IService&gt; Services { get; set; }
 
         // implementation here
@@ -105,11 +105,11 @@ No more magic strings, while still being able to declare
 And finally, InheritedExport
 -----------------------------
 
-To really simplify the contracts, you can use &#91;InheritedExport&#92; on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.
+To really simplify the contracts, you can use [InheritedExport] on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.
 
 So I annotate both interfaces:
 
-    &#91;InheritedExport&#92;
+    [InheritedExport]
     public interface IServiceProxy
     {
         // code here
@@ -121,7 +121,7 @@ So I annotate both interfaces:
         // code here
     }
 
-and can eliminate all other &#91;Export&#92; attributes from the codebase:
+and can eliminate all other [Export] attributes from the codebase:
 
     public class StandaloneProxy : IServiceProxy
     {
@@ -130,7 +130,7 @@ and can eliminate all other &#91;Export&#92; attributes from the codebase:
 
     public class ActualProxy : IServiceProxy
     {
-        &#91;ImportMany&#92;
+        [ImportMany]
         public IEnumerable&lt;IService&gt; Services { get; set; }
 
         // implementation here

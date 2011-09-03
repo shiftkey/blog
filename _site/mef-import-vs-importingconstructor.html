@@ -97,13 +97,13 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <pre><code>public class TwitterPlugin : IMicroblog
 {
-    &amp;#91;Import&amp;#92;
+    [Import]
     private IApplicationSettingsService _applicationSettings;
 
-    &amp;#91;Import&amp;#92;
+    [Import]
     private IStatusUpdatesService _statusUpdatesService;
 
-    &amp;#91;Import&amp;#92;
+    [Import]
     private IContactsService _contacts;
 
     public TwitterPlugin()
@@ -121,7 +121,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
     private readonly IStatusUpdateService _statusUpdatesService;
     private readonly IContactsService _contactsService;
 
-    &amp;#91;ImportingConstructor&amp;#92;
+    [ImportingConstructor]
     public Twitter(IApplicationSettingsProvider applicationSettings,
                    IStatusUpdateService statusUpdateService
                    IContactsService contactsService)
@@ -141,15 +141,15 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <p><strong>Design - Constructor Injection versus Property Setters</strong></p>
 
-<p>With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the &#91;ImportingConstructor&#92; approach.</p>
+<p>With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the [ImportingConstructor] approach.</p>
 
-<p>By using the &#91;ImportingConstructor&#92; attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.</p>
+<p>By using the [ImportingConstructor] attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.</p>
 
 <p><strong>Maintainability</strong></p>
 
 <p>Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach.</p>
 
-<p>I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another &#91;Import&#92; attribute should be considered a code smell, just like adding an additional parameter to a constructor.</p>
+<p>I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another [Import] attribute should be considered a code smell, just like adding an additional parameter to a constructor.</p>
 
 <p>If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.</p>
 
@@ -157,12 +157,12 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <p>Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:</p>
 
-<p>For example, using &#91;ImportMany&#92;</p>
+<p>For example, using [ImportMany]</p>
 
 <pre><code>private readonly IEnumerable&lt;ICreditService&gt; _creditServices;
 
-&amp;#91;ImportingConstructor&amp;#92;
-public BankService(&amp;#91;ImportMany&amp;#92; IEnumerable&amp;lt;IProductServices&amp;gt; productServices)
+[ImportingConstructor]
+public BankService([ImportMany] IEnumerable&amp;lt;IProductServices&amp;gt; productServices)
 {
     _productServices = productServices;
 
@@ -174,8 +174,8 @@ public BankService(&amp;#91;ImportMany&amp;#92; IEnumerable&amp;lt;IProductServi
 
 <pre><code>private readonly ILogger _logger;
 
-&amp;#91;ImportingConstructor&amp;#92;
-public BankService(&amp;#91;Import(AllowDefault=true)&amp;#92; ILogger logger)
+[ImportingConstructor]
+public BankService([Import(AllowDefault=true)] ILogger logger)
 {
     if (logger == null)
         _logger = new DefaultLogger();

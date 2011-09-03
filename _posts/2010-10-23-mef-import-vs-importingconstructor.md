@@ -23,13 +23,13 @@ The [Import] version...
 
     public class TwitterPlugin : IMicroblog
     {
-        &#91;Import&#92;
+        [Import]
         private IApplicationSettingsService _applicationSettings;
 
-        &#91;Import&#92;
+        [Import]
         private IStatusUpdatesService _statusUpdatesService;
 
-        &#91;Import&#92;
+        [Import]
         private IContactsService _contacts;
 
         public TwitterPlugin()
@@ -46,7 +46,7 @@ Or the [ImportingConstructor] version...
         private readonly IStatusUpdateService _statusUpdatesService;
         private readonly IContactsService _contactsService;
 
-        &#91;ImportingConstructor&#92;
+        [ImportingConstructor]
         public Twitter(IApplicationSettingsProvider applicationSettings,
                        IStatusUpdateService statusUpdateService
                        IContactsService contactsService)
@@ -65,15 +65,15 @@ Other differences:
 
 **Design - Constructor Injection versus Property Setters**
 
-With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the &#91;ImportingConstructor&#92; approach.
+With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the [ImportingConstructor] approach.
 
-By using the &#91;ImportingConstructor&#92; attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.
+By using the [ImportingConstructor] attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.
 
 **Maintainability**
 
 Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach. 
 
-I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another &#91;Import&#92; attribute should be considered a code smell, just like adding an additional parameter to a constructor.
+I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another [Import] attribute should be considered a code smell, just like adding an additional parameter to a constructor.
 
 If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.
 
@@ -81,12 +81,12 @@ If your dependency count is more than a handful, then you should review the inte
 
 Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:
 
-For example, using &#91;ImportMany&#92;
+For example, using [ImportMany]
 
     private readonly IEnumerable<ICreditService> _creditServices;
 
-    &#91;ImportingConstructor&#92;
-    public BankService(&#91;ImportMany&#92; IEnumerable&lt;IProductServices&gt; productServices)
+    [ImportingConstructor]
+    public BankService([ImportMany] IEnumerable&lt;IProductServices&gt; productServices)
     {
         _productServices = productServices;
         
@@ -97,8 +97,8 @@ Or using AllowDefault to allow for scenarios where a component is not known:
 
     private readonly ILogger _logger;
 
-    &#91;ImportingConstructor&#92;
-    public BankService(&#91;Import(AllowDefault=true)&#92; ILogger logger)
+    [ImportingConstructor]
+    public BankService([Import(AllowDefault=true)] ILogger logger)
     {
         if (logger == null)
             _logger = new DefaultLogger();

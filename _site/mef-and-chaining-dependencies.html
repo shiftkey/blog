@@ -96,7 +96,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <p>What should we do now?</p>
 
-<p>As MEF uses the concept of a "contract" to resolve the &#91;Import&#92; and &#91;Export&#92; statements sprinkled within an application, this ultimately comes down to two similar approaches.</p>
+<p>As MEF uses the concept of a "contract" to resolve the [Import] and [Export]; statements sprinkled within an application, this ultimately comes down to two similar approaches.</p>
 
 <h2>Using Contract Names</h2>
 
@@ -104,16 +104,16 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <pre><code>public class ConsumingApplication
 {
-    &amp;#91;ImportMany("Contoso.Application", typeof(IServiceProxy))&amp;#92;
+    [ImportMany("Contoso.Application", typeof(IServiceProxy))]
     public IEnumerable&amp;lt;IServiceProxy&amp;gt; Services { get; set; }
 
     // implementation here
 }
 </code></pre>
 
-<p>And our simple client can use the corresponding &#91;Export&#92; statement.</p>
+<p>And our simple client can use the corresponding [Export] statement.</p>
 
-<pre><code>&amp;#91;Export("Contoso.Application", typeof(IServiceProxy))&amp;#92;
+<pre><code>[Export("Contoso.Application", typeof(IServiceProxy))]
 public class StandaloneProxy : IServiceProxy
 {
     // implementation here 
@@ -126,10 +126,10 @@ public class StandaloneProxy : IServiceProxy
 
 <p>The contract which it requires - <strong>Contoso.External</strong> and <strong>IServiceProxy</strong></p>
 
-<pre><code>&amp;#91;Export("Contoso.Application", typeof(IServiceProxy))&amp;#92;
+<pre><code>[Export("Contoso.Application", typeof(IServiceProxy))]
 public class ActualProxy : IServiceProxy
 {
-    &amp;#91;ImportMany("Contoso.External")&amp;#92;
+    [ImportMany("Contoso.External")]
     public IEnumerable&amp;lt;IServiceProxy&amp;gt; Services { get; set; }
 
     // implementation here
@@ -144,7 +144,7 @@ public class ActualProxy : IServiceProxy
 
 <pre><code>public class ConsumingApplication
 {
-    &amp;#91;ImportMany(typeof(IServiceProxy))&amp;#92;
+    [ImportMany(typeof(IServiceProxy))]
     public IEnumerable&amp;lt;IServiceProxy&amp;gt; Services { get; set; }
 
     // implementation here
@@ -153,7 +153,7 @@ public class ActualProxy : IServiceProxy
 
 <p>The exported contract becomes:</p>
 
-<pre><code>&amp;#91;Export(typeof(IServiceProxy))&amp;#92;
+<pre><code>[Export(typeof(IServiceProxy))]
 public class StandaloneProxy : IServiceProxy
 {
     // implementation here
@@ -166,10 +166,10 @@ public class StandaloneProxy : IServiceProxy
 
 <p>The contract which it requires - the <strong>IService</strong> contract (implicit due to the awesomeness of ImportMany)</p>
 
-<pre><code>&amp;#91;Export(typeof(IServiceProxy))&amp;#92;
+<pre><code>[Export(typeof(IServiceProxy))]
 public class ActualProxy : IServiceProxy
 {
-    &amp;#91;ImportMany&amp;#92;
+    [ImportMany]
     public IEnumerable&amp;lt;IService&amp;gt; Services { get; set; }
 
     // implementation here
@@ -180,11 +180,11 @@ public class ActualProxy : IServiceProxy
 
 <h2>And finally, InheritedExport</h2>
 
-<p>To really simplify the contracts, you can use &#91;InheritedExport&#92; on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.</p>
+<p>To really simplify the contracts, you can use [InheritedExport] on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.</p>
 
 <p>So I annotate both interfaces:</p>
 
-<pre><code>&amp;#91;InheritedExport&amp;#92;
+<pre><code>[InheritedExport]
 public interface IServiceProxy
 {
     // code here
@@ -197,7 +197,7 @@ public interface IService
 }
 </code></pre>
 
-<p>and can eliminate all other &#91;Export&#92; attributes from the codebase:</p>
+<p>and can eliminate all other [Export] attributes from the codebase:</p>
 
 <pre><code>public class StandaloneProxy : IServiceProxy
 {
@@ -206,7 +206,7 @@ public interface IService
 
 public class ActualProxy : IServiceProxy
 {
-    &amp;#91;ImportMany&amp;#92;
+    [ImportMany]
     public IEnumerable&amp;lt;IService&amp;gt; Services { get; set; }
 
     // implementation here
