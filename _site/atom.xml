@@ -4,8 +4,8 @@
  <title>brendan forster</title>
  <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
  <link href="http://shiftkey.heroku.com/" />
- <updated>2011-09-03T17:27:39+10:00</updated>
- <id>http://shiftkey.heroku.com<id>
+ <updated>2011-09-03T17:31:06+10:00</updated>
+ <id>shiftkey.heroku.com<id>
  <author>
    <name>site.owner-name</name>
    <email>site.owner-email</email>
@@ -1290,18 +1290,18 @@ container.RegisterComposablePartCatalog(catalog);
 {
     if (elapsedTimer == null) 
     {
-        // first call -&gt; mock “elapsed” timer
+        // first call -&gt; mock "elapsed" timer
         elapsedTimer = MockRepository.GenerateStub&lt;ITimer&gt;();
         return elapsedTimer;
     }
     if (pausedTimer == null) 
     {
-        // second call -&gt; mock “paused" timer
+        // second call -&gt; mock "paused" timer
         pausedTimer = MockRepository.GenerateStub&lt;ITimer&gt;(); 
         return pausedTimer;
     }
 
-    return null; // subsequent calls not supported – will raise errors if used
+    return null; // subsequent calls not supported - will raise errors if used
 };
 
 private IScheduledBackupService GetScheduledBackupService()

@@ -134,18 +134,18 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 {
     if (elapsedTimer == null) 
     {
-        // first call -&gt; mock “elapsed” timer
+        // first call -&gt; mock "elapsed" timer
         elapsedTimer = MockRepository.GenerateStub&lt;ITimer&gt;();
         return elapsedTimer;
     }
     if (pausedTimer == null) 
     {
-        // second call -&gt; mock “paused" timer
+        // second call -&gt; mock "paused" timer
         pausedTimer = MockRepository.GenerateStub&lt;ITimer&gt;(); 
         return pausedTimer;
     }
 
-    return null; // subsequent calls not supported – will raise errors if used
+    return null; // subsequent calls not supported - will raise errors if used
 };
 
 private IScheduledBackupService GetScheduledBackupService()

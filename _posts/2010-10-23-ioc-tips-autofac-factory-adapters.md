@@ -60,18 +60,18 @@ As our existing tests relied on verifying the messages displayed using ITimer in
     {
         if (elapsedTimer == null) 
         {
-            // first call -> mock “elapsed” timer
+            // first call -> mock "elapsed" timer
             elapsedTimer = MockRepository.GenerateStub<ITimer>();
             return elapsedTimer;
         }
         if (pausedTimer == null) 
         {
-            // second call -> mock “paused" timer
+            // second call -> mock "paused" timer
             pausedTimer = MockRepository.GenerateStub<ITimer>(); 
             return pausedTimer;
         }
 	      
-        return null; // subsequent calls not supported – will raise errors if used
+        return null; // subsequent calls not supported - will raise errors if used
     };
 
     private IScheduledBackupService GetScheduledBackupService()

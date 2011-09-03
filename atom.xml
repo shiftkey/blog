@@ -8,7 +8,7 @@ layout: nil
  <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
  <link href="http://shiftkey.heroku.com/" />
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://shiftkey.heroku.com<id>
+ <id>shiftkey.heroku.com<id>
  <author>
    <name>site.owner-name</name>
    <email>site.owner-email</email>
