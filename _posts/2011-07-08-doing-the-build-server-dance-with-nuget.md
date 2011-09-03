@@ -43,7 +43,7 @@ NOTE: Using the default value TeamCity provides for a project, which is just an 
 
 With that in place, the next step is to add in a post-build step:
 
-<p><a href="/img/posts/nuget/packagestep.png"><img src="/img/posts/nuget/packagestep-small.png" alt="Post Build Step" /></a></p>
+<p><a href="/img/posts/NuGet/packagestep.png"><img src="/img/posts/NuGet/packagestep-small.png" alt="Post Build Step" /></a></p>
 
 The script I've used (duplicated for two different packages):
 
@@ -59,7 +59,7 @@ I didn't want to publish these packages to the NuGet gallery immediately, so wha
 
 For those who aren't familiar with MyGet, its a service to create custom NuGet feeds. All I've done so far is create a private feed (which anyone can consume) and obtained an API key.
 
-<p><a href="img/posts/nuget/myget.png"><img src="img/posts/nuget/myget-small.png" alt="Post Build Step" /></a></p>
+<p><a href="img/posts/NuGet/myget.png"><img src="img/posts/NuGet/myget-small.png" alt="Post Build Step" /></a></p>
 
 While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server. 
 
@@ -79,7 +79,7 @@ This isn't directly related to NuGet, but I wanted to force a new build when ups
 
 Under Build Triggering in the Project Configuration, add a trigger for "Finish Build" and select the upstream project.
 
-<p><a href="img/posts/nuget/buildtriggering.png"><img src="img/posts/nuget/buildtriggering-small.png" alt="Add Build Trigger" /></a></p>
+<p><a href="img/posts/NuGet/buildtriggering.png"><img src="img/posts/NuGet/buildtriggering-small.png" alt="Add Build Trigger" /></a></p>
 
 ## Update the package for A and test
 
@@ -93,12 +93,12 @@ which will look through all the projects in my solution and update to the newest
 
 And this works. Kinda. 
 
-<p><a href="img/posts/nuget/updatescripts.png"><img src="img/posts/nuget/updatescripts-small.png" alt="Success?" /></a></p>
+<p><a href="img/posts/NuGet/updatescripts.png"><img src="img/posts/NuGet/updatescripts-small.png" alt="Success?" /></a></p>
 
 It updates my projects, but doesn't store updated packages locally.
 Which causes my build to break.
 
-<p><a href="img/posts/nuget/compileerrors.png"><img src="img/posts/nuget/compileerrors-small.png" alt="Oops" /></a></p>
+<p><a href="img/posts/NuGet/compileerrors.png"><img src="img/posts/NuGet/compileerrors-small.png" alt="Oops" /></a></p>
 
 Scouring the forums produced [this discussion][16] on this issue, which recommended this workaround:
 
@@ -126,7 +126,7 @@ Icky. Whatever, I've got awesome to do.
 	
 Aaaaand...
 
-<p><a href="img/posts/nuget/installedpackages.png"><img src="img/posts/nuget/installedpackages-small.png" alt="Success!" /></a></p>
+<p><a href="img/posts/NuGet/installedpackages.png"><img src="img/posts/NuGet/installedpackages-small.png" alt="Success!" /></a></p>
 
 Booyah!
 
@@ -142,7 +142,7 @@ Booyah!
   [4]: http://twitter.com/jflanagan
   [5]: https://github.com/DarthFubuMVC/bottles/blob/6d82e063fd889ac1909c98adc369a97b4c1e377e/packaging/nuget/bottles.nuspec
   [6]: http://ci.nuget.org:8080/
-  [8]: img/posts/nuget/buildnumber.png
+  [8]: img/posts/NuGet/buildnumber.png
   [10]: http://weblogs.asp.net/srkirkland/archive/2011/03/29/deploy-nuget-packages-during-ci-build-with-teamcity.aspx
   [11]: http://www.myget.org/
   [16]: http://nuget.codeplex.com/discussions/264082

@@ -165,8 +165,8 @@ This is my library of choice for automating INotifyPropertyChanged usage. I defi
   [3]: http://www.mail-archive.com/ozdotnet@ozdotnet.com/msg03903.html
   [4]: http://stackoverflow.com/questions/141370/inotifypropertychanged-property-name-hardcode-vs-reflection/1209104#1209104
   [5]: http://www.paulstovell.com/strong-property-names
-  [6]: http://brendanforster.com/files/images/10-gallon-cowboy-hat.png
-  [7]: http://brendanforster.com/files/images/Achievement.jpg
+  [6]: /img/posts/10-gallon-cowboy-hat.png
+  [7]: /img/posts/Achievement.jpg
   [8]: http://www.codeproject.com/KB/library/Aspects.aspx
   [9]: http://twitter.com/philiplaureano
   [10]: http://code.google.com/p/notifypropertyweaver/

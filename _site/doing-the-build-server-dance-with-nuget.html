@@ -117,11 +117,11 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <p>NOTE: Using the default value TeamCity provides for a project, which is just an incrementing integer, will fail with a "Version string portion was too short or too long" error. To fix that, go to General Settings and make it something more descriptive:</p>
 
-<p><img src="img/posts/nuget/buildnumber.png" alt="General Settings" /></p>
+<p><img src="img/posts/NuGet/buildnumber.png" alt="General Settings" /></p>
 
 <p>With that in place, the next step is to add in a post-build step:</p>
 
-<p><a href="/img/posts/nuget/packagestep.png"><img src="/img/posts/nuget/packagestep-small.png" alt="Post Build Step" /></a></p>
+<p><a href="/img/posts/NuGet/packagestep.png"><img src="/img/posts/NuGet/packagestep-small.png" alt="Post Build Step" /></a></p>
 
 
 <p>The script I've used (duplicated for two different packages):</p>
@@ -139,7 +139,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <p>For those who aren't familiar with MyGet, its a service to create custom NuGet feeds. All I've done so far is create a private feed (which anyone can consume) and obtained an API key.</p>
 
-<p><a href="img/posts/nuget/myget.png"><img src="img/posts/nuget/myget-small.png" alt="Post Build Step" /></a></p>
+<p><a href="img/posts/NuGet/myget.png"><img src="img/posts/NuGet/myget-small.png" alt="Post Build Step" /></a></p>
 
 
 <p>While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server.</p>
@@ -161,7 +161,7 @@ forfiles /m *.nupkg /c "cmd /c NuGet.exe push @FILE &lt;your-key&gt; -Source htt
 
 <p>Under Build Triggering in the Project Configuration, add a trigger for "Finish Build" and select the upstream project.</p>
 
-<p><a href="img/posts/nuget/buildtriggering.png"><img src="img/posts/nuget/buildtriggering-small.png" alt="Add Build Trigger" /></a></p>
+<p><a href="img/posts/NuGet/buildtriggering.png"><img src="img/posts/NuGet/buildtriggering-small.png" alt="Add Build Trigger" /></a></p>
 
 
 <h2>Update the package for A and test</h2>
@@ -177,13 +177,13 @@ forfiles /m *.nupkg /c "cmd /c NuGet.exe push @FILE &lt;your-key&gt; -Source htt
 
 <p>And this works. Kinda.</p>
 
-<p><a href="img/posts/nuget/updatescripts.png"><img src="img/posts/nuget/updatescripts-small.png" alt="Success?" /></a></p>
+<p><a href="img/posts/NuGet/updatescripts.png"><img src="img/posts/NuGet/updatescripts-small.png" alt="Success?" /></a></p>
 
 
 <p>It updates my projects, but doesn't store updated packages locally.
 Which causes my build to break.</p>
 
-<p><a href="img/posts/nuget/compileerrors.png"><img src="img/posts/nuget/compileerrors-small.png" alt="Oops" /></a></p>
+<p><a href="img/posts/NuGet/compileerrors.png"><img src="img/posts/NuGet/compileerrors-small.png" alt="Oops" /></a></p>
 
 
 <p>Scouring the forums produced <a href="http://nuget.codeplex.com/discussions/264082">this discussion</a> on this issue, which recommended this workaround:</p>
@@ -214,7 +214,7 @@ Which causes my build to break.</p>
 
 <p>Aaaaand...</p>
 
-<p><a href="img/posts/nuget/installedpackages.png"><img src="img/posts/nuget/installedpackages-small.png" alt="Success!" /></a></p>
+<p><a href="img/posts/NuGet/installedpackages.png"><img src="img/posts/NuGet/installedpackages-small.png" alt="Success!" /></a></p>
 
 
 <p>Booyah!</p>

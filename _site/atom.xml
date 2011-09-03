@@ -4,7 +4,7 @@
  <title>your page's title</title>
  <link href="http://your.pages.url/atom.xml" rel="self" />
  <link href="http://your.pages.url/" />
- <updated>2011-09-03T16:52:52+10:00</updated>
+ <updated>2011-09-03T17:16:48+10:00</updated>
  <id>http://your.pages.url<id>
  <author>
    <name>site.owner-name</name>
@@ -51,11 +51,11 @@
 
 &lt;p&gt;NOTE: Using the default value TeamCity provides for a project, which is just an incrementing integer, will fail with a &quot;Version string portion was too short or too long&quot; error. To fix that, go to General Settings and make it something more descriptive:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;img/posts/nuget/buildnumber.png&quot; alt=&quot;General Settings&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;img/posts/NuGet/buildnumber.png&quot; alt=&quot;General Settings&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With that in place, the next step is to add in a post-build step:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/img/posts/nuget/packagestep.png&quot;&gt;&lt;img src=&quot;/img/posts/nuget/packagestep-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/img/posts/NuGet/packagestep.png&quot;&gt;&lt;img src=&quot;/img/posts/NuGet/packagestep-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;The script I've used (duplicated for two different packages):&lt;/p&gt;
@@ -73,7 +73,7 @@
 
 &lt;p&gt;For those who aren't familiar with MyGet, its a service to create custom NuGet feeds. All I've done so far is create a private feed (which anyone can consume) and obtained an API key.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;img/posts/nuget/myget.png&quot;&gt;&lt;img src=&quot;img/posts/nuget/myget-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/myget.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/myget-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server.&lt;/p&gt;
@@ -95,7 +95,7 @@ forfiles /m *.nupkg /c &quot;cmd /c NuGet.exe push @FILE &amp;lt;your-key&amp;gt
 
 &lt;p&gt;Under Build Triggering in the Project Configuration, add a trigger for &quot;Finish Build&quot; and select the upstream project.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;img/posts/nuget/buildtriggering.png&quot;&gt;&lt;img src=&quot;img/posts/nuget/buildtriggering-small.png&quot; alt=&quot;Add Build Trigger&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/buildtriggering.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/buildtriggering-small.png&quot; alt=&quot;Add Build Trigger&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;h2&gt;Update the package for A and test&lt;/h2&gt;
@@ -111,13 +111,13 @@ forfiles /m *.nupkg /c &quot;cmd /c NuGet.exe push @FILE &amp;lt;your-key&amp;gt
 
 &lt;p&gt;And this works. Kinda.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;img/posts/nuget/updatescripts.png&quot;&gt;&lt;img src=&quot;img/posts/nuget/updatescripts-small.png&quot; alt=&quot;Success?&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/updatescripts.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/updatescripts-small.png&quot; alt=&quot;Success?&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;It updates my projects, but doesn't store updated packages locally.
 Which causes my build to break.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;img/posts/nuget/compileerrors.png&quot;&gt;&lt;img src=&quot;img/posts/nuget/compileerrors-small.png&quot; alt=&quot;Oops&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/compileerrors.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/compileerrors-small.png&quot; alt=&quot;Oops&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Scouring the forums produced &lt;a href=&quot;http://nuget.codeplex.com/discussions/264082&quot;&gt;this discussion&lt;/a&gt; on this issue, which recommended this workaround:&lt;/p&gt;
@@ -148,7 +148,7 @@ Which causes my build to break.&lt;/p&gt;
 
 &lt;p&gt;Aaaaand...&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;img/posts/nuget/installedpackages.png&quot;&gt;&lt;img src=&quot;img/posts/nuget/installedpackages-small.png&quot; alt=&quot;Success!&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/installedpackages.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/installedpackages-small.png&quot; alt=&quot;Success!&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Booyah!&lt;/p&gt;
@@ -303,7 +303,7 @@ public string SomeProperty
 
 &lt;p&gt;Go back and read that last sentence again. Did something click about what you've been doing all along with INotifyPropertyChanged?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://brendanforster.com/files/images/Achievement.jpg&quot; alt=&quot;Huzzah!&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/posts/Achievement.jpg&quot; alt=&quot;Huzzah!&quot; /&gt;&lt;/p&gt;
 
 &lt;h2&gt;A what?&lt;/h2&gt;
 
