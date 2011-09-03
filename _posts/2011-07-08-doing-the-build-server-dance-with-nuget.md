@@ -43,7 +43,7 @@ NOTE: Using the default value TeamCity provides for a project, which is just an 
 
 With that in place, the next step is to add in a post-build step:
 
-<p><a href="/img/posts/NuGet/packagestep.png"><img src="/img/posts/NuGet/packagestep-small.png" alt="Post Build Step" /></a></p>
+<p><a href="/img/posts/NuGet/PackageStep.png"><img src="/img/posts/NuGet/PackageStep-Small.png" alt="Post Build Step" /></a></p>
 
 The script I've used (duplicated for two different packages):
 
@@ -142,7 +142,7 @@ Booyah!
   [4]: http://twitter.com/jflanagan
   [5]: https://github.com/DarthFubuMVC/bottles/blob/6d82e063fd889ac1909c98adc369a97b4c1e377e/packaging/nuget/bottles.nuspec
   [6]: http://ci.nuget.org:8080/
-  [8]: img/posts/NuGet/buildnumber.png
+  [8]: img/posts/NuGet/BuildNumber.png
   [10]: http://weblogs.asp.net/srkirkland/archive/2011/03/29/deploy-nuget-packages-during-ci-build-with-teamcity.aspx
   [11]: http://www.myget.org/
   [16]: http://nuget.codeplex.com/discussions/264082

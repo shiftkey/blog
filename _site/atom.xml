@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
  <link href="http://shiftkey.heroku.com/" />
- <updated>2011-09-03T17:57:11+10:00</updated>
+ <updated>2011-09-03T18:05:42+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -51,11 +51,11 @@
 
 <p>NOTE: Using the default value TeamCity provides for a project, which is just an incrementing integer, will fail with a "Version string portion was too short or too long" error. To fix that, go to General Settings and make it something more descriptive:</p>
 
-<p><img src="img/posts/NuGet/buildnumber.png" alt="General Settings" /></p>
+<p><img src="img/posts/NuGet/BuildNumber.png" alt="General Settings" /></p>
 
 <p>With that in place, the next step is to add in a post-build step:</p>
 
-<p><a href="/img/posts/NuGet/packagestep.png"><img src="/img/posts/NuGet/packagestep-small.png" alt="Post Build Step" /></a></p>
+<p><a href="/img/posts/NuGet/PackageStep.png"><img src="/img/posts/NuGet/PackageStep-Small.png" alt="Post Build Step" /></a></p>
 
 
 <p>The script I've used (duplicated for two different packages):</p>
