@@ -39,7 +39,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 			<section>
 				<header class="post-header">
 					<hgroup>
-					    <p class="date">{{ ps.date | date:"%Y-%m-%d"}}</p>
+					    <p class="date">{{ ps.date | date:"%d-%m-%Y"}}</p>
 					    {% if  ps.icon %}
 					    <img src="{{ps.icon}}" />
 					    {% else %}
@@ -72,10 +72,11 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 		</section>
 		<section>
 			<header>
-				<h3>currently</h3>
+				<h3>things of note</h3>
 			</header>
 
-			<iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;aq=&amp;sll=-25.335448,135.745076&amp;sspn=74.707935,57.216797&amp;vpsrc=6&amp;ie=UTF8&amp;hq=&amp;hnear=Sydney+New+South+Wales&amp;ll=-33.870416,151.347656&amp;spn=21.818821,26.367188&amp;z=4&amp;output=embed&amp;iwloc=&amp;"></iframe>
+			{% tag_cloud %}
+
 		</section>
 		<section>
 			<header>
