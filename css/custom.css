@@ -231,3 +231,8 @@ section[role="timestamp"]
 {
 	font-size: 0.8em;
 }
+
+section[role="about"] article
+{
+	margin-bottom: 10px;
+}
