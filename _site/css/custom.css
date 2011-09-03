@@ -19,7 +19,6 @@ aside .vevent
 
 aside h3
 {
-	 margin-bottom: 0.25em;
 	letter-spacing: 0.1em;
 }
 
@@ -67,7 +66,8 @@ aside h3
  
 aside h3, aside h4
 {
-	margin-bottom: 0.5em;
+	margin-top: 2em;
+	margin-bottom:0;
 }
 
 #content {
@@ -225,4 +225,9 @@ pre, code {
 	margin-left: 10px;
 	margin-right:10px;
 	color: #B8CFF2;
+}
+
+section[role="timestamp"]
+{
+	font-size: 0.8em;
 }
