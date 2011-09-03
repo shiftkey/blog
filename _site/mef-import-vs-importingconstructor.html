@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<!-- 
+320 and Up boilerplate extension
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup 
+-->
+
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<title>MEF - [Import] vs [ImportingConstructor]</title>
+<meta name="description" content="">
+<meta name="author" content="brendan forster">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+
+<!-- robots -->
+<meta name="robots" content="/robots.txt" />
+
+<!-- For less capable mobile browsers
+<link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" media="screen" href="/css/style.css?v=1">
+
+<link rel="stylesheet" media="print" href="/css/print.css?v=1">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/css/480.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/css/768.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/css/1382.css?v=1">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/css/2x.css?v=1">
+
+<link rel="stylesheet" media="screen" href="/css/custom.css?v=1">
+
+<!-- JavaScript at bottom except for Modernizr -->
+<script src="js/libs/modernizr-1.7.min.js"></script>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- http://t.co/y1jPVnT -->
+<link rel="canonical" href="mef-import-vs-importingconstructor.html">
+</head>
+
+
+<body class="clearfix">
+
+<header role="banner" class="clearfix">
+	<h1>MEF - [Import] vs [ImportingConstructor]</h1>
+</header>
+
+<div class="content clearfix">
+
+	<div id="post">
+<p>A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at <a href="http://www.informit.com/articles/article.aspx?p=1635818">InformIT</a>. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.</p>
+
+<p>The healthy debate was ultimately about [Import] being easier than [ImportingConstructor] to use. I disagreed, but at the time couldn't really put my finger on why I preferred it.</p>
+
+<p>After a bit of pondering, this is what I've come up with.</p>
+
+<h2>Compare and Contrast - [Import] versus [ImportingConstructor]</h2>
+
+<p>Compare these two segments of code:</p>
+
+<p>The [Import] version...</p>
+
+<pre><code>public class TwitterPlugin : IMicroblog
+{
+    &amp;#91;Import&amp;#92;
+    private IApplicationSettingsService _applicationSettings;
+
+    &amp;#91;Import&amp;#92;
+    private IStatusUpdatesService _statusUpdatesService;
+
+    &amp;#91;Import&amp;#92;
+    private IContactsService _contacts;
+
+    public TwitterPlugin()
+    {
+        // some constructor logic
+    }
+}
+</code></pre>
+
+<p>Or the [ImportingConstructor] version...</p>
+
+<pre><code>public class TwitterPlugin : IMicroblog
+{
+    private readonly IApplicationSettingsProvider _applicationSettings;
+    private readonly IStatusUpdateService _statusUpdatesService;
+    private readonly IContactsService _contactsService;
+
+    &amp;#91;ImportingConstructor&amp;#92;
+    public Twitter(IApplicationSettingsProvider applicationSettings,
+                   IStatusUpdateService statusUpdateService
+                   IContactsService contactsService)
+    {
+       _applicationSettings = applicationSettings;
+       _statusUpdatesService = statusUpdateService;
+       _contactsService = contactsService;
+
+       // some constructor logic
+    }
+}
+</code></pre>
+
+<p>So the second approach requires more code, but a good tool should have you saving many keystrokes - even Visual Studio 2010 will help out with that.</p>
+
+<p>Other differences:</p>
+
+<p><strong>Design - Constructor Injection versus Property Setters</strong></p>
+
+<p>With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the &#91;ImportingConstructor&#92; approach.</p>
+
+<p>By using the &#91;ImportingConstructor&#92; attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.</p>
+
+<p><strong>Maintainability</strong></p>
+
+<p>Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach.</p>
+
+<p>I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another &#91;Import&#92; attribute should be considered a code smell, just like adding an additional parameter to a constructor.</p>
+
+<p>If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.</p>
+
+<p><strong>You can still use attributes</strong></p>
+
+<p>Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:</p>
+
+<p>For example, using &#91;ImportMany&#92;</p>
+
+<pre><code>private readonly IEnumerable&lt;ICreditService&gt; _creditServices;
+
+&amp;#91;ImportingConstructor&amp;#92;
+public BankService(&amp;#91;ImportMany&amp;#92; IEnumerable&amp;lt;IProductServices&amp;gt; productServices)
+{
+    _productServices = productServices;
+
+    // some constructor logic
+}
+</code></pre>
+
+<p>Or using AllowDefault to allow for scenarios where a component is not known:</p>
+
+<pre><code>private readonly ILogger _logger;
+
+&amp;#91;ImportingConstructor&amp;#92;
+public BankService(&amp;#91;Import(AllowDefault=true)&amp;#92; ILogger logger)
+{
+    if (logger == null)
+        _logger = new DefaultLogger();
+    else
+        _logger = logger;
+
+    // some constructor logic
+}
+</code></pre>
+
+<p>And this still keeps all the composition "magic" in one location. MEF supports importing <a href="http://mef.codeplex.com/wikipage?title=Declaring%20Imports&amp;referringTitle=Guide">properties, fields and collections</a>, which could be scattered around the same class.</p>
+
+<p><strong>Closing Statements</strong></p>
+
+<p>Ultimately, I guess I'm advocating the [ImportingConstructor] approach because once a class grows to a significant complexity (requiring some parts and providing other parts) I feel that it is the saner approach.</p>
+
+<p>For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A &lt;-&gt; B &lt;-&gt; C &lt;-&gt; D - then I'd start simplifying the classes and pushing more "magic" into the constructor for readability's sake.</p>
+
+<h2>While we're talking managing MEF parts</h2>
+
+<p>When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought "<em>Why add a constructor parameter to the constructor when I can just add an attribute?</em>"</p>
+
+<p>After all, it just worked.</p>
+
+<p>It was easy to get started with MEF - as the application grows, you can sprinkle some more magic around.</p>
+
+<p>I've been using MEF since the early previews (Preview 6 i think was the first drop I tried out) for various apps. One of the bigger codebases running on MEF is <a href="http://www.mahtweets.com/">MahTweets</a>, a pluggable WPF client for various social media services.</p>
+
+<p>For an upcoming release, I'm currently refactoring the MahTweets internals to replace StructureMap with Autofac. The <a href="http://code.google.com/p/autofac/wiki/MefIntegration">MEF integration extensions for Autofac</a> have been a great help to simplify the integration between Autofac's ContainerBuilder and MEF's ComposablePartCatalog, and I've found ways to reduce the required MEF syntax without changing existing functionality.</p>
+
+<p>On the Autofac side, we can declare components in the container to be available for MEF composition.</p>
+
+<pre><code>container.RegisterType&amp;lt;ApplicationSettingsProvider&amp;gt;()
+         .As&amp;lt;IApplicationSettingsProvider&amp;gt;()
+         .Exported(x =&amp;gt; x.As&amp;lt;IApplicationSettingsProvider&amp;gt;()) // make this part visible to MEF components
+         .SingleInstance();
+
+container.RegisterType&amp;lt;PluginSettingsProvider&amp;gt;()
+         .As&amp;lt;IPluginSettingsProvider&amp;gt;()
+         .Exported(x =&gt; x.As&amp;lt;IPluginSettingsProvider&amp;gt;())
+         .SingleInstance();
+
+...
+
+// register external plugins for consumption
+container.RegisterComposablePartCatalog(catalog);
+</code></pre>
+
+<p>This allows for better separation between the application and external parts, and reduces effort required to register a component with both the IoC container and the CompositionContainer.</p>
+
+<p>I'll blog some more in the future on how you can use these parts to help manage MEF applications as they grow. I need to check out the MEF v2 drops first :)</p>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Jul 2011</span> &raquo; <a href="doing-the-build-server-dance-with-nuget.html">Doing the build server dance with NuGet</a></li>
+    
+      <li><span>18 Jun 2011</span> &raquo; <a href="inotifypropertychanged-stop-the-madness.html">Soapbox: INotifyPropertyChanged - Stop the Madness</a></li>
+    
+      <li><span>08 Jun 2011</span> &raquo; <a href="on-the-windows-8-preview.html">On the Windows 8 Preview Video</a></li>
+    
+  </ul>
+</div>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/DOMAssistantCompressed-2.8.js"></script>
+<script src="/js/libs/selectivizr-1.0.1.js"></script>
+<script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+
+<script>
+var _gaq=[['_setAccount','UA-8441214-1'],['_trackPageview']]; 
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+</body>
+</html>

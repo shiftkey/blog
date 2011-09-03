@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<!-- 
+320 and Up boilerplate extension
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup 
+-->
+
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
+<meta name="description" content="">
+<meta name="author" content="brendan forster">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+
+<!-- robots -->
+<meta name="robots" content="/robots.txt" />
+
+<!-- For less capable mobile browsers
+<link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" media="screen" href="/css/style.css?v=1">
+
+<link rel="stylesheet" media="print" href="/css/print.css?v=1">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/css/480.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/css/768.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/css/1382.css?v=1">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/css/2x.css?v=1">
+
+<link rel="stylesheet" media="screen" href="/css/custom.css?v=1">
+
+<!-- JavaScript at bottom except for Modernizr -->
+<script src="js/libs/modernizr-1.7.min.js"></script>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- http://t.co/y1jPVnT -->
+<link rel="canonical" href="inotifypropertychanged-stop-the-madness.html">
+</head>
+
+
+<body class="clearfix">
+
+<header role="banner" class="clearfix">
+	<h1>Soapbox: INotifyPropertyChanged - Stop the Madness</h1>
+</header>
+
+<div class="content clearfix">
+
+	<div id="post">
+<p>Its time to stop with this madness.</p>
+
+<p>Apologies again to <a href="http://twitter.com/kiwipom">Ian</a> as I picked on him unnecessarily when I read yet another "Let's make OnPropertyChanged compile safe" <a href="http://xaml.geek.nz/binding/5">blog post</a> yesterday.</p>
+
+<p>I don't have an issue with the approach, but I had an issue with the bigger picture - how little had changed for XAML developers in this regard. Keep in mind that lambdas were first made available in C# 3.0 - which itself was made available in 2007, with .NET 3.5.</p>
+
+<p>I've been summoned into this debate <a href="http://www.mail-archive.com/ozdotnet@ozdotnet.com/msg03903.html">before</a> (and was assumed to be a "cool kid") so I thought I'd put down some thoughts on the issue, and what I think needs to change:</p>
+
+<h2>Stop writing plumbing code</h2>
+
+<p>Every time you write logic in the setter of a property, an angel disappoints her family by taking up stripping.</p>
+
+<p>There have been compelling reasons to do so. After dealing with the resulting pain, I've explored other options to take all those needs away. So let's break it down:</p>
+
+<p>To start off with the <em>worst</em> case scenario, we have:</p>
+
+<pre><code>private string _someProperty;
+public string SomeProperty
+{
+    get { return _someProperty; }
+    set 
+    { 
+        _someProperty = value;
+        OnPropertyChanged("SomeProperty");
+    }
+}
+</code></pre>
+
+<h3>Make it refactor-friendly - let's use a lambda instead!</h3>
+
+<p>Yes, this is better than magic strings - that's about it. Don't you get that sinking feeling when adding a new property to the viewmodel, and the code inside the setter looks almost identical to all the others?</p>
+
+<p>So let's change the property to look like:</p>
+
+<pre><code>private string _someProperty;
+public string SomeProperty
+{
+    get { return _someProperty; }
+    set 
+    { 
+        _someProperty = value;
+        OnPropertyChanged(() =&gt; SomeProperty);
+    }
+}
+</code></pre>
+
+<p>For an example implementation that accepts lambda statements, <a href="http://stackoverflow.com/questions/141370/inotifypropertychanged-property-name-hardcode-vs-reflection/1209104#1209104">this Stackoverflow answer</a> is a good starting point.</p>
+
+<h3>I only want to raise the change when the backing value actually changes!</h3>
+
+<p>"Wait," the audience exlaims in shock, "you're going to raise the event each time now." The author relents, and adds some code to end the pain for the audience:</p>
+
+<pre><code>private string _someProperty;
+public string SomeProperty
+{
+    get { return _someProperty; }
+    set 
+    { 
+        if (_someProperty == value)
+            return;
+
+        _someProperty = value;
+        OnPropertyChanged(() =&gt; SomeProperty);
+    }
+}
+</code></pre>
+
+<p>I'd better ensure this is defined in all the setters, and that the right backing field is used in each case. I'd look pretty silly if I'd used the wrong field, like this:</p>
+
+<pre><code>// elsewhere in the codebase
+private string _someOtherProperty;
+
+// ...
+
+private string _someProperty;
+public string SomeProperty
+{
+    get { return _someProperty; }
+    set 
+    { 
+        if (_someOtherProperty == value)
+            return;
+
+        _someProperty = value;
+        OnPropertyChanged(() =&gt; SomeProperty);
+    }
+}
+</code></pre>
+
+<p>so I'd better do it real carefully...</p>
+
+<h3>We need caching now!</h3>
+
+<p>Really? That's what comes to mind next? You crazy developers.</p>
+
+<p>Fine, let's add a dictionary to capture the event arguments, instead of recreating them each time (adapted from this <a href="http://www.paulstovell.com/strong-property-names">blog post</a>):</p>
+
+<pre><code>public class ViewModelBase
+{
+    protected void OnPropertyChanged(Expression&lt;Func&lt;object&gt;&gt; lambda)
+    {
+        // Go read Paul (and especially Miguel's comment) about this [here][6]. I'll wait...
+    }
+
+    private IDictionary&lt;string, PropertyChangedEventArgs&gt; _handlers = new Dictionary&lt;string, PropertyChangedEventArgs&gt;      
+
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChangedEventArgs args;
+
+        if (!_handlers.ContainsKey(propertyName))
+        {
+            _handlers.Add(propertyName, new PropertyChangedEventArgs(propertyName));
+        }
+
+        args = _handlers[propertyName];
+
+        PropertyChanged(this, args);
+    }
+}
+</code></pre>
+
+<p>Have we saved much? Perhaps. Perhaps not...</p>
+
+<h3>Wait, what about cross-thread issues? I do a lot on the background thread!</h3>
+
+<p>Ah yes. Have you ever been bitten by this one - a background thread updates a property, which triggers the PropertyChanged event, which asplodes because the UI can only be updated from the main thread?</p>
+
+<h2>Stop. Put down the keyboard for a minute.</h2>
+
+<p>See how quickly all these features around INotifyPropertyChanged can spiral out of control? You've worked out the code and classes necessary to solve a common problem, but some overhead remains for writing boilerplate code everywhere the solution is required. And while it is a manual process, it is prone to human error.</p>
+
+<p>Go back and read that last sentence again. Did something click about what you've been doing all along with INotifyPropertyChanged?</p>
+
+<p><img src="http://brendanforster.com/files/images/Achievement.jpg" alt="Huzzah!" /></p>
+
+<h2>A what?</h2>
+
+<p>INotifyPropertyChanged is a very specialised example of a cross-cutting concern.</p>
+
+<p>We use INotifyPropertyChanged in many places when doing XAML-based applications - as it is critical when databinding POCO objects without requiring the use of DependencyProperty instances. Although we spent a lot of time optimising the behaviour of invoking INotifyPropertyChanged, we didn't improve <strong>how</strong> this code is used - we're still copying-and-pasting the same code around, and having to make manual changes to each instance to suit the property.</p>
+
+<p>We need the ability to apply the INotifyPropertyChanged behaviour in an automatic way. Of course, there are various tradeoffs to consider - which I'll outline from my experiences.</p>
+
+<h2>What Next?</h2>
+
+<p>I need to wrap this post up before it becomes even longer, so until my next post - where I'll discuss how AOP flips all this discussion on its ear - readers can get ahead by reading these links:</p>
+
+<p><strong>Sacha Barber - <a href="http://www.codeproject.com/KB/library/Aspects.aspx">Aspect Examples (INotifyPropertyChanged via Aspects)</a></strong></p>
+
+<p><a href="http://twitter.com/philiplaureano">Philip Laureano</a> linked me this yesterday. A large read, but lots of demo code for people who want to see something more concrete.</p>
+
+<p><strong><a href="http://code.google.com/p/notifypropertyweaver/">NotifyPropertyWeaver</a> - a .NET library for weaving INotifyPropertyChanged code into IL</strong></p>
+
+<p>This is my library of choice for automating INotifyPropertyChanged usage. I definitely owe <a href="http://twitter.com/simoncropp">Simon</a> a beer (or drink of choice) next time we cross paths - its been a joy to use.</p>
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Jul 2011</span> &raquo; <a href="doing-the-build-server-dance-with-nuget.html">Doing the build server dance with NuGet</a></li>
+    
+      <li><span>08 Jun 2011</span> &raquo; <a href="on-the-windows-8-preview.html">On the Windows 8 Preview Video</a></li>
+    
+      <li><span>06 May 2011</span> &raquo; <a href="slsvcutil-stackoverflowexception-workaround.html">slsvcutil - Workaround StackOverflowException</a></li>
+    
+  </ul>
+</div>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/DOMAssistantCompressed-2.8.js"></script>
+<script src="/js/libs/selectivizr-1.0.1.js"></script>
+<script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+
+<script>
+var _gaq=[['_setAccount','UA-8441214-1'],['_trackPageview']]; 
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+</body>
+</html>

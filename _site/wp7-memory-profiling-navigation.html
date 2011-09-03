@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<!-- 
+320 and Up boilerplate extension
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup 
+-->
+
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
+<meta name="description" content="">
+<meta name="author" content="brendan forster">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+
+<!-- robots -->
+<meta name="robots" content="/robots.txt" />
+
+<!-- For less capable mobile browsers
+<link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" media="screen" href="/css/style.css?v=1">
+
+<link rel="stylesheet" media="print" href="/css/print.css?v=1">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/css/480.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/css/768.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/css/1382.css?v=1">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/css/2x.css?v=1">
+
+<link rel="stylesheet" media="screen" href="/css/custom.css?v=1">
+
+<!-- JavaScript at bottom except for Modernizr -->
+<script src="js/libs/modernizr-1.7.min.js"></script>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- http://t.co/y1jPVnT -->
+<link rel="canonical" href="wp7-memory-profiling-navigation.html">
+</head>
+
+
+<body class="clearfix">
+
+<header role="banner" class="clearfix">
+	<h1>WP7 - Memory Profiling Adventures - Navigation (Updated)</h1>
+</header>
+
+<div class="content clearfix">
+
+	<div id="post">
+<p>In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...</p>
+
+<h2>Updated</h2>
+
+<p>After going back and forth with local Windows Phone guru <a href="http://nicksnettravels.builttoroam.com/">Nick Randolph</a> about the issue, and he <a href="http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage.aspx">blogged</a> <a href="http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx">about</a> the behaviour in more detail, we came to the conclusion that the garbage collection was not being triggered automatically. That's not necessarily a bad thing (see the <a href="http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx">conditions for triggering a garbage collection</a> here) but is a concern for large WP7 applications.</p>
+
+<p>The workaround I devised for this is to trigger a GC.Collect() after a number of page navigations. I would only add this to an application when absolutely necessary. The implementation of this I'll leave as an exercise to the reader.</p>
+
+<p>Side note: I've seen various samples floating around which will use a timer to invoke a garbage collection call. Ignoring the use of timers on the device (which will drain the battery), a garbage collection call at an arbitrary time will likely impact on the user experience. Be smart about it, if you need to work this into an application.</p>
+
+<p>Read on for the rest of the saga...</p>
+
+<h2>Before We Begin...</h2>
+
+<p>One of the requirements a WP7 application needs to satisfy is around memory consumption</p>
+
+<h3>5.2.5 Memory Consumption</h3>
+
+
+<p><em>An application must not exceed 90 MB of RAM usage, except on devices that have more than 256 MB of memory. You can use the <strong>DeviceExtendedProperties</strong> class to query the amount of memory that is available on the device and modify the application behavior at runtime to take advantage of additional memory. For more information, see the DeviceExtendedProperties class in MSDN.</em></p>
+
+<p><em>Note:</em></p>
+
+<p><em>The DeviceTotalMemory value returned by <strong>DeviceExtendedProperties</strong> indicates the physical RAM size in bytes. This value is less than the actual amount of device memory. For an application to pass certification, Microsoft recommends that the value returned by ApplicationPeakMemoryUsage is less than 90 MB when the DeviceTotalMemory is less than or equal to 256 MB</em></p>
+
+<p>Source <a href="http://go.microsoft.com/?linkid=9730556">Microsoft</a></p>
+
+<p>90 MB sounds like a lot of space - and yes, it is, when one remembers the era of 1.44MB diskettes (or earlier) you can't help but think that perhaps we are spoiled - but what can you do with that amount of memory?</p>
+
+<p><strong>Note</strong> - Disregard the "devices with > 256MB" exception mentioned, as I want to see how we can optimise memory usage on SL without sacrificing features.</p>
+
+<h2>How Do I Work Out My Memory Usage?</h2>
+
+<p>As mentioned above, the <strong>DeviceExtendedProperties</strong> class contains a lot of runtime information about the application.</p>
+
+<p>I drop this method into the App.xaml.cs class so that I can get statistics at any point of the application's lifecycle.</p>
+
+<pre><code>public static void GetMemoryUsage(string task)
+{
+    var number = (long)DeviceExtendedProperties.GetValue("ApplicationCurrentMemoryUsage");
+    Debug.WriteLine("{0} - ApplicationCurrentMemoryUsage: {1}", task, number);
+    number = (long)DeviceExtendedProperties.GetValue("ApplicationPeakMemoryUsage");
+    Debug.WriteLine("{0} - ApplicationPeakMemoryUsage: {1}", task, number);
+
+    Debug.WriteLine("");
+}
+</code></pre>
+
+<p>Oh, and don't forget the namespace</p>
+
+<pre><code>using Microsoft.Phone.Info;
+</code></pre>
+
+<p>This allows parts of the application to log diagnostics, like:</p>
+
+<pre><code>private void MainPageLoaded(object sender, RoutedEventArgs e)
+{
+    if (!App.ViewModel.IsDataLoaded)
+        App.ViewModel.LoadData();
+
+    App.GetMemoryUsage("Main - Loaded");
+
+}
+</code></pre>
+
+<p>and see a message like in the Output Window:</p>
+
+<pre><code>Main - Loaded - ApplicationCurrentMemoryUsage: 39870464
+Main - Loaded - ApplicationPeakMemoryUsage: 39899136
+</code></pre>
+
+<h2>And now things get interesting...</h2>
+
+<p>Testing out a simple application - two screens, both use the Panorama Control and independent ViewModels which display a "large" list of items (270-ish items, but text only).</p>
+
+<p>Selecting an item in the main screen will navigate to the second screen. Pressing back will return the application to the main screen.</p>
+
+<p>The code is <a href="http://brendanforster.com/get/panoramasample.zip">here</a> and the sample output can be seen on <a href="https://gist.github.com/812178">Gist</a></p>
+
+<p>Graphing the memory at each step, the graph looks like this:</p>
+
+<center><a href="http://brendanforster.com/files/images/breakdown.png"><img src="http://brendanforster.com/files/images/breakdown.png" width="800" /></a></center>
+
+
+<p>But why is the memory footprint larger (by almost 10 MB) on returning to the main screen?</p>
+
+<p><strong>Note:</strong> Removing the Panorama Control did not change this behaviour - it just made the numbers smaller (a 5MB difference rather than 10MB). Just a sign that making screens leaner will certainly assist with reducing the overall footprint, but not the answer I was looking for.</p>
+
+<p>Repeating the scenario a few times, and the behaviour is the same.</p>
+
+<center>
+<a href="http://brendanforster.com/files/images/pattern.png"><img src="http://brendanforster.com/files/images/pattern.png" width="800" /></a></center>
+
+
+<p>Puzzling...</p>
+
+<h2>And the adventure begins</h2>
+
+<p>The underlying <em>why</em> is what I want to understand more. Even with this simple application - which is displaying a large list of items - the size of the application is already close to the 90MB limit.</p>
+
+<p>I've only been able to throw a couple of hours of spare time at this so far, but here's some notes from my investigation currently:</p>
+
+<ul>
+<li><p>Tested this with the <a href="http://windowsteamblog.com/windows_phone/b/wpdev/archive/2011/02/04/windows-phone-developer-tools-january-update.aspx">new emulator and SDK changes</a>. No change to the behaviour.</p></li>
+<li><p>Haven't found any memory profiling tools for SL &amp; WP7 - if anyone has stuff in the works, I'd love to try them out. <a href="http://eqatec.com/Profiler/Overview.aspx">EQUATEC</a> make a profiler for CPU performance, which works wonderfully from my limited testing.</p></li>
+<li><p>Aggressive garbage collection helped somewhat, but this approach makes me feel unclean. Using timers on the device to trigger a GC Collect is bad for battery performance, and the demo above shows that memory usage can spike between events for a PhoneApplicationPage.</p></li>
+<li><p>Paging data from isolated storage could be worth attempting, but I don't think this is a temporary fix - as the application would load the full file, select a subset of the data, and then dispose the file. Chunking data in isolated storage would increase complexity.</p></li>
+<li><p>Avoiding the use of navigation - and rolling some custom controls to support transitions instead - is the method that needs most work, but gives more control back to the application.</p></li>
+</ul>
+
+
+</div>
+
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>08 Jul 2011</span> &raquo; <a href="doing-the-build-server-dance-with-nuget.html">Doing the build server dance with NuGet</a></li>
+    
+      <li><span>18 Jun 2011</span> &raquo; <a href="inotifypropertychanged-stop-the-madness.html">Soapbox: INotifyPropertyChanged - Stop the Madness</a></li>
+    
+      <li><span>08 Jun 2011</span> &raquo; <a href="on-the-windows-8-preview.html">On the Windows 8 Preview Video</a></li>
+    
+  </ul>
+</div>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/DOMAssistantCompressed-2.8.js"></script>
+<script src="/js/libs/selectivizr-1.0.1.js"></script>
+<script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+
+<script>
+var _gaq=[['_setAccount','UA-8441214-1'],['_trackPageview']]; 
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+</body>
+</html>
