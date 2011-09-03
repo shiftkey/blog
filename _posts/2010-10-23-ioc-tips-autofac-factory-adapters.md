@@ -52,7 +52,7 @@ To fix the compiler error from changing the constructor signature, the test code
 What about those unit tests?
 -----------------------------
 
-What if we need to use the mock object in a unit test - to raise events or stub methods? We can’t track them if we use the function defined above...
+What if we need to use the mock object in a unit test - to raise events or stub methods? We can't track them if we use the function defined above...
 
 As our existing tests relied on verifying the messages displayed using ITimer instances, I wrote a custom function to mimic the function behaviour and support the unit tests.
 

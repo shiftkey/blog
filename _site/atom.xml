@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
  <link href="http://shiftkey.heroku.com/" />
- <updated>2011-09-03T17:43:52+10:00</updated>
+ <updated>2011-09-03T17:48:24+10:00</updated>
  <id>shiftkey.heroku.com<id>
  <author>
    <name>site.owner-name</name>
@@ -16,10 +16,9 @@
    <title>Doing the build server dance with NuGet</title>
    <link href="http://your.pages.urldoing-the-build-server-dance-with-nuget.html" />
    <updated>2011-07-08T14:00:00+10:00</updated>
-   <id>http://lebobs.ch/./doing-the-build-server-dance-with-nuget</id>
+   <id>http://shiftkey.heroku.com/./doing-the-build-server-dance-with-nuget</id>
    <content type="html">
-   <![CDATA[
-			<p>I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.</p>
+	<![CDATA[<p>I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.</p>
 
 <p>And with NuGet in the enterprise being the <a href="http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx">upcoming hotness</a>, I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.</p>
 
@@ -163,8 +162,7 @@ Which causes my build to break.</p>
 <li>some documentation on managing upstream dependencies</li>
 </ul>
 
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -173,10 +171,9 @@ Which causes my build to break.</p>
    <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
    <link href="http://your.pages.urlinotifypropertychanged-stop-the-madness.html" />
    <updated>2011-06-18T14:00:00+10:00</updated>
-   <id>http://lebobs.ch/./inotifypropertychanged-stop-the-madness</id>
+   <id>http://shiftkey.heroku.com/./inotifypropertychanged-stop-the-madness</id>
    <content type="html">
-   <![CDATA[
-			<p>Its time to stop with this madness.</p>
+	<![CDATA[<p>Its time to stop with this madness.</p>
 
 <p>Apologies again to <a href="http://twitter.com/kiwipom">Ian</a> as I picked on him unnecessarily when I read yet another "Let's make OnPropertyChanged compile safe" <a href="http://xaml.geek.nz/binding/5">blog post</a> yesterday.</p>
 
@@ -331,8 +328,7 @@ public string SomeProperty
 <p><strong><a href="http://code.google.com/p/notifypropertyweaver/">NotifyPropertyWeaver</a> - a .NET library for weaving INotifyPropertyChanged code into IL</strong></p>
 
 <p>This is my library of choice for automating INotifyPropertyChanged usage. I definitely owe <a href="http://twitter.com/simoncropp">Simon</a> a beer (or drink of choice) next time we cross paths - its been a joy to use.</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -341,10 +337,9 @@ public string SomeProperty
    <title>On the Windows 8 Preview Video</title>
    <link href="http://your.pages.urlon-the-windows-8-preview.html" />
    <updated>2011-06-08T14:00:00+10:00</updated>
-   <id>http://lebobs.ch/./on-the-windows-8-preview</id>
+   <id>http://shiftkey.heroku.com/./on-the-windows-8-preview</id>
    <content type="html">
-   <![CDATA[
-			<p>For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: <a href="http://www.youtube.com/watch?v=p92QfWOw88I">http://www.youtube.com/watch?v=p92QfWOw88I</a></p>
+	<![CDATA[<p>For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: <a href="http://www.youtube.com/watch?v=p92QfWOw88I">http://www.youtube.com/watch?v=p92QfWOw88I</a></p>
 
 <p>It was the trigger for significant backlash - and not for what was said, but for what wasn't said around the other options available for building Windows applications.</p>
 
@@ -409,8 +404,7 @@ public string SomeProperty
 <p>Compare Windows 7 to the WP7 launches - which have been done with device announcements involving hardware vendors - and it gives me hope that the launch can be done in a more "complete" fashion.</p>
 
 <p>And I want to see more presentations from MSFT about Windows 8 using touch - drive the presentations from a tablet, demonstrate how the new UI supports touch, and compel me to put it everywhere.</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -419,10 +413,9 @@ public string SomeProperty
    <title>slsvcutil - Workaround StackOverflowException</title>
    <link href="http://your.pages.urlslsvcutil-stackoverflowexception-workaround.html" />
    <updated>2011-05-06T14:00:00+10:00</updated>
-   <id>http://lebobs.ch/./slsvcutil-stackoverflowexception-workaround</id>
+   <id>http://shiftkey.heroku.com/./slsvcutil-stackoverflowexception-workaround</id>
    <content type="html">
-   <![CDATA[
-			<p>I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called <a href="http://www.stackoverflow.com/">stackoverflow</a> came into the mix :)</p>
+	<![CDATA[<p>I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called <a href="http://www.stackoverflow.com/">stackoverflow</a> came into the mix :)</p>
 
 <pre><code>D:\Readify\Hg\ReadifySample\src&gt;"C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Tools\Slsvcutil.exe" http://localhost:47862/Services/ParentService.svc
 
@@ -443,8 +436,7 @@ Process is terminated due to StackOverflowException.
 <p>That's right. If you have set your system language to something <strong>other than US English</strong>, you will probably encounter this issue.</p>
 
 <p>Enjoy.</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -453,10 +445,9 @@ Process is terminated due to StackOverflowException.
    <title>Musing - Simpler UI Testing for WPF Apps</title>
    <link href="http://your.pages.urlsimpler-ui-testing-for-wpf-apps.html" />
    <updated>2011-03-26T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./simpler-ui-testing-for-wpf-apps</id>
+   <id>http://shiftkey.heroku.com/./simpler-ui-testing-for-wpf-apps</id>
    <content type="html">
-   <![CDATA[
-			<p>After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
+	<![CDATA[<p>After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
 to paper and revisit why I started down this path.</p>
 
 <p><strong>Some background</strong></p>
@@ -563,8 +554,7 @@ end
 
 <p>I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code),
 just needed to write this post.</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -573,10 +563,9 @@ just needed to write this post.</p>
    <title>Arguments about Project Structure</title>
    <link href="http://your.pages.urlarguments-about-project-structure.html" />
    <updated>2011-02-23T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./arguments-about-project-structure</id>
+   <id>http://shiftkey.heroku.com/./arguments-about-project-structure</id>
    <content type="html">
-   <![CDATA[
-			<p>Whenever it comes time to kick off a new project, how do you structure it?</p>
+	<![CDATA[<p>Whenever it comes time to kick off a new project, how do you structure it?</p>
 
 <p>Given a greenfields situation - or even one of my side projects - I go for this layout:</p>
 
@@ -673,8 +662,7 @@ just needed to write this post.</p>
 <p><strong>Habit</strong></p>
 
 <p>And lastly, this is my personal opinion. Having spent a lot of time playing around with Linux OSS in the past, I keep coming back to that style of structure when setting up my own projects. Seeing things like uppercase folder names at the root just feel odd.</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -683,10 +671,9 @@ just needed to write this post.</p>
    <title>Using Rx to Implement Filtering in MahTweets</title>
    <link href="http://your.pages.urlusing-rx-to-implement-filtering-in-mahtweets.html" />
    <updated>2011-02-19T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./using-rx-to-implement-filtering-in-mahtweets</id>
+   <id>http://shiftkey.heroku.com/./using-rx-to-implement-filtering-in-mahtweets</id>
    <content type="html">
-   <![CDATA[
-			<p>As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.</p>
+	<![CDATA[<p>As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.</p>
 
 <p>Filtering is one of the things that MahTweets is famous for, but we're always looking for ways to make it better and easier. We've been experimenting with using the <a href="http://msdn.microsoft.com/en-us/devlabs/ee794896">Reactive Extensions (Rx) for .NET</a> to simplify the entire pipeline and provide more freedom in the application.</p>
 
@@ -802,8 +789,7 @@ just needed to write this post.</p>
 <li>Demonstrate user interface changes for vNext.</li>
 </ul>
 
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -812,10 +798,9 @@ just needed to write this post.</p>
    <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
    <link href="http://your.pages.urlwp7-memory-profiling-navigation.html" />
    <updated>2011-02-04T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./wp7-memory-profiling-navigation</id>
+   <id>http://shiftkey.heroku.com/./wp7-memory-profiling-navigation</id>
    <content type="html">
-   <![CDATA[
-			<p>In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...</p>
+	<![CDATA[<p>In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...</p>
 
 <h2>Updated</h2>
 
@@ -925,8 +910,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
 <li><p>Avoiding the use of navigation - and rolling some custom controls to support transitions instead - is the method that needs most work, but gives more control back to the application.</p></li>
 </ul>
 
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -935,10 +919,9 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
    <title>MEF and Chaining Dependencies</title>
    <link href="http://your.pages.urlmef-and-chaining-dependencies.html" />
    <updated>2010-12-20T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./mef-and-chaining-dependencies</id>
+   <id>http://shiftkey.heroku.com/./mef-and-chaining-dependencies</id>
    <content type="html">
-   <![CDATA[
-			<p>A <a href="http://mef.codeplex.com/Thread/View">question</a> came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.</p>
+	<![CDATA[<p>A <a href="http://mef.codeplex.com/Thread/View">question</a> came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.</p>
 
 <h2>Scenario</h2>
 
@@ -1069,8 +1052,7 @@ public class ActualProxy : IServiceProxy
 </code></pre>
 
 <p>Thoughts?</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -1079,10 +1061,9 @@ public class ActualProxy : IServiceProxy
    <title>MEF - [Import] vs [ImportingConstructor]</title>
    <link href="http://your.pages.urlmef-import-vs-importingconstructor.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./mef-import-vs-importingconstructor</id>
+   <id>http://shiftkey.heroku.com/./mef-import-vs-importingconstructor</id>
    <content type="html">
-   <![CDATA[
-			<p>A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at <a href="http://www.informit.com/articles/article.aspx?p=1635818">InformIT</a>. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.</p>
+	<![CDATA[<p>A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at <a href="http://www.informit.com/articles/article.aspx?p=1635818">InformIT</a>. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.</p>
 
 <p>The healthy debate was ultimately about [Import] being easier than [ImportingConstructor] to use. I disagreed, but at the time couldn't really put my finger on why I preferred it.</p>
 
@@ -1226,8 +1207,7 @@ container.RegisterComposablePartCatalog(catalog);
 <p>This allows for better separation between the application and external parts, and reduces effort required to register a component with both the IoC container and the CompositionContainer.</p>
 
 <p>I'll blog some more in the future on how you can use these parts to help manage MEF applications as they grow. I need to check out the MEF v2 drops first :)</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -1236,10 +1216,9 @@ container.RegisterComposablePartCatalog(catalog);
    <title>IoC Tips - Autofac Factory Adapters</title>
    <link href="http://your.pages.urlioc-tips-autofac-factory-adapters.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./ioc-tips-autofac-factory-adapters</id>
+   <id>http://shiftkey.heroku.com/./ioc-tips-autofac-factory-adapters</id>
    <content type="html">
-   <![CDATA[
-			<h2>Scenario</h2>
+	<![CDATA[<h2>Scenario</h2>
 
 <p>A team has a change request come in from the business. For one of their screens, a timer should count up when a user pauses the current task.</p>
 
@@ -1282,7 +1261,7 @@ container.RegisterComposablePartCatalog(catalog);
 
 <h2>What about those unit tests?</h2>
 
-<p>What if we need to use the mock object in a unit test - to raise events or stub methods? We can’t track them if we use the function defined above...</p>
+<p>What if we need to use the mock object in a unit test - to raise events or stub methods? We can't track them if we use the function defined above...</p>
 
 <p>As our existing tests relied on verifying the messages displayed using ITimer instances, I wrote a custom function to mimic the function behaviour and support the unit tests.</p>
 
@@ -1336,8 +1315,7 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
 <p>Nicholas Blumhardt, maintainer of Autofac, has a <a href="http://nblumhardt.com/2010/01/the-relationship-zoo/">detailed entry</a> which discusses the different possible relationships between components, and how Autofac defines them. While the article is Autofac-centric, many of the other inversion of control containers for the .NET Framework support some of the features already.</p>
 
 <p>A great read if you want to dive deeper into inversion of control concepts.</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -1346,10 +1324,9 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
    <title>Amped Web 2010 Recap</title>
    <link href="http://your.pages.urlamped-web-2010-recap.html" />
    <updated>2010-10-16T14:00:00+11:00</updated>
-   <id>http://lebobs.ch/./amped-web-2010-recap</id>
+   <id>http://shiftkey.heroku.com/./amped-web-2010-recap</id>
    <content type="html">
-   <![CDATA[
-			<p><strong>Disclaimer:</strong> I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including <a href="http://twitter.com/Rog42">@Rog42</a>'s crazy photography experiments!</p>
+	<![CDATA[<p><strong>Disclaimer:</strong> I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including <a href="http://twitter.com/Rog42">@Rog42</a>'s crazy photography experiments!</p>
 
 <p>Yesterday was the <a href="http://www.ampedweb.org/">Amped Web</a> day, a hack day following the Web Directions South conference held in Sydney. The day is for teams to compete in specific categories - around design and development - and put together a solution in a few hours. It may have been an all-day event, but the time flew by. The solutions were reviewed by judges over the afternoon - providing feedback and suggestions as the teams polished their ideas.</p>
 
@@ -1382,8 +1359,7 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
 <p>We'll continue to polish our idea over the coming weeks - adding features, enhancing the story, getting feedback from the community - so stay tuned for more. I'll put up a higher-res video of the WP7 application for those who are having troubles seeing it clearly in the pitch.</p>
 
 <p>For those who have specific questions, you can leave a comment here or reach me on Twitter (<a href="http://twitter.com/shiftkey">@shiftkey</a>)</p>
-
-   ]]>
+]]>
    </content>
    
  </entry>
@@ -1392,10 +1368,9 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
    <title>Hello World</title>
    <link href="http://your.pages.urlhello-world.html" />
    <updated>2010-09-23T10:50:44+10:00</updated>
-   <id>http://lebobs.ch/./hello-world</id>
+   <id>http://shiftkey.heroku.com/./hello-world</id>
    <content type="html">
-   <![CDATA[
-			<p>Starting off this blog with a simple post. More styling to come during the coming days.</p>
+	<![CDATA[<p>Starting off this blog with a simple post. More styling to come during the coming days.</p>
 
 <p><strong>Side note:</strong> here's the Factorial function in F#:</p>
 
@@ -1404,8 +1379,7 @@ match n with
 | 0 -&gt; 1
 | _ -&gt; n * factorial (n - 1)
 </code></pre>
-
-   ]]>
+]]>
    </content>
    
  </entry>

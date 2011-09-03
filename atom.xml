@@ -19,11 +19,9 @@ layout: nil
    <title>{{ post.title }}</title>
    <link href="http://your.pages.url{{ post.url }}" />
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://lebobs.ch/{{ post.id }}</id>
+   <id>http://shiftkey.heroku.com/{{ post.id }}</id>
    <content type="html">
-   <![CDATA[
-			{{ post.content  }}
-   ]]>
+	<![CDATA[{{ post.content  }}]]>
    </content>
    
  </entry>
