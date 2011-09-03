@@ -11,4 +11,7 @@ use Rack::Rewrite do
     }
 end
 
+use Rack::Static, 
+  :urls => ["/img"]
+
 run Rack::Jekyll.new
