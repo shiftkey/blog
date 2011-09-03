@@ -1,0 +1,72 @@
+---
+layout: frontpage
+---
+	<section id="main" style="width: 600px; padding-right: 25px">
+
+	{{ content }}
+
+	</section>
+	
+	<aside role="complementary">
+		<section>
+			{% render_time Last updated: %}
+		</section>
+
+		<section>
+			<header>
+				<h3>about</h3>
+			</header>
+
+			<div>
+				Brendan is a semi-nomadic software developer. When he's not working for Readify, you might find him dabbling in various open source projects or hanging out with others in the Aussie dev community - sometimes up the front presenting, sometimes up the back heckling, and sometimes holding down the bar at the after party.
+			</div>
+		</section>
+		<section>
+			<header>
+				<h3>things of note</h3>
+			</header>
+
+			{% tag_cloud %}
+
+		</section>
+		<section>
+			<header>
+				<h3>you might see me at</h3>
+			</header>
+
+			<div class="vevent">
+				<img src="/img/main/4.jpg" width="200" />
+				<h4>BUILD</h4>
+				<span class="vevent">
+				 <span class="summary">I'll be attending the <a href="http://www.buildwindows.com/" class="summary url">BUILD conference</a> in 
+					<span class="location">Los Angeles, CA, USA</span>
+					from <abbr class="dtstart" title="2011-09-12">Sept 12</abbr> 
+					- <abbr class="dtend" title="2011-09-16">Sept 16</abbr>, 2011.
+				 </span>
+				</span>
+			</div>
+
+			<div class="vevent">
+				<img src="/img/main/5.jpg" width="200" />
+				<h4>ddd Brisbane</h4>
+				<span class="vevent">
+				 <span class="summary">I'll be (hopefully) speaking at the <a href="http://www.dddbrisbane.com/" class="summary url">DeveloperDeveloperDeveloper Brisbane</a> in 
+					<span class="location">Brisbane, Australia</span>
+					on <abbr class="dtstart" title="2011-09-12">26th November</abbr>, 2011.
+				</span>
+				</span>
+			</div>
+
+			<div class="vevent">
+				<img src="/img/main/6.jpg" width="200" />
+				<h4>YOW Open Spaces Event</h4>
+				<span class="vevent">
+				 <span class="summary">I'll be heckling and/or helping at <a href="#" class="summary url">the Open Spaces event</a> in 
+					<span class="location">Melbourne, Australia</span>
+					on <abbr class="dtstart" title="2011-09-12">4th Decemeber *</abbr>, 2011.
+				</span>
+				</span>
+			</div>
+
+		</section>
+	</aside>
