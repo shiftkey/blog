@@ -162,7 +162,7 @@ font-size : 1em; /* 16 / 16 = 1 */ }
 
 ul, 
 ol { 
-margin : 0 0 1.5em -24px; 
+margin : 0 0 1.5em 0px; 
 padding-left : 24px; }
 
 ul { 

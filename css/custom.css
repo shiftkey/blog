@@ -109,8 +109,7 @@ aside h3, aside h4
 
 #main img
 {
-	width: 625px;
-	height: 150px;
+	
 }
 
 
@@ -165,11 +164,58 @@ a:hover
 	text-decoration: none;
 }
 
-/*
-1F2833
-2F4259
-728FB8
-B8CFF2
-DEE9F5
 
-*/
+article img, article video, article .flash-video {
+    -moz-box-sizing: border-box;
+    border: 0.5em solid white;
+    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.basic-alignment.left, article img.left, article video.left, article .left.flash-video, aside[role="sidebar"] img.left {
+    float: left;
+    margin-right: 1.5em;
+}
+
+.flex-content, article img, article video, article .flash-video, aside[role="sidebar"] img {
+    height: auto;
+    max-width: 100%;
+}
+
+.basic-alignment.right, article img.right, article video.right, article .right.flash-video, aside[role="sidebar"] img.right {
+    float: right;
+    margin-left: 1.5em;
+}
+
+.has-pullquote:before {
+	/* Reset metrics. */
+	padding: 0;
+	border: none;
+	
+	/* Content */
+	content: attr(data-pullquote);
+	
+	/* Pull out to the right, modular scale based margins. */
+	float: right;
+	width: 320px;
+	margin: 12px -140px 24px 36px;
+	
+	/* Baseline correction */
+	position: relative;
+	top: 5px;
+	
+	/* Typography (30px line-height equals 25% incremental leading) */
+	font-size: 23px;
+	line-height: 30px;
+}
+
+blockquote cite:before {
+    color: #AAAAAA;
+    content: "—";
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+blockquote cite {
+    font-style: italic;
+}

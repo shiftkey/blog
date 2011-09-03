@@ -30,9 +30,38 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <div class="content clearfix">
 
-	{{ content }}
+	<article>
 
+		<section id="main">
+
+
+<p>
+		
+			{% pullquote %}
+			a minor grievance with the *install* command. Unlike the *update* command, this works against a project's repository. This seems subpar, when I can call *update* against a solution file.{" Can we get some consistency with this?  Or have I missed something with how install behaves? "}
+			{% endpullquote %}
+</p>		
+
+<p>
+			{% blockquote Brendan Forster, The Hitchhikers Guide to the Galaxy %}
+			a minor grievance with the *install* command. Unlike the *update* command, this works against a project's repository. This seems subpar, when I can call *update* against a solution file.{" Can we get some consistency with this?  Or have I missed something with how install behaves? "}
+			{% endblockquote %}
+</p>
+
+		</section>
+	</article>
 </div>
+
+
+<footer role="contentinfo" class="clearfix">
+
+	<p>
+  		<a href="#"><h4>...some words here...</h4></a>
+	</p>
+
+ 
+</footer>
+
 {% include boilerplate_analytics_scripts.html %}
 
 </body>
