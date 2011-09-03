@@ -16,7 +16,7 @@ Imagine you have an application that calls off different services to execute tas
 
 But the relationship between the application and the services is not straightforward, which gives a dependency graph similar to the below image:
 
-<center><img src="http://brendanforster.com/get/images/DependencyGraph.png" height="500"  /></center>
+<center><img src="img/posts/DependencyGraph.png" height="500"  /></center>
 
 What should we do now?
 

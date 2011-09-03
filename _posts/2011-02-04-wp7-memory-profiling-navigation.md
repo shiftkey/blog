@@ -89,7 +89,7 @@ The code is [here][2] and the sample output can be seen on [Gist][3]
 
 Graphing the memory at each step, the graph looks like this:
 
-<center><a href="http://brendanforster.com/files/images/breakdown.png"><img src="http://brendanforster.com/files/images/breakdown.png" width="800" /></a></center>
+<center><a href="img/posts/breakdown.png"><img src="img/posts/breakdown.png" width="800" /></a></center>
 
 But why is the memory footprint larger (by almost 10 MB) on returning to the main screen?
 
@@ -97,8 +97,7 @@ But why is the memory footprint larger (by almost 10 MB) on returning to the mai
 
 Repeating the scenario a few times, and the behaviour is the same.
 
-<center>
-<a href="http://brendanforster.com/files/images/pattern.png"><img src="http://brendanforster.com/files/images/pattern.png" width="800" /></a></center>
+<center><a href="img/posts/pattern.png"><img src="img/posts/pattern.png" width="800" /></a></center>
 
 Puzzling...
 

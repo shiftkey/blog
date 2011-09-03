@@ -4,10 +4,10 @@
  <title>brendan forster</title>
  <link href="http://shiftkey.heroku.com/atom.xml" rel="self" />
  <link href="http://shiftkey.heroku.com/" />
- <updated>2011-09-03T17:50:13+10:00</updated>
+ <updated>2011-09-03T17:57:11+10:00</updated>
  <author>
-   <name>site.owner-name</name>
-   <email>site.owner-email</email>
+   <name>Brendan Forster</name>
+   <email>shift.key@gmail.com</email>
  </author>
 
  
@@ -682,7 +682,7 @@ just needed to write this post.</p>
 
 <p>Roughly speaking, this is how the filters are applied.</p>
 
-<center><a href="http://brendanforster.com/files/images/FiltersClassic.png"><img src="http://brendanforster.com/files/images/FiltersClassic.png" width="700" /></a></center>
+<center><a href="img/posts/FiltersClassic.png"><img src="img/posts/FiltersClassic.png" width="700" /></a></center>
 
 
 <p>Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters.</p>
@@ -714,7 +714,7 @@ just needed to write this post.</p>
 
 <p>The interactions between these components now looks like:</p>
 
-<center><a href="http://brendanforster.com/files/images/RxFirstCut.png"><img src="http://brendanforster.com/files/images/RxFirstCut.png" width="700" /></a></center>
+<center><a href="img/posts/RxFirstCut.png"><img src="img/posts/RxFirstCut.png" width="700" /></a></center>
 
 
 <p>The biggest change is that subscribers interact with the IObservable, rather than being encompassed within the view. Each list still combines a set of filters, which display the combined set of results on-screen. However, when multiple filters are run in parallel, invalid items may appear.</p>
@@ -774,7 +774,7 @@ just needed to write this post.</p>
 </ul>
 
 
-<center><a href="http://brendanforster.com/files/images/RxSecondCut.png"><img src="http://brendanforster.com/files/images/RxSecondCut.png" width="700" /></a></center>
+<center><a href="img/posts/RxSecondCut.png"><img src="img/posts/RxSecondCut.png" width="700" /></a></center>
 
 
 <p>An internal subscriber verifies a status against a list of exclusions, and propogates the status further if it is valid. Each view only requires its inclusion rules (or a wildcard rule if no rules specified) to display results.</p>
@@ -880,7 +880,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
 
 <p>Graphing the memory at each step, the graph looks like this:</p>
 
-<center><a href="http://brendanforster.com/files/images/breakdown.png"><img src="http://brendanforster.com/files/images/breakdown.png" width="800" /></a></center>
+<center><a href="img/posts/breakdown.png"><img src="img/posts/breakdown.png" width="800" /></a></center>
 
 
 <p>But why is the memory footprint larger (by almost 10 MB) on returning to the main screen?</p>
@@ -889,8 +889,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
 
 <p>Repeating the scenario a few times, and the behaviour is the same.</p>
 
-<center>
-<a href="http://brendanforster.com/files/images/pattern.png"><img src="http://brendanforster.com/files/images/pattern.png" width="800" /></a></center>
+<center><a href="img/posts/pattern.png"><img src="img/posts/pattern.png" width="800" /></a></center>
 
 
 <p>Puzzling...</p>
@@ -928,7 +927,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
 
 <p>But the relationship between the application and the services is not straightforward, which gives a dependency graph similar to the below image:</p>
 
-<center><img src="http://brendanforster.com/get/images/DependencyGraph.png" height="500"  /></center>
+<center><img src="img/posts/DependencyGraph.png" height="500"  /></center>
 
 
 <p>What should we do now?</p>

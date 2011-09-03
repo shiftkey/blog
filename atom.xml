@@ -9,8 +9,8 @@ layout: nil
  <link href="http://shiftkey.heroku.com/" />
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <author>
-   <name>site.owner-name</name>
-   <email>site.owner-email</email>
+   <name>Brendan Forster</name>
+   <email>shift.key@gmail.com</email>
  </author>
 
  {% for post in site.posts %}
@@ -20,7 +20,7 @@ layout: nil
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>http://shiftkey.heroku.com/{{ post.id }}</id>
    <content type="html">
-	<![CDATA[{{ post.content  }}]]>
+	<![CDATA[{{ post.content   }}]]>
    </content>
    
  </entry>

@@ -19,7 +19,7 @@ MahTweets allow the user to filter streams by update type, contact or text. Filt
 
 Roughly speaking, this is how the filters are applied.
 
-<center><a href="http://brendanforster.com/files/images/FiltersClassic.png"><img src="http://brendanforster.com/files/images/FiltersClassic.png" width="700" /></a></center>
+<center><a href="img/posts/FiltersClassic.png"><img src="img/posts/FiltersClassic.png" width="700" /></a></center>
 
 Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters. 
 
@@ -45,7 +45,7 @@ MahTweets also had some demo plugins for stream analytics, and abstracting away 
 
 The interactions between these components now looks like:
 
-<center><a href="http://brendanforster.com/files/images/RxFirstCut.png"><img src="http://brendanforster.com/files/images/RxFirstCut.png" width="700" /></a></center>
+<center><a href="img/posts/RxFirstCut.png"><img src="img/posts/RxFirstCut.png" width="700" /></a></center>
 
 The biggest change is that subscribers interact with the IObservable, rather than being encompassed within the view. Each list still combines a set of filters, which display the combined set of results on-screen. However, when multiple filters are run in parallel, invalid items may appear.
 
@@ -91,7 +91,7 @@ The second cut of the design allows for three subscriber hooks:
 - Subscribers register against the output observable, with the global filtering applied.
 - Exclude rules are applied closer to the source.
 
-<center><a href="http://brendanforster.com/files/images/RxSecondCut.png"><img src="http://brendanforster.com/files/images/RxSecondCut.png" width="700" /></a></center>
+<center><a href="img/posts/RxSecondCut.png"><img src="img/posts/RxSecondCut.png" width="700" /></a></center>
 
 An internal subscriber verifies a status against a list of exclusions, and propogates the status further if it is valid. Each view only requires its inclusion rules (or a wildcard rule if no rules specified) to display results.
 
