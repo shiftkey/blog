@@ -1,4 +1,3 @@
 source :rubygems
-gemspec
-rack-jekyll
-rack-rewrite
+gem 'rack-jekyll'
+gem 'rack-rewrite'
