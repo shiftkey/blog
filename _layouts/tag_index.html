@@ -2,36 +2,6 @@
 layout: frontpage
 ---
 
-<style type="text/css">
-
-.archive_list
-{
-	list-style-type: none;
-}
-
-.archive_list .summary
-{
-	margin-bottom: 0.5em;
-}
-
-.tag_list
-{
-	list-style-type: none;
-	 padding-left: 0px;
-}
-
-.tag_list li
-{
-	margin: 0;
-	margin-left: 10px;
-	margin-right: 10px;
-	padding:0;
-	float: left;
-}
-
-</style>
-
-
 <ul>
 	{% for post in site.posts %}
 	{% for tag in post.tags %}
