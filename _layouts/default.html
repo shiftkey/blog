@@ -7,9 +7,8 @@ layout: frontpage
 
 		{{ content }}
 
-
 		{% for ps in site.posts limit:4 %}
-			<section>
+			<article>
 				<header class="post-header">
 					<hgroup>
 					    <p class="date">{{ ps.date | date:"%d-%m-%Y"}}</p>
@@ -23,8 +22,9 @@ layout: frontpage
 						<p>{{ps.description}}</p>
 					</hgroup>
 				</header>
-			</section>
+			</article>
 		{% endfor %}
+		
 
 	</section>
 
@@ -66,33 +66,41 @@ layout: frontpage
 			</header>
 
 			<div class="vevent">
-				<div style="background:white">
+				<p style="background:white">
 					<a href="http://www.buildwindows.com/" class="summary url"><img src="/img/main/build_logo.png" /></a> 
-				</div>
+				</p>
+				<p>
 				 <span class="summary">I'll be attending the <a href="http://www.buildwindows.com/" class="summary url">BUILD conference</a> in 
 				 	<span class="location">Los Angeles, CA, USA</span>
 				 	from <abbr class="dtstart" title="2011-09-12">Sept 12</abbr> 
 				 	- <abbr class="dtend" title="2011-09-16">Sept 16</abbr>, 2011.
 				 </span>
+				 </p>
+				 <p>
+					Conference Log <a href="/build">here</a>
+				 </p>
 			</div>
 
 			<div class="vevent">
-				<div>
+				<p>
 					<a href="http://www.dddbrisbane.com/" class="summary url"><img src="/img/main/dddbrisbane.png" /></a>
-				</div>
+				</p>
+				<p>
 				 <span class="summary">
 				 	<abbr class="dtstart" title="2011-11-26">26th November</abbr>, 2011 
 				 		<br /> (Hopefully) speaking on Windows 8
 				</span>
+				</p>
 			</div>
 
 			<div class="vevent">
-				<img src="/img/main/6.jpg" width="200" />
 				<h4>YOW Open Spaces Event</h4>
+				<p>
 				 <span class="summary">I'll be heckling and/or helping at <a href="#" class="summary url">the Open Spaces event</a> in 
 				 	<span class="location">Melbourne, Australia</span>
 				 	on <abbr class="dtstart" title="2011-09-03">3 Decemeber</abbr>, 2011.
 				</span>
+				</p>
 			</div>
 
 		</section>
