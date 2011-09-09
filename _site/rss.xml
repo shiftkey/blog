@@ -6,15 +6,15 @@
     <atom:link href="http://www.brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Fri, 09 Sep 2011 21:54:22 +1000</pubDate>
-    <lastBuildDate>Fri, 09 Sep 2011 21:54:22 +1000</lastBuildDate>
+    <pubDate>Fri, 09 Sep 2011 21:57:07 +1000</pubDate>
+    <lastBuildDate>Fri, 09 Sep 2011 21:57:07 +1000</lastBuildDate>
 
     
     <item>
       <title>Doing the build server dance with NuGet</title>
       <link>http://www.brendanforster.comdoing-the-build-server-dance-with-nuget.html</link>
       <pubDate>Fri, 08 Jul 2011 14:00:00 +1000</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./doing-the-build-server-dance-with-nuget</guid>
       <description>&lt;p&gt;I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.&lt;/p&gt;
 
@@ -167,7 +167,7 @@ Which causes my build to break.&lt;/p&gt;
       <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
       <link>http://www.brendanforster.cominotifypropertychanged-stop-the-madness.html</link>
       <pubDate>Sat, 18 Jun 2011 14:00:00 +1000</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./inotifypropertychanged-stop-the-madness</guid>
       <description>&lt;p&gt;Its time to stop with this madness.&lt;/p&gt;
 
@@ -331,7 +331,7 @@ public string SomeProperty
       <title>On the Windows 8 Preview Video</title>
       <link>http://www.brendanforster.comon-the-windows-8-preview.html</link>
       <pubDate>Wed, 08 Jun 2011 14:00:00 +1000</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./on-the-windows-8-preview</guid>
       <description>&lt;p&gt;For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: &lt;a href=&quot;http://www.youtube.com/watch?v=p92QfWOw88I&quot;&gt;http://www.youtube.com/watch?v=p92QfWOw88I&lt;/a&gt;&lt;/p&gt;
 
@@ -405,7 +405,7 @@ public string SomeProperty
       <title>slsvcutil - Workaround StackOverflowException</title>
       <link>http://www.brendanforster.comslsvcutil-stackoverflowexception-workaround.html</link>
       <pubDate>Fri, 06 May 2011 14:00:00 +1000</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./slsvcutil-stackoverflowexception-workaround</guid>
       <description>&lt;p&gt;I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called &lt;a href=&quot;http://www.stackoverflow.com/&quot;&gt;stackoverflow&lt;/a&gt; came into the mix :)&lt;/p&gt;
 
@@ -435,7 +435,7 @@ Process is terminated due to StackOverflowException.
       <title>Musing - Simpler UI Testing for WPF Apps</title>
       <link>http://www.brendanforster.comsimpler-ui-testing-for-wpf-apps.html</link>
       <pubDate>Sat, 26 Mar 2011 14:00:00 +1100</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./simpler-ui-testing-for-wpf-apps</guid>
       <description>&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
 to paper and revisit why I started down this path.&lt;/p&gt;
@@ -551,7 +551,7 @@ just needed to write this post.&lt;/p&gt;
       <title>Arguments about Project Structure</title>
       <link>http://www.brendanforster.comarguments-about-project-structure.html</link>
       <pubDate>Wed, 23 Feb 2011 14:00:00 +1100</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./arguments-about-project-structure</guid>
       <description>&lt;p&gt;Whenever it comes time to kick off a new project, how do you structure it?&lt;/p&gt;
 
@@ -657,7 +657,7 @@ just needed to write this post.&lt;/p&gt;
       <title>Using Rx to Implement Filtering in MahTweets</title>
       <link>http://www.brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html</link>
       <pubDate>Sat, 19 Feb 2011 14:00:00 +1100</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./using-rx-to-implement-filtering-in-mahtweets</guid>
       <description>&lt;p&gt;As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.&lt;/p&gt;
 
@@ -782,7 +782,7 @@ just needed to write this post.&lt;/p&gt;
       <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
       <link>http://www.brendanforster.comwp7-memory-profiling-navigation.html</link>
       <pubDate>Fri, 04 Feb 2011 14:00:00 +1100</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./wp7-memory-profiling-navigation</guid>
       <description>&lt;p&gt;In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...&lt;/p&gt;
 
@@ -900,7 +900,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
       <title>MEF and Chaining Dependencies</title>
       <link>http://www.brendanforster.commef-and-chaining-dependencies.html</link>
       <pubDate>Mon, 20 Dec 2010 14:00:00 +1100</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./mef-and-chaining-dependencies</guid>
       <description>&lt;p&gt;A &lt;a href=&quot;http://mef.codeplex.com/Thread/View&quot;&gt;question&lt;/a&gt; came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was &quot;solved&quot; - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.&lt;/p&gt;
 
@@ -1040,7 +1040,7 @@ public class ActualProxy : IServiceProxy
       <title>MEF - [Import] vs [ImportingConstructor]</title>
       <link>http://www.brendanforster.commef-import-vs-importingconstructor.html</link>
       <pubDate>Sat, 23 Oct 2010 14:00:00 +1100</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com./mef-import-vs-importingconstructor</guid>
       <description>&lt;p&gt;A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at &lt;a href=&quot;http://www.informit.com/articles/article.aspx?p=1635818&quot;&gt;InformIT&lt;/a&gt;. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.&lt;/p&gt;
 

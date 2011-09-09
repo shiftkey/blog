@@ -17,7 +17,7 @@ layout: nil
       <title>{{ post.title }}</title>
       <link>http://www.brendanforster.com{{ post.url }}</link>
       <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-      <author>Brendan Forster</author>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://www.brendanforster.com{{ post.id }}</guid>
       <description>{{ post.content | xml_escape }}</description>
     </item>
