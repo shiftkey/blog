@@ -5,8 +5,8 @@ layout: nil
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>brendan forster.com</title>
-    <link>http://www.brendanforster.com/</link>
-    <atom:link href="http://www.brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
+    <link>http://brendanforster.com/</link>
+    <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
     <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
@@ -15,10 +15,10 @@ layout: nil
     {% for post in site.posts limit:10 %}
     <item>
       <title>{{ post.title }}</title>
-      <link>http://www.brendanforster.com{{ post.url }}</link>
+      <link>http://brendanforster.com{{ post.url }}</link>
       <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://www.brendanforster.com{{ post.id }}</guid>
+      <guid>http://brendanforster.com{{ post.id }}</guid>
       <description>{{ post.content | xml_escape }}</description>
     </item>
     {% endfor %}
