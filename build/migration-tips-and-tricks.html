@@ -318,7 +318,7 @@ public sealed class MyClass
         return AsyncInfoFactory.Create(() => GetInternal(url));
     }
 
-    private static async Task&gt;string&gt; GetInternal(string url)
+    private static async Task&lt;string&gt; GetInternal(string url)
     {
         var client = new HttpClient();
         var response = await client.GetAsync(url);
