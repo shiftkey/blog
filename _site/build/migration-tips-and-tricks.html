@@ -212,7 +212,7 @@ public sealed class MyClass
         <pre>
 public sealed class MyClass
 {
-    public IList<string> MyProperty { get; set; }
+    public IList&lt;string&gt; MyProperty { get; set; }
 }
         </pre>
 
@@ -362,7 +362,7 @@ public sealed class SomeClass
         You may be inclined to use async and await everywhere, seeing as they are the new black:<br /><br />
 
         <pre>
-public async Task<string> Get(string url)
+public async Task&lt;string&gt; Get(string url)
 {
     var client = new HttpClient();
     var response = await client.GetAsync(url);
@@ -379,12 +379,12 @@ public async Task<string> Get(string url)
         <pre>
 public sealed class MyClass
 {
-    public IAsyncOperation<string> Get(string url)
+    public IAsyncOperation&lt;string&gt; Get(string url)
     {
         return AsyncInfoFactory.Create(() => GetInternal(url));
     }
 
-    private static async Task<string> GetInternal(string url)
+    private static async Task&gt;string&gt; GetInternal(string url)
     {
         var client = new HttpClient();
         var response = await client.GetAsync(url);
