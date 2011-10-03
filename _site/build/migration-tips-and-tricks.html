@@ -70,7 +70,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <!-- http://t.co/y1jPVnT -->
-<link rel="canonical" href="/build/index.html">
+<link rel="canonical" href="/build/migration-tips-and-tricks.html">
 </head>
 
 
@@ -92,12 +92,87 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <article>
     <header>
-        <h3>Notes on migrating code to Windows Runtime</h3>
+        <h3>Migration Tips and Tricks</h3>
     </header>
 
-    
+    <section>
+    <header>
+        <h4>About</h4>
+    </header>
+        I spent today migrating an existing library (Stacky - details <a href="http://stacky.codeplex.com/">here</a>) into a Windows Runtime-compatible API. While I started out with the goal of having one codebase to rule them all, I quickly found this was awfully idealistic and focused on just the WinRT stuff.
+    </section>
 
-</article>
+    <section>
+        <header>
+           <h4> What worked</h4>
+        </header>
+
+        Not much -  but I was unsurprised by that as there were many design decisions which are breaking changes for existing libraries. I'll refer to some of the sessions I've watched from BUILD about this topic:
+
+        <ul>
+
+        </ul>
+    </section>
+
+    <section>
+        <header>
+           <h4>Pain Points</h4>
+        </header>
+
+        A fair few - but this is to be expected. The move to asychronous methods which can be used synchronously thanks to the await and async keywords demands this, but does clean up a significant amount of code.
+
+        <ul>
+
+        </ul>
+    </section>
+
+    <section>
+        <header>
+        <h4>Public (or protected) generic methods</h4>
+        </header>
+
+        <blockquote><p><strong>Error:</strong> Generic type parameters may not appear in method signatures of Windows Runtime methods.</p></blockquote>
+        <pre>
+        protected void NotifyOfPropertyChange&lt;TProperty&gt;(Expression&lt;Func&lt;TProperty&gt;&gt; property)
+        {
+            NotifyOfPropertyChange(property.GetMemberInfo().Name);
+        }
+        </pre>
+
+        <strong>Resolution: mark this as internal. Public or Protected</strong>
+    </section>
+
+     <section>
+        <h4>Use an interface instead of an implementation</h4>
+<blockquote><p><strong>Error:</strong> Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.</p></blockquote>
+        Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList<MyClass>, System.Collections.Generic.IReadOnlyList<MyClass>, System.Collections.Generic.IEnumerable<MyClass>'
+    </section>
+
+    <section>
+          
+        <strong>Error:</strong> Type 'MyClass' is unsealed but is not enabled for composition. Either seal 'MyClass', or mark it with the System.Runtime.InteropServices.WindowsRuntime.EnableCompositionAttribute so that you can derive from it. To use the class from JavaScript, you must seal it.
+    </section>
+
+    <section>
+        <strong>Error:</strong>'MyClass.Method(System.Object parameter)' is a virtual method. Managed types may not expose new virtual methods in Windows Runtime.
+
+        <strong>Error: </strong>Field names cannot differ only by case: 'Stacky.User.webSite' , 'Stacky.User.website'.
+
+        <strong>Error: </strong>Interface 'Stacky.IPagedList<T>' requires interface 'System.Collections.Generic.IEnumerable<T>' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
+
+Field names cannot differ only by case: 'Namespace.Class.<PROPERTY>k__BackingField' , 'Stacky.ErrorResponse.<Property>k__BackingField'.	
+
+     <strong>Error: </strong>	Unable to determine a default interface for runtime class 'Stacky.TagWiki'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.
+
+<strong>Error: </strong>Unable to determine a default interface for runtime class 'Stacky.HttpResponse'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.	C:\Code\codeplex\shiftkey\stackywinrt\trunk\source\Stacky.WinRT\obj\Debug\Stacky.WinRT.winmdobj	Stacky.WinRT
+
+
+
+
+
+    </section>
+
+    </article>
 
 
 
