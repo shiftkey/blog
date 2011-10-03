@@ -4,19 +4,25 @@ title: Notes from BUILD
 ---
 
 <header>
-	<h2>documenting the chaos</h2>
+	<h2>Recap from BUILD</h2>
 </header>
 
 <article>
     <header>
-        <h3>Migration Tips and Tricks</h3>
+        <h3>API Design and Windows Metadata Exporter</h3>
     </header>
 
     <section>
+        I spent today migrating an existing .NET library (Stacky - details <a href="http://stacky.codeplex.com/">here</a>) into a Windows Runtime-compatible API. While I started out with the goal of having one codebase to rule them all, I quickly found this was awfully idealistic and focused on just the WinRT stuff as an exercise. <br />
+        <br />
+        You can see the state of the code (warning: very rough) on <a href="https://bitbucket.org/shiftkey/stackywinrt">bitbucket</a>.
+    </section>
+
+    <section>
     <header>
-        <h4>About</h4>
+        <h4>Caveats</h4>
     </header>
-        I spent today migrating an existing library (Stacky - details <a href="http://stacky.codeplex.com/">here</a>) into a Windows Runtime-compatible API. While I started out with the goal of having one codebase to rule them all, I quickly found this was awfully idealistic and focused on just the WinRT stuff.
+        All of this remarks below are subject to change. I have a few outstanding queries which I'll follow up with the product teams as I can find them on Twitter or on the forums.
     </section>
 
     <section>
@@ -24,23 +30,46 @@ title: Notes from BUILD
            <h4> What worked</h4>
         </header>
 
-        Not much -  but I was unsurprised by that as there were many design decisions which are breaking changes for existing libraries. I'll refer to some of the sessions I've watched from BUILD about this topic:
+        Not much -  but I was unsurprised by that as there were many design decisions which were flagged at BUILD. I'll refer to some of the sessions I've watched from BUILD about this:
 
         <ul>
-
+            <li>Talk 1</li>
+            <li>Talk 1</li>
+            <li>Talk 1</li>
         </ul>
     </section>
 
     <section>
         <header>
-           <h4>Pain Points</h4>
+           <h4>Why the change?</h4>
         </header>
 
-        A fair few - but this is to be expected. The move to asychronous methods which can be used synchronously thanks to the await and async keywords demands this, but does clean up a significant amount of code.
+        A fair few - but again, is to be expected. The move to asychronous methods which can be invoked synchronously thanks to the syntactical sugar of <code>await</code> and <code>async</code> keywords demands this, but does have a lot of benefits.
 
-        <ul>
+        <br /><br />
 
-        </ul>
+        For people who have been doing .NET development, they should be familiar with the concept of a class library - a reusable set of classes which can be referenced in other projects.<br /><br />
+
+        The Windows Runtime APIs behave slightly different (more on this later) and requires a different build process. Why do this? If you want your library to be consumed from C++ or a Javascript WinRT applications. Again, this is a topic far better covered by the product teams at BUILD, so go check them out.<br /><br />
+
+        {% img center /img/posts/Win8/project-settings.png  %} <br /><br />
+
+        When I change my project type to output a WinMD file, this changes the build process to include a tool called <strong>Windows Metadata Exporer</strong> (herein referred to as <strong>winmdexp</strong>). <br /><br />
+
+        {% img center /img/posts/Win8/winmdexp-output.png %} <br /><br />
+
+        You won't see this level of detail in your Output Window unless you switch the MSBuild output under <strong>Tools | Options | Projects and Solutions | Build and Run</strong> to Diagnostic or higher.<br /><br />
+
+        You will see the errors and warnings though: <br /><br />
+        
+        {% img center /img/posts/Win8/error-output.png %} <br /><br />
+        
+    </section>
+    <section>
+        <header>
+           <h4>Why the change?</h4>
+        </header>
+
     </section>
 
     <section>

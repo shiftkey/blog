@@ -22,3 +22,8 @@ blockquote
 {
 	margin-top: 20px;
 }
+
+pre, code
+{
+	color: #59CC0E;
+}

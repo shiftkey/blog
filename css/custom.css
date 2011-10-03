@@ -193,6 +193,11 @@ article img, article video, article .flash-video {
     margin-left: 1.5em;
 }
 
+
+.basic-alignment.center, article img.center, article video.center, article .center.flash-video, aside[role="sidebar"] img.center {
+    margin: 0 auto;
+}
+
 .has-pullquote:before {
 	/* Reset metrics. */
 	padding: 0;
