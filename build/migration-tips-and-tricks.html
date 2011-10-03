@@ -155,7 +155,7 @@ public sealed class MyClass
         <pre>
 public static class MyStaticClass
 {
-    public static T Parse<T>(string text)
+    public static T Parse&lt;T&gt;(string text)
     {
         return default(T);
     }
@@ -165,9 +165,9 @@ public static class MyStaticClass
         And we get scolded rather badly:<br /><br />
 
         {% blockquote %}
-        'MyProject.MyStaticClass.Parse<T>(System.String)' is a generic method.  Windows Runtime methods may not be generic.<br />
-Method 'MyProject.MyStaticClass.Parse<T>(System.String)' has a generic type parameter of type 'T' in its signature.  Generic type parameters may not appear in method signatures of Windows Runtime methods.<br />
-Method 'MyProject.MyStaticClass.Parse<T>(System.String)' returns 'T', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
+        'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' is a generic method.  Windows Runtime methods may not be generic.<br />
+Method 'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' has a generic type parameter of type 'T' in its signature.  Generic type parameters may not appear in method signatures of Windows Runtime methods.<br />
+Method 'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' returns 'T', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
         {% endblockquote %}
         
         The Solution? Uh, don't do it.<br /><br />
@@ -205,8 +205,8 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
         No concrete classes. Still using a generic interface though...
 
 {% blockquote %}
-        Interface 'MyProject.IPager<T>' requires interface 'System.Collections.Generic.IEnumerable<T>' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
-        Type 'MyProject.IPager<T>' is generic.  Windows Runtime types may not be generic.
+        Interface 'MyProject.IPager&lt;T&gt;' requires interface 'System.Collections.Generic.IEnumerable&lt;T&gt;' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
+        Type 'MyProject.IPager&lt;T&gt;' is generic.  Windows Runtime types may not be generic.
 {% endblockquote %}
 
         Damn. Another brick wall.<br /><br />
@@ -302,7 +302,7 @@ public async Task<string> Get(string url)
 }
         </pre>
 
-        But Task<T> is a BCL type, not a WinRT type:
+        But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
 {% blockquote %}
 'MyProject.MyClass.Get(System.String)' returns 'System.Threading.Tasks.Task<System.String>', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
