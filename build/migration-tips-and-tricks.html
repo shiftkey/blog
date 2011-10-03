@@ -123,7 +123,7 @@ public sealed class MyClass
         now we get multiple errors, such as: <br /><br />
     
         {% blockquote %}
-Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Collections.Generic.List<System.String>' in its signature.  Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.  Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList<System.String>, System.Collections.Generic.IReadOnlyList<System.String>, System.Collections.Generic.IEnumerable<System.String>'.   
+Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Collections.Generic.List&lt;System.String&gt;' in its signature.  Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.  Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList&lt;System.String&gt;, System.Collections.Generic.IReadOnlyList&lt;System.String&gt;, System.Collections.Generic.IEnumerable&lt;System.String&gt;'.   
         {% endblockquote %}
 
         Thankfully, the solution is right there in front of us.<br /><br />
@@ -305,7 +305,7 @@ public async Task<string> Get(string url)
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
 {% blockquote %}
-'MyProject.MyClass.Get(System.String)' returns 'System.Threading.Tasks.Task<System.String>', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
+'MyProject.MyClass.Get(System.String)' returns 'System.Threading.Tasks.Task&lt;System.String&gt;', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
 {% endblockquote %}
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
