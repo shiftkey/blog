@@ -1,16 +1,13 @@
 ---
 layout: build
-title: Notes from BUILD
+title: WinRT - API Design Notes
 ---
 
 <header>
-	<h2>Recap from BUILD</h2>
+    <h2>API Design and Windows Metadata Exporter</h2>
 </header>
 
-<article>
-    <header>
-        <h3>API Design and Windows Metadata Exporter</h3>
-    </header>
+
 
     <section>
         I spent today migrating an existing .NET library (Stacky - details <a href="http://stacky.codeplex.com/">here</a>) into a Windows Runtime-compatible API. While I started out with the goal of having one codebase to rule them all, I quickly found this was awfully idealistic and focused on just the WinRT stuff as an exercise. <br />
@@ -41,12 +38,10 @@ title: Notes from BUILD
 
     <section>
         <header>
-           <h4>Why the change?</h4>
+           <h4>How much has changed?</h4>
         </header>
 
-        A fair few - but again, is to be expected. The move to asychronous methods which can be invoked synchronously thanks to the syntactical sugar of <code>await</code> and <code>async</code> keywords demands this, but does have a lot of benefits.
-
-        <br /><br />
+        A fair bit - but again, is to be expected. The move to asychronous methods which can be invoked synchronously thanks to the syntactical sugar of <code>await</code> and <code>async</code> keywords demands this, but does have a lot of benefits.<br /><br />
 
         For people who have been doing .NET development, they should be familiar with the concept of a class library - a reusable set of classes which can be referenced in other projects.<br /><br />
 
@@ -65,32 +60,173 @@ title: Notes from BUILD
         {% img center /img/posts/Win8/error-output.png %} <br /><br />
         
     </section>
+
     <section>
         <header>
-           <h4>Why the change?</h4>
+           <h4>Tips and Tricks</h4>
         </header>
 
+        So after a couple of hours dancing with winmdexp, here's some notes on what it likes and what it doesn't.
     </section>
-
     <section>
         <header>
-        <h4>Public (or protected) generic methods</h4>
+            <h5>Sealed. Use It.</h5>
         </header>
 
-        {% blockquote %}
-        <strong>Error:</strong> Generic type parameters may not appear in method signatures of Windows Runtime methods.
-        {% endblockquote %}
+        When you create a simple class, like this: <br /><br />
+
         <pre>
-        protected void NotifyOfPropertyChange&lt;TProperty&gt;(Expression&lt;Func&lt;TProperty&gt;&gt; property)
-        {
-            NotifyOfPropertyChange(property.GetMemberInfo().Name);
-        }
+public class MyClass
+{
+    public string MyProperty { get; set; }
+}
         </pre>
 
-        <strong>Resolution: mark this as internal. Public or Protected</strong>
+        you'll see this error: <br /><br />
+
+        {% blockquote %}
+        Type 'MyProject.MyClass' is unsealed but is not enabled for composition. Either seal 'MyProject.MyClass', or mark it with the System.Runtime.InteropServices.WindowsRuntime.EnableCompositionAttribute so that you can derive from it. To use the class from JavaScript, you must seal it.
+        {% endblockquote %}
+
+        At this point, you have two choices:
+
+        <ul>
+            <li>If you don't care about supporting Javascript applications consuming your API - for example, you require consumers to subclass this type, add the <code>[EnableComposition]</code> attribute to the class definition.</li>
+            <li>If you want to support all languages, add the sealed keyword to your class so that no subclassing is possible.</li>
+        </ul>
+
+        And the easiest thing to do is to add the <code>sealed</code> keyword:<br /><br />
+
+        <pre>
+public <strong>sealed</strong> class MyClass
+{
+    public string MyProperty { get; set; }
+}
+        </pre>
+
+        <strong>Notes:</strong> <br /><br />
+
+        <ul>
+            <li>As I worked my way through the codebase making the required changes, I was required to make conscious decisions around what I expose to consumers (the proxy and its APIs, the objects to return to the consumer), and what remains internal (helper functions, JSON parsing, etc) - the net result being a smaller footprint and more internal usage.</li>
+            <li>The use of internal vs public for testability was a bit concerning - I hope the team have something in mind for doing an <code>[InternalsVisibleTo]</code>-esque testing option</li>
+            <li>I need to try some edge-case scenarios around using the [EnableComposition] attribute - and how this impacts the consuming options</li>
+        </ul>
+    </section>
+    <section>
+        <header>
+            <h5>Program to an interface, not an implementation</h5>
+        </header>
+
+        Let's change this class to something a little more complex: <br /><br />
+
+        <pre>
+public sealed class MyClass
+{
+    public List&lt;string&gt; MyProperty { get; set; }
+}
+        </pre>
+
+        now we get multiple errors, such as: <br /><br />
+    
+        {% blockquote %}
+Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Collections.Generic.List<System.String>' in its signature.  Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.  Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList<System.String>, System.Collections.Generic.IReadOnlyList<System.String>, System.Collections.Generic.IEnumerable<System.String>'.   
+        {% endblockquote %}
+
+        Thankfully, the solution is right there in front of us.<br /><br />
+
+        Rather than rewriting the entire BCL, the wizards in the WinRT team have supported <em>projecting</em> the .NET interface to the Windows Runtime interface (more info <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br230301%28v=VS.85%29.aspx#PassingAndReturningWinRT">here</a>). So we can just use one of the suggested interfaces and the runtime takes care of the rest.<br /><br />
+
+        <pre>
+public sealed class MyClass
+{
+    public IList<string> MyProperty { get; set; }
+}
+        </pre>
+
+        <strong>Notes:</strong> <br /><br />
+
+        <ul>
+            <li>Common sense - good to see this being enforced as part of the API</li>
+            <li>There are a number of read-only collections being added to the Windows Runtime (and .NET Framework 4.5). Hooray!</li>
+        </ul>
     </section>
 
-     <section>
+    <section>
+        <header>
+            <h5>Generic methods? Oh no you didn't!</h5>
+        </header>
+
+        First controversial topic! Let's say we're trying to parse arbitrary strings into JSON.<br /><br />
+
+        <pre>
+public static class MyStaticClass
+{
+    public static T Parse<T>(string text)
+    {
+        return default(T);
+    }
+}
+        </pre>
+
+        And we get scolded rather badly:<br /><br />
+
+        {% blockquote %}
+        'MyProject.MyStaticClass.Parse<T>(System.String)' is a generic method.  Windows Runtime methods may not be generic.<br />
+Method 'MyProject.MyStaticClass.Parse<T>(System.String)' has a generic type parameter of type 'T' in its signature.  Generic type parameters may not appear in method signatures of Windows Runtime methods.<br />
+Method 'MyProject.MyStaticClass.Parse<T>(System.String)' returns 'T', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
+        {% endblockquote %}
+        
+        The Solution? Uh, don't do it.<br /><br />
+
+        So, for all those MVVM frameworks who use helper methods like this:<br /><br />
+
+<pre>
+protected void NotifyOfPropertyChange&lt;TProperty&gt;(Expression&lt;Func&lt;TProperty&gt;&gt; property)
+{
+    NotifyOfPropertyChange(property.GetMemberInfo().Name);
+}
+</pre> <br />
+
+        need to fall back to the simple method of passing strings. I've railed about how this is a <a href="/inotifypropertychanged-stop-the-madness.html">flawed concept</a> before, so now its a priority (for me at least) to integrate AOP-esque workflows into this process - so that we can do away with the boilerplate code (and reflection-fu). <br /><br />
+
+        Or just mark the method as internal and don't expose it to the consumers - if the situation allows it.
+    </section>
+
+    <section>
+        <header>
+            <h5>Generic interfaces! Surely you can just...</h5>
+        </header>
+
+        Next scenario -  I wanted to extend an interface to add context around paging: <br /><br />
+
+        <pre>
+public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
+{
+    int CurrentPage { get; }
+    int PageSize { get; }
+    int TotalItems { get; }
+}
+        </pre>
+
+        No concrete classes. Still using a generic interface though...
+
+{% blockquote %}
+        Interface 'MyProject.IPager<T>' requires interface 'System.Collections.Generic.IEnumerable<T>' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
+        Type 'MyProject.IPager<T>' is generic.  Windows Runtime types may not be generic.
+{% endblockquote %}
+
+        Damn. Another brick wall.
+
+        <strong>Notes:</strong> <br /><br />
+
+        <ul>
+            <li>Why isn't this a supported scenario? I'd love - nay, expect - something as fundamental as the Open-Closed Principle to be supported by the framework.</li>
+            <li></li>
+        </ul>
+
+    </section>
+
+     <!--<section>
         <h4>Use an interface instead of an implementation</h4>
 {% blockquote %}
         <strong>Error:</strong> Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.
@@ -114,14 +250,7 @@ Field names cannot differ only by case: 'Namespace.Class.<PROPERTY>k__BackingFie
 
      <strong>Error: </strong>	Unable to determine a default interface for runtime class 'Stacky.TagWiki'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.
 
-<strong>Error: </strong>Unable to determine a default interface for runtime class 'Stacky.HttpResponse'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.	C:\Code\codeplex\shiftkey\stackywinrt\trunk\source\Stacky.WinRT\obj\Debug\Stacky.WinRT.winmdobj	Stacky.WinRT
+    <strong>Error: </strong>Unable to determine a default interface for runtime class 'Stacky.HttpResponse'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.	C:\Code\codeplex\shiftkey\stackywinrt\trunk\source\Stacky.WinRT\obj\Debug\Stacky.WinRT.winmdobj	Stacky.WinRT
 
 
-
-
-
-    </section>
-
-    </article>
-
-
+-->

@@ -27,3 +27,9 @@ pre, code
 {
 	color: #59CC0E;
 }
+
+pre
+{
+	margin-bottom:0;
+
+}
