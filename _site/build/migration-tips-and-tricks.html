@@ -110,13 +110,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
            <h4> What worked</h4>
         </header>
 
-        Not much -  but I was unsurprised by that as there were many design decisions which were flagged at BUILD. I'll refer to some of the sessions I've watched from BUILD about this:
-
-        <ul>
-            <li>Talk 1</li>
-            <li>Talk 1</li>
-            <li>Talk 1</li>
-        </ul>
+        Not much -  but I was unsurprised by that as there were many design decisions which were flagged at BUILD. I'll refer to some of the sessions I've watched from BUILD later.
     </section>
 
     <section>
@@ -287,43 +281,139 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
 
 <blockquote><p>Interface 'MyProject.IPager<T>' requires interface 'System.Collections.Generic.IEnumerable<T>' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.<br/>        Type 'MyProject.IPager<T>' is generic.  Windows Runtime types may not be generic.</p></blockquote>
 
-        Damn. Another brick wall.
+        Damn. Another brick wall.<br /><br />
+
+        To ensure I wasn't in the wrong, I tested it with just
 
         <strong>Notes:</strong> <br /><br />
 
         <ul>
-            <li>Why isn't this a supported scenario? I'd love - nay, expect - something as fundamental as the Open-Closed Principle to be supported by the framework.</li>
-            <li></li>
+            <li>Why isn't this a supported scenario? Did I miss something?</li>
+            <li>IIterable&lt;T&gt; is the complement of IEnumerable&lt;T&gt; - but it isn't part of the current build. Perhaps that is my issue...</li>
+            <li>What generics are actually supported in WinRT? I haven't been able to find anything specific aside from a couple of slides in the afore-mentioned talks.</li>
+        </ul>
+    </section>
+
+    <section>
+        <header>
+            <h5>What about virtual methods?</h5>
+        </header>
+
+        Can a consumer override a method when subclassing?<br /><br />
+
+        <pre>
+[EnableComposition]
+public class SomeClass
+{
+    protected virtual void VirtualMethod(object param)
+    {
+
+    }
+}
+        </pre>
+
+        Aaaand... no. 
+
+<blockquote><p>'MyProject.SomeClass.VirtualMethod(System.Object)' is a virtual method. Managed types may not expose new virtual methods in Windows Runtime.</p></blockquote>
+
+        <strong>Notes:</strong> <br /><br />
+
+        <ul>
+            <li>Using <code>virtual</code> is usually (IMO) the last-choice when doing OO design in .NET. Meh. </li>
+        </ul>
+    </section>
+
+    <section>
+        <header>
+            <h5>Fields! How do they work?</h5>
+        </header>
+        
+        This gist describes it fairly well:<br /><br />
+
+        <script src="https://gist.github.com/1256866.js"> </script>
+
+    </section>
+
+    <section>
+        <header>
+            <h5>Empty Class?</h5>
+        </header>
+        
+        
+        And if the tool finds an empty class:<br /><br />
+
+        <pre>
+public sealed class SomeClass
+{
+    
+}
+        </pre>
+
+        It will ask you what on earth you were thinking!
+
+<blockquote><p>Unable to determine a default interface for runtime class 'MyProject.MyClass'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.</p></blockquote>
+
+    </section>
+
+    <section>
+        <header>
+            <h5>Don't do async everywhere</h5>
+        </header>
+        
+        
+        You may be inclined to use async and await everywhere, seeing as they are the new black:<br /><br />
+
+        <pre>
+public async Task<string> Get(string url)
+{
+    var client = new HttpClient();
+    var response = await client.GetAsync(url);
+    return response.Content.ReadAsString();
+}
+        </pre>
+
+        But Task<T> is a BCL type, not a WinRT type:
+
+<blockquote><p>'MyProject.MyClass.Get(System.String)' returns 'System.Threading.Tasks.Task<System.String>', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.</p></blockquote>
+
+        The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
+
+        <pre>
+public sealed class MyClass
+{
+    public IAsyncOperation<string> Get(string url)
+    {
+        return AsyncInfoFactory.Create(() => GetInternal(url));
+    }
+
+    private static async Task<string> GetInternal(string url)
+    {
+        var client = new HttpClient();
+        var response = await client.GetAsync(url);
+        return response.Content.ReadAsString();
+    }
+}
+        </pre>
+
+        The public method exposes an <code>IAsyncOperation</code> return type, which is created by the factory class. This is compatible with the WinRT APIs, while retaining all the features of the TPL Task API.
+
+        <ul>
+            <li>This smells like another candidate for some post-build weaving - keep the source code clean and rewrite after to satisfy the WinRT APIs.</li>
+            <li>Can we rename AsyncInfoFactory to something more specific - IAsyncInfo is the base interface for everything this creates, but I kept forgetting the class name whenever I had to add it. AsyncFactory? AsyncOperationFactory?</li>
         </ul>
 
     </section>
 
-     <!--<section>
-        <h4>Use an interface instead of an implementation</h4>
-<blockquote><p><strong>Error:</strong> Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.</p></blockquote>
-        Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList<MyClass>, System.Collections.Generic.IReadOnlyList<MyClass>, System.Collections.Generic.IEnumerable<MyClass>'
-    </section>
-
     <section>
-          
-        <strong>Error:</strong> Type 'MyClass' is unsealed but is not enabled for composition. Either seal 'MyClass', or mark it with the System.Runtime.InteropServices.WindowsRuntime.EnableCompositionAttribute so that you can derive from it. To use the class from JavaScript, you must seal it.
+        <header>
+            <h5>What next?
+        </header>
+
+        If you've got any feedback on this (or perhaps I've gone astray on something), you can reach me on <a href="http://twitter.com/shiftkey">Twitter (@shiftkey)</a> or you can email me - 'me' @ this-domain. <br /><br />
+
+
+
     </section>
-
-    <section>
-        <strong>Error:</strong>'MyClass.Method(System.Object parameter)' is a virtual method. Managed types may not expose new virtual methods in Windows Runtime.
-
-        <strong>Error: </strong>Field names cannot differ only by case: 'Stacky.User.webSite' , 'Stacky.User.website'.
-
-        <strong>Error: </strong>Interface 'Stacky.IPagedList<T>' requires interface 'System.Collections.Generic.IEnumerable<T>' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
-
-Field names cannot differ only by case: 'Namespace.Class.<PROPERTY>k__BackingField' , 'Stacky.ErrorResponse.<Property>k__BackingField'.	
-
-     <strong>Error: </strong>	Unable to determine a default interface for runtime class 'Stacky.TagWiki'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.
-
-    <strong>Error: </strong>Unable to determine a default interface for runtime class 'Stacky.HttpResponse'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.	C:\Code\codeplex\shiftkey\stackywinrt\trunk\source\Stacky.WinRT\obj\Debug\Stacky.WinRT.winmdobj	Stacky.WinRT
-
-
--->
 	</article>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
