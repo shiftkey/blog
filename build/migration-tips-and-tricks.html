@@ -211,8 +211,6 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
 
         Damn. Another brick wall.<br /><br />
 
-        To ensure I wasn't in the wrong, I tested it with just
-
         <strong>Notes:</strong> <br /><br />
 
         <ul>
@@ -329,7 +327,9 @@ public sealed class MyClass
 }
         </pre>
 
-        The public method exposes an <code>IAsyncOperation</code> return type, which is created by the factory class. This is compatible with the WinRT APIs, while retaining all the features of the TPL Task API.
+        The public method exposes an <code>IAsyncOperation</code> return type, which is created by the factory class. This is compatible with the WinRT APIs, while retaining all the features of the TPL Task API. <br /><br />
+
+        <strong>Notes:</strong><br /><br />
 
         <ul>
             <li>This smells like another candidate for some post-build weaving - keep the source code clean and rewrite after to satisfy the WinRT APIs.</li>
