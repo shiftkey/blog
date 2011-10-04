@@ -133,7 +133,7 @@ Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Coll
         <pre>
 public sealed class MyClass
 {
-    public IList<string> MyProperty { get; set; }
+    public IList&lt;string&gt; MyProperty { get; set; }
 }
         </pre>
 
@@ -294,7 +294,7 @@ Unable to determine a default interface for runtime class 'MyProject.MyClass'.  
         You may be inclined to use async and await everywhere, seeing as they are the new black:<br /><br />
 
         <pre>
-public async Task<string> Get(string url)
+public async Task&lt;string&gt; Get(string url)
 {
     var client = new HttpClient();
     var response = await client.GetAsync(url);
@@ -313,12 +313,12 @@ public async Task<string> Get(string url)
         <pre>
 public sealed class MyClass
 {
-    public IAsyncOperation<string> Get(string url)
+    public IAsyncOperation&lt;string&gt; Get(string url)
     {
         return AsyncInfoFactory.Create(() => GetInternal(url));
     }
 
-    private static async Task<string> GetInternal(string url)
+    private static async Task&lt;string&gt; GetInternal(string url)
     {
         var client = new HttpClient();
         var response = await client.GetAsync(url);
@@ -342,6 +342,12 @@ public sealed class MyClass
         <header>
             <h5>What next?
         </header>
+
+        <ul>
+            <li>Watching <a href="http://social.msdn.microsoft.com/Forums/en-US/winappswithcsharp/thread/0191f069-4318-451f-9e24-72a505dadc8b/#0191f069-4318-451f-9e24-72a505dadc8b">this thread</a> for an answer about my interface subclassing question.</li>
+            <li>Investigating if the use of <code>sealed</code> interferes with testability - and if there's a good workaround.</li>
+            <li>Finish the damn library migration</li>
+        </ul>
 
         If you've got any feedback on this (or perhaps I've gone astray on something), you can reach me on <a href="http://twitter.com/shiftkey">Twitter (@shiftkey)</a> or you can email me - 'me' @ this-domain. <br /><br />
 
