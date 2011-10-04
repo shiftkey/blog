@@ -1,0 +1,113 @@
+---
+layout: build
+title: WinRT Experiments
+---
+
+<header>
+    <h2>Customise a Windows Metadata File</h2>
+</header>
+
+
+    <section>
+        Following up from yesterday's adventures with winmdexp.exe and its API demands, I dove a little bit deeper into the process of turning C# source code into a WinMD binary, using a scenario near and dear to my heart.
+    </section>
+
+    <section>
+        <header><h4>The Experiment - Post-Build Weaving</h4></header>
+
+        A common scenario for XAML developers is ensuring all their classes implement INotifyPropertyChanged and the code to raise the change is in the setter for each property. Which leads to code like this:<br /><br />
+
+        <pre>
+public sealed class ShellViewModel : ViewModelBase
+{
+    private string someProperty;
+    public string SomeProperty   
+    { 
+        get { return someProperty; }
+        set 
+        { 
+            someProperty = value;
+            OnPropertyChanged("SomeProperty");
+        }
+    }
+}
+        </pre>
+
+        As a jaded developer, I want to do this:<br /><br />
+
+        <pre>
+public sealed class ShellViewModel : INotifyPropertyChanged
+{
+    public string SomeProperty  { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+}
+        </pre>
+
+        and have the framework generate the plumbing code. Because I'm getting too old for this shit.<br /><br />
+    </section>
+
+    <section>
+        <header><h5>First Step: Add the build task</h5></header>
+
+        I downloaded a build of NotifyPropertyWeaver and referenced the post-build task at the end of the .csproj file. This is exactly the same as how you'd do this when working against a WPF/SL/WP7 apps.<br /><br />
+
+        <pre>
+&lt;Project&gt;
+    &lt;!-- existing project file elements --&gt;
+    &lt;UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" 
+                AssemblyFile="$(SolutionDir)lib\NotifyPropertyWeaverMsBuildTask.dll" /&gt;
+    &lt;Target Name="AfterCompile"&gt;
+        <strong>&lt;NotifyPropertyWeaverMsBuildTask.WeavingTask /&gt;</strong>
+    &lt;/Target&gt;
+&lt;/Project&gt;
+        </pre>
+
+        And that's it. By default, NotifyPropertyWeaver will inject code into all properties of types in this project, which implement INotifyPropertyChanged. There's a number of <a href="http://code.google.com/p/notifypropertyweaver/wiki/WeavingTaskOptions">options available</a>, if you want more control over the process.
+
+    </section>
+
+    <section>
+        <header><h5>Step Two: Push the Red Button</h5></header>
+
+        Now reload the project file and build the solution. Did it succeed? Did the earth move for you, too?
+
+    </section>
+
+    <section>
+        <header><h5>Step Three: Everybody freak out</h5></header>
+
+        Navigate to your <strong>bin/Debug</strong> folder to see the build output.<br /><br />
+
+        {% img left /img/posts/Win8/build-output.png %}
+
+        No assembly? A foreign .winmd file?<br /><br />
+
+        Take a deep breath, Alice, for the adventure is just beginning.
+    </section>
+    
+    <section>
+        <header><h5>Step Four: To the rabbit hole!</h5></header>
+
+        With that out of the way, open the <strong>Developer Command Prompty</strong> from the Search | Apps menu and enter <strong>ildasmn</strong>. This is a tool which has been around for aeons (in internet time) for disassembling .NET assemblies.<br /><br />
+
+    </section>
+
+
+
+    <section>
+        <header><h5>Special Mention</h5></header>
+
+        A big thanks to <a href="http://twitter.com/SimonCropp">Simon Cropp</a>, the guy who maintains <a href="http://code.google.com/p/notifypropertyweaver">NotifyPropertyWeaver</a>. He sent me a new build to test this within about an hour of demanding the feature!
+    </section>
+
+    <section>
+        <header>
+            <h5>What next?
+        </header>
+
+        If you've got any feedback on this (or perhaps I've gone astray on something), you can reach me on <a href="http://twitter.com/shiftkey">Twitter (@shiftkey)</a> or you can email me - 'me' @ this-domain. <br /><br />
+
+
+
+    </section>
