@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<!-- 
+320 and Up boilerplate extension
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup 
+-->
+
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<title>WinRT Fun &amp; Games</title>
+<meta name="description" content="">
+<meta name="author" content="brendan forster">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+
+<!-- robots -->
+<meta name="robots" content="/robots.txt" />
+
+<!-- For less capable mobile browsers
+<link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" media="screen" href="/css/style.css?v=1">
+
+<link rel="stylesheet" media="print" href="/css/print.css?v=1">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/css/480.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/css/768.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/css/1382.css?v=1">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/css/2x.css?v=1">
+
+<link rel="stylesheet" media="screen" href="/css/custom.css?v=1">
+
+<!-- JavaScript at bottom except for Modernizr -->
+<script src="/js/libs/modernizr-1.7.min.js"></script>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- http://t.co/y1jPVnT -->
+<link rel="canonical" href="/build/customise-a-winmd-file.html">
+</head>
+
+
+<link rel="stylesheet" media="screen" href="/css/build.css?v=1">
+
+<body class="clearfix">
+
+<header role="banner" class="clearfix">
+	<h1>WinRT Fun &amp; Games</h1>
+</header>
+
+<div class="content clearfix">
+	<article>
+		<img class='right ' src='/img/main/metro-preview.png' width='400' height='300' alt='' title=''>
+
+		<header>
+    <h2>Customise a Windows Metadata File</h2>
+</header>
+
+
+    <section>
+        Following up from yesterday's adventures with winmdexp.exe and its API demands, I dove a little bit deeper into the process of turning C# source code into a WinMD binary, using a scenario near and dear to my heart.
+    </section>
+
+    <section>
+        <header><h3>The Experiment - Post-Build Weaving</h3></header>
+
+        A common scenario for XAML developers is ensuring all their classes implement INotifyPropertyChanged and the code to raise the change is in the setter for each property. Which leads to code like this:<br /><br />
+
+        <pre>
+public sealed class ShellViewModel : ViewModelBase
+{
+    private string someProperty;
+    public string SomeProperty   
+    { 
+        get { return someProperty; }
+        set 
+        { 
+            someProperty = value;
+            OnPropertyChanged("SomeProperty");
+        }
+    }
+}
+        </pre>
+
+        As a jaded XAML developer, I want to do this:<br /><br />
+
+        <pre>
+public sealed class ShellViewModel : INotifyPropertyChanged
+{
+    public string SomeProperty  { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+}
+        </pre>
+
+        and have the framework generate the plumbing code. Because I'm getting too old for this shit.<br /><br />
+    </section>
+
+    <section>
+        <header><h4>First Step: Add the build task</h4></header>
+
+        I downloaded a build of NotifyPropertyWeaver and referenced the post-build task at the end of the .csproj file. This is exactly the same as how you'd do this when working against a WPF/SL/WP7 apps.<br /><br />
+
+        <pre>
+&lt;Project&gt;
+    &lt;!-- existing project file elements --&gt;
+    &lt;UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" 
+                AssemblyFile="$(SolutionDir)lib\NotifyPropertyWeaverMsBuildTask.dll" /&gt;
+    &lt;Target Name="AfterCompile"&gt;
+        <strong>&lt;NotifyPropertyWeaverMsBuildTask.WeavingTask /&gt;</strong>
+    &lt;/Target&gt;
+&lt;/Project&gt;
+        </pre>
+
+        And that's it. By default, NotifyPropertyWeaver will inject code into all properties of types in this project, which implement INotifyPropertyChanged. There's a number of <a href="http://code.google.com/p/notifypropertyweaver/wiki/WeavingTaskOptions">options available</a>, if you want more control over the process.
+
+    </section>
+
+    <section>
+        <header><h4>Step Two: Push the Red Button</h4></header>
+
+        Now reload the project file and build the solution. Did it succeed? Did you feel that rush of power?
+
+    </section>
+
+    <section>
+        <header><h4>Step Three: Everybody freak out</h4></header>
+
+        Navigate to your <strong>bin/Debug</strong> folder to see the build output.<br /><br />
+
+        <img class='center ' src='/img/posts/Win8/build-output.png' width='' height='' alt='' title=''> <br /><br />
+
+        No assembly? And who put this .winmd file here? My would has been inverted! I don't know what to believe in any more...<br /><br />
+
+        Take a deep breath, Alice. The adventure is just beginning.
+    </section>
+    
+    <section>
+        <header><h4>Step Four: To the rabbit hole!</h4></header>
+
+        With that out of the way, open the <strong>Developer Command Prompty</strong> from the Search | Apps menu and enter <strong>"ildasm"</strong> (without the quotes). This is a tool which has been around for aeons (in internet time) for disassembling .NET assemblies.<br /><br />
+
+        You should be greeted with a lovely screen straight out of the 90s:<br /><br />
+
+        <img class='center ' src='/img/posts/Win8/ildasm.png' width='' height='' alt='' title=''> <br /><br />
+
+        Once you stop sniggering at how "I can build a better GUI than this", click <strong>File | Open</strong> and navigate to your <strong>bin/Debug</strong>output folder.<br /><br />
+
+        <img class='center ' src='/img/posts/Win8/ildasm-open.png' width='654' height='450' alt='' title=''> <br /><br />
+
+        You will need to switch the File Type to <strong>Any Type (*.*)</strong> to see the files.<br /><br />
+
+        Select the .winmd file and open it.<br /><br />   
+
+        <img class='center ' src='/img/posts/Win8/ildasm-preview.png' width='' height='' alt='' title=''> 
+
+    </section>
+
+        <section>
+            <header><h4>Step Five: The cake is a lie!</h4></header>
+
+        Ok, so there's a lot to take in from that screenshot. In no particular order:<br /><br />
+
+        <ul>
+            <li>WinMD files use the same metadata format as .NET assemblies</li>
+            <li>The single class from my C# source code is now split into three separate classes:
+                <ul>
+                    <li>A generated interface named <strong>IShellViewModelClass</strong></li>
+                    <li>The public sealed class <strong>ShellViewModel</strong> as before</li>
+                    <li>A generated internal sealed class called <strong>&lt;CLR&gt;ShellViewModel</strong></li>
+                </ul>
+            </li>
+            <li>If you inspect the methods of the ShellViewModel class, you'll see that there is no implementation.</li>
+        </ul>
+
+        While ildasm has served me well in the past, these days there are more advanced tools. I've been using <a href="http://www.jetbrains.com/decompiler/">dotPeek</a> recently, which gives me simpler overview of each classes - and some additional details. <br /><br />
+
+        To speed this up, I'll show you the disassembled code from dotPeek and highlight in bold the interesting parts.<br /><br />
+
+        <pre>
+<strong>[CompilerGenerated]
+[Guid(1355171045U, (ushort) 32902, (ushort) 21012, (byte) 90, (byte) 248, (byte) 104, (byte) 96, (byte) 78, (byte) 141, (byte) 157, (byte) 215)]
+[Version(16777216U)]</strong>
+<strong>[ExclusiveTo(typeof (ShellViewModel))]</strong>
+internal interface IShellViewModelClass
+{
+    string SomeProperty 
+    { 
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> get; 
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> set; 
+    }
+
+    event PropertyChangedEventHandler PropertyChanged;
+
+    <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong>
+    void OnPropertyChanged([In] string propertyName);
+}
+        </pre>
+
+        <pre>
+<strong>[Version(16777216U)]
+[CompilerGenerated]
+[Activatable(16777216U)]
+[SpecialName]</strong>
+public sealed class ShellViewModel : INotifyPropertyChanged, <strong>IShellViewModelClass</strong>
+{
+    public string SomeProperty 
+    { 
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> get; 
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> set; 
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong>
+    public ShellViewModel();
+
+    <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong>
+    public void OnPropertyChanged(<strong>[In]</strong> string propertyName);
+}
+        </pre>
+
+        I won't dig into the specifics of these attributes until I've fully grasped the intent of them - the <code>[Guid]</code> attribute feels COM-ish, and the <code>[Version]</code> attribute might be a hash of the current class definition (to prevent clashes) - but I'm only speculating here.<br /><br />
+
+
+        Also note how the tooling (this is winmdexp.exe) is creating the classes while specifying the implementation is "missing" by using the <code>[MethodImpl]</code> attribute. <br /><br />
+
+        <pre>
+[Version(16777216U)]
+[Activatable(16777216U)]
+[SpecialName]
+internal sealed class &lt;CLR&gt;ShellViewModel : INotifyPropertyChanged, IShellViewModelClass
+{
+    private EventRegistrationTokenTable&lt;PropertyChangedEventHandler&gt; PropertyChanged = new EventRegistrationTokenTable&lt;PropertyChangedEventHandler&gt;();
+
+    public string SomeProperty
+    {
+      get { return this.&lt;SomeProperty&gt;k__BackingField; }
+      set
+      {
+        <strong>if (object.Equals((object) this.&lt;SomeProperty&gt;k__BackingField, (object) value))</strong>
+          return;
+        this.&lt;SomeProperty&gt;k__BackingField = value;
+        <strong>this.OnPropertyChanged("SomeProperty");</strong>
+      }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged
+    {
+      add { return this.PropertyChanged.AddEventHandler(value); }
+      remove { this.PropertyChanged.RemoveEventHandler(value); }
+    }
+
+    <strong>public void OnPropertyChanged(string propertyName)
+    {
+      EventRegistrationTokenTable&lt;PropertyChangedEventHandler&gt; 
+            registrationTokenTable = this.PropertyChanged;
+
+      if (registrationTokenTable == null)
+        return;
+      ((PropertyChangedEventHandler) registrationTokenTable)((object) this, new PropertyChangedEventArgs(propertyName));
+    }</strong>
+}
+        </pre>
+
+        The CLR implementation looks somewhat familiar to our initial class but with some additional behaviour:
+
+        <ul>
+            <li>Comparison check in the setter to raise event only when value changes</li>
+            <li>Generated OnPropertyChanged call with the property name set correctly</li>
+            <li>Implementation of the OnPropertyChanged method</li>
+        </ul>
+
+        This is the plumbing code I've mentioned for implementing INotifyPropertyChanged. <br /><br />By integrating it into the AfterCompile step way back when our code was compiled, we can inject behaviour which satisfies the winmdexp.exe process without cluttering our source code with it.<br /><br />
+    </section>
+
+    <section>
+        <header><h4>Step Six: Recap - and hard liquor!</h4></header>
+
+        <ul>
+            <li>I suspect there are easy ways to get around the whole "no generic methods" with MVVM frameworks WinRT libraries - I have some ideas in mind, but am waiting to see what the other guys (has Laurent put something out for WinRT - I know he's up to something)</li>
+            <li>Don't be afraid to automate the mundane bits. This is all using MSBuild under the hood to compose the library, and required a couple of tweaks due to changes with the build process.</li>
+            <li>IL Rewriting - in its various forms - to inject AOP-style behaviour will likely carry on unabated. Excellent.</li>
+    </section>
+
+
+    <section>
+        <header><h4>Special Mention</h4></header>
+
+        A big thanks to <a href="http://twitter.com/SimonCropp">Simon Cropp</a>, the guy who maintains <a href="http://code.google.com/p/notifypropertyweaver">NotifyPropertyWeaver</a>. He sent me a new build to test this within about an hour of demanding the feature!<br /><br />
+
+        Hopefully I can help him with some patches to get this version available for mass consumption. But if you're doing WPF/SL/WP7 apps currently, you can use the tool today and get a whole bunch more benefits.
+    </section>
+
+    <section>
+        <header>
+            <h4>What next?</h4>
+        </header>
+
+        If you've got any feedback on this (or perhaps I've gone astray on something), you can reach me on <a href="http://twitter.com/shiftkey">Twitter (@shiftkey)</a> or you can email me - 'me' @ this-domain. <br /><br />
+    </section>
+	</article>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/DOMAssistantCompressed-2.8.js"></script>
+<script src="/js/libs/selectivizr-1.0.1.js"></script>
+<script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+
+<script>
+var _gaq=[['_setAccount','UA-8441214-1'],['_trackPageview']]; 
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+</body>
+</html>
