@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2011-10-23T22:27:02+11:00</updated>
+ <updated>2011-10-23T22:32:58+11:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -12,14 +12,16 @@
 
  
  <entry>
-   <title>I'm speaking at dddBrisbane</title>
+   <title>I'm speaking at DDD Brisbane</title>
    <link href="http://brendanforster.comddd-brisbane.html" />
    <updated>2011-10-23T00:00:00+11:00</updated>
    <id>http://brendanforster.com.com./ddd-brisbane</id>
    <content type="html">
 	<![CDATA[<p><img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'></p>
 
-<p>The <a href="http://dddbrisbane.com">dddBrisbane</a> organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week). I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.</p>
+<p>The <a href="http://dddbrisbane.com">dddBrisbane</a> organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week).</p>
+
+<p>I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.</p>
 
 <p>So what am I talking about?</p>
 
