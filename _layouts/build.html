@@ -36,6 +36,11 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 		{{ content }}
 	</article>
+
+
+	{% if page.comments %}
+	{% include disqus.html %}
+	{% endif %}
 </div>
 {% include boilerplate_analytics_scripts.html %}
 
