@@ -252,6 +252,13 @@ section[role="about"] article
 .archive_list
 {
 	list-style-type: none;
+	margin-bottom: 4em;
+}
+
+.archive_list h3
+{
+	margin-bottom: 0;
+	margin-top:0;	
 }
 
 .archive_list .summary

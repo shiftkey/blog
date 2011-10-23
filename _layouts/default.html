@@ -13,7 +13,7 @@ layout: frontpage
 					<hgroup>
 					    <p class="date">{{ ps.date | date:"%d-%m-%Y"}}</p>
 					    {% if  ps.icon %}
-					    <img src="{{ps.icon}}" style="width: 625px;	height: 150px;" />
+					    <a href="{{ ps.url }}"><img src="{{ps.icon}}" style="width: 625px;	height: 150px;" /></a>
 					    {% else %}
 						 <img src="/img/main/1.jpg" />
 					    {% endif %}
@@ -50,19 +50,15 @@ layout: frontpage
 			</header>
 
 			<section>
-				I'm a semi-nomadic software developer working out of Sydney, Australia. 
+				By day, I'm a Senior Developer with <a href="http://readify.net">Readify</a> in Sydney, Australia. I work with clients using technologies including ASP.NET, WPF, Silverlight and WP7 - and help development teams to make the most of these technologies.
 			</section>
 
 			<section>
-				By day, I'm a Senior Developer with Readify. I work with clients across a broad range of technologies in the Microsoft space - ASP.NET, WPF, Silverlight, WP7 and others - and support developers to make the most of these technologies.
-			</section>
-
-			<section>
-				Outside of work, you might find me hanging out at community events - sometimes up the front presenting, sometimes up the back heckling, and sometimes holding down the bar at the after party.
+				Outside of work, you'll likely find me hanging out in the community - sometimes up the front presenting, sometimes up the back heckling, and sometimes holding down the bar at the after party.
 			</section>
 			
 			<section>
-				Currently trying to find time to kick start open-source projects again, like <a href="http://www.mahtweets.com">MahTweets</a>...
+				Currently trying to find time to invest in some open source projects again, like <a href="http://www.mahtweets.com">MahTweets</a> and <a href="http://github.com/MahApps/Hanoi">Hanoi</a>. And some other things which I'm keeping to myself for the moment...
 			</section>
 
 		</article>
