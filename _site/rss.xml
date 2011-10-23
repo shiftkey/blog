@@ -6,14 +6,37 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
+    <pubDate>Sun, 23 Oct 2011 22:12:32 +1100</pubDate>
+    <lastBuildDate>Sun, 23 Oct 2011 22:12:32 +1100</lastBuildDate>
 
-    <pubDate>Sun, 23 Oct 2011 21:48:00 +1100</pubDate>
-    <lastBuildDate>Sun, 23 Oct 2011 21:48:00 +1100</lastBuildDate>
+    
+    <item>
+      <title>I'm speaking at dddBrisbane</title>
+      <link>http://brendanforster.comddd-brisbane.html</link>
+      <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com./ddd-brisbane</guid>
+      <description>&lt;p&gt;The &lt;a href=&quot;http://dddbrisbane.com&quot;&gt;dddBrisbane&lt;/a&gt; organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week). I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.&lt;/p&gt;
 
+&lt;p&gt;So what am I talking about?&lt;/p&gt;
+
+&lt;h2&gt;Windows 8 - Who Moved My Cheese?&lt;/h2&gt;
+
+&lt;p&gt;I'll link back to my abstract once I remember what I submitted, but keep in mind there is another Windows 8 session in the mix - so I'll probably tweak the script to prevent overlap.&lt;/p&gt;
+
+&lt;p&gt;What shall we discuss?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
+    
     <item>
       <title>Doing the build server dance with NuGet</title>
       <link>http://brendanforster.comdoing-the-build-server-dance-with-nuget.html</link>
-      <pubDate>Thu, 07 Jul 2011 21:00:00 -0700</pubDate>
+      <pubDate>Fri, 08 Jul 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./doing-the-build-server-dance-with-nuget</guid>
       <description>&lt;p&gt;I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.&lt;/p&gt;
@@ -166,7 +189,7 @@ Which causes my build to break.&lt;/p&gt;
     <item>
       <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
       <link>http://brendanforster.cominotifypropertychanged-stop-the-madness.html</link>
-      <pubDate>Fri, 17 Jun 2011 21:00:00 -0700</pubDate>
+      <pubDate>Sat, 18 Jun 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./inotifypropertychanged-stop-the-madness</guid>
       <description>&lt;p&gt;Its time to stop with this madness.&lt;/p&gt;
@@ -330,7 +353,7 @@ public string SomeProperty
     <item>
       <title>On the Windows 8 Preview Video</title>
       <link>http://brendanforster.comon-the-windows-8-preview.html</link>
-      <pubDate>Tue, 07 Jun 2011 21:00:00 -0700</pubDate>
+      <pubDate>Wed, 08 Jun 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./on-the-windows-8-preview</guid>
       <description>&lt;p&gt;For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: &lt;a href=&quot;http://www.youtube.com/watch?v=p92QfWOw88I&quot;&gt;http://www.youtube.com/watch?v=p92QfWOw88I&lt;/a&gt;&lt;/p&gt;
@@ -404,7 +427,7 @@ public string SomeProperty
     <item>
       <title>slsvcutil - Workaround StackOverflowException</title>
       <link>http://brendanforster.comslsvcutil-stackoverflowexception-workaround.html</link>
-      <pubDate>Thu, 05 May 2011 21:00:00 -0700</pubDate>
+      <pubDate>Fri, 06 May 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./slsvcutil-stackoverflowexception-workaround</guid>
       <description>&lt;p&gt;I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called &lt;a href=&quot;http://www.stackoverflow.com/&quot;&gt;stackoverflow&lt;/a&gt; came into the mix :)&lt;/p&gt;
@@ -434,7 +457,7 @@ Process is terminated due to StackOverflowException.
     <item>
       <title>Musing - Simpler UI Testing for WPF Apps</title>
       <link>http://brendanforster.comsimpler-ui-testing-for-wpf-apps.html</link>
-      <pubDate>Fri, 25 Mar 2011 20:00:00 -0700</pubDate>
+      <pubDate>Sat, 26 Mar 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./simpler-ui-testing-for-wpf-apps</guid>
       <description>&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
@@ -550,7 +573,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>Arguments about Project Structure</title>
       <link>http://brendanforster.comarguments-about-project-structure.html</link>
-      <pubDate>Tue, 22 Feb 2011 19:00:00 -0800</pubDate>
+      <pubDate>Wed, 23 Feb 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./arguments-about-project-structure</guid>
       <description>&lt;p&gt;Whenever it comes time to kick off a new project, how do you structure it?&lt;/p&gt;
@@ -656,7 +679,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>Using Rx to Implement Filtering in MahTweets</title>
       <link>http://brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html</link>
-      <pubDate>Fri, 18 Feb 2011 19:00:00 -0800</pubDate>
+      <pubDate>Sat, 19 Feb 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./using-rx-to-implement-filtering-in-mahtweets</guid>
       <description>&lt;p&gt;As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.&lt;/p&gt;
@@ -781,7 +804,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
       <link>http://brendanforster.comwp7-memory-profiling-navigation.html</link>
-      <pubDate>Thu, 03 Feb 2011 19:00:00 -0800</pubDate>
+      <pubDate>Fri, 04 Feb 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./wp7-memory-profiling-navigation</guid>
       <description>&lt;p&gt;In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...&lt;/p&gt;
@@ -899,7 +922,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
     <item>
       <title>MEF and Chaining Dependencies</title>
       <link>http://brendanforster.commef-and-chaining-dependencies.html</link>
-      <pubDate>Sun, 19 Dec 2010 19:00:00 -0800</pubDate>
+      <pubDate>Mon, 20 Dec 2010 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./mef-and-chaining-dependencies</guid>
       <description>&lt;p&gt;A &lt;a href=&quot;http://mef.codeplex.com/Thread/View&quot;&gt;question&lt;/a&gt; came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was &quot;solved&quot; - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.&lt;/p&gt;
@@ -1033,159 +1056,6 @@ public class ActualProxy : IServiceProxy
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Thoughts?&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MEF - [Import] vs [ImportingConstructor]</title>
-      <link>http://brendanforster.commef-import-vs-importingconstructor.html</link>
-      <pubDate>Fri, 22 Oct 2010 20:00:00 -0700</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./mef-import-vs-importingconstructor</guid>
-      <description>&lt;p&gt;A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at &lt;a href=&quot;http://www.informit.com/articles/article.aspx?p=1635818&quot;&gt;InformIT&lt;/a&gt;. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.&lt;/p&gt;
-
-&lt;p&gt;The healthy debate was ultimately about [Import] being easier than [ImportingConstructor] to use. I disagreed, but at the time couldn't really put my finger on why I preferred it.&lt;/p&gt;
-
-&lt;p&gt;After a bit of pondering, this is what I've come up with.&lt;/p&gt;
-
-&lt;h2&gt;Compare and Contrast - [Import] versus [ImportingConstructor]&lt;/h2&gt;
-
-&lt;p&gt;Compare these two segments of code:&lt;/p&gt;
-
-&lt;p&gt;The [Import] version...&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class TwitterPlugin : IMicroblog
-{
-    [Import]
-    private IApplicationSettingsService _applicationSettings;
-
-    [Import]
-    private IStatusUpdatesService _statusUpdatesService;
-
-    [Import]
-    private IContactsService _contacts;
-
-    public TwitterPlugin()
-    {
-        // some constructor logic
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or the [ImportingConstructor] version...&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class TwitterPlugin : IMicroblog
-{
-    private readonly IApplicationSettingsProvider _applicationSettings;
-    private readonly IStatusUpdateService _statusUpdatesService;
-    private readonly IContactsService _contactsService;
-
-    [ImportingConstructor]
-    public Twitter(IApplicationSettingsProvider applicationSettings,
-                   IStatusUpdateService statusUpdateService
-                   IContactsService contactsService)
-    {
-       _applicationSettings = applicationSettings;
-       _statusUpdatesService = statusUpdateService;
-       _contactsService = contactsService;
-
-       // some constructor logic
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So the second approach requires more code, but a good tool should have you saving many keystrokes - even Visual Studio 2010 will help out with that.&lt;/p&gt;
-
-&lt;p&gt;Other differences:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Design - Constructor Injection versus Property Setters&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;With the first approach, the properties are not populated until after the constructor is completed. If the class needs to perform tasks in the constructor which require its dependencies to be present, then you need to use the [ImportingConstructor] approach.&lt;/p&gt;
-
-&lt;p&gt;By using the [ImportingConstructor] attribute, the part declares to the container that it requires. Simple, easy to read, and can be used outside MEF by new'ing it up.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Maintainability&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach.&lt;/p&gt;
-
-&lt;p&gt;I see the &quot;growing dependency count&quot; as a design issue rather than a technical issue. Tacking on another [Import] attribute should be considered a code smell, just like adding an additional parameter to a constructor.&lt;/p&gt;
-
-&lt;p&gt;If your dependency count is more than a handful, then you should review the interfaces and see if they can be segregated/aggregated better. The dependency list is a representation of what the component requires to function. It should be the smallest possible set of interfaces, and no more. The interfaces should be lean and specialized, and classes can implement multiple interfaces if required.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;You can still use attributes&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Something these snippets don't demonstrate is that attributes can be combined with ImportingConstructor for specific scenarios:&lt;/p&gt;
-
-&lt;p&gt;For example, using [ImportMany]&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private readonly IEnumerable&amp;lt;ICreditService&amp;gt; _creditServices;
-
-[ImportingConstructor]
-public BankService([ImportMany] IEnumerable&amp;amp;lt;IProductServices&amp;amp;gt; productServices)
-{
-    _productServices = productServices;
-
-    // some constructor logic
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or using AllowDefault to allow for scenarios where a component is not known:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private readonly ILogger _logger;
-
-[ImportingConstructor]
-public BankService([Import(AllowDefault=true)] ILogger logger)
-{
-    if (logger == null)
-        _logger = new DefaultLogger();
-    else
-        _logger = logger;
-
-    // some constructor logic
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And this still keeps all the composition &quot;magic&quot; in one location. MEF supports importing &lt;a href=&quot;http://mef.codeplex.com/wikipage?title=Declaring%20Imports&amp;amp;referringTitle=Guide&quot;&gt;properties, fields and collections&lt;/a&gt;, which could be scattered around the same class.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Closing Statements&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Ultimately, I guess I'm advocating the [ImportingConstructor] approach because once a class grows to a significant complexity (requiring some parts and providing other parts) I feel that it is the saner approach.&lt;/p&gt;
-
-&lt;p&gt;For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A &amp;lt;-&amp;gt; B &amp;lt;-&amp;gt; C &amp;lt;-&amp;gt; D - then I'd start simplifying the classes and pushing more &quot;magic&quot; into the constructor for readability's sake.&lt;/p&gt;
-
-&lt;h2&gt;While we're talking managing MEF parts&lt;/h2&gt;
-
-&lt;p&gt;When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought &quot;&lt;em&gt;Why add a constructor parameter to the constructor when I can just add an attribute?&lt;/em&gt;&quot;&lt;/p&gt;
-
-&lt;p&gt;After all, it just worked.&lt;/p&gt;
-
-&lt;p&gt;It was easy to get started with MEF - as the application grows, you can sprinkle some more magic around.&lt;/p&gt;
-
-&lt;p&gt;I've been using MEF since the early previews (Preview 6 i think was the first drop I tried out) for various apps. One of the bigger codebases running on MEF is &lt;a href=&quot;http://www.mahtweets.com/&quot;&gt;MahTweets&lt;/a&gt;, a pluggable WPF client for various social media services.&lt;/p&gt;
-
-&lt;p&gt;For an upcoming release, I'm currently refactoring the MahTweets internals to replace StructureMap with Autofac. The &lt;a href=&quot;http://code.google.com/p/autofac/wiki/MefIntegration&quot;&gt;MEF integration extensions for Autofac&lt;/a&gt; have been a great help to simplify the integration between Autofac's ContainerBuilder and MEF's ComposablePartCatalog, and I've found ways to reduce the required MEF syntax without changing existing functionality.&lt;/p&gt;
-
-&lt;p&gt;On the Autofac side, we can declare components in the container to be available for MEF composition.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;container.RegisterType&amp;amp;lt;ApplicationSettingsProvider&amp;amp;gt;()
-         .As&amp;amp;lt;IApplicationSettingsProvider&amp;amp;gt;()
-         .Exported(x =&amp;amp;gt; x.As&amp;amp;lt;IApplicationSettingsProvider&amp;amp;gt;()) // make this part visible to MEF components
-         .SingleInstance();
-
-container.RegisterType&amp;amp;lt;PluginSettingsProvider&amp;amp;gt;()
-         .As&amp;amp;lt;IPluginSettingsProvider&amp;amp;gt;()
-         .Exported(x =&amp;gt; x.As&amp;amp;lt;IPluginSettingsProvider&amp;amp;gt;())
-         .SingleInstance();
-
-...
-
-// register external plugins for consumption
-container.RegisterComposablePartCatalog(catalog);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This allows for better separation between the application and external parts, and reduces effort required to register a component with both the IoC container and the CompositionContainer.&lt;/p&gt;
-
-&lt;p&gt;I'll blog some more in the future on how you can use these parts to help manage MEF applications as they grow. I need to check out the MEF v2 drops first :)&lt;/p&gt;
 </description>
     </item>
     
