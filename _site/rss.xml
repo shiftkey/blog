@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 23 Oct 2011 22:12:32 +1100</pubDate>
-    <lastBuildDate>Sun, 23 Oct 2011 22:12:32 +1100</lastBuildDate>
+    <pubDate>Sun, 23 Oct 2011 22:27:02 +1100</pubDate>
+    <lastBuildDate>Sun, 23 Oct 2011 22:27:02 +1100</lastBuildDate>
 
     
     <item>
@@ -16,7 +16,9 @@
       <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./ddd-brisbane</guid>
-      <description>&lt;p&gt;The &lt;a href=&quot;http://dddbrisbane.com&quot;&gt;dddBrisbane&lt;/a&gt; organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week). I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://dddbrisbane.com&quot;&gt;dddBrisbane&lt;/a&gt; organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week). I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.&lt;/p&gt;
 
 &lt;p&gt;So what am I talking about?&lt;/p&gt;
 
@@ -27,9 +29,19 @@
 &lt;p&gt;What shall we discuss?&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt; what is this Windows Runtime thing?&lt;/li&gt;
+&lt;li&gt; when should I go full metro? and what's classic mode?&lt;/li&gt;
+&lt;li&gt; how do I do X with Windows Runtime?&lt;/li&gt;
+&lt;li&gt; what new feature does Windows Runtime bring?&lt;/li&gt;
+&lt;li&gt; how do I wrap my head around doing client apps in HTML/JS?&lt;/li&gt;
+&lt;li&gt; tips and tricks for maintainable code&lt;/li&gt;
+&lt;li&gt; ...&lt;/li&gt;
 &lt;/ul&gt;
 
+
+&lt;p&gt;I'll add links to the content after the talk, so check back for more details.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://dddbrisbane.com/register&quot;&gt;Registration&lt;/a&gt; is only $25, and the DDD events are always a fun day (especially the after-party, if you can hang around for that).&lt;/p&gt;
 </description>
     </item>
     

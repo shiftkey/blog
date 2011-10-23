@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2011-10-23T22:12:32+11:00</updated>
+ <updated>2011-10-23T22:27:02+11:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -17,7 +17,9 @@
    <updated>2011-10-23T00:00:00+11:00</updated>
    <id>http://brendanforster.com.com./ddd-brisbane</id>
    <content type="html">
-	<![CDATA[<p>The <a href="http://dddbrisbane.com">dddBrisbane</a> organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week). I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.</p>
+	<![CDATA[<p><img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'></p>
+
+<p>The <a href="http://dddbrisbane.com">dddBrisbane</a> organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week). I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.</p>
 
 <p>So what am I talking about?</p>
 
@@ -28,9 +30,19 @@
 <p>What shall we discuss?</p>
 
 <ul>
-<li></li>
+<li> what is this Windows Runtime thing?</li>
+<li> when should I go full metro? and what's classic mode?</li>
+<li> how do I do X with Windows Runtime?</li>
+<li> what new feature does Windows Runtime bring?</li>
+<li> how do I wrap my head around doing client apps in HTML/JS?</li>
+<li> tips and tricks for maintainable code</li>
+<li> ...</li>
 </ul>
 
+
+<p>I'll add links to the content after the talk, so check back for more details.</p>
+
+<p><a href="http://dddbrisbane.com/register">Registration</a> is only $25, and the DDD events are always a fun day (especially the after-party, if you can hang around for that).</p>
 ]]>
    </content>
    
