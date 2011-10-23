@@ -8,7 +8,7 @@ layout: frontpage
 	{% if tag == page.tag %}
 	<li class="archive_list">
 		<time class="archive_list_post_date" datetime='{{post.date | date: "%Y-%m-%d"}}' style="float:right">
-			{{post.date | date: "%m/%e/%y"}}
+			{{post.date | date:"%d-%m-%Y"}}
 		</time>
 		<h3 class="archive_list_header">
 			<a class="archive_list_article_link" href='{{post.url}}'>{{post.title}}</a>
