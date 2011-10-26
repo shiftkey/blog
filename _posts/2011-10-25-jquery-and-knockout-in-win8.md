@@ -49,8 +49,7 @@ And at the bottom of the default.js file, I use a simple selector to find a DOM 
 })();
 </code></pre>
 
-And start making use of jQuery selectors instead of document.getElementById...
-
+and started making use of selectors elsewhere instead of document.getElementById to make the code more concise...
 
 ## And what of KnockoutJS?
 
@@ -117,7 +116,7 @@ And then went to work making changes:
 &lt;/div&gt;
 </code></pre>
 
-So by moving the binding code to the view (other parts of the default project templates have their own binding, which I'll explain at later) but I find the KnockoutJS syntax more concise than the Win8 syntax. 
+So by moving the binding expressions to the UI (like the MVVM pattern that is popular with XAML application) we can lean on frameworks to make our Javascript code easier to maintain. Other components of the default templates have their own binding attributes - *data-win-bind* - which I'll explain later, but I find the KnockoutJS syntax more concise. 
 
 In particular the use of *textContent* instead of *text* to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.
 

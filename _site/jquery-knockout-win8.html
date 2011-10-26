@@ -122,7 +122,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 </code></pre>
 
 
-<p>And start making use of jQuery selectors instead of document.getElementById...</p>
+<p>and started making use of selectors elsewhere instead of document.getElementById to make the code more concise...</p>
 
 <h2>And what of KnockoutJS?</h2>
 
@@ -191,7 +191,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 </code></pre>
 
 
-<p>So by moving the binding code to the view (other parts of the default project templates have their own binding, which I'll explain at later) but I find the KnockoutJS syntax more concise than the Win8 syntax.</p>
+<p>So by moving the binding expressions to the UI (like the MVVM pattern that is popular with XAML application) we can lean on frameworks to make our Javascript code easier to maintain. Other components of the default templates have their own binding attributes - <em>data-win-bind</em> - which I'll explain later, but I find the KnockoutJS syntax more concise.</p>
 
 <p>In particular the use of <em>textContent</em> instead of <em>text</em> to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.</p>
 

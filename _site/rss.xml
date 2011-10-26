@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 25 Oct 2011 23:15:09 -0700</pubDate>
-    <lastBuildDate>Tue, 25 Oct 2011 23:15:09 -0700</lastBuildDate>
+    <pubDate>Tue, 25 Oct 2011 23:19:50 -0700</pubDate>
+    <lastBuildDate>Tue, 25 Oct 2011 23:19:50 -0700</lastBuildDate>
 
     
     <item>
@@ -54,7 +54,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;And start making use of jQuery selectors instead of document.getElementById...&lt;/p&gt;
+&lt;p&gt;and started making use of selectors elsewhere instead of document.getElementById to make the code more concise...&lt;/p&gt;
 
 &lt;h2&gt;And what of KnockoutJS?&lt;/h2&gt;
 
@@ -123,7 +123,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;So by moving the binding code to the view (other parts of the default project templates have their own binding, which I'll explain at later) but I find the KnockoutJS syntax more concise than the Win8 syntax.&lt;/p&gt;
+&lt;p&gt;So by moving the binding expressions to the UI (like the MVVM pattern that is popular with XAML application) we can lean on frameworks to make our Javascript code easier to maintain. Other components of the default templates have their own binding attributes - &lt;em&gt;data-win-bind&lt;/em&gt; - which I'll explain later, but I find the KnockoutJS syntax more concise.&lt;/p&gt;
 
 &lt;p&gt;In particular the use of &lt;em&gt;textContent&lt;/em&gt; instead of &lt;em&gt;text&lt;/em&gt; to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.&lt;/p&gt;
 
