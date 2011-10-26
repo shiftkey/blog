@@ -11,15 +11,17 @@ comments: true
 
 Apparently this is old news to some. Trendsetters...
 
-With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - the words have lost all meaning to me, but that's another topic) applications, I was asked if [jQuery][3] is supported - with a goal to make JS maintainable.
+With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - the words have lost all meaning to me, but that's another topic) applications, I was asked if [jQuery][3] is supported - with a goal to making JS applications more maintainable.
 
  [3]:http://jquery.com/
 
-As I'd heard it mentioned at BUILD, and hadn't heard a major drama, I'd expected that it worked. However, to confirm this for myself, I followed the advice of this [forum thread][1] on MSDN. dropped jQuery into a new Metro-style Javascript application.
+As I'd heard it mentioned at BUILD - and hadn't heard a major drama since people have been using the Developer Preview bits - I expected that it worked. However, to confirm this for myself, I found this [forum thread][1] on MSDN with a coouple of caveats. 
 
  [1]: http://social.msdn.microsoft.com/Forums/en-US/winappswithhtml5/thread/66273417-92cd-4a35-b9a1-281d962eff59
 
-Within the **default.html** file, I added the jQuery file **before** the default.js file. The default.js file contains the bootstrapping code for the application:
+No fire and brimstone? Oh well, I'll just double-check...
+
+After adding the jQuery file to the project, I modified the **default.html** file to include the jQuery file **before** the default.js file. The default.js file contains the bootstrapping code for the application:
 
 <pre><code>   &lt;link rel="stylesheet" href="/css/default.css" /&gt;
     <strong>&lt;script src="/js/jquery-1.6.4.js"&gt;&lt;/script&gt;</strong>
