@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2011-10-23T23:18:13+11:00</updated>
+ <updated>2011-10-25T23:15:09-07:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -12,9 +12,132 @@
 
  
  <entry>
+   <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
+   <link href="http://brendanforster.comjquery-knockout-win8.html" />
+   <updated>2011-10-25T06:00:00-07:00</updated>
+   <id>http://brendanforster.com.com./jquery-and-knockout-in-win8</id>
+   <content type="html">
+	<![CDATA[<p>Apparently this is old news to some. Trendsetters...</p>
+
+<p>With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - the words have lost all meaning to me, but that's another topic) applications, I was asked if <a href="http://jquery.com/">jQuery</a> is supported - with a goal to make JS maintainable.</p>
+
+<p>As I'd heard it mentioned at BUILD, and hadn't heard a major drama, I'd expected that it worked. However, to confirm this for myself, I followed the advice of this <a href="http://social.msdn.microsoft.com/Forums/en-US/winappswithhtml5/thread/66273417-92cd-4a35-b9a1-281d962eff59">forum thread</a> on MSDN. dropped jQuery into a new Metro-style Javascript application.</p>
+
+<p>Within the <strong>default.html</strong> file, I added the jQuery file <strong>before</strong> the default.js file. The default.js file contains the bootstrapping code for the application:</p>
+
+<pre><code>   &lt;link rel="stylesheet" href="/css/default.css" /&gt;
+    <strong>&lt;script src="/js/jquery-1.6.4.js"&gt;&lt;/script&gt;</strong>
+    &lt;script src="/js/default.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+</code></pre>
+
+
+<p>And at the bottom of the default.js file, I use a simple selector to find a DOM element:</p>
+
+<pre><code>            // other code
+
+            WinJS.UI.process(<strong>$('#appbar')[0]</strong>)
+                .then(function () { 
+                    <strong>$('#home').click(navigateHome);</strong>
+                });
+
+            WinJS.Navigation.navigate(homePage);
+
+            <strong>var host = $('#contentHost');</strong>
+        }
+    }
+
+    WinJS.Navigation.addEventListener('navigated', navigated);
+    WinJS.Application.start();
+
+})();
+</code></pre>
+
+
+<p>And start making use of jQuery selectors instead of document.getElementById...</p>
+
+<h2>And what of KnockoutJS?</h2>
+
+<p>I've only had basic experience with <a href="http://knockoutjs.com/">Knockout</a>, but found an easier scenario to support. I dropped in the code and modified the detailPage template.</p>
+
+<pre><code>   &lt;link rel="stylesheet" href="/css/default.css" /&gt;
+    &lt;link rel="stylesheet" href="/css/detailPage.css" /&gt;
+    &lt;script type="ms-deferred/javascript" src="/js/detailPage.js"&gt;&lt;/script&gt;
+    <strong>&lt;script type="ms-deferred/javascript" src="/js/knockout-1.2.1.js"&gt;&lt;/script&gt;</strong>
+&lt;/head&gt;
+
+</code></pre>
+
+
+<p>And then went to work making changes:</p>
+
+<p><strong>In detailPage.js</strong></p>
+
+<p><em>Before</em></p>
+
+<pre><code>function fragmentLoad(elements, options) {
+    var item = options &amp;&amp; options.item ? options.item : getItem();
+    elements.querySelector('.pageTitle').textContent = item.group.title;
+
+    WinJS.UI.processAll(elements)
+        .then(function () {
+            elements.querySelector('.title').textContent = item.title;
+            elements.querySelector('.content').innerHTML = item.content;
+        });
+}
+</code></pre>
+
+<p><em>After</em></p>
+
+<pre><code>function fragmentLoad(elements, options) {
+    var item = options &amp;&amp; options.item ? options.item : getItem();
+    WinJS.UI.processAll(elements).then(function () { <strong>ko.applyBindings(item);</strong> });
+}
+</code></pre>
+
+
+<p><strong>In detailPage.html - declared some bindings using the data-bind attribute</strong></p>
+
+<pre><code>&lt;div class="detailPage fragment"&gt;
+    &lt;header role="banner" aria-label="Header content"&gt;
+        &lt;button disabled class="win-backbutton" aria-label="Back"&gt;&lt;/button&gt;
+        &lt;div class="titleArea"&gt;
+            &lt;h1 class="pageTitle win-title" <strong>data-bind="text: group.title"</strong>&gt;&lt;/h1&gt;
+
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;section role="main" aria-label="Main content"&gt;
+        &lt;article&gt;
+            &lt;div&gt;
+                &lt;header&gt;
+
+                    &lt;h1 class="title win-contentTitle" <strong>data-bind="text: title"</strong>&gt;&lt;/h1&gt;
+                &lt;/header&gt;
+                &lt;div class="image" <strong>data-bind="style: { color: backgroundColor }"</strong>&gt;&lt;/div&gt;
+                &lt;div class="content" <strong>data-bind="html: content"</strong>&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/article&gt;
+    &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+
+
+<p>So by moving the binding code to the view (other parts of the default project templates have their own binding, which I'll explain at later) but I find the KnockoutJS syntax more concise than the Win8 syntax.</p>
+
+<p>In particular the use of <em>textContent</em> instead of <em>text</em> to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.</p>
+
+<p>I'll formulate some more opinions on the WinJS side as I delve deeper....</p>
+]]>
+   </content>
+   
+ </entry>
+ 
+ <entry>
    <title>I'm speaking at DDD Brisbane</title>
    <link href="http://brendanforster.comddd-brisbane.html" />
-   <updated>2011-10-23T00:00:00+11:00</updated>
+   <updated>2011-10-22T06:00:00-07:00</updated>
    <id>http://brendanforster.com.com./ddd-brisbane</id>
    <content type="html">
 	<![CDATA[<p><img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'></p>
@@ -53,7 +176,7 @@
  <entry>
    <title>Doing the build server dance with NuGet</title>
    <link href="http://brendanforster.comdoing-the-build-server-dance-with-nuget.html" />
-   <updated>2011-07-08T14:00:00+10:00</updated>
+   <updated>2011-07-07T21:00:00-07:00</updated>
    <id>http://brendanforster.com.com./doing-the-build-server-dance-with-nuget</id>
    <content type="html">
 	<![CDATA[<p>I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.</p>
@@ -208,7 +331,7 @@ Which causes my build to break.</p>
  <entry>
    <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
    <link href="http://brendanforster.cominotifypropertychanged-stop-the-madness.html" />
-   <updated>2011-06-18T14:00:00+10:00</updated>
+   <updated>2011-06-17T21:00:00-07:00</updated>
    <id>http://brendanforster.com.com./inotifypropertychanged-stop-the-madness</id>
    <content type="html">
 	<![CDATA[<p>Its time to stop with this madness.</p>
@@ -374,7 +497,7 @@ public string SomeProperty
  <entry>
    <title>On the Windows 8 Preview Video</title>
    <link href="http://brendanforster.comon-the-windows-8-preview.html" />
-   <updated>2011-06-08T14:00:00+10:00</updated>
+   <updated>2011-06-07T21:00:00-07:00</updated>
    <id>http://brendanforster.com.com./on-the-windows-8-preview</id>
    <content type="html">
 	<![CDATA[<p>For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: <a href="http://www.youtube.com/watch?v=p92QfWOw88I">http://www.youtube.com/watch?v=p92QfWOw88I</a></p>
@@ -450,7 +573,7 @@ public string SomeProperty
  <entry>
    <title>slsvcutil - Workaround StackOverflowException</title>
    <link href="http://brendanforster.comslsvcutil-stackoverflowexception-workaround.html" />
-   <updated>2011-05-06T14:00:00+10:00</updated>
+   <updated>2011-05-05T21:00:00-07:00</updated>
    <id>http://brendanforster.com.com./slsvcutil-stackoverflowexception-workaround</id>
    <content type="html">
 	<![CDATA[<p>I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called <a href="http://www.stackoverflow.com/">stackoverflow</a> came into the mix :)</p>
@@ -482,7 +605,7 @@ Process is terminated due to StackOverflowException.
  <entry>
    <title>Musing - Simpler UI Testing for WPF Apps</title>
    <link href="http://brendanforster.comsimpler-ui-testing-for-wpf-apps.html" />
-   <updated>2011-03-26T14:00:00+11:00</updated>
+   <updated>2011-03-25T20:00:00-07:00</updated>
    <id>http://brendanforster.com.com./simpler-ui-testing-for-wpf-apps</id>
    <content type="html">
 	<![CDATA[<p>After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
@@ -600,7 +723,7 @@ just needed to write this post.</p>
  <entry>
    <title>Arguments about Project Structure</title>
    <link href="http://brendanforster.comarguments-about-project-structure.html" />
-   <updated>2011-02-23T14:00:00+11:00</updated>
+   <updated>2011-02-22T19:00:00-08:00</updated>
    <id>http://brendanforster.com.com./arguments-about-project-structure</id>
    <content type="html">
 	<![CDATA[<p>Whenever it comes time to kick off a new project, how do you structure it?</p>
@@ -708,7 +831,7 @@ just needed to write this post.</p>
  <entry>
    <title>Using Rx to Implement Filtering in MahTweets</title>
    <link href="http://brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html" />
-   <updated>2011-02-19T14:00:00+11:00</updated>
+   <updated>2011-02-18T19:00:00-08:00</updated>
    <id>http://brendanforster.com.com./using-rx-to-implement-filtering-in-mahtweets</id>
    <content type="html">
 	<![CDATA[<p>As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.</p>
@@ -835,7 +958,7 @@ just needed to write this post.</p>
  <entry>
    <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
    <link href="http://brendanforster.comwp7-memory-profiling-navigation.html" />
-   <updated>2011-02-04T14:00:00+11:00</updated>
+   <updated>2011-02-03T19:00:00-08:00</updated>
    <id>http://brendanforster.com.com./wp7-memory-profiling-navigation</id>
    <content type="html">
 	<![CDATA[<p>In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...</p>
@@ -955,7 +1078,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
  <entry>
    <title>MEF and Chaining Dependencies</title>
    <link href="http://brendanforster.commef-and-chaining-dependencies.html" />
-   <updated>2010-12-20T14:00:00+11:00</updated>
+   <updated>2010-12-19T19:00:00-08:00</updated>
    <id>http://brendanforster.com.com./mef-and-chaining-dependencies</id>
    <content type="html">
 	<![CDATA[<p>A <a href="http://mef.codeplex.com/Thread/View">question</a> came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.</p>
@@ -1097,7 +1220,7 @@ public class ActualProxy : IServiceProxy
  <entry>
    <title>MEF - [Import] vs [ImportingConstructor]</title>
    <link href="http://brendanforster.commef-import-vs-importingconstructor.html" />
-   <updated>2010-10-23T14:00:00+11:00</updated>
+   <updated>2010-10-22T20:00:00-07:00</updated>
    <id>http://brendanforster.com.com./mef-import-vs-importingconstructor</id>
    <content type="html">
 	<![CDATA[<p>A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at <a href="http://www.informit.com/articles/article.aspx?p=1635818">InformIT</a>. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.</p>
@@ -1252,7 +1375,7 @@ container.RegisterComposablePartCatalog(catalog);
  <entry>
    <title>IoC Tips - Autofac Factory Adapters</title>
    <link href="http://brendanforster.comioc-tips-autofac-factory-adapters.html" />
-   <updated>2010-10-23T14:00:00+11:00</updated>
+   <updated>2010-10-22T20:00:00-07:00</updated>
    <id>http://brendanforster.com.com./ioc-tips-autofac-factory-adapters</id>
    <content type="html">
 	<![CDATA[<h2>Scenario</h2>
@@ -1360,7 +1483,7 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
  <entry>
    <title>Amped Web 2010 Recap</title>
    <link href="http://brendanforster.comamped-web-2010-recap.html" />
-   <updated>2010-10-16T14:00:00+11:00</updated>
+   <updated>2010-10-15T20:00:00-07:00</updated>
    <id>http://brendanforster.com.com./amped-web-2010-recap</id>
    <content type="html">
 	<![CDATA[<p><strong>Disclaimer:</strong> I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including <a href="http://twitter.com/Rog42">@Rog42</a>'s crazy photography experiments!</p>
@@ -1404,7 +1527,7 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
  <entry>
    <title>Hello World</title>
    <link href="http://brendanforster.comhello-world.html" />
-   <updated>2010-09-23T10:50:44+10:00</updated>
+   <updated>2010-09-22T17:50:44-07:00</updated>
    <id>http://brendanforster.com.com./hello-world</id>
    <content type="html">
 	<![CDATA[<p>Starting off this blog with a simple post. More styling to come during the coming days.</p>

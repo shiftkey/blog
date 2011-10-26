@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<!-- 
+320 and Up boilerplate extension
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup 
+-->
+
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!-- TODO: appcache definition -->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
+<meta name="description" content="">
+<meta name="author" content="brendan forster">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+
+<!-- robots -->
+<meta name="robots" content="/robots.txt" />
+
+<!-- For less capable mobile browsers
+<link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+<!-- For all browsers -->
+<link rel="stylesheet" media="screen" href="/css/style.css?v=1">
+
+<link rel="stylesheet" media="print" href="/css/print.css?v=1">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/css/480.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/css/768.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/css/1382.css?v=1">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/css/2x.css?v=1">
+
+<link rel="stylesheet" media="screen" href="/css/custom.css?v=1">
+
+<!-- JavaScript at bottom except for Modernizr -->
+<script src="/js/libs/modernizr-1.7.min.js"></script>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- http://t.co/y1jPVnT -->
+<link rel="canonical" href="jquery-knockout-win8.html">
+</head>
+
+
+<body class="clearfix">
+
+<header role="banner" class="clearfix">
+	<h1>jQuery and KnockoutJS in Win8? Sure, why not!</h1>
+</header>
+
+<div class="content clearfix">
+
+	<div id="post">
+<p>Apparently this is old news to some. Trendsetters...</p>
+
+<p>With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - the words have lost all meaning to me, but that's another topic) applications, I was asked if <a href="http://jquery.com/">jQuery</a> is supported - with a goal to make JS maintainable.</p>
+
+<p>As I'd heard it mentioned at BUILD, and hadn't heard a major drama, I'd expected that it worked. However, to confirm this for myself, I followed the advice of this <a href="http://social.msdn.microsoft.com/Forums/en-US/winappswithhtml5/thread/66273417-92cd-4a35-b9a1-281d962eff59">forum thread</a> on MSDN. dropped jQuery into a new Metro-style Javascript application.</p>
+
+<p>Within the <strong>default.html</strong> file, I added the jQuery file <strong>before</strong> the default.js file. The default.js file contains the bootstrapping code for the application:</p>
+
+<pre><code>   &lt;link rel="stylesheet" href="/css/default.css" /&gt;
+    <strong>&lt;script src="/js/jquery-1.6.4.js"&gt;&lt;/script&gt;</strong>
+    &lt;script src="/js/default.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+</code></pre>
+
+
+<p>And at the bottom of the default.js file, I use a simple selector to find a DOM element:</p>
+
+<pre><code>            // other code
+
+            WinJS.UI.process(<strong>$('#appbar')[0]</strong>)
+                .then(function () { 
+                    <strong>$('#home').click(navigateHome);</strong>
+                });
+
+            WinJS.Navigation.navigate(homePage);
+
+            <strong>var host = $('#contentHost');</strong>
+        }
+    }
+
+    WinJS.Navigation.addEventListener('navigated', navigated);
+    WinJS.Application.start();
+
+})();
+</code></pre>
+
+
+<p>And start making use of jQuery selectors instead of document.getElementById...</p>
+
+<h2>And what of KnockoutJS?</h2>
+
+<p>I've only had basic experience with <a href="http://knockoutjs.com/">Knockout</a>, but found an easier scenario to support. I dropped in the code and modified the detailPage template.</p>
+
+<pre><code>   &lt;link rel="stylesheet" href="/css/default.css" /&gt;
+    &lt;link rel="stylesheet" href="/css/detailPage.css" /&gt;
+    &lt;script type="ms-deferred/javascript" src="/js/detailPage.js"&gt;&lt;/script&gt;
+    <strong>&lt;script type="ms-deferred/javascript" src="/js/knockout-1.2.1.js"&gt;&lt;/script&gt;</strong>
+&lt;/head&gt;
+
+</code></pre>
+
+
+<p>And then went to work making changes:</p>
+
+<p><strong>In detailPage.js</strong></p>
+
+<p><em>Before</em></p>
+
+<pre><code>function fragmentLoad(elements, options) {
+    var item = options &amp;&amp; options.item ? options.item : getItem();
+    elements.querySelector('.pageTitle').textContent = item.group.title;
+
+    WinJS.UI.processAll(elements)
+        .then(function () {
+            elements.querySelector('.title').textContent = item.title;
+            elements.querySelector('.content').innerHTML = item.content;
+        });
+}
+</code></pre>
+
+<p><em>After</em></p>
+
+<pre><code>function fragmentLoad(elements, options) {
+    var item = options &amp;&amp; options.item ? options.item : getItem();
+    WinJS.UI.processAll(elements).then(function () { <strong>ko.applyBindings(item);</strong> });
+}
+</code></pre>
+
+
+<p><strong>In detailPage.html - declared some bindings using the data-bind attribute</strong></p>
+
+<pre><code>&lt;div class="detailPage fragment"&gt;
+    &lt;header role="banner" aria-label="Header content"&gt;
+        &lt;button disabled class="win-backbutton" aria-label="Back"&gt;&lt;/button&gt;
+        &lt;div class="titleArea"&gt;
+            &lt;h1 class="pageTitle win-title" <strong>data-bind="text: group.title"</strong>&gt;&lt;/h1&gt;
+
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;section role="main" aria-label="Main content"&gt;
+        &lt;article&gt;
+            &lt;div&gt;
+                &lt;header&gt;
+
+                    &lt;h1 class="title win-contentTitle" <strong>data-bind="text: title"</strong>&gt;&lt;/h1&gt;
+                &lt;/header&gt;
+                &lt;div class="image" <strong>data-bind="style: { color: backgroundColor }"</strong>&gt;&lt;/div&gt;
+                &lt;div class="content" <strong>data-bind="html: content"</strong>&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/article&gt;
+    &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+
+
+<p>So by moving the binding code to the view (other parts of the default project templates have their own binding, which I'll explain at later) but I find the KnockoutJS syntax more concise than the Win8 syntax.</p>
+
+<p>In particular the use of <em>textContent</em> instead of <em>text</em> to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.</p>
+
+<p>I'll formulate some more opinions on the WinJS side as I delve deeper....</p>
+
+</div>
+
+
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://shiftkey.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>22 Oct 2011</span> &raquo; <a href="ddd-brisbane.html">I'm speaking at DDD Brisbane</a></li>
+    
+      <li><span>07 Jul 2011</span> &raquo; <a href="doing-the-build-server-dance-with-nuget.html">Doing the build server dance with NuGet</a></li>
+    
+      <li><span>17 Jun 2011</span> &raquo; <a href="inotifypropertychanged-stop-the-madness.html">Soapbox: INotifyPropertyChanged - Stop the Madness</a></li>
+    
+  </ul>
+</div>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/DOMAssistantCompressed-2.8.js"></script>
+<script src="/js/libs/selectivizr-1.0.1.js"></script>
+<script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+
+<script>
+var _gaq=[['_setAccount','UA-8441214-1'],['_trackPageview']]; 
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+</body>
+</html>
