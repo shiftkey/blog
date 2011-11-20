@@ -275,8 +275,12 @@ section[role="about"] article
 .tag_list li
 {
 	margin: 0;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-right: 20px;
 	padding:0;
 	float: left;
+}
+
+article[role="tagcloud"] span
+{
+	font-family: "Helvetica Neue",Helvetica,Arial;
 }
