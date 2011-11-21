@@ -90,8 +90,6 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
     <h2>API Design and Windows Metadata Exporter</h2>
 </header>
 
-
-
     <section>
         I spent today migrating an existing .NET library (Stacky - details <a href="http://stacky.codeplex.com/">here</a>) into a Windows Runtime-compatible API. While I started out with the goal of having one codebase to rule them all, I quickly found this was awfully idealistic and focused on just the WinRT stuff as an exercise. <br />
         <br />
@@ -161,7 +159,7 @@ public class MyClass
 
         you'll see this error: <br /><br />
 
-        Liquid error: undefined method `map' for #<String:0x30761a0>
+        Liquid error: undefined method `map' for #<String:0x3860e98>
 
         At this point, you have two choices:
 
@@ -203,7 +201,7 @@ public sealed class MyClass
 
         now we get multiple errors, such as: <br /><br />
     
-        Liquid error: undefined method `map' for #<String:0x3075a38>
+        Liquid error: undefined method `map' for #<String:0x38609e8>
 
         Thankfully, the solution is right there in front of us.<br /><br />
 
@@ -243,7 +241,7 @@ public static class MyStaticClass
 
         And we get scolded rather badly:<br /><br />
 
-        Liquid error: undefined method `map' for #<String:0x3075408>
+        Liquid error: undefined method `map' for #<String:0x38605c8>
         
         The Solution? Uh, don't do it.<br /><br />
 
@@ -279,7 +277,7 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
 
         No concrete classes. Still using a generic interface though...
 
-Liquid error: undefined method `map' for #<String:0x3074dc0>
+Liquid error: undefined method `map' for #<String:0x3860118>
 
         Damn. Another brick wall.<br /><br />
 
@@ -312,7 +310,7 @@ public class SomeClass
 
         Aaaand... no. 
 
-Liquid error: undefined method `map' for #<String:0x30746b8>
+Liquid error: undefined method `map' for #<String:0x385fc68>
 
         <strong>Notes:</strong> <br /><br />
 
@@ -349,7 +347,7 @@ public sealed class SomeClass
 
         It will ask you what on earth you were thinking!
 
-Liquid error: undefined method `map' for #<String:0x30740d0>
+Liquid error: undefined method `map' for #<String:0x385f758>
 
     </section>
 
@@ -372,7 +370,7 @@ public async Task&lt;string&gt; Get(string url)
 
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
-Liquid error: undefined method `map' for #<String:0x307dc10>
+Liquid error: undefined method `map' for #<String:0x385f368>
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
 

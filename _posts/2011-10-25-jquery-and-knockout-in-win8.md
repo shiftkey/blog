@@ -15,7 +15,7 @@ With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - 
 
  [3]:http://jquery.com/
 
-As I'd heard it mentioned at BUILD - and hadn't heard a major drama since people have been using the Developer Preview bits - I expected that it worked. However, to confirm this for myself, I found this [forum thread][1] on MSDN with a coouple of caveats. 
+As I'd heard it mentioned at BUILD - and hadn't heard a major drama since people have been using the Developer Preview bits - I expected that it worked. However, to confirm this for myself, I found this [forum thread][1] on MSDN with a couple of caveats. 
 
  [1]: http://social.msdn.microsoft.com/Forums/en-US/winappswithhtml5/thread/66273417-92cd-4a35-b9a1-281d962eff59
 
