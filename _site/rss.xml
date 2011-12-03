@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 21 Nov 2011 09:19:59 +1100</pubDate>
-    <lastBuildDate>Mon, 21 Nov 2011 09:19:59 +1100</lastBuildDate>
+    <pubDate>Sat, 03 Dec 2011 13:16:11 +1100</pubDate>
+    <lastBuildDate>Sat, 03 Dec 2011 13:16:11 +1100</lastBuildDate>
 
     
     <item>
@@ -149,24 +149,9 @@
 
 &lt;h2&gt;Windows 8 - Who Moved My Cheese?&lt;/h2&gt;
 
-&lt;p&gt;I'll link back to my abstract once I remember what I submitted, but keep in mind there is another Windows 8 session in the mix - so I'll probably tweak the script to prevent overlap.&lt;/p&gt;
+&lt;p&gt;The slides are available on &lt;a href=&quot;http://ddd-windows8.heroku.com&quot;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;What shall we discuss?&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt; what is this Windows Runtime thing?&lt;/li&gt;
-&lt;li&gt; when should I go full metro? and what's classic mode?&lt;/li&gt;
-&lt;li&gt; how do I do X with Windows Runtime?&lt;/li&gt;
-&lt;li&gt; what new feature does Windows Runtime bring?&lt;/li&gt;
-&lt;li&gt; how do I wrap my head around doing client apps in HTML/JS?&lt;/li&gt;
-&lt;li&gt; tips and tricks for maintainable code&lt;/li&gt;
-&lt;li&gt; ...&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;I'll add links to the content after the talk, so check back for more details.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://dddbrisbane.com/register&quot;&gt;Registration&lt;/a&gt; is only $25, and the DDD events are always a fun day (especially the after-party, if you can hang around for that).&lt;/p&gt;
+&lt;p&gt;The source code for the slides are available on &lt;a href=&quot;http://github.com/shiftkey/dddbrisbane&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
