@@ -6,14 +6,46 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sat, 03 Dec 2011 13:24:21 +1100</pubDate>
-    <lastBuildDate>Sat, 03 Dec 2011 13:24:21 +1100</lastBuildDate>
+    <pubDate>Sat, 03 Dec 2011 14:21:37 +1000</pubDate>
+    <lastBuildDate>Sat, 03 Dec 2011 14:21:37 +1000</lastBuildDate>
 
+    
+    <item>
+      <title>ALT.NET Open Spaces</title>
+      <link>http://brendanforster.comalt-net-open-spaces-2011.html</link>
+      <pubDate>Sat, 03 Dec 2011 18:00:00 +1000</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com./alt-net-open-spaces-recap</guid>
+      <description>&lt;p&gt;Flew down to Melbourne this weekend to catch up with the locals and talk about various topics.&lt;/p&gt;
+
+&lt;h3&gt;User Groups&lt;/h3&gt;
+
+&lt;p&gt;How things have grown, how we got here, what has worked and what hasn't.&lt;/p&gt;
+
+&lt;h3&gt;Code Dojo&lt;/h3&gt;
+
+&lt;p&gt;discussed &lt;a href=&quot;http://codekata.pragprog.com/2007/01/kata_fourteen_t.html&quot;&gt;this kata&lt;/a&gt; and various design topics.&lt;/p&gt;
+
+&lt;h3&gt;New Frontiers&lt;/h3&gt;
+
+&lt;h3&gt;RAD Frameworks&lt;/h3&gt;
+
+&lt;h3&gt;Refactoring&lt;/h3&gt;
+
+&lt;h3&gt;&quot;What if this is as good as it gets?&quot;&lt;/h3&gt;
+
+&lt;h3&gt;Code Coverage and Analysis&lt;/h3&gt;
+
+&lt;p&gt;@scubamonki&lt;/p&gt;
+
+&lt;h3&gt;Agile Discussion&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
       <link>http://brendanforster.comjquery-knockout-win8.html</link>
-      <pubDate>Wed, 26 Oct 2011 00:00:00 +1100</pubDate>
+      <pubDate>Tue, 25 Oct 2011 23:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./jquery-and-knockout-in-win8</guid>
       <description>&lt;p&gt;Apparently this is old news to some. Trendsetters...&lt;/p&gt;
@@ -136,7 +168,7 @@
     <item>
       <title>I'm speaking at DDD Brisbane</title>
       <link>http://brendanforster.comddd-brisbane.html</link>
-      <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
+      <pubDate>Sat, 22 Oct 2011 23:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./ddd-brisbane</guid>
       <description>&lt;p&gt;&lt;img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'&gt;&lt;/p&gt;
@@ -579,7 +611,7 @@ Process is terminated due to StackOverflowException.
     <item>
       <title>Musing - Simpler UI Testing for WPF Apps</title>
       <link>http://brendanforster.comsimpler-ui-testing-for-wpf-apps.html</link>
-      <pubDate>Sat, 26 Mar 2011 14:00:00 +1100</pubDate>
+      <pubDate>Sat, 26 Mar 2011 13:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./simpler-ui-testing-for-wpf-apps</guid>
       <description>&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
@@ -695,7 +727,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>Arguments about Project Structure</title>
       <link>http://brendanforster.comarguments-about-project-structure.html</link>
-      <pubDate>Wed, 23 Feb 2011 14:00:00 +1100</pubDate>
+      <pubDate>Wed, 23 Feb 2011 13:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./arguments-about-project-structure</guid>
       <description>&lt;p&gt;Whenever it comes time to kick off a new project, how do you structure it?&lt;/p&gt;
@@ -801,7 +833,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>Using Rx to Implement Filtering in MahTweets</title>
       <link>http://brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html</link>
-      <pubDate>Sat, 19 Feb 2011 14:00:00 +1100</pubDate>
+      <pubDate>Sat, 19 Feb 2011 13:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./using-rx-to-implement-filtering-in-mahtweets</guid>
       <description>&lt;p&gt;As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.&lt;/p&gt;
@@ -918,124 +950,6 @@ just needed to write this post.&lt;/p&gt;
 &lt;li&gt;Performance Testing against a large set of data.&lt;/li&gt;
 &lt;li&gt;Demonstrating how external plugins can include their own rules.&lt;/li&gt;
 &lt;li&gt;Demonstrate user interface changes for vNext.&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-    </item>
-    
-    <item>
-      <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
-      <link>http://brendanforster.comwp7-memory-profiling-navigation.html</link>
-      <pubDate>Fri, 04 Feb 2011 14:00:00 +1100</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./wp7-memory-profiling-navigation</guid>
-      <description>&lt;p&gt;In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...&lt;/p&gt;
-
-&lt;h2&gt;Updated&lt;/h2&gt;
-
-&lt;p&gt;After going back and forth with local Windows Phone guru &lt;a href=&quot;http://nicksnettravels.builttoroam.com/&quot;&gt;Nick Randolph&lt;/a&gt; about the issue, and he &lt;a href=&quot;http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage.aspx&quot;&gt;blogged&lt;/a&gt; &lt;a href=&quot;http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx&quot;&gt;about&lt;/a&gt; the behaviour in more detail, we came to the conclusion that the garbage collection was not being triggered automatically. That's not necessarily a bad thing (see the &lt;a href=&quot;http://nicksnettravels.builttoroam.com/blogengine/post/2011/02/10/Windows-Phone-7-Navigation-Memory-Usage-Just-Got-Scary.aspx&quot;&gt;conditions for triggering a garbage collection&lt;/a&gt; here) but is a concern for large WP7 applications.&lt;/p&gt;
-
-&lt;p&gt;The workaround I devised for this is to trigger a GC.Collect() after a number of page navigations. I would only add this to an application when absolutely necessary. The implementation of this I'll leave as an exercise to the reader.&lt;/p&gt;
-
-&lt;p&gt;Side note: I've seen various samples floating around which will use a timer to invoke a garbage collection call. Ignoring the use of timers on the device (which will drain the battery), a garbage collection call at an arbitrary time will likely impact on the user experience. Be smart about it, if you need to work this into an application.&lt;/p&gt;
-
-&lt;p&gt;Read on for the rest of the saga...&lt;/p&gt;
-
-&lt;h2&gt;Before We Begin...&lt;/h2&gt;
-
-&lt;p&gt;One of the requirements a WP7 application needs to satisfy is around memory consumption&lt;/p&gt;
-
-&lt;h3&gt;5.2.5 Memory Consumption&lt;/h3&gt;
-
-
-&lt;p&gt;&lt;em&gt;An application must not exceed 90 MB of RAM usage, except on devices that have more than 256 MB of memory. You can use the &lt;strong&gt;DeviceExtendedProperties&lt;/strong&gt; class to query the amount of memory that is available on the device and modify the application behavior at runtime to take advantage of additional memory. For more information, see the DeviceExtendedProperties class in MSDN.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;The DeviceTotalMemory value returned by &lt;strong&gt;DeviceExtendedProperties&lt;/strong&gt; indicates the physical RAM size in bytes. This value is less than the actual amount of device memory. For an application to pass certification, Microsoft recommends that the value returned by ApplicationPeakMemoryUsage is less than 90 MB when the DeviceTotalMemory is less than or equal to 256 MB&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Source &lt;a href=&quot;http://go.microsoft.com/?linkid=9730556&quot;&gt;Microsoft&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;90 MB sounds like a lot of space - and yes, it is, when one remembers the era of 1.44MB diskettes (or earlier) you can't help but think that perhaps we are spoiled - but what can you do with that amount of memory?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - Disregard the &quot;devices with &gt; 256MB&quot; exception mentioned, as I want to see how we can optimise memory usage on SL without sacrificing features.&lt;/p&gt;
-
-&lt;h2&gt;How Do I Work Out My Memory Usage?&lt;/h2&gt;
-
-&lt;p&gt;As mentioned above, the &lt;strong&gt;DeviceExtendedProperties&lt;/strong&gt; class contains a lot of runtime information about the application.&lt;/p&gt;
-
-&lt;p&gt;I drop this method into the App.xaml.cs class so that I can get statistics at any point of the application's lifecycle.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public static void GetMemoryUsage(string task)
-{
-    var number = (long)DeviceExtendedProperties.GetValue(&quot;ApplicationCurrentMemoryUsage&quot;);
-    Debug.WriteLine(&quot;{0} - ApplicationCurrentMemoryUsage: {1}&quot;, task, number);
-    number = (long)DeviceExtendedProperties.GetValue(&quot;ApplicationPeakMemoryUsage&quot;);
-    Debug.WriteLine(&quot;{0} - ApplicationPeakMemoryUsage: {1}&quot;, task, number);
-
-    Debug.WriteLine(&quot;&quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Oh, and don't forget the namespace&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;using Microsoft.Phone.Info;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This allows parts of the application to log diagnostics, like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private void MainPageLoaded(object sender, RoutedEventArgs e)
-{
-    if (!App.ViewModel.IsDataLoaded)
-        App.ViewModel.LoadData();
-
-    App.GetMemoryUsage(&quot;Main - Loaded&quot;);
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and see a message like in the Output Window:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Main - Loaded - ApplicationCurrentMemoryUsage: 39870464
-Main - Loaded - ApplicationPeakMemoryUsage: 39899136
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2&gt;And now things get interesting...&lt;/h2&gt;
-
-&lt;p&gt;Testing out a simple application - two screens, both use the Panorama Control and independent ViewModels which display a &quot;large&quot; list of items (270-ish items, but text only).&lt;/p&gt;
-
-&lt;p&gt;Selecting an item in the main screen will navigate to the second screen. Pressing back will return the application to the main screen.&lt;/p&gt;
-
-&lt;p&gt;The code is &lt;a href=&quot;http://brendanforster.com/get/panoramasample.zip&quot;&gt;here&lt;/a&gt; and the sample output can be seen on &lt;a href=&quot;https://gist.github.com/812178&quot;&gt;Gist&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Graphing the memory at each step, the graph looks like this:&lt;/p&gt;
-
-&lt;center&gt;&lt;a href=&quot;img/posts/breakdown.png&quot;&gt;&lt;img src=&quot;img/posts/breakdown.png&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;But why is the memory footprint larger (by almost 10 MB) on returning to the main screen?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Removing the Panorama Control did not change this behaviour - it just made the numbers smaller (a 5MB difference rather than 10MB). Just a sign that making screens leaner will certainly assist with reducing the overall footprint, but not the answer I was looking for.&lt;/p&gt;
-
-&lt;p&gt;Repeating the scenario a few times, and the behaviour is the same.&lt;/p&gt;
-
-&lt;center&gt;&lt;a href=&quot;img/posts/pattern.png&quot;&gt;&lt;img src=&quot;img/posts/pattern.png&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;Puzzling...&lt;/p&gt;
-
-&lt;h2&gt;And the adventure begins&lt;/h2&gt;
-
-&lt;p&gt;The underlying &lt;em&gt;why&lt;/em&gt; is what I want to understand more. Even with this simple application - which is displaying a large list of items - the size of the application is already close to the 90MB limit.&lt;/p&gt;
-
-&lt;p&gt;I've only been able to throw a couple of hours of spare time at this so far, but here's some notes from my investigation currently:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Tested this with the &lt;a href=&quot;http://windowsteamblog.com/windows_phone/b/wpdev/archive/2011/02/04/windows-phone-developer-tools-january-update.aspx&quot;&gt;new emulator and SDK changes&lt;/a&gt;. No change to the behaviour.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Haven't found any memory profiling tools for SL &amp;amp; WP7 - if anyone has stuff in the works, I'd love to try them out. &lt;a href=&quot;http://eqatec.com/Profiler/Overview.aspx&quot;&gt;EQUATEC&lt;/a&gt; make a profiler for CPU performance, which works wonderfully from my limited testing.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Aggressive garbage collection helped somewhat, but this approach makes me feel unclean. Using timers on the device to trigger a GC Collect is bad for battery performance, and the demo above shows that memory usage can spike between events for a PhoneApplicationPage.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Paging data from isolated storage could be worth attempting, but I don't think this is a temporary fix - as the application would load the full file, select a subset of the data, and then dispose the file. Chunking data in isolated storage would increase complexity.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Avoiding the use of navigation - and rolling some custom controls to support transitions instead - is the method that needs most work, but gives more control back to the application.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
