@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 05 Dec 2011 22:16:10 +1100</pubDate>
-    <lastBuildDate>Mon, 05 Dec 2011 22:16:10 +1100</lastBuildDate>
+    <pubDate>Mon, 05 Dec 2011 22:22:36 +1100</pubDate>
+    <lastBuildDate>Mon, 05 Dec 2011 22:22:36 +1100</lastBuildDate>
 
     
     <item>
@@ -46,7 +46,7 @@
 
 &lt;p&gt;&lt;strong&gt;First things first:&lt;/strong&gt; as soon as 'RAD' was mentioned, it was a red rag to much of the audience. It wasn't the intent, but all attempts to refocus the discussion failed miserably.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Secondly:&lt;/strong&gt; I was fascinated by the number of people who were strongly anti-third party libraries. They preferred to roll their own, but I didn't push the discussion into why. Perhaps this is my background in client apps clouding my perceptions...&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Secondly:&lt;/strong&gt; I was fascinated by the number of people who were anti-third party libraries for their UIs. They preferred to roll their own, but I didn't push the discussion into why. Perhaps this is my background in client apps clouding my perceptions...&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lastly:&lt;/strong&gt; data access. Oh man, I'm sick to death of this discussion. There's so many choices that whenever someone asks why I'm not using XYZ I have to physically force myself to listen. Can we move on as a society?&lt;/p&gt;
 

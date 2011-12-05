@@ -39,7 +39,7 @@ And here's where things got entertaining. What started out as a discussion of to
 
 **First things first:** as soon as 'RAD' was mentioned, it was a red rag to much of the audience. It wasn't the intent, but all attempts to refocus the discussion failed miserably.
 
-**Secondly:** I was fascinated by the number of people who were strongly anti-third party libraries. They preferred to roll their own, but I didn't push the discussion into why. Perhaps this is my background in client apps clouding my perceptions...
+**Secondly:** I was fascinated by the number of people who were anti-third party libraries for their UIs. They preferred to roll their own, but I didn't push the discussion into why. Perhaps this is my background in client apps clouding my perceptions...
 
 **Lastly:** data access. Oh man, I'm sick to death of this discussion. There's so many choices that whenever someone asks why I'm not using XYZ I have to physically force myself to listen. Can we move on as a society?
 

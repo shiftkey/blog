@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2011-12-05T22:16:10+11:00</updated>
+ <updated>2011-12-05T22:22:36+11:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -47,7 +47,7 @@
 
 <p><strong>First things first:</strong> as soon as 'RAD' was mentioned, it was a red rag to much of the audience. It wasn't the intent, but all attempts to refocus the discussion failed miserably.</p>
 
-<p><strong>Secondly:</strong> I was fascinated by the number of people who were strongly anti-third party libraries. They preferred to roll their own, but I didn't push the discussion into why. Perhaps this is my background in client apps clouding my perceptions...</p>
+<p><strong>Secondly:</strong> I was fascinated by the number of people who were anti-third party libraries for their UIs. They preferred to roll their own, but I didn't push the discussion into why. Perhaps this is my background in client apps clouding my perceptions...</p>
 
 <p><strong>Lastly:</strong> data access. Oh man, I'm sick to death of this discussion. There's so many choices that whenever someone asks why I'm not using XYZ I have to physically force myself to listen. Can we move on as a society?</p>
 
