@@ -6,29 +6,37 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sat, 03 Dec 2011 14:21:37 +1000</pubDate>
-    <lastBuildDate>Sat, 03 Dec 2011 14:21:37 +1000</lastBuildDate>
+    <pubDate>Mon, 05 Dec 2011 21:18:05 +1100</pubDate>
+    <lastBuildDate>Mon, 05 Dec 2011 21:18:05 +1100</lastBuildDate>
 
     
     <item>
       <title>ALT.NET Open Spaces</title>
       <link>http://brendanforster.comalt-net-open-spaces-2011.html</link>
-      <pubDate>Sat, 03 Dec 2011 18:00:00 +1000</pubDate>
+      <pubDate>Sat, 03 Dec 2011 19:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./alt-net-open-spaces-recap</guid>
-      <description>&lt;p&gt;Flew down to Melbourne this weekend to catch up with the locals and talk about various topics.&lt;/p&gt;
+      <description>&lt;p&gt;Flew down to Melbourne this weekend to catch up with the locals and talk about various topics. Here's the abridged version - each session was scheduled for about 30 minutes and we (mostly) stuck to the schedule during the day.&lt;/p&gt;
 
 &lt;h3&gt;User Groups&lt;/h3&gt;
 
-&lt;p&gt;How things have grown, how we got here, what has worked and what hasn't.&lt;/p&gt;
+&lt;p&gt;We started off the day with a discussion on how people view user groups - what works, how to grow a user group, discussions and war stories and whatnot. A lot of good ideas came out of this, which will hopefully materialies in the new year.&lt;/p&gt;
+
+&lt;p&gt;(Aside: we had tacked on a session for talking about open source, but that seemed to have fallen through the cracks when the discussion for user groups went on longer than expected. Sadface.)&lt;/p&gt;
 
 &lt;h3&gt;Code Dojo&lt;/h3&gt;
 
-&lt;p&gt;discussed &lt;a href=&quot;http://codekata.pragprog.com/2007/01/kata_fourteen_t.html&quot;&gt;this kata&lt;/a&gt; and various design topics.&lt;/p&gt;
+&lt;p&gt;As a follow up of the ALT.NET code dojo recently, the group discussed &lt;a href=&quot;http://codekata.pragprog.com/2007/01/kata_fourteen_t.html&quot;&gt;this kata&lt;/a&gt; and various design topics. Unfortunately things got sidetracked (I was most annoyed I hadn't heard about this 'trigram' concept before) and we didn't get to demonstrate a good TDD design before the session expired. But it was still an entertaining discussion on how to tackle a problem, even if we didn't agree on much.&lt;/p&gt;
 
 &lt;h3&gt;New Frontiers&lt;/h3&gt;
 
+&lt;p&gt;After a quick break, we discussed how languages outside the .NET ecosystem have impacted on .NET and what might be coming down the pipe. A few takeaways from the discussion - some people wanted more concepts to be brought into C#, while others were feeling that the &quot;one language to rule them all&quot; didn't feel right.&lt;/p&gt;
+
 &lt;h3&gt;RAD Frameworks&lt;/h3&gt;
+
+&lt;p&gt;And here's where things got entertaining. What started out as a discussion of tools and libraries to simplify building apps.&lt;/p&gt;
+
+&lt;p&gt;First things first: as soon as 'RAD' was mentioned, it was a red rag to much of the audience. It wasn't the intent, but all attempts to refocus the discussion failed miserably.&lt;/p&gt;
 
 &lt;h3&gt;Refactoring&lt;/h3&gt;
 
@@ -45,7 +53,7 @@
     <item>
       <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
       <link>http://brendanforster.comjquery-knockout-win8.html</link>
-      <pubDate>Tue, 25 Oct 2011 23:00:00 +1000</pubDate>
+      <pubDate>Wed, 26 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./jquery-and-knockout-in-win8</guid>
       <description>&lt;p&gt;Apparently this is old news to some. Trendsetters...&lt;/p&gt;
@@ -168,7 +176,7 @@
     <item>
       <title>I'm speaking at DDD Brisbane</title>
       <link>http://brendanforster.comddd-brisbane.html</link>
-      <pubDate>Sat, 22 Oct 2011 23:00:00 +1000</pubDate>
+      <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./ddd-brisbane</guid>
       <description>&lt;p&gt;&lt;img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'&gt;&lt;/p&gt;
@@ -611,7 +619,7 @@ Process is terminated due to StackOverflowException.
     <item>
       <title>Musing - Simpler UI Testing for WPF Apps</title>
       <link>http://brendanforster.comsimpler-ui-testing-for-wpf-apps.html</link>
-      <pubDate>Sat, 26 Mar 2011 13:00:00 +1000</pubDate>
+      <pubDate>Sat, 26 Mar 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./simpler-ui-testing-for-wpf-apps</guid>
       <description>&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
@@ -727,7 +735,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>Arguments about Project Structure</title>
       <link>http://brendanforster.comarguments-about-project-structure.html</link>
-      <pubDate>Wed, 23 Feb 2011 13:00:00 +1000</pubDate>
+      <pubDate>Wed, 23 Feb 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./arguments-about-project-structure</guid>
       <description>&lt;p&gt;Whenever it comes time to kick off a new project, how do you structure it?&lt;/p&gt;
@@ -833,7 +841,7 @@ just needed to write this post.&lt;/p&gt;
     <item>
       <title>Using Rx to Implement Filtering in MahTweets</title>
       <link>http://brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html</link>
-      <pubDate>Sat, 19 Feb 2011 13:00:00 +1000</pubDate>
+      <pubDate>Sat, 19 Feb 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com./using-rx-to-implement-filtering-in-mahtweets</guid>
       <description>&lt;p&gt;As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.&lt;/p&gt;
