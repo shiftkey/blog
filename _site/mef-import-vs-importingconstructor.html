@@ -163,7 +163,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 <pre><code>private readonly IEnumerable&lt;ICreditService&gt; _creditServices;
 
 [ImportingConstructor]
-public BankService([ImportMany] IEnumerable&amp;lt;IProductServices&amp;gt; productServices)
+public BankService([ImportMany] IEnumerable&lt;IProductServices&gt; productServices)
 {
     _productServices = productServices;
 
@@ -209,14 +209,14 @@ public BankService([Import(AllowDefault=true)] ILogger logger)
 
 <p>On the Autofac side, we can declare components in the container to be available for MEF composition.</p>
 
-<pre><code>container.RegisterType&amp;lt;ApplicationSettingsProvider&amp;gt;()
-         .As&amp;lt;IApplicationSettingsProvider&amp;gt;()
-         .Exported(x =&amp;gt; x.As&amp;lt;IApplicationSettingsProvider&amp;gt;()) // make this part visible to MEF components
+<pre><code>container.RegisterType&lt;ApplicationSettingsProvider&gt;()
+         .As&lt;IApplicationSettingsProvider&amp;gt;()
+         .Exported(x =&gt; x.As&lt;IApplicationSettingsProvider&gt;()) // make this part visible to MEF components
          .SingleInstance();
 
-container.RegisterType&amp;lt;PluginSettingsProvider&amp;gt;()
-         .As&amp;lt;IPluginSettingsProvider&amp;gt;()
-         .Exported(x =&gt; x.As&amp;lt;IPluginSettingsProvider&amp;gt;())
+container.RegisterType&lt;PluginSettingsProvider&gt;()
+         .As&lt;IPluginSettingsProvider&gt;()
+         .Exported(x =&gt; x.As&lt;IPluginSettingsProvider&gt;())
          .SingleInstance();
 
 ...

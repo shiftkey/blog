@@ -86,7 +86,7 @@ For example, using [ImportMany]
     private readonly IEnumerable<ICreditService> _creditServices;
 
     [ImportingConstructor]
-    public BankService([ImportMany] IEnumerable&lt;IProductServices&gt; productServices)
+    public BankService([ImportMany] IEnumerable<IProductServices> productServices)
     {
         _productServices = productServices;
         
@@ -131,14 +131,14 @@ For an upcoming release, I'm currently refactoring the MahTweets internals to re
 
 On the Autofac side, we can declare components in the container to be available for MEF composition. 
 
-    container.RegisterType&lt;ApplicationSettingsProvider&gt;()
-             .As&lt;IApplicationSettingsProvider&gt;()
-             .Exported(x =&gt; x.As&lt;IApplicationSettingsProvider&gt;()) // make this part visible to MEF components
+    container.RegisterType<ApplicationSettingsProvider>()
+             .As<IApplicationSettingsProvider&gt;()
+             .Exported(x => x.As<IApplicationSettingsProvider>()) // make this part visible to MEF components
              .SingleInstance();
 
-    container.RegisterType&lt;PluginSettingsProvider&gt;()
-             .As&lt;IPluginSettingsProvider&gt;()
-             .Exported(x => x.As&lt;IPluginSettingsProvider&gt;())
+    container.RegisterType<PluginSettingsProvider>()
+             .As<IPluginSettingsProvider>()
+             .Exported(x => x.As<IPluginSettingsProvider>())
              .SingleInstance();
 
     ...
