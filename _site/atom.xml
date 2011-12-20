@@ -4,12 +4,82 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2011-12-05T22:22:36+11:00</updated>
+ <updated>2011-12-20T22:37:10+11:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>2011 - Where did the time go?</title>
+   <link href="http://brendanforster.com2011-recap.html" />
+   <updated>2011-12-20T23:00:00+11:00</updated>
+   <id>http://brendanforster.com.com./recap</id>
+   <content type="html">
+	<![CDATA[<p><article></p>
+
+<p>Three more days til Christmas. I intend to unplug completely from the internet from then until the end of this year (place a bet with your nearest bookie on the odds I'll crack before then) so I'm writing this now over a cold beer, wondering where the hell the year went - as well as the hot weather.</p>
+
+<p><img class='right ' src='/img/main/recap-lrg.jpg' width='600' height='400' alt='' title=''></p>
+
+<p>So where did 2011 go? Let's recap:</p>
+
+<h2>Perth</h2>
+
+<p>Work sent me over to Perth to work with a client between February and April. It was an interesting project, but the real fun was catching up with the developer community over beers (and they love their beer over in Perth). Particular shout outs to <a href="http://twitter.com/jakeginnivan">Jake Ginnivan</a> (a "brother from another mother" according to someone who shall remain nameless) and <a href="http://twitter.com/jtango18">JT</a> for making the non-work hours as entertaining as humanly possible.</p>
+
+<p>I also managed to catch up with relatives over there over there (my cousin, her husband and three young kids live in Perth) and see some bands:</p>
+
+<ul>
+<li><a href="http://streetlightmanifesto.com/">Streetlight Manifesto</a> - two hours in the mosh pit is enought for any man. An item crossed off the bucket list.</li>
+<li><a href="http://westcoastbluesnroots.com.au/">West Coast Blues and Roots Festival</a> - finally got to see Cat Empire live, and a bunch of other artists. Toots and the Maytals was an unexpected pleasure.</li>
+</ul>
+
+
+<p>The only downside of my time in Perth was that my grandma passed away after having a stroke last year - it felt weird being away from the family when it all occurred, but I went back for the funeral to say my farewells.</p>
+
+<h2>NDC and Europe</h2>
+
+<p>While I was over in Perth, I was madly planning my Europe trip. It coincided with <a href="http://www.ndcoslo.com/">NDC</a> which was an amazing conference in itself.</p>
+
+<p>After the conference I headed up to Stavanger with <a href="http://twitter.com/philiplaureano">Philip Laureano</a> - it was kinda surreal to be talking shop while spending a couple of hours hiking to what is essentially <a href="http://i.telegraph.co.uk/multimedia/archive/01359/Stavanger_1359940c.jpg">a giant rock in the middle of nowhere</a>. I was also invited to stay a few days with <a href="http://twitter.com/thomasjo">Thomas Johanson's</a> family in rural Norway - right down to the BBQ and aquavit!</p>
+
+<p>After Norway, I spent a weekend in Copenhagen seeing the sights and ran into <a href="http://umbraco.com/cg11">some Umbraco guys doing whatever those Umbraco guys do</a>.</p>
+
+<p>TODO: Germany and France</p>
+
+<h2>BUILD and Los Angeles</h2>
+
+<h2>Community Stuff</h2>
+
+<p>August - Newcastle/Sydney/Newcastle</p>
+
+<ul>
+<li>dddMelbourne - Ruby and .NET for fun and profit</li>
+</ul>
+
+
+<p>July - dddSydney Hack Day - Kinect and WP7</p>
+
+<p>September
+- Newcastle Coders Group
+- RDN Dev Day - HTML5
+- WP7 Workshop</p>
+
+<p>October -  WP7 Workshop Redux</p>
+
+<p>November
+- WP7 Workshop Perth
+- ddd Brisbane - Windows 8</p>
+
+<p><em>Image source: http://www.flickr.com/photos/opethpainter/2866967426/</em></p>
+
+<p></article></p>
+]]>
+   </content>
+   
+ </entry>
  
  <entry>
    <title>ALT.NET Open Spaces Recap</title>

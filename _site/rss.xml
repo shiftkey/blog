@@ -6,9 +6,77 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 05 Dec 2011 22:22:36 +1100</pubDate>
-    <lastBuildDate>Mon, 05 Dec 2011 22:22:36 +1100</lastBuildDate>
+    <pubDate>Tue, 20 Dec 2011 22:37:10 +1100</pubDate>
+    <lastBuildDate>Tue, 20 Dec 2011 22:37:10 +1100</lastBuildDate>
 
+    
+    <item>
+      <title>2011 - Where did the time go?</title>
+      <link>http://brendanforster.com2011-recap.html</link>
+      <pubDate>Tue, 20 Dec 2011 23:00:00 +1100</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com./recap</guid>
+      <description>&lt;p&gt;&lt;article&gt;&lt;/p&gt;
+
+&lt;p&gt;Three more days til Christmas. I intend to unplug completely from the internet from then until the end of this year (place a bet with your nearest bookie on the odds I'll crack before then) so I'm writing this now over a cold beer, wondering where the hell the year went - as well as the hot weather.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class='right ' src='/img/main/recap-lrg.jpg' width='600' height='400' alt='' title=''&gt;&lt;/p&gt;
+
+&lt;p&gt;So where did 2011 go? Let's recap:&lt;/p&gt;
+
+&lt;h2&gt;Perth&lt;/h2&gt;
+
+&lt;p&gt;Work sent me over to Perth to work with a client between February and April. It was an interesting project, but the real fun was catching up with the developer community over beers (and they love their beer over in Perth). Particular shout outs to &lt;a href=&quot;http://twitter.com/jakeginnivan&quot;&gt;Jake Ginnivan&lt;/a&gt; (a &quot;brother from another mother&quot; according to someone who shall remain nameless) and &lt;a href=&quot;http://twitter.com/jtango18&quot;&gt;JT&lt;/a&gt; for making the non-work hours as entertaining as humanly possible.&lt;/p&gt;
+
+&lt;p&gt;I also managed to catch up with relatives over there over there (my cousin, her husband and three young kids live in Perth) and see some bands:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://streetlightmanifesto.com/&quot;&gt;Streetlight Manifesto&lt;/a&gt; - two hours in the mosh pit is enought for any man. An item crossed off the bucket list.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://westcoastbluesnroots.com.au/&quot;&gt;West Coast Blues and Roots Festival&lt;/a&gt; - finally got to see Cat Empire live, and a bunch of other artists. Toots and the Maytals was an unexpected pleasure.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;The only downside of my time in Perth was that my grandma passed away after having a stroke last year - it felt weird being away from the family when it all occurred, but I went back for the funeral to say my farewells.&lt;/p&gt;
+
+&lt;h2&gt;NDC and Europe&lt;/h2&gt;
+
+&lt;p&gt;While I was over in Perth, I was madly planning my Europe trip. It coincided with &lt;a href=&quot;http://www.ndcoslo.com/&quot;&gt;NDC&lt;/a&gt; which was an amazing conference in itself.&lt;/p&gt;
+
+&lt;p&gt;After the conference I headed up to Stavanger with &lt;a href=&quot;http://twitter.com/philiplaureano&quot;&gt;Philip Laureano&lt;/a&gt; - it was kinda surreal to be talking shop while spending a couple of hours hiking to what is essentially &lt;a href=&quot;http://i.telegraph.co.uk/multimedia/archive/01359/Stavanger_1359940c.jpg&quot;&gt;a giant rock in the middle of nowhere&lt;/a&gt;. I was also invited to stay a few days with &lt;a href=&quot;http://twitter.com/thomasjo&quot;&gt;Thomas Johanson's&lt;/a&gt; family in rural Norway - right down to the BBQ and aquavit!&lt;/p&gt;
+
+&lt;p&gt;After Norway, I spent a weekend in Copenhagen seeing the sights and ran into &lt;a href=&quot;http://umbraco.com/cg11&quot;&gt;some Umbraco guys doing whatever those Umbraco guys do&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;TODO: Germany and France&lt;/p&gt;
+
+&lt;h2&gt;BUILD and Los Angeles&lt;/h2&gt;
+
+&lt;h2&gt;Community Stuff&lt;/h2&gt;
+
+&lt;p&gt;August - Newcastle/Sydney/Newcastle&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dddMelbourne - Ruby and .NET for fun and profit&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;July - dddSydney Hack Day - Kinect and WP7&lt;/p&gt;
+
+&lt;p&gt;September
+- Newcastle Coders Group
+- RDN Dev Day - HTML5
+- WP7 Workshop&lt;/p&gt;
+
+&lt;p&gt;October -  WP7 Workshop Redux&lt;/p&gt;
+
+&lt;p&gt;November
+- WP7 Workshop Perth
+- ddd Brisbane - Windows 8&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Image source: http://www.flickr.com/photos/opethpainter/2866967426/&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/article&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ALT.NET Open Spaces Recap</title>
@@ -857,131 +925,6 @@ just needed to write this post.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Habit&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;And lastly, this is my personal opinion. Having spent a lot of time playing around with Linux OSS in the past, I keep coming back to that style of structure when setting up my own projects. Seeing things like uppercase folder names at the root just feel odd.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Using Rx to Implement Filtering in MahTweets</title>
-      <link>http://brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html</link>
-      <pubDate>Sat, 19 Feb 2011 14:00:00 +1100</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./using-rx-to-implement-filtering-in-mahtweets</guid>
-      <description>&lt;p&gt;As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.&lt;/p&gt;
-
-&lt;p&gt;Filtering is one of the things that MahTweets is famous for, but we're always looking for ways to make it better and easier. We've been experimenting with using the &lt;a href=&quot;http://msdn.microsoft.com/en-us/devlabs/ee794896&quot;&gt;Reactive Extensions (Rx) for .NET&lt;/a&gt; to simplify the entire pipeline and provide more freedom in the application.&lt;/p&gt;
-
-&lt;h2&gt;The Current Status&lt;/h2&gt;
-
-&lt;p&gt;MahTweets allow the user to filter streams by update type, contact or text. Filters can be applied to individual streams or globally.&lt;/p&gt;
-
-&lt;p&gt;Roughly speaking, this is how the filters are applied.&lt;/p&gt;
-
-&lt;center&gt;&lt;a href=&quot;img/posts/FiltersClassic.png&quot;&gt;&lt;img src=&quot;img/posts/FiltersClassic.png&quot; width=&quot;700&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters.&lt;/p&gt;
-
-&lt;p&gt;Limitations about this approach:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Global Ignores were implemented separately.&lt;/li&gt;
-&lt;li&gt;Custom filtering was implemented per update type.&lt;/li&gt;
-&lt;li&gt;UI was coupled to stream container and specific parameters.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h2&gt;First Cut using Rx&lt;/h2&gt;
-
-&lt;p&gt;FYI: If you're not familiar with the Observer Pattern, check out the &lt;a href=&quot;http://en.wikipedia.org/wiki/Observer_pattern&quot;&gt;Wikipedia article&lt;/a&gt; for starters. Rx uses the Observer pattern heavily.&lt;/p&gt;
-
-&lt;p&gt;We had a habit of using the phrase &quot;filter&quot; in many places of the application. To clarify our intent, we introduced two specific interfaces:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;IStatusSubscriber&lt;/strong&gt; - an extension which subscribes to a stream of incoming requests.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;IConditionalSubscriber&lt;/strong&gt; : &lt;strong&gt;IStatusSubscriber&lt;/strong&gt; - an extension which filters the updates before propogating to its consumers. Pass-thru or exclude filters can be specified.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;Replacing the Queue of messages with an IObservable/IObserver dual allows the application to leverage the Subject&amp;lt;T&amp;gt; class to manage the interactions between the services and the clients. This class resides in System.Reactive.dll and implements both IObservable&amp;lt;T&amp;gt; and IObserver&amp;lt;T&amp;gt;.&lt;/p&gt;
-
-&lt;p&gt;MahTweets also had some demo plugins for stream analytics, and abstracting away the queue support allows the application to plug in additional &quot;global&quot; services, using the same interfaces. Rx also allows observers to specify which thread to execute on, so the usage of the Dispatcher, TaskPool or ThreadPool (depending on scenario) can be configured without any plumbing code.&lt;/p&gt;
-
-&lt;p&gt;The interactions between these components now looks like:&lt;/p&gt;
-
-&lt;center&gt;&lt;a href=&quot;img/posts/RxFirstCut.png&quot;&gt;&lt;img src=&quot;img/posts/RxFirstCut.png&quot; width=&quot;700&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;The biggest change is that subscribers interact with the IObservable, rather than being encompassed within the view. Each list still combines a set of filters, which display the combined set of results on-screen. However, when multiple filters are run in parallel, invalid items may appear.&lt;/p&gt;
-
-&lt;p&gt;Limitations about this approach:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Excluded updates may be propogated through other subscribers in the same view.&lt;/li&gt;
-&lt;li&gt;Global Ignores still not supported.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h2&gt;Back to the Drawing Board&lt;/h2&gt;
-
-&lt;p&gt;So after some shut-eye and sun, I revisited the initial design for the IObservable implementation. What stood out to me was that:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Include and exclude side-by-side has always been somewhat complex - both for users to understand, and determining which takes priority.&lt;/li&gt;
-&lt;li&gt;Include and exclude filters didn't need to exist in the same location.&lt;/li&gt;
-&lt;li&gt;Rx can support chaining observers, however...&lt;/li&gt;
-&lt;li&gt;Chaining isn't what the Observer pattern is about.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;After some more musing, I formed an opinion about subscriber rules (only mine so far):&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;An exclude rule is applied globally. An include rule is applied locally.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;From my experiences with using Twitter, the typical use cases for exclude filters are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&quot;Great, another Twitter spam concept...&quot; &lt;em&gt;looks at paper.li&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&quot;Person XYZ is tweeting too much right now. I don't want to hear him for a while...&quot;&lt;/li&gt;
-&lt;li&gt;&quot;Oops, I said the i-word and the spammers are out and about...&quot;&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;On the other hand, the use cases for include filters can be like:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&quot;I want to see what &lt;em&gt;this&lt;/em&gt; group of contacts is talking about...&quot;&lt;/li&gt;
-&lt;li&gt;&quot;I want to see tweets mentioning 'ABC' - (side note: more on search later)...&quot;&lt;/li&gt;
-&lt;li&gt;&quot;I want to see my mentions/messages...&quot;&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;Compare and contract (perhaps your experiences differ).&lt;/p&gt;
-
-&lt;h2&gt;Second Cut using Rx&lt;/h2&gt;
-
-&lt;p&gt;The second cut of the design allows for three subscriber hooks:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Subscribers register against the source observable, without any filtering applied.&lt;/li&gt;
-&lt;li&gt;Subscribers register against the output observable, with the global filtering applied.&lt;/li&gt;
-&lt;li&gt;Exclude rules are applied closer to the source.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;center&gt;&lt;a href=&quot;img/posts/RxSecondCut.png&quot;&gt;&lt;img src=&quot;img/posts/RxSecondCut.png&quot; width=&quot;700&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
-
-
-&lt;p&gt;An internal subscriber verifies a status against a list of exclusions, and propogates the status further if it is valid. Each view only requires its inclusion rules (or a wildcard rule if no rules specified) to display results.&lt;/p&gt;
-
-&lt;h2&gt;The Next Step&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Debate with &lt;a href=&quot;http://twitter.com/aeoth&quot;&gt;@aeoth&lt;/a&gt; on this&lt;/li&gt;
-&lt;li&gt;Performance Testing against a large set of data.&lt;/li&gt;
-&lt;li&gt;Demonstrating how external plugins can include their own rules.&lt;/li&gt;
-&lt;li&gt;Demonstrate user interface changes for vNext.&lt;/li&gt;
-&lt;/ul&gt;
-
 </description>
     </item>
     
