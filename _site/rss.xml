@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 20 Dec 2011 22:50:22 +1100</pubDate>
-    <lastBuildDate>Tue, 20 Dec 2011 22:50:22 +1100</lastBuildDate>
+    <pubDate>Tue, 20 Dec 2011 23:06:23 +1100</pubDate>
+    <lastBuildDate>Tue, 20 Dec 2011 23:06:23 +1100</lastBuildDate>
 
     
     <item>
@@ -42,6 +42,8 @@
 
 &lt;p&gt;While I was over in Perth, I was madly planning my Europe trip. It coincided with &lt;a href=&quot;http://www.ndcoslo.com/&quot;&gt;NDC&lt;/a&gt; which was an amazing conference in itself.&lt;/p&gt;
 
+&lt;p&gt;TODO: NDC Highlights&lt;/p&gt;
+
 &lt;p&gt;After the conference I headed up to Stavanger with &lt;a href=&quot;http://twitter.com/philiplaureano&quot;&gt;Philip Laureano&lt;/a&gt; - it was kinda surreal to be talking shop while spending a couple of hours hiking to what is essentially &lt;a href=&quot;http://i.telegraph.co.uk/multimedia/archive/01359/Stavanger_1359940c.jpg&quot;&gt;a giant rock in the middle of nowhere&lt;/a&gt;. I was also invited to stay a few days with &lt;a href=&quot;http://twitter.com/thomasjo&quot;&gt;Thomas Johanson's&lt;/a&gt; family in rural Norway - right down to the BBQ and aquavit!&lt;/p&gt;
 
 &lt;p&gt;After Norway, I spent a weekend in Copenhagen seeing the sights and ran into &lt;a href=&quot;http://umbraco.com/cg11&quot;&gt;some Umbraco guys doing whatever those Umbraco guys do&lt;/a&gt;.&lt;/p&gt;
@@ -54,17 +56,33 @@
 
 &lt;h2&gt;BUILD and Los Angeles&lt;/h2&gt;
 
+&lt;p&gt;Aside from unveiling the new version of Windows, and causing a collective conniption of the .NET community with their &lt;a href=&quot;http://dougseven.com/2011/09/15/a-bad-picture-is-worth-a-thousand-long-discussions/&quot;&gt;marketecture diagrams&lt;/a&gt;, it was an entertaining conference to chat with the guys behind the products. They'd been very quiet for a while, and were keen to talk to anyone at the conference who'd lend them an ear.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ed:&lt;/strong&gt; I'll come back to this discussion. I do want to fuel &lt;a href=&quot;http://twitter.com/MossyBlog&quot;&gt;someone's&lt;/a&gt; rage on the topic :)&lt;/p&gt;
+
+&lt;p&gt;On top of that there was Legoland - if I was ten years old, it would have been paradise. But I still enjoyed a bunch of things there - the Star Wars Lego was particularly good.&lt;/p&gt;
+
+&lt;center&gt;&lt;img class='' src='/img/posts/recap/cantina.jpg' width='' height='' alt='' title=''&gt;&lt;/center&gt;
+
+
+
+
+&lt;center&gt;The Cantina Bar from A Lost Hope (complete with animatronic band)&lt;/center&gt;
+
+
+&lt;p&gt;TODO: BUILD highlights&lt;/p&gt;
+
 &lt;h2&gt;Community Stuff&lt;/h2&gt;
 
 &lt;p&gt;I branched out into doing more presentations this year - not something deliberate, just opportunities crop up and I do enjoy jumping into the deep end:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;dddMelbourne - Ruby and .NET for fun and profit&lt;/li&gt;
-&lt;li&gt;Newcastle Coders Group - XAML - past, present and future.&lt;/li&gt;
-&lt;li&gt;RDN Dev Day - Practical Applications of the Modern Web&lt;/li&gt;
-&lt;li&gt;ALT.NET Sydney - Recap from BUILD&lt;/li&gt;
-&lt;li&gt;Windows Phone 7 Workshops - Sydney and Perth&lt;/li&gt;
-&lt;li&gt;dddBrisbane - Windows 8 - Who Moved My Cheese&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;dddMelbourne&lt;/strong&gt; - Ruby and .NET for fun and profit&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Newcastle Coders Group&lt;/strong&gt; - XAML - past, present and future.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RDN Dev Day&lt;/strong&gt; - Practical Applications of the Modern Web&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ALT.NET Sydney&lt;/strong&gt; - Recap from BUILD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Windows Phone 7 Workshops&lt;/strong&gt; (Sydney and Perth)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;dddBrisbane&lt;/strong&gt; - Windows 8 - Who Moved My Cheese?&lt;/li&gt;
 &lt;/ul&gt;
 
 
