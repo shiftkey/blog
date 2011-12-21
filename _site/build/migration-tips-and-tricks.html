@@ -20,6 +20,9 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 <meta name="description" content="">
 <meta name="author" content="brendan forster">
 
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS feed"> 
+<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="ATOM feed"> 
+
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -71,10 +74,11 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <!-- http://t.co/y1jPVnT -->
 <link rel="canonical" href="/build/migration-tips-and-tricks.html">
-</head>
 
 
 <link rel="stylesheet" media="screen" href="/css/build.css?v=1">
+
+</head>
 
 <body class="clearfix">
 
@@ -159,7 +163,7 @@ public class MyClass
 
         you'll see this error: <br /><br />
 
-        Liquid error: undefined method `map' for #<String:0x25497c0>
+        Liquid error: undefined method `map' for #<String:0x2c8e3f0>
 
         At this point, you have two choices:
 
@@ -201,7 +205,7 @@ public sealed class MyClass
 
         now we get multiple errors, such as: <br /><br />
     
-        Liquid error: undefined method `map' for #<String:0x25489b0>
+        Liquid error: undefined method `map' for #<String:0x2c9b458>
 
         Thankfully, the solution is right there in front of us.<br /><br />
 
@@ -241,7 +245,7 @@ public static class MyStaticClass
 
         And we get scolded rather badly:<br /><br />
 
-        Liquid error: undefined method `map' for #<String:0x254f9d0>
+        Liquid error: undefined method `map' for #<String:0x2c9a2b8>
         
         The Solution? Uh, don't do it.<br /><br />
 
@@ -277,7 +281,7 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
 
         No concrete classes. Still using a generic interface though...
 
-Liquid error: undefined method `map' for #<String:0x254f220>
+Liquid error: undefined method `map' for #<String:0x2ca14d0>
 
         Damn. Another brick wall.<br /><br />
 
@@ -310,7 +314,7 @@ public class SomeClass
 
         Aaaand... no. 
 
-Liquid error: undefined method `map' for #<String:0x254ddc8>
+Liquid error: undefined method `map' for #<String:0x2c9f250>
 
         <strong>Notes:</strong> <br /><br />
 
@@ -347,7 +351,7 @@ public sealed class SomeClass
 
         It will ask you what on earth you were thinking!
 
-Liquid error: undefined method `map' for #<String:0x254d7f8>
+Liquid error: undefined method `map' for #<String:0x2d6d650>
 
     </section>
 
@@ -370,7 +374,7 @@ public async Task&lt;string&gt; Get(string url)
 
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
-Liquid error: undefined method `map' for #<String:0x254d1b0>
+Liquid error: undefined method `map' for #<String:0x2d6cd08>
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
 
