@@ -4,12 +4,34 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2011-12-21T16:21:58+11:00</updated>
+ <updated>2012-01-03T21:17:50+11:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Introducing code52</title>
+   <link href="http://brendanforster.comintroducing-code52.html" />
+   <updated>2012-01-03T21:30:00+11:00</updated>
+   <id>http://brendanforster.com.com./introducing-code52</id>
+   <content type="html">
+	<![CDATA[<p>Back from a self-imposed internet break (taking a phone which doesn't do 3G coverage and going rural is a good way to do this) and <a href="http://twitter.com/aeoth">Paul</a> and <a href="http://twitter.com/tobin">Tobin</a> couldn't wait to kick off our new collaborative project.</p>
+
+<center><a href="http://code52.org"><img class='right ' src='/img/posts/code52/logo.png' width='' height='' alt='' title=''></a></center>
+
+
+<br/>
+
+
+<p>There's a bit more of a blurb on <a href="http://code52.org/about.html">the website</a> - its an idea we're still wrapping our heads around by using a bit of trial and error.</p>
+
+<p>We're already hard at work on our <a href="http://code52.org/downmarker">first project</a> and we'd love to see people drop into the <a href="http://jabbr.net/#/rooms/code52">Jabbr room</a> and get involved. Amd pf course, there's a <a href="http://twitter.com/code_52">Twitter account</a> too to follow.</p>
+]]>
+   </content>
+   
+ </entry>
  
  <entry>
    <title>2011 - Where did the time go?</title>

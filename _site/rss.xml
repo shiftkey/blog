@@ -6,9 +6,29 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Wed, 21 Dec 2011 16:21:58 +1100</pubDate>
-    <lastBuildDate>Wed, 21 Dec 2011 16:21:58 +1100</lastBuildDate>
+    <pubDate>Tue, 03 Jan 2012 21:17:50 +1100</pubDate>
+    <lastBuildDate>Tue, 03 Jan 2012 21:17:50 +1100</lastBuildDate>
 
+    
+    <item>
+      <title>Introducing code52</title>
+      <link>http://brendanforster.comintroducing-code52.html</link>
+      <pubDate>Tue, 03 Jan 2012 21:30:00 +1100</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com./introducing-code52</guid>
+      <description>&lt;p&gt;Back from a self-imposed internet break (taking a phone which doesn't do 3G coverage and going rural is a good way to do this) and &lt;a href=&quot;http://twitter.com/aeoth&quot;&gt;Paul&lt;/a&gt; and &lt;a href=&quot;http://twitter.com/tobin&quot;&gt;Tobin&lt;/a&gt; couldn't wait to kick off our new collaborative project.&lt;/p&gt;
+
+&lt;center&gt;&lt;a href=&quot;http://code52.org&quot;&gt;&lt;img class='right ' src='/img/posts/code52/logo.png' width='' height='' alt='' title=''&gt;&lt;/a&gt;&lt;/center&gt;
+
+
+&lt;br/&gt;
+
+
+&lt;p&gt;There's a bit more of a blurb on &lt;a href=&quot;http://code52.org/about.html&quot;&gt;the website&lt;/a&gt; - its an idea we're still wrapping our heads around by using a bit of trial and error.&lt;/p&gt;
+
+&lt;p&gt;We're already hard at work on our &lt;a href=&quot;http://code52.org/downmarker&quot;&gt;first project&lt;/a&gt; and we'd love to see people drop into the &lt;a href=&quot;http://jabbr.net/#/rooms/code52&quot;&gt;Jabbr room&lt;/a&gt; and get involved. Amd pf course, there's a &lt;a href=&quot;http://twitter.com/code_52&quot;&gt;Twitter account&lt;/a&gt; too to follow.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2011 - Where did the time go?</title>
@@ -872,112 +892,6 @@ end
 
 &lt;p&gt;I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code),
 just needed to write this post.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Arguments about Project Structure</title>
-      <link>http://brendanforster.comarguments-about-project-structure.html</link>
-      <pubDate>Wed, 23 Feb 2011 14:00:00 +1100</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./arguments-about-project-structure</guid>
-      <description>&lt;p&gt;Whenever it comes time to kick off a new project, how do you structure it?&lt;/p&gt;
-
-&lt;p&gt;Given a greenfields situation - or even one of my side projects - I go for this layout:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;build&lt;/li&gt;
-&lt;li&gt;lib&lt;/li&gt;
-&lt;li&gt;licenses&lt;/li&gt;
-&lt;li&gt;samples&lt;/li&gt;
-&lt;li&gt;src
-
-&lt;ul&gt;
-&lt;li&gt;Project.ModuleA&lt;/li&gt;
-&lt;li&gt;Project.ModuleB&lt;/li&gt;
-&lt;li&gt;Project.Shell&lt;/li&gt;
-&lt;li&gt;Project.sln&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;tools&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;And what do those these folders represent?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build&lt;/strong&gt; - scripts for building and deploying the application. As soon as the application is required to be deployed to different environments, this should be scripted and added to source control.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;lib&lt;/strong&gt; - dependencies required by the application. I generally group the dependent assemblies if required, but will generally drop the dll-xml combination into the root folder.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;licenses&lt;/strong&gt; - when doing OSS development, this is a must. I should bring this into my general projects, especially if it has a significant mix of dependencies and licenses to manage.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;samples&lt;/strong&gt; - once the main solution gets beyond a specific size, it may be beneficial to separate the sample code out rather than compiling it within the main build.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;src&lt;/strong&gt; - there be code.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;tools&lt;/strong&gt; - dependencies required to build the application. This does not mean including every tool required to set up the developer baseline, but any special tools used during the build process&lt;/p&gt;
-
-&lt;p&gt;For example, these would not belong:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Visual Studio&lt;/li&gt;
-&lt;li&gt;.NET Framework&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;But I'd happily include these tools:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;FxCop&lt;/li&gt;
-&lt;li&gt;NCover&lt;/li&gt;
-&lt;li&gt;MSBuild Community Tasks&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;as not all developers would have them installed on their machines.&lt;/p&gt;
-
-&lt;h2&gt;Why this structure?&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Folder Names&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Remember the days of 8.3 filesystems? I do. But thankfully this isn't about that.&lt;/p&gt;
-
-&lt;p&gt;This structure also borrows from Unix conventions for arranging their codebases. I don't like how the necessary make files are hosted at the root.&lt;/p&gt;
-
-&lt;p&gt;As we're using Mercurial, we don't need to worry about using trunks or tags in the structure.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Experience&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;When I challenged &lt;a href=&quot;http://twitter.com/aeoth&quot;&gt;@aeoth's&lt;/a&gt; project structure for the next version of MahTweets, he wanted to make it so that a developer with little experience in .NET (or programming) could download the source and try it out.&lt;/p&gt;
-
-&lt;p&gt;I'd argue the best introduction to a codebase is two things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a README file to provide some notes about the application&lt;/li&gt;
-&lt;li&gt;a batch file or script to run the application and execute tests&lt;/li&gt;
-&lt;li&gt;sample projects to complement the source&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;&lt;strong&gt;The build is important&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We had various pain points with the last version of MahTweets around managing loosely-coupled modules under development, and then building a signed ClickOnce installer with a custom script.&lt;/p&gt;
-
-&lt;p&gt;It ended up being a painful few nights bashing against MSBuild (have you ever tried to use SignFile manually?), but the effort burnt reminds me everytime I come across a new team or project to ask two simple questions:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;how can someone build and run the application with limited knowledge of the codebase?&lt;/li&gt;
-&lt;li&gt;how can someone test the application with limited knowledge of the codebase?&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;If that process is known and documented, it highlights all the quirks with getting the application out. If it isn't documented, then typically you need to find the right person at the right time...&lt;/p&gt;
-
-&lt;p&gt;Putting the build components separate, but easily visible, makes everyone's life easier.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Habit&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;And lastly, this is my personal opinion. Having spent a lot of time playing around with Linux OSS in the past, I keep coming back to that style of structure when setting up my own projects. Seeing things like uppercase folder names at the root just feel odd.&lt;/p&gt;
 </description>
     </item>
     
