@@ -6,16 +6,16 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 03 Jan 2012 21:29:58 +1100</pubDate>
-    <lastBuildDate>Tue, 03 Jan 2012 21:29:58 +1100</lastBuildDate>
+    <pubDate>Wed, 04 Jan 2012 10:01:40 +1100</pubDate>
+    <lastBuildDate>Wed, 04 Jan 2012 10:01:40 +1100</lastBuildDate>
 
     
     <item>
       <title>Introducing code52</title>
-      <link>http://brendanforster.comintroducing-code52.html</link>
+      <link>http://brendanforster.com/introducing-code52.html</link>
       <pubDate>Tue, 03 Jan 2012 21:30:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./introducing-code52</guid>
+      <guid>http://brendanforster.com/introducing-code52.html</guid>
       <description>&lt;p&gt;Back from a self-imposed internet break (taking a phone which doesn't do 3G coverage and going rural is a good way to do this) and &lt;a href=&quot;http://twitter.com/aeoth&quot;&gt;Paul&lt;/a&gt; and &lt;a href=&quot;http://twitter.com/tobin&quot;&gt;Tobin&lt;/a&gt; couldn't wait to kick off our new collaborative project.&lt;/p&gt;
 
 &lt;center&gt;&lt;a href=&quot;http://code52.org&quot;&gt;&lt;img class='right ' src='/img/posts/Code52/logo.png' width='' height='' alt='' title=''&gt;&lt;/a&gt;&lt;/center&gt;
@@ -32,10 +32,10 @@
     
     <item>
       <title>2011 - Where did the time go?</title>
-      <link>http://brendanforster.com2011-recap.html</link>
+      <link>http://brendanforster.com/2011-recap.html</link>
       <pubDate>Tue, 20 Dec 2011 23:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./recap</guid>
+      <guid>http://brendanforster.com/2011-recap.html</guid>
       <description>&lt;p&gt;&lt;article&gt;&lt;/p&gt;
 
 &lt;p&gt;Three more days til Christmas. I intend to unplug completely from the internet from then until the end of the year (place a bet with your nearest bookie on the odds I'll crack before then) so I'm writing this now over a cold beer, wondering where the hell the year went - as well as the hot weather.&lt;/p&gt;
@@ -153,10 +153,10 @@
     
     <item>
       <title>ALT.NET Open Spaces Recap</title>
-      <link>http://brendanforster.comalt-net-open-spaces-2011.html</link>
+      <link>http://brendanforster.com/alt-net-open-spaces-2011.html</link>
       <pubDate>Sat, 03 Dec 2011 19:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./alt-net-open-spaces-recap</guid>
+      <guid>http://brendanforster.com/alt-net-open-spaces-2011.html</guid>
       <description>&lt;p&gt;I flew down to Melbourne this weekend to catch up with the locals and talk about various topics around the .NET space. Here's the abridged recap - each session was scheduled for about 30 minutes and we (mostly) stuck to the schedule during the day.&lt;/p&gt;
 
 &lt;p&gt;Disclaimer: I was sleep deprived and recovering from a party the night before. I may be recalling things differently to how they actually happened. Hell, I'm fairly certain I have the sessions listed out of order.&lt;/p&gt;
@@ -215,10 +215,10 @@
     
     <item>
       <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
-      <link>http://brendanforster.comjquery-knockout-win8.html</link>
+      <link>http://brendanforster.com/jquery-knockout-win8.html</link>
       <pubDate>Wed, 26 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./jquery-and-knockout-in-win8</guid>
+      <guid>http://brendanforster.com/jquery-knockout-win8.html</guid>
       <description>&lt;p&gt;Apparently this is old news to some. Trendsetters...&lt;/p&gt;
 
 &lt;p&gt;With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - the words have lost all meaning to me, but that's another topic) applications, I was asked if &lt;a href=&quot;http://jquery.com/&quot;&gt;jQuery&lt;/a&gt; is supported - with a goal to making JS applications more maintainable.&lt;/p&gt;
@@ -338,10 +338,10 @@
     
     <item>
       <title>I'm speaking at DDD Brisbane</title>
-      <link>http://brendanforster.comddd-brisbane.html</link>
+      <link>http://brendanforster.com/ddd-brisbane.html</link>
       <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./ddd-brisbane</guid>
+      <guid>http://brendanforster.com/ddd-brisbane.html</guid>
       <description>&lt;p&gt;&lt;img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'&gt;&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;http://dddbrisbane.com&quot;&gt;dddBrisbane&lt;/a&gt; organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week).&lt;/p&gt;
@@ -360,10 +360,10 @@
     
     <item>
       <title>Doing the build server dance with NuGet</title>
-      <link>http://brendanforster.comdoing-the-build-server-dance-with-nuget.html</link>
+      <link>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</link>
       <pubDate>Fri, 08 Jul 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./doing-the-build-server-dance-with-nuget</guid>
+      <guid>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</guid>
       <description>&lt;p&gt;I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.&lt;/p&gt;
 
 &lt;p&gt;And with NuGet in the enterprise being the &lt;a href=&quot;http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx&quot;&gt;upcoming hotness&lt;/a&gt;, I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.&lt;/p&gt;
@@ -513,10 +513,10 @@ Which causes my build to break.&lt;/p&gt;
     
     <item>
       <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
-      <link>http://brendanforster.cominotifypropertychanged-stop-the-madness.html</link>
+      <link>http://brendanforster.com/inotifypropertychanged-stop-the-madness.html</link>
       <pubDate>Sat, 18 Jun 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./inotifypropertychanged-stop-the-madness</guid>
+      <guid>http://brendanforster.com/inotifypropertychanged-stop-the-madness.html</guid>
       <description>&lt;p&gt;Its time to stop with this madness.&lt;/p&gt;
 
 &lt;p&gt;Apologies again to &lt;a href=&quot;http://twitter.com/kiwipom&quot;&gt;Ian&lt;/a&gt; as I picked on him unnecessarily when I read yet another &quot;Let's make OnPropertyChanged compile safe&quot; &lt;a href=&quot;http://xaml.geek.nz/binding/5&quot;&gt;blog post&lt;/a&gt; yesterday.&lt;/p&gt;
@@ -677,10 +677,10 @@ public string SomeProperty
     
     <item>
       <title>On the Windows 8 Preview Video</title>
-      <link>http://brendanforster.comon-the-windows-8-preview.html</link>
+      <link>http://brendanforster.com/on-the-windows-8-preview.html</link>
       <pubDate>Wed, 08 Jun 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./on-the-windows-8-preview</guid>
+      <guid>http://brendanforster.com/on-the-windows-8-preview.html</guid>
       <description>&lt;p&gt;For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: &lt;a href=&quot;http://www.youtube.com/watch?v=p92QfWOw88I&quot;&gt;http://www.youtube.com/watch?v=p92QfWOw88I&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;It was the trigger for significant backlash - and not for what was said, but for what wasn't said around the other options available for building Windows applications.&lt;/p&gt;
@@ -751,10 +751,10 @@ public string SomeProperty
     
     <item>
       <title>slsvcutil - Workaround StackOverflowException</title>
-      <link>http://brendanforster.comslsvcutil-stackoverflowexception-workaround.html</link>
+      <link>http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html</link>
       <pubDate>Fri, 06 May 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./slsvcutil-stackoverflowexception-workaround</guid>
+      <guid>http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html</guid>
       <description>&lt;p&gt;I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called &lt;a href=&quot;http://www.stackoverflow.com/&quot;&gt;stackoverflow&lt;/a&gt; came into the mix :)&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;D:\Readify\Hg\ReadifySample\src&amp;gt;&quot;C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Tools\Slsvcutil.exe&quot; http://localhost:47862/Services/ParentService.svc
@@ -781,10 +781,10 @@ Process is terminated due to StackOverflowException.
     
     <item>
       <title>Musing - Simpler UI Testing for WPF Apps</title>
-      <link>http://brendanforster.comsimpler-ui-testing-for-wpf-apps.html</link>
+      <link>http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html</link>
       <pubDate>Sat, 26 Mar 2011 14:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com./simpler-ui-testing-for-wpf-apps</guid>
+      <guid>http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html</guid>
       <description>&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
 to paper and revisit why I started down this path.&lt;/p&gt;
 

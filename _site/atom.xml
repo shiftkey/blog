@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-01-03T21:29:58+11:00</updated>
+ <updated>2012-01-04T10:01:40+11:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -13,9 +13,9 @@
  
  <entry>
    <title>Introducing code52</title>
-   <link href="http://brendanforster.comintroducing-code52.html" />
+   <link href="http://brendanforster.com/introducing-code52.html" />
    <updated>2012-01-03T21:30:00+11:00</updated>
-   <id>http://brendanforster.com.com./introducing-code52</id>
+   <id>http://brendanforster.com/introducing-code52.html</id>
    <content type="html">
 	<![CDATA[<p>Back from a self-imposed internet break (taking a phone which doesn't do 3G coverage and going rural is a good way to do this) and <a href="http://twitter.com/aeoth">Paul</a> and <a href="http://twitter.com/tobin">Tobin</a> couldn't wait to kick off our new collaborative project.</p>
 
@@ -35,9 +35,9 @@
  
  <entry>
    <title>2011 - Where did the time go?</title>
-   <link href="http://brendanforster.com2011-recap.html" />
+   <link href="http://brendanforster.com/2011-recap.html" />
    <updated>2011-12-20T23:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./recap</id>
+   <id>http://brendanforster.com/2011-recap.html</id>
    <content type="html">
 	<![CDATA[<p><article></p>
 
@@ -158,9 +158,9 @@
  
  <entry>
    <title>ALT.NET Open Spaces Recap</title>
-   <link href="http://brendanforster.comalt-net-open-spaces-2011.html" />
+   <link href="http://brendanforster.com/alt-net-open-spaces-2011.html" />
    <updated>2011-12-03T19:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./alt-net-open-spaces-recap</id>
+   <id>http://brendanforster.com/alt-net-open-spaces-2011.html</id>
    <content type="html">
 	<![CDATA[<p>I flew down to Melbourne this weekend to catch up with the locals and talk about various topics around the .NET space. Here's the abridged recap - each session was scheduled for about 30 minutes and we (mostly) stuck to the schedule during the day.</p>
 
@@ -222,9 +222,9 @@
  
  <entry>
    <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
-   <link href="http://brendanforster.comjquery-knockout-win8.html" />
+   <link href="http://brendanforster.com/jquery-knockout-win8.html" />
    <updated>2011-10-26T00:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./jquery-and-knockout-in-win8</id>
+   <id>http://brendanforster.com/jquery-knockout-win8.html</id>
    <content type="html">
 	<![CDATA[<p>Apparently this is old news to some. Trendsetters...</p>
 
@@ -347,9 +347,9 @@
  
  <entry>
    <title>I'm speaking at DDD Brisbane</title>
-   <link href="http://brendanforster.comddd-brisbane.html" />
+   <link href="http://brendanforster.com/ddd-brisbane.html" />
    <updated>2011-10-23T00:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./ddd-brisbane</id>
+   <id>http://brendanforster.com/ddd-brisbane.html</id>
    <content type="html">
 	<![CDATA[<p><img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'></p>
 
@@ -371,9 +371,9 @@
  
  <entry>
    <title>Doing the build server dance with NuGet</title>
-   <link href="http://brendanforster.comdoing-the-build-server-dance-with-nuget.html" />
+   <link href="http://brendanforster.com/doing-the-build-server-dance-with-nuget.html" />
    <updated>2011-07-08T14:00:00+10:00</updated>
-   <id>http://brendanforster.com.com./doing-the-build-server-dance-with-nuget</id>
+   <id>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</id>
    <content type="html">
 	<![CDATA[<p>I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.</p>
 
@@ -526,9 +526,9 @@ Which causes my build to break.</p>
  
  <entry>
    <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
-   <link href="http://brendanforster.cominotifypropertychanged-stop-the-madness.html" />
+   <link href="http://brendanforster.com/inotifypropertychanged-stop-the-madness.html" />
    <updated>2011-06-18T14:00:00+10:00</updated>
-   <id>http://brendanforster.com.com./inotifypropertychanged-stop-the-madness</id>
+   <id>http://brendanforster.com/inotifypropertychanged-stop-the-madness.html</id>
    <content type="html">
 	<![CDATA[<p>Its time to stop with this madness.</p>
 
@@ -692,9 +692,9 @@ public string SomeProperty
  
  <entry>
    <title>On the Windows 8 Preview Video</title>
-   <link href="http://brendanforster.comon-the-windows-8-preview.html" />
+   <link href="http://brendanforster.com/on-the-windows-8-preview.html" />
    <updated>2011-06-08T14:00:00+10:00</updated>
-   <id>http://brendanforster.com.com./on-the-windows-8-preview</id>
+   <id>http://brendanforster.com/on-the-windows-8-preview.html</id>
    <content type="html">
 	<![CDATA[<p>For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: <a href="http://www.youtube.com/watch?v=p92QfWOw88I">http://www.youtube.com/watch?v=p92QfWOw88I</a></p>
 
@@ -768,9 +768,9 @@ public string SomeProperty
  
  <entry>
    <title>slsvcutil - Workaround StackOverflowException</title>
-   <link href="http://brendanforster.comslsvcutil-stackoverflowexception-workaround.html" />
+   <link href="http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html" />
    <updated>2011-05-06T14:00:00+10:00</updated>
-   <id>http://brendanforster.com.com./slsvcutil-stackoverflowexception-workaround</id>
+   <id>http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html</id>
    <content type="html">
 	<![CDATA[<p>I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called <a href="http://www.stackoverflow.com/">stackoverflow</a> came into the mix :)</p>
 
@@ -800,9 +800,9 @@ Process is terminated due to StackOverflowException.
  
  <entry>
    <title>Musing - Simpler UI Testing for WPF Apps</title>
-   <link href="http://brendanforster.comsimpler-ui-testing-for-wpf-apps.html" />
+   <link href="http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html" />
    <updated>2011-03-26T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./simpler-ui-testing-for-wpf-apps</id>
+   <id>http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html</id>
    <content type="html">
 	<![CDATA[<p>After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
 to paper and revisit why I started down this path.</p>
@@ -918,9 +918,9 @@ just needed to write this post.</p>
  
  <entry>
    <title>Arguments about Project Structure</title>
-   <link href="http://brendanforster.comarguments-about-project-structure.html" />
+   <link href="http://brendanforster.com/arguments-about-project-structure.html" />
    <updated>2011-02-23T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./arguments-about-project-structure</id>
+   <id>http://brendanforster.com/arguments-about-project-structure.html</id>
    <content type="html">
 	<![CDATA[<p>Whenever it comes time to kick off a new project, how do you structure it?</p>
 
@@ -1026,9 +1026,9 @@ just needed to write this post.</p>
  
  <entry>
    <title>Using Rx to Implement Filtering in MahTweets</title>
-   <link href="http://brendanforster.comusing-rx-to-implement-filtering-in-mahtweets.html" />
+   <link href="http://brendanforster.com/using-rx-to-implement-filtering-in-mahtweets.html" />
    <updated>2011-02-19T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./using-rx-to-implement-filtering-in-mahtweets</id>
+   <id>http://brendanforster.com/using-rx-to-implement-filtering-in-mahtweets.html</id>
    <content type="html">
 	<![CDATA[<p>As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.</p>
 
@@ -1153,9 +1153,9 @@ just needed to write this post.</p>
  
  <entry>
    <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
-   <link href="http://brendanforster.comwp7-memory-profiling-navigation.html" />
+   <link href="http://brendanforster.com/wp7-memory-profiling-navigation.html" />
    <updated>2011-02-04T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./wp7-memory-profiling-navigation</id>
+   <id>http://brendanforster.com/wp7-memory-profiling-navigation.html</id>
    <content type="html">
 	<![CDATA[<p>In the course of wrapping up a SL-based WP7 application recently, I stumbled across a significant hurdle with memory consumption on the device...</p>
 
@@ -1273,9 +1273,9 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
  
  <entry>
    <title>MEF and Chaining Dependencies</title>
-   <link href="http://brendanforster.commef-and-chaining-dependencies.html" />
+   <link href="http://brendanforster.com/mef-and-chaining-dependencies.html" />
    <updated>2010-12-20T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./mef-and-chaining-dependencies</id>
+   <id>http://brendanforster.com/mef-and-chaining-dependencies.html</id>
    <content type="html">
 	<![CDATA[<p>A <a href="http://mef.codeplex.com/Thread/View">question</a> came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.</p>
 
@@ -1415,9 +1415,9 @@ public class ActualProxy : IServiceProxy
  
  <entry>
    <title>MEF - [Import] vs [ImportingConstructor]</title>
-   <link href="http://brendanforster.commef-import-vs-importingconstructor.html" />
+   <link href="http://brendanforster.com/mef-import-vs-importingconstructor.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./mef-import-vs-importingconstructor</id>
+   <id>http://brendanforster.com/mef-import-vs-importingconstructor.html</id>
    <content type="html">
 	<![CDATA[<p>A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at <a href="http://www.informit.com/articles/article.aspx?p=1635818">InformIT</a>. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.</p>
 
@@ -1570,9 +1570,9 @@ container.RegisterComposablePartCatalog(catalog);
  
  <entry>
    <title>IoC Tips - Autofac Factory Adapters</title>
-   <link href="http://brendanforster.comioc-tips-autofac-factory-adapters.html" />
+   <link href="http://brendanforster.com/ioc-tips-autofac-factory-adapters.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./ioc-tips-autofac-factory-adapters</id>
+   <id>http://brendanforster.com/ioc-tips-autofac-factory-adapters.html</id>
    <content type="html">
 	<![CDATA[<h2>Scenario</h2>
 
@@ -1678,9 +1678,9 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
  
  <entry>
    <title>Amped Web 2010 Recap</title>
-   <link href="http://brendanforster.comamped-web-2010-recap.html" />
+   <link href="http://brendanforster.com/amped-web-2010-recap.html" />
    <updated>2010-10-16T14:00:00+11:00</updated>
-   <id>http://brendanforster.com.com./amped-web-2010-recap</id>
+   <id>http://brendanforster.com/amped-web-2010-recap.html</id>
    <content type="html">
 	<![CDATA[<p><strong>Disclaimer:</strong> I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including <a href="http://twitter.com/Rog42">@Rog42</a>'s crazy photography experiments!</p>
 
@@ -1722,9 +1722,9 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
  
  <entry>
    <title>Hello World</title>
-   <link href="http://brendanforster.comhello-world.html" />
+   <link href="http://brendanforster.com/hello-world.html" />
    <updated>2010-09-23T10:50:44+10:00</updated>
-   <id>http://brendanforster.com.com./hello-world</id>
+   <id>http://brendanforster.com/hello-world.html</id>
    <content type="html">
 	<![CDATA[<p>Starting off this blog with a simple post. More styling to come during the coming days.</p>
 
