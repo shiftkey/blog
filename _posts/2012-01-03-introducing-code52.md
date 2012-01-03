@@ -10,7 +10,7 @@ comments: false
 
 Back from a self-imposed internet break (taking a phone which doesn't do 3G coverage and going rural is a good way to do this) and [Paul](http://twitter.com/aeoth) and [Tobin](http://twitter.com/tobin) couldn't wait to kick off our new collaborative project. 
 
-<center><a href="http://code52.org">{% img right /img/posts/code52/logo.png %}</a></center>
+<center><a href="http://code52.org">{% img right /img/posts/Code52/logo.png %}</a></center>
 <br/>
 
 There's a bit more of a blurb on [the website](http://code52.org/about.html) - its an idea we're still wrapping our heads around by using a bit of trial and error. 
