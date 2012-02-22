@@ -165,6 +165,7 @@ public class MyClass
 
     <pre>Type 'MyProject.MyClass' is unsealed but is not enabled for composition. Either seal 'MyProject.MyClass', or mark it with the System.Runtime.InteropServices.WindowsRuntime.EnableCompositionAttribute so that you can derive from it. To use the class from JavaScript, you must seal it.</pre>
 
+<br />
 
         At this point, you have two choices:
 
@@ -208,7 +209,7 @@ public sealed class MyClass
     
     <pre>Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Collections.Generic.List&lt;System.String&gt;' in its signature.  Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.  Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList&lt;System.String&gt;, System.Collections.Generic.IReadOnlyList&lt;System.String&gt;, System.Collections.Generic.IEnumerable&lt;System.String&gt;'.</pre>
 
-    <br /><br />
+    <br />
 
         Thankfully, the solution is right there in front of us.<br /><br />
 
@@ -388,7 +389,7 @@ public async Task&lt;string&gt; Get(string url)
 
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
-Liquid error: undefined method `map' for #<String:0x2526390>
+Liquid error: undefined method `map' for #<String:0x3346cc8>
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
 
