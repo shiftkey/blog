@@ -163,7 +163,8 @@ public class MyClass
 
         you'll see this error: <br /><br />
 
-        Liquid error: undefined method `map' for #<String:0x2c8e3f0>
+    <pre>Type 'MyProject.MyClass' is unsealed but is not enabled for composition. Either seal 'MyProject.MyClass', or mark it with the System.Runtime.InteropServices.WindowsRuntime.EnableCompositionAttribute so that you can derive from it. To use the class from JavaScript, you must seal it.</pre>
+
 
         At this point, you have two choices:
 
@@ -205,7 +206,9 @@ public sealed class MyClass
 
         now we get multiple errors, such as: <br /><br />
     
-        Liquid error: undefined method `map' for #<String:0x2c9b458>
+    <pre>Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Collections.Generic.List&lt;System.String&gt;' in its signature.  Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.  Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList&lt;System.String&gt;, System.Collections.Generic.IReadOnlyList&lt;System.String&gt;, System.Collections.Generic.IEnumerable&lt;System.String&gt;'.</pre>
+
+    <br /><br />
 
         Thankfully, the solution is right there in front of us.<br /><br />
 
@@ -245,7 +248,12 @@ public static class MyStaticClass
 
         And we get scolded rather badly:<br /><br />
 
-        Liquid error: undefined method `map' for #<String:0x2c9a2b8>
+        
+        <pre>'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' is a generic method.  Windows Runtime methods may not be generic.<br />
+Method 'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' has a generic type parameter of type 'T' in its signature.  Generic type parameters may not appear in method signatures of Windows Runtime methods.<br />
+Method 'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' returns 'T', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
+        </pre>
+        
         
         The Solution? Uh, don't do it.<br /><br />
 
@@ -279,9 +287,12 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
 }
         </pre>
 
-        No concrete classes. Still using a generic interface though...
+        No concrete classes. Still using a generic interface though...<br /><br />
 
-Liquid error: undefined method `map' for #<String:0x2ca14d0>
+    <pre>Interface 'MyProject.IPager&lt;T&gt;' requires interface 'System.Collections.Generic.IEnumerable&lt;T&gt;' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
+    Type 'MyProject.IPager&lt;T&gt;' is generic.  Windows Runtime types may not be generic.</pre>
+
+    
 
         Damn. Another brick wall.<br /><br />
 
@@ -312,9 +323,9 @@ public class SomeClass
 }
         </pre>
 
-        Aaaand... no. 
+        Aaaand... no. <br /><br />
 
-Liquid error: undefined method `map' for #<String:0x2c9f250>
+<pre>'MyProject.SomeClass.VirtualMethod(System.Object)' is a virtual method. Managed types may not expose new virtual methods in Windows Runtime.</pre>
 
         <strong>Notes:</strong> <br /><br />
 
@@ -351,7 +362,10 @@ public sealed class SomeClass
 
         It will ask you what on earth you were thinking!
 
-Liquid error: undefined method `map' for #<String:0x2d6d650>
+        <br /><br />
+
+<pre>Unable to determine a default interface for runtime class 'MyProject.MyClass'.  The class does not implement any interfaces, and no interface was generated for it because it does not contain any public methods, properties, or events.</pre>
+
 
     </section>
 
@@ -374,7 +388,7 @@ public async Task&lt;string&gt; Get(string url)
 
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
-Liquid error: undefined method `map' for #<String:0x2d6cd08>
+Liquid error: undefined method `map' for #<String:0x2526390>
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
 
