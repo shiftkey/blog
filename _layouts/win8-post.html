@@ -1,0 +1,11 @@
+---
+layout: build
+---
+
+<div id="post">
+{{ content }}
+</div>
+
+{% if page.comments %}
+{% include disqus.html %}
+{% endif %}
