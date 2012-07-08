@@ -10,7 +10,7 @@ comments: false
  
 So I just had this little email land in my inbox last week.
 
-    Congratulations! We are pleased to present you with the 2012 Microsoft® MVP Award! This award is given to exceptional technical community leaders who actively share their high quality, real world expertise with others. We appreciate your outstanding contributions in ASP.NET/IIS technical communities during the past year.
+    Congratulations! We are pleased to present you with the 2012 Microsoft MVP Award! This award is given to exceptional technical community leaders who actively share their high quality, real world expertise with others. We appreciate your outstanding contributions in ASP.NET/IIS technical communities during the past year.
 
 After the chaos of first half of the year (which I still want to get back to, just trying to summon the energy again after a brief respite to head over to NDC this year) this caught me off-guard, but has been an honour to accept.
 
