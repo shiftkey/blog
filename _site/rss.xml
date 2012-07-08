@@ -6,9 +6,28 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 08 Jul 2012 20:55:34 +1000</pubDate>
-    <lastBuildDate>Sun, 08 Jul 2012 20:55:34 +1000</lastBuildDate>
+    <pubDate>Sun, 08 Jul 2012 20:56:29 +1000</pubDate>
+    <lastBuildDate>Sun, 08 Jul 2012 20:56:29 +1000</lastBuildDate>
 
+    
+    <item>
+      <title>So I accidentally a web guy MVP</title>
+      <link>http://brendanforster.com/so-i-accidentally-a-web-guy-mvp.html</link>
+      <pubDate>Sun, 08 Jul 2012 20:30:00 +1000</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com/so-i-accidentally-a-web-guy-mvp.html</guid>
+      <description>&lt;p&gt;So I just had this little email land in my inbox last week.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Congratulations! We are pleased to present you with the 2012 Microsoft MVP Award! This award is given to exceptional technical community leaders who actively share their high quality, real world expertise with others. We appreciate your outstanding contributions in ASP.NET/IIS technical communities during the past year.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After the chaos of first half of the year (which I still want to get back to, just trying to summon the energy again after a brief respite to head over to NDC this year) this caught me off-guard, but has been an honour to accept.&lt;/p&gt;
+
+&lt;p&gt;I'll comment a bit further on the details once I've signed away my life and get an idea of what's involved, but given the ASP.NET dev stack (well, the &lt;em&gt;good&lt;/em&gt; bits anyway &lt;em&gt;smileyface&lt;/em&gt;) are now on &lt;a href=&quot;http://aspnetwebstack.codeplex.com/&quot;&gt;Codeplex&lt;/a&gt; I'm keen to spend some time digging into that and helping out wherever my powers might be of benefit.&lt;/p&gt;
+
+&lt;p&gt;There's also shiny things coming along in the upcoming release (I've hacked a bit on Web API, and Single Page Apps is on my radar but I haven't used in anger) which are on my never-ending TODO list.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Introducing code52</title>
@@ -776,122 +795,6 @@ Process is terminated due to StackOverflowException.
 &lt;p&gt;That's right. If you have set your system language to something &lt;strong&gt;other than US English&lt;/strong&gt;, you will probably encounter this issue.&lt;/p&gt;
 
 &lt;p&gt;Enjoy.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Musing - Simpler UI Testing for WPF Apps</title>
-      <link>http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html</link>
-      <pubDate>Sat, 26 Mar 2011 14:00:00 +1100</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html</guid>
-      <description>&lt;p&gt;After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
-to paper and revisit why I started down this path.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Some background&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The current project I am working on is a large data-driven WPF application, with a lot of complex scenarios to
-identify, develop and test. There is a group of testers on the project, but I can see an opportunity to use
-automated testing to verify functionality and allow testers to focus on areas of better value - exploratory testing, for example.&lt;/p&gt;
-
-&lt;p&gt;Yes, there are frameworks like &lt;a href=&quot;http://white.codeplex.com/&quot;&gt;White&lt;/a&gt; or Coded UI Tests, but these tools were designed with developers in mind.
-You have to write code like &lt;a href=&quot;http://msdn.microsoft.com/en-us/magazine/dd483216.aspx&quot;&gt;this&lt;/a&gt; to drive the tests, and the tests are commonly written after the feature is implemented.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Enter Automated Acceptance Testing&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;In an ideal world, business users would define tests in an English-like language, which can then be translated into an executable
-script and run against the application.&lt;/p&gt;
-
-&lt;p&gt;What I'm looking for in a framework for defining use cases:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;define the test first, so that the high-level scenario is set before development occurs&lt;/li&gt;
-&lt;li&gt;flexible with syntax for test cases - tailor scripts to suit people involved, while remaining declarative&lt;/li&gt;
-&lt;li&gt;integrate into deployment process to verify builds automated&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Some inspiration from obscure corners&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;When I first saw the syntax for &lt;a href=&quot;http://msdn.microsoft.com/en-us/magazine/dd483216.aspx&quot;&gt;webrat&lt;/a&gt;, I was intrigued and jealous. To declare a test like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class SignupTest &amp;lt; ActionController::IntegrationTest
-
-    def test_trial_account_sign_up
-        visit home_path
-        click_link &quot;Sign up&quot;
-        fill_in &quot;Email&quot;, :with =&amp;gt; &quot;good@example.com&quot;
-        select &quot;Free account&quot;
-        click_button &quot;Register&quot;
-    end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;was not far off what I'd had in mind for something that was easy to follow and easy to write.&lt;/p&gt;
-
-&lt;p&gt;So I spent some time this week experimenting with various ways of achieving this against a sample WPF application.&lt;/p&gt;
-
-&lt;p&gt;I'm using rspec at the moment to run the test cases, and IronRuby and White to support the integration with the hosted WPF application.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;What does a test for the WPF application look like?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;describe &quot;new customers screen&quot; do
-
-    subject { Host.new(File.expand_path('./app/WpfTestApp.exe', File.dirname(__FILE__)))
-
-    before(:each) do
-        click &quot;Add Customer&quot;
-    end
-
-    it &quot;cannot save empty form&quot; do
-        cannot_click &quot;Save&quot;
-        can_click &quot;Cancel&quot;
-    end
-
-    it &quot;can enter details for customer&quot; do
-        fill &quot;FirstName&quot;, :with =&amp;gt; &quot;Brendan&quot;
-        fill &quot;LastName&quot;, :with =&amp;gt; &quot;Forster&quot;
-        # and some other fields
-        can_click &quot;Save&quot;
-    end
-
-    it &quot;can save and return to main screen&quot; do
-        fill &quot;FirstName&quot;, :with =&amp;gt; &quot;Brendan&quot;
-        fill &quot;LastName&quot;, :with =&amp;gt; &quot;Forster&quot;
-        # and some other fields
-        click &quot;Save&quot;
-        assert_title &quot;Dashboard&quot;
-    end
-
-    after(:each) do
-        cleanup
-    end
-
-    def method_missing(sym, *args, &amp;amp;block)
-        subject.send sym, *args, &amp;amp;block
-    end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The fields used here are based off the UI Automation features of the .NET Framework (some reading &lt;a href=&quot;http://white.codeplex.com/&quot;&gt;here&lt;/a&gt; on recommendations)
-which I'll dig into a bit later if people are interested.&lt;/p&gt;
-
-&lt;p&gt;The method_missing method is used to reduce the noise of writing &quot;subject.&quot; to start each line - I'm not quite sold on the approach, but it was cleaner than the previous approaches I'd tried.
-Also, rspec has a &lt;a href=&quot;https://gist.github.com/663876&quot;&gt;huge set of features&lt;/a&gt; which I've barely scratched the surface on.&lt;/p&gt;
-
-&lt;p&gt;So with a set of files like the file above, the testrunner is a simple script to load specific files found in the current directory:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require 'rubygems'
-require 'rspec'
-require 'host'
-
-Dir[File.dirname(__FILE__) + '/*tests.rb'].each do |file| 
-    load file
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code),
-just needed to write this post.&lt;/p&gt;
 </description>
     </item>
     
