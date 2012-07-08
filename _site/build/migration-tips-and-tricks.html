@@ -36,6 +36,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 <link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
 
 <!-- For all browsers -->
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" media="screen" href="/css/style.css?v=1">
 
 <link rel="stylesheet" media="print" href="/css/print.css?v=1">
@@ -386,7 +387,7 @@ public async Task&lt;string&gt; Get(string url)
 
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
-Liquid error: undefined method `map' for #<String:0xa20c858>
+Liquid error: undefined method `map' for #<String:0x87a9cf4>
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
 

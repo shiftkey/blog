@@ -108,7 +108,7 @@ body {
 margin : 0 auto;
 padding : 24px 0;
 width : 90% /* 252px */;
-font : 100%/1.4 Calibri, Cambria, Georgia, Times, "Times New Roman";
+font : 100%/1.4 Calibri, Cambria, 'Droid Sans', Georgia, sans-serif;
 color : rgb(40,40,40); 
 background-color : transparent; }
 
