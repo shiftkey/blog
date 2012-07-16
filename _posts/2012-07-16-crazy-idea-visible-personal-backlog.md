@@ -34,6 +34,6 @@ You should be able to leave a comment on any of the items currently there. What 
 
 This is something that I'll flesh out over the next few days and there may be some details missing.
 
-There are some items on the list which are deliberately vague - I'll clarify stuff which are not mature enough to talk about at this point in time, but you can see where they sit in my priority queue.
+There are some items on the list which are deliberately vague - I'll indicate which tasks are "teasers" at this point in time, but I've got no issues with you seeing where they sit in my priority queue.
 
-And there are some things which I just can't plain talk about (but really need to do anyway) so I'll need to figure out a way to represent them propertly. Not everything on my plate at the moment is OSS work :)
+And there are some things which I just can't plain talk about (but really need to do anyway) so I'll need to figure out a way to represent them properly. Not everything on my plate at the moment is OSS work :)
