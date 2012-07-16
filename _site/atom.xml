@@ -4,12 +4,58 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-07-08T21:20:53+10:00</updated>
+ <updated>2012-07-16T17:17:48+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Sharing my personal backlog with the world</title>
+   <link href="http://brendanforster.com/visible-personal-backlog.html" />
+   <updated>2012-07-16T20:30:00+10:00</updated>
+   <id>http://brendanforster.com/visible-personal-backlog.html</id>
+   <content type="html">
+	<![CDATA[<p>Ever since I got back from holidays a few weeks ago I've been in a bit of a rut trying to tackle the backlog of stuff I've been meaning to do (projects half-done, contributions I've promised other people, things I've been meaning to blog about).</p>
+
+<h3>The Experiment</h3>
+
+<p>This experiment comes down to three simple things:</p>
+
+<ul>
+<li>maintain a list of tasks which need to be done (ordered by priority)</li>
+<li>focus on one thing at a time</li>
+<li>make it visible to the world to add some peer input to the situation</li>
+</ul>
+
+
+<p>For the tool to make this happen, I've decided to use <a href="https://trello.com/">Trello</a>. After using Trello for the Code52 projects in the past, I felt that it was the best fit between ease of administration and ease of viewing.</p>
+
+<p>The board is hosted at <a href="https://trello.com/board/public-backlog/50039c94fe5e1f8037b9b583">https://trello.com/board/public-backlog/50039c94fe5e1f8037b9b583</a>.</p>
+
+<h3>What can you do?</h3>
+
+<p>You should be able to leave a comment on any of the items currently there. What sort of comments would help? Things like:</p>
+
+<ul>
+<li>"Can you explain this one?" (I've been too brief with a task which may be complex)</li>
+<li>"Can you do this sooner?" (this is something you are interested in)</li>
+<li>"Can I help out with this?" (this is something you might be able to help out with)</li>
+</ul>
+
+
+<h3>Caveats</h3>
+
+<p>This is something that I'll flesh out over the next few days and there may be some details missing.</p>
+
+<p>There are some items on the list which are deliberately vague - I'll clarify stuff which are not mature enough to talk about at this point in time, but you can see where they sit in my priority queue.</p>
+
+<p>And there are some things which I just can't plain talk about (but really need to do anyway) so I'll need to figure out a way to represent them propertly. Not everything on my plate at the moment is OSS work :)</p>
+]]>
+   </content>
+   
+ </entry>
  
  <entry>
    <title>So I accidentally a web guy MVP</title>

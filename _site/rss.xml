@@ -6,9 +6,53 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 08 Jul 2012 21:20:53 +1000</pubDate>
-    <lastBuildDate>Sun, 08 Jul 2012 21:20:53 +1000</lastBuildDate>
+    <pubDate>Mon, 16 Jul 2012 17:17:48 +1000</pubDate>
+    <lastBuildDate>Mon, 16 Jul 2012 17:17:48 +1000</lastBuildDate>
 
+    
+    <item>
+      <title>Sharing my personal backlog with the world</title>
+      <link>http://brendanforster.com/visible-personal-backlog.html</link>
+      <pubDate>Mon, 16 Jul 2012 20:30:00 +1000</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com/visible-personal-backlog.html</guid>
+      <description>&lt;p&gt;Ever since I got back from holidays a few weeks ago I've been in a bit of a rut trying to tackle the backlog of stuff I've been meaning to do (projects half-done, contributions I've promised other people, things I've been meaning to blog about).&lt;/p&gt;
+
+&lt;h3&gt;The Experiment&lt;/h3&gt;
+
+&lt;p&gt;This experiment comes down to three simple things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;maintain a list of tasks which need to be done (ordered by priority)&lt;/li&gt;
+&lt;li&gt;focus on one thing at a time&lt;/li&gt;
+&lt;li&gt;make it visible to the world to add some peer input to the situation&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;For the tool to make this happen, I've decided to use &lt;a href=&quot;https://trello.com/&quot;&gt;Trello&lt;/a&gt;. After using Trello for the Code52 projects in the past, I felt that it was the best fit between ease of administration and ease of viewing.&lt;/p&gt;
+
+&lt;p&gt;The board is hosted at &lt;a href=&quot;https://trello.com/board/public-backlog/50039c94fe5e1f8037b9b583&quot;&gt;https://trello.com/board/public-backlog/50039c94fe5e1f8037b9b583&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;What can you do?&lt;/h3&gt;
+
+&lt;p&gt;You should be able to leave a comment on any of the items currently there. What sort of comments would help? Things like:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&quot;Can you explain this one?&quot; (I've been too brief with a task which may be complex)&lt;/li&gt;
+&lt;li&gt;&quot;Can you do this sooner?&quot; (this is something you are interested in)&lt;/li&gt;
+&lt;li&gt;&quot;Can I help out with this?&quot; (this is something you might be able to help out with)&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;Caveats&lt;/h3&gt;
+
+&lt;p&gt;This is something that I'll flesh out over the next few days and there may be some details missing.&lt;/p&gt;
+
+&lt;p&gt;There are some items on the list which are deliberately vague - I'll clarify stuff which are not mature enough to talk about at this point in time, but you can see where they sit in my priority queue.&lt;/p&gt;
+
+&lt;p&gt;And there are some things which I just can't plain talk about (but really need to do anyway) so I'll need to figure out a way to represent them propertly. Not everything on my plate at the moment is OSS work :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>So I accidentally a web guy MVP</title>
@@ -765,36 +809,6 @@ public string SomeProperty
 &lt;p&gt;Compare Windows 7 to the WP7 launches - which have been done with device announcements involving hardware vendors - and it gives me hope that the launch can be done in a more &quot;complete&quot; fashion.&lt;/p&gt;
 
 &lt;p&gt;And I want to see more presentations from MSFT about Windows 8 using touch - drive the presentations from a tablet, demonstrate how the new UI supports touch, and compel me to put it everywhere.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>slsvcutil - Workaround StackOverflowException</title>
-      <link>http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html</link>
-      <pubDate>Fri, 06 May 2011 14:00:00 +1000</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html</guid>
-      <description>&lt;p&gt;I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called &lt;a href=&quot;http://www.stackoverflow.com/&quot;&gt;stackoverflow&lt;/a&gt; came into the mix :)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;D:\Readify\Hg\ReadifySample\src&amp;gt;&quot;C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Tools\Slsvcutil.exe&quot; http://localhost:47862/Services/ParentService.svc
-
-Process is terminated due to StackOverflowException.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;No configuration options set. No informative error message. Annoying.&lt;/p&gt;
-
-&lt;p&gt;The solution, which was initially posted &lt;a href=&quot;http://blogs.msdn.com/b/silverlightws/archive/2010/04/30/workaround-for-stackoverflowexception-when-using-slsvcutil-exe.aspx&quot;&gt;here&lt;/a&gt; over a year ago, is to add in a configuration file alongside slsvcutil.exe, called &lt;strong&gt;slsvcutil.exe.config&lt;/strong&gt;, which will point to the neutral-culture assembly.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
-  &amp;lt;satelliteassemblies&amp;gt;
-    &amp;lt;assembly name=&quot;SlSvcUtil, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; /&amp;gt;
-  &amp;lt;/satelliteassemblies&amp;gt;
-&amp;lt;/configuration&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That's right. If you have set your system language to something &lt;strong&gt;other than US English&lt;/strong&gt;, you will probably encounter this issue.&lt;/p&gt;
-
-&lt;p&gt;Enjoy.&lt;/p&gt;
 </description>
     </item>
     
