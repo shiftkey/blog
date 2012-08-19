@@ -4,7 +4,7 @@ title: Sharing my personal backlog with the world
 permalink: visible-personal-backlog.html
 description: To try and motivate myself back into action, I'm trying out making my personal backlog visible to the world. This could end badly...
 date: 2012-07-16 21:00:00 +10:30
-icon: /img/main/soapbox.jpg
+icon: /img/main/trello.png
 comments: true
 ---
  
