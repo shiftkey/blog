@@ -3,8 +3,8 @@ layout: post
 title: My Git Habits
 permalink: /notes/my-git-habits.html
 description: Someone asked me to write down some notes about my git habits. I'm putting them up here as well for anyone else who cares.
-date: 2099-09-15 23:59:00 +10:30
-icon: /img/main/git.png
+date: 2012-09-16 17:00:00 +10:30
+icon: /img/main/soapbox.jpg
 comments: true
 ---
  
@@ -30,6 +30,9 @@ How does that look from the comamnd line?
  - git checkout master
  - git pull origin/master
  - git merge ReallyCoolFeature
+ - git push origin master
+
+**Note:** Yeah, I like to be explicit with my remotes and branch names in these commands. Haters gonna hate.
 
 But that's all fairly straight-forward and not really leveraging the [new states of mind](http://think-like-a-git.net/sections/git-makes-more-sense-when-you-understand-x/example-4-lsd-and-chainsaws.html) that git makes possible.
 
@@ -83,7 +86,38 @@ Yes, that might be a controversial thing to say at this point. Merges are consid
 
 If I can rebase a branch on top of the current master, I've just avoided the need for a merge commit completely (it becomes a fast-forward merge and the pointers are moved forward). I can then push and get on with the next task.
 
-I guess this comes back to how you use branches. Git works excellently when you create a branch for a task, integrate the code into master, and dismiss it. Not everyone can work that way, but this comes back to a discipline thing rather than a pro/con of the tool itself.
+I guess this comes back to how you use branches. Git works excellently when you create a branch for a task, integrate the code into master, and delete the branch once its reached the end of its useful life. 
 
+Not everyone can work that way (that might be a rant for another day), but I see this a discipline issue rather than a pro/con of the tool itself.
 
+### My Opinionated Git Flow
+
+So with a slight tweak to step 3, my flow becomes:
+
+ 1. Create a local branch for the feature
+ 2. Work on your feature and get it reviewed -- you do code reviews, right?
+ 3. Rebase the branch on master
+ 4. Push the changes up to the remote repository
+
+How does that look from the comamnd line?
+
+ - git checkout -b ReallyCoolFeature master
+ - ... stuff gets done ...
+ - git add .
+ - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
+ - git checkout master
+ - git pull origin/master master
+ - git rebase master ReallyCoolFeature
+ - git checkout master
+ - git merge ReallyCoolFeature --ff-only
+ - git push origin master
+
+Combine that with some hot git alias action (this is getting fairly long as-is), you can strip away much of those commands into a simple "sync" step which you run against the branch you are working on.
+
+### What's next?
+
+I could go on about using `reset` and `cherry-pick` commands and head further down the git rabbit hole, but I think the next posts should cover these things:
+
+ - `git alias` - seriously, this is like crack for scripters
+ - a general rant about discipline when managing commits - git has corrupted my brain, and I've found myself applying concepts to situations where I have used other VCSes (even TFS, not using git-tfs or tf-git)
 
