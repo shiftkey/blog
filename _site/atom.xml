@@ -4,12 +4,162 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-08-19T18:46:38+10:00</updated>
+ <updated>2012-09-16T16:51:10+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>My Git Habits</title>
+   <link href="http://brendanforster.com//notes/my-git-habits.html" />
+   <updated>2012-09-16T16:30:00+10:00</updated>
+   <id>http://brendanforster.com//notes/my-git-habits.html</id>
+   <content type="html">
+	<![CDATA[<p>First up, a disclaimer: <strong>This is just one person's opinion and should be treated as such.</strong></p>
+
+<p>If you workflow is similar, that's great. If you workflow is radically different, that's great too. With things like git its very easy to have different workflows, so I'll just be speaking from my experiences here.</p>
+
+<h3>Introduction</h3>
+
+<p>Generally speaking, my git flow is based off the <a href="https://github.com/NancyFx/Nancy/wiki/Git-Workflow">documentation</a> for contributors to the NancyFx project. When working on features, this is my high-level flow:</p>
+
+<ol>
+<li>Create a local branch for the feature</li>
+<li>Work on your feature and get it reviewed -- you do code reviews, right?</li>
+<li>Merge the changes into master</li>
+<li>Push the changes up to the remote repository</li>
+</ol>
+
+
+<p>How does that look from the comamnd line?</p>
+
+<ul>
+<li>git checkout -b ReallyCoolFeature master</li>
+<li>... stuff gets done ...</li>
+<li>git add .</li>
+<li>git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful</li>
+<li>git checkout master</li>
+<li>git pull origin/master</li>
+<li>git merge ReallyCoolFeature</li>
+<li>git push origin master</li>
+</ul>
+
+
+<p><strong>Note:</strong> Yeah, I like to be explicit with my remotes and branch names in these commands. Haters gonna hate.</p>
+
+<p>But that's all fairly straight-forward and not really leveraging the <a href="http://think-like-a-git.net/sections/git-makes-more-sense-when-you-understand-x/example-4-lsd-and-chainsaws.html">new states of mind</a> that git makes possible.</p>
+
+<h3>Rebase all the things</h3>
+
+<p>Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad(TM) to do with public repositories but when you use it only locally it gives you so much control over everything.</p>
+
+<p>For example, have you ever:</p>
+
+<ul>
+<li>used a branch for multiple, disparate tasks that you wish you could reorder for readability?</li>
+<li>accidentally forgot to save a file and had to spread a task over multiple commits as a result?</li>
+<li>wanted to update an old branch to the latest changes and avoid merge conflicts?</li>
+<li>wanted to split out a branch into multiple branches and process them separately?</li>
+</ul>
+
+
+<p>If you consider a branch to be a chain of commits - with a parent commit representing the creation point of the branch - then rebasing is the operation to:</p>
+
+<ul>
+<li>change the creation point of a branch</li>
+<li>change the order of the commits in a branch</li>
+<li>change the commits in a branch - squash commits together</li>
+<li>remove commits from a branch</li>
+</ul>
+
+
+<p>At this point you are probably thinking "Oh man, I'm going to nuke my branch and lose all my work" but if you look more closely at what the rebase does, you'll find that its a lot safer than you think.</p>
+
+<p>A rebase operation will</p>
+
+<ul>
+<li>set the repository to the new creation point</li>
+<li>create a temporary branch just for this rebase operation</li>
+<li>apply the commits one by one to ensure they apply cleanly</li>
+<li>update the pointers for the branch and remove the temporary branch</li>
+<li>set the repository to the last commit of the new branch</li>
+</ul>
+
+
+<p>When I say "ensure the commits apply cleanly" here, I indicate that git will ensure that additions and subtractions to each file make sense. If they don't (for example, the file has changed significantly enough), it will pause and ask the user to manually confirm the commit.</p>
+
+<p>At any point during a rebase that requires user input, you can abort and git will roll back to the state it was in before the rebase operation started.</p>
+
+<h3>Speak English, Brendan!</h3>
+
+<p>So I got side-tracked a bit just then. Apologies.</p>
+
+<p>So what do I use rebasing for?</p>
+
+<ul>
+<li><em>reordering</em> - if I do a bit of code cleanup during my work, that remains separate from the current task and can be put before/after when reviewing code</li>
+<li><em>squashing</em> - generally speaking, your commits should be granular enough to be easy to follow. But sometimes things go too far and you want to bring related commits together (e.g. missed deleting a file from the previous commit)</li>
+<li><em>splitting</em> - if you've got a complex branch you could split it up into multiple branches and integrate them in gradually.</li>
+</ul>
+
+
+<p>All of this is possible by using interactive rebase - before it kicks off the operation, it displays the commits available and allows you to specify the operations to perform.</p>
+
+<h3>Merging is overrated anyway</h3>
+
+<p>Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in.</p>
+
+<p>If I can rebase a branch on top of the current master, I've just avoided the need for a merge commit completely (it becomes a fast-forward merge and the pointers are moved forward). I can then push and get on with the next task.</p>
+
+<p>I guess this comes back to how you use branches. Git works excellently when you create a branch for a task, integrate the code into master, and delete the branch once its reached the end of its useful life.</p>
+
+<p>Not everyone can work that way (that might be a rant for another day), but I see this a discipline issue rather than a pro/con of the tool itself.</p>
+
+<h3>My Opinionated Git Flow</h3>
+
+<p>So with a slight tweak to step 3, my flow becomes:</p>
+
+<ol>
+<li>Create a local branch for the feature</li>
+<li>Work on your feature and get it reviewed -- you do code reviews, right?</li>
+<li>Rebase the branch on master</li>
+<li>Push the changes up to the remote repository</li>
+</ol>
+
+
+<p>How does that look from the comamnd line?</p>
+
+<ul>
+<li>git checkout -b ReallyCoolFeature master</li>
+<li>... stuff gets done ...</li>
+<li>git add .</li>
+<li>git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful</li>
+<li>git checkout master</li>
+<li>git pull origin/master master</li>
+<li>git rebase master ReallyCoolFeature</li>
+<li>git checkout master</li>
+<li>git merge ReallyCoolFeature --ff-only</li>
+<li>git push origin master</li>
+</ul>
+
+
+<p>Combine that with some hot git alias action (this is getting fairly long as-is), you can strip away much of those commands into a simple "sync" step which you run against the branch you are working on.</p>
+
+<h3>What's next?</h3>
+
+<p>I could go on about using <code>reset</code> and <code>cherry-pick</code> commands and head further down the git rabbit hole, but I think the next posts should cover these things:</p>
+
+<ul>
+<li><code>git alias</code> - seriously, this is like crack for scripters</li>
+<li>a general rant about discipline when managing commits - git has corrupted my brain, and I've found myself applying concepts to situations where I have used other VCSes (even TFS, not using git-tfs or tf-git)</li>
+</ul>
+
+]]>
+   </content>
+   
+ </entry>
  
  <entry>
    <title>Sharing my personal backlog with the world</title>

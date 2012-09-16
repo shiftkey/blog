@@ -6,9 +6,157 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 19 Aug 2012 18:46:38 +1000</pubDate>
-    <lastBuildDate>Sun, 19 Aug 2012 18:46:38 +1000</lastBuildDate>
+    <pubDate>Sun, 16 Sep 2012 16:51:10 +1000</pubDate>
+    <lastBuildDate>Sun, 16 Sep 2012 16:51:10 +1000</lastBuildDate>
 
+    
+    <item>
+      <title>My Git Habits</title>
+      <link>http://brendanforster.com//notes/my-git-habits.html</link>
+      <pubDate>Sun, 16 Sep 2012 16:30:00 +1000</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com//notes/my-git-habits.html</guid>
+      <description>&lt;p&gt;First up, a disclaimer: &lt;strong&gt;This is just one person's opinion and should be treated as such.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you workflow is similar, that's great. If you workflow is radically different, that's great too. With things like git its very easy to have different workflows, so I'll just be speaking from my experiences here.&lt;/p&gt;
+
+&lt;h3&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Generally speaking, my git flow is based off the &lt;a href=&quot;https://github.com/NancyFx/Nancy/wiki/Git-Workflow&quot;&gt;documentation&lt;/a&gt; for contributors to the NancyFx project. When working on features, this is my high-level flow:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a local branch for the feature&lt;/li&gt;
+&lt;li&gt;Work on your feature and get it reviewed -- you do code reviews, right?&lt;/li&gt;
+&lt;li&gt;Merge the changes into master&lt;/li&gt;
+&lt;li&gt;Push the changes up to the remote repository&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;How does that look from the comamnd line?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git checkout -b ReallyCoolFeature master&lt;/li&gt;
+&lt;li&gt;... stuff gets done ...&lt;/li&gt;
+&lt;li&gt;git add .&lt;/li&gt;
+&lt;li&gt;git commit -m &quot;#1234 implemented&quot; -- associating commits with work items is awesomely helpful&lt;/li&gt;
+&lt;li&gt;git checkout master&lt;/li&gt;
+&lt;li&gt;git pull origin/master&lt;/li&gt;
+&lt;li&gt;git merge ReallyCoolFeature&lt;/li&gt;
+&lt;li&gt;git push origin master&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Yeah, I like to be explicit with my remotes and branch names in these commands. Haters gonna hate.&lt;/p&gt;
+
+&lt;p&gt;But that's all fairly straight-forward and not really leveraging the &lt;a href=&quot;http://think-like-a-git.net/sections/git-makes-more-sense-when-you-understand-x/example-4-lsd-and-chainsaws.html&quot;&gt;new states of mind&lt;/a&gt; that git makes possible.&lt;/p&gt;
+
+&lt;h3&gt;Rebase all the things&lt;/h3&gt;
+
+&lt;p&gt;Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad(TM) to do with public repositories but when you use it only locally it gives you so much control over everything.&lt;/p&gt;
+
+&lt;p&gt;For example, have you ever:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;used a branch for multiple, disparate tasks that you wish you could reorder for readability?&lt;/li&gt;
+&lt;li&gt;accidentally forgot to save a file and had to spread a task over multiple commits as a result?&lt;/li&gt;
+&lt;li&gt;wanted to update an old branch to the latest changes and avoid merge conflicts?&lt;/li&gt;
+&lt;li&gt;wanted to split out a branch into multiple branches and process them separately?&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;If you consider a branch to be a chain of commits - with a parent commit representing the creation point of the branch - then rebasing is the operation to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;change the creation point of a branch&lt;/li&gt;
+&lt;li&gt;change the order of the commits in a branch&lt;/li&gt;
+&lt;li&gt;change the commits in a branch - squash commits together&lt;/li&gt;
+&lt;li&gt;remove commits from a branch&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;At this point you are probably thinking &quot;Oh man, I'm going to nuke my branch and lose all my work&quot; but if you look more closely at what the rebase does, you'll find that its a lot safer than you think.&lt;/p&gt;
+
+&lt;p&gt;A rebase operation will&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;set the repository to the new creation point&lt;/li&gt;
+&lt;li&gt;create a temporary branch just for this rebase operation&lt;/li&gt;
+&lt;li&gt;apply the commits one by one to ensure they apply cleanly&lt;/li&gt;
+&lt;li&gt;update the pointers for the branch and remove the temporary branch&lt;/li&gt;
+&lt;li&gt;set the repository to the last commit of the new branch&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;When I say &quot;ensure the commits apply cleanly&quot; here, I indicate that git will ensure that additions and subtractions to each file make sense. If they don't (for example, the file has changed significantly enough), it will pause and ask the user to manually confirm the commit.&lt;/p&gt;
+
+&lt;p&gt;At any point during a rebase that requires user input, you can abort and git will roll back to the state it was in before the rebase operation started.&lt;/p&gt;
+
+&lt;h3&gt;Speak English, Brendan!&lt;/h3&gt;
+
+&lt;p&gt;So I got side-tracked a bit just then. Apologies.&lt;/p&gt;
+
+&lt;p&gt;So what do I use rebasing for?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;reordering&lt;/em&gt; - if I do a bit of code cleanup during my work, that remains separate from the current task and can be put before/after when reviewing code&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;squashing&lt;/em&gt; - generally speaking, your commits should be granular enough to be easy to follow. But sometimes things go too far and you want to bring related commits together (e.g. missed deleting a file from the previous commit)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;splitting&lt;/em&gt; - if you've got a complex branch you could split it up into multiple branches and integrate them in gradually.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;All of this is possible by using interactive rebase - before it kicks off the operation, it displays the commits available and allows you to specify the operations to perform.&lt;/p&gt;
+
+&lt;h3&gt;Merging is overrated anyway&lt;/h3&gt;
+
+&lt;p&gt;Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in.&lt;/p&gt;
+
+&lt;p&gt;If I can rebase a branch on top of the current master, I've just avoided the need for a merge commit completely (it becomes a fast-forward merge and the pointers are moved forward). I can then push and get on with the next task.&lt;/p&gt;
+
+&lt;p&gt;I guess this comes back to how you use branches. Git works excellently when you create a branch for a task, integrate the code into master, and delete the branch once its reached the end of its useful life.&lt;/p&gt;
+
+&lt;p&gt;Not everyone can work that way (that might be a rant for another day), but I see this a discipline issue rather than a pro/con of the tool itself.&lt;/p&gt;
+
+&lt;h3&gt;My Opinionated Git Flow&lt;/h3&gt;
+
+&lt;p&gt;So with a slight tweak to step 3, my flow becomes:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a local branch for the feature&lt;/li&gt;
+&lt;li&gt;Work on your feature and get it reviewed -- you do code reviews, right?&lt;/li&gt;
+&lt;li&gt;Rebase the branch on master&lt;/li&gt;
+&lt;li&gt;Push the changes up to the remote repository&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;How does that look from the comamnd line?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git checkout -b ReallyCoolFeature master&lt;/li&gt;
+&lt;li&gt;... stuff gets done ...&lt;/li&gt;
+&lt;li&gt;git add .&lt;/li&gt;
+&lt;li&gt;git commit -m &quot;#1234 implemented&quot; -- associating commits with work items is awesomely helpful&lt;/li&gt;
+&lt;li&gt;git checkout master&lt;/li&gt;
+&lt;li&gt;git pull origin/master master&lt;/li&gt;
+&lt;li&gt;git rebase master ReallyCoolFeature&lt;/li&gt;
+&lt;li&gt;git checkout master&lt;/li&gt;
+&lt;li&gt;git merge ReallyCoolFeature --ff-only&lt;/li&gt;
+&lt;li&gt;git push origin master&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;Combine that with some hot git alias action (this is getting fairly long as-is), you can strip away much of those commands into a simple &quot;sync&quot; step which you run against the branch you are working on.&lt;/p&gt;
+
+&lt;h3&gt;What's next?&lt;/h3&gt;
+
+&lt;p&gt;I could go on about using &lt;code&gt;reset&lt;/code&gt; and &lt;code&gt;cherry-pick&lt;/code&gt; commands and head further down the git rabbit hole, but I think the next posts should cover these things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git alias&lt;/code&gt; - seriously, this is like crack for scripters&lt;/li&gt;
+&lt;li&gt;a general rant about discipline when managing commits - git has corrupted my brain, and I've found myself applying concepts to situations where I have used other VCSes (even TFS, not using git-tfs or tf-git)&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+    </item>
     
     <item>
       <title>Sharing my personal backlog with the world</title>
@@ -735,80 +883,6 @@ public string SomeProperty
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://code.google.com/p/notifypropertyweaver/&quot;&gt;NotifyPropertyWeaver&lt;/a&gt; - a .NET library for weaving INotifyPropertyChanged code into IL&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;This is my library of choice for automating INotifyPropertyChanged usage. I definitely owe &lt;a href=&quot;http://twitter.com/simoncropp&quot;&gt;Simon&lt;/a&gt; a beer (or drink of choice) next time we cross paths - its been a joy to use.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>On the Windows 8 Preview Video</title>
-      <link>http://brendanforster.com/on-the-windows-8-preview.html</link>
-      <pubDate>Wed, 08 Jun 2011 14:00:00 +1000</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com/on-the-windows-8-preview.html</guid>
-      <description>&lt;p&gt;For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: &lt;a href=&quot;http://www.youtube.com/watch?v=p92QfWOw88I&quot;&gt;http://www.youtube.com/watch?v=p92QfWOw88I&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It was the trigger for significant backlash - and not for what was said, but for what wasn't said around the other options available for building Windows applications.&lt;/p&gt;
-
-&lt;h2&gt;Yes, MSFT could have handled it better&lt;/h2&gt;
-
-&lt;p&gt;Since the video dropped, developers and possibly everyone with a blog has been raising concerns about the other options available to developers for building Windows apps. The underlying vibe has been &quot;everything else has been abandoned, the only option is now HTML5, the sky is falling and I have nothing to wear&quot;. I haven't watched the Sinofsky video (if it was even recorded), but when you see reporting like:&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;&quot;The development platform is based on HTML5 and JavaScript.&quot; &lt;a href=&quot;http://news.cnet.com/8301-31021_3-20068119-260/sinofsky-shows-off-windows-8-at-d9/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;and constrast with a different source:&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;&quot;Windows 8 essentially supports two kinds of applications. One is the classic Windows application, which runs in a desktop very similar to the Windows 7 desktop.&quot; &lt;a href=&quot;http://allthingsd.com/20110601/exclusive-making-sense-of-what-we-just-learned-about-windows-8/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;then you know something got lost in the message.&lt;/p&gt;
-
-&lt;h2&gt;The sky is falling for &lt;em&gt;insert technology here&lt;/em&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://forums.silverlight.net/forums/t/230502.aspx&quot;&gt;That thread&lt;/a&gt;. Oh dear $deity, &lt;a href=&quot;http://forums.silverlight.net/forums/p/230725/563975.aspx&quot;&gt;that thread&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I appreciate that the MSFT guys &quot;in the field&quot; are stuck between a rock and a hard place currently - they cannot provide details to answer people's concerns or questions, but are dealing with a large backlash due to the large amount that is not know currently.&lt;/p&gt;
-
-&lt;p&gt;As one of those in the audience who has to wait, in uncertainty, between now and &lt;a href=&quot;http://www.buildwindows.com/&quot;&gt;BUILD&lt;/a&gt; to have these questions answered, I wish they would rethink this decision and respond to questions and help change the course of discussion.&lt;/p&gt;
-
-&lt;p&gt;While the video does mention:&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;&quot;Windows 8 also runs the existing Windows apps that you know and that you love&quot;&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;it then follows up with running Excel.&lt;/p&gt;
-
-&lt;p&gt;Yep. Excel.&lt;/p&gt;
-
-&lt;p&gt;While an Excel demo is a good indicator of the backwards compatibility that Windows is famous for, it was a jarring change from the rest of the video, and I'm not sure it was the best application to demonstrate.&lt;/p&gt;
-
-&lt;p&gt;Perhaps the developer story is not ready to show. Perhaps it was supposed to be about the shell, and HTML5 was only mentioned in passing. Perhaps, perhaps, perhaps. I suspect a demonstration of how a WPF/SL/Winforms/native application &lt;strong&gt;could&lt;/strong&gt; look/feel/behave within the new shell would provide some information without giving much away.&lt;/p&gt;
-
-&lt;p&gt;The video was about creating interest in the new platform and discussing the opportunities it provides. Now is the time to talk more broadly, while everyone is talking about it.&lt;/p&gt;
-
-&lt;p&gt;So instead of &lt;a href=&quot;http://forums.silverlight.net/forums/t/230744.aspx&quot;&gt;drumming up more drama&lt;/a&gt;, I thought I'd share some takeaways for both sides on this:&lt;/p&gt;
-
-&lt;h2&gt;Devs: pay attention to the user experience&lt;/h2&gt;
-
-&lt;p&gt;I hope developers took away from this story how the user experience of applications has changed, and how the classic WIMP (Windows, Icons, Menu, Pointer) applications will be impacted. Much like the transition from Windows Mobile 6.5 to Windows Phone 7, I anticipate some growing pains once developers get their hands on the development tools.&lt;/p&gt;
-
-&lt;p&gt;Touch input is also something that many Windows developers may not be familiar with. While it has been available to native developers since Windows 7 launched, and was added to WPF and Silverlight with subsequent product releases, it hasn't really been utilized to anywhere near its full potential.&lt;/p&gt;
-
-&lt;p&gt;Get familiar with how gestures work - as a starting point, the WP7 emulator turns mouse inputs into touch inputs. Touch will be mandatory if you want an application to be usable on different form factors (Windows 8 is taking an iOS-ish route with the same codebase running on desktops, tablets and devices).&lt;/p&gt;
-
-&lt;h2&gt;MSFT: don't let the echo chamber continue&lt;/h2&gt;
-
-&lt;p&gt;I'm still baffled by the decision to stonewall. Developers are customers, and they have questions. Why not be pro-active and help smooth the transition over the coming months?&lt;/p&gt;
-
-&lt;p&gt;With all the strong and passionate opinions flying around, wouldn't it be good to plant some seeds of confidence and turn the conversation from &quot;Where is XYZ?&quot; to &quot;What can I do with Windows 8 using XYZ?&quot;&lt;/p&gt;
-
-&lt;p&gt;Give the community a baseline of information so they can start planning and start providing feedback. It doesn't have to be revealing all the cards, but the developer story for Windows 8 is (mostly) unknown currently. That's why people are concerned.&lt;/p&gt;
-
-&lt;h2&gt;MSFT: don't forget the hardware&lt;/h2&gt;
-
-&lt;p&gt;I've been looking for a kick-arse tablet device to run Windows on for a while, but have been stuck in Goldilocks-mode - &quot;too large, too heavy, the battery is too short, etc&quot; - and continue to sit on the fence. Much like with WP7, I'm curious about the involvement of hardware vendors to support the new features coming in Windows 8.&lt;/p&gt;
-
-&lt;p&gt;Windows 7 was launched with support for touch input, but it never really gained traction due to lack of a compelling tablet device - the Touchsmarts were a nice device, but were primarily for kiosks, rather than daily usage.&lt;/p&gt;
-
-&lt;p&gt;Compare Windows 7 to the WP7 launches - which have been done with device announcements involving hardware vendors - and it gives me hope that the launch can be done in a more &quot;complete&quot; fashion.&lt;/p&gt;
-
-&lt;p&gt;And I want to see more presentations from MSFT about Windows 8 using touch - drive the presentations from a tablet, demonstrate how the new UI supports touch, and compel me to put it everywhere.&lt;/p&gt;
 </description>
     </item>
     
