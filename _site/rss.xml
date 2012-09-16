@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 16 Sep 2012 17:33:44 +1000</pubDate>
-    <lastBuildDate>Sun, 16 Sep 2012 17:33:44 +1000</lastBuildDate>
+    <pubDate>Sun, 16 Sep 2012 17:44:52 +1000</pubDate>
+    <lastBuildDate>Sun, 16 Sep 2012 17:44:52 +1000</lastBuildDate>
 
     
     <item>
@@ -53,7 +53,7 @@
 
 &lt;h3&gt;Rebase all the things&lt;/h3&gt;
 
-&lt;p&gt;Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad(TM) to do with public repositories but when you use it only locally it gives you so much control over everything.&lt;/p&gt;
+&lt;p&gt;Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad&amp;#0153; to do with public repositories but when you use it only locally it gives you so much control over everything.&lt;/p&gt;
 
 &lt;p&gt;For example, have you ever:&lt;/p&gt;
 

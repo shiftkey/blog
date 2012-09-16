@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-09-16T17:33:44+10:00</updated>
+ <updated>2012-09-16T17:44:52+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -54,7 +54,7 @@
 
 <h3>Rebase all the things</h3>
 
-<p>Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad(TM) to do with public repositories but when you use it only locally it gives you so much control over everything.</p>
+<p>Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad&#0153; to do with public repositories but when you use it only locally it gives you so much control over everything.</p>
 
 <p>For example, have you ever:</p>
 

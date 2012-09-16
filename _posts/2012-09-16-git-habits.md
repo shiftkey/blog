@@ -39,7 +39,7 @@ But that's all fairly straight-forward and not really leveraging the [new states
 
 ### Rebase all the things
 
-Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad(TM) to do with public repositories but when you use it only locally it gives you so much control over everything.
+Where git truly comes into its own is with rebasing. For those who aren't familiar with it, rebasing allows you to change the history of a branch. This is generally considered very bad&#0153; to do with public repositories but when you use it only locally it gives you so much control over everything.
 
 For example, have you ever:
 
