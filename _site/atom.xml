@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-09-16T17:31:53+10:00</updated>
+ <updated>2012-09-16T17:33:44+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -38,6 +38,7 @@
 <ul>
 <li>git checkout -b ReallyCoolFeature master</li>
 <li>... stuff gets done ...</li>
+<li>git add .</li>
 <li>git add -u .</li>
 <li>git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful</li>
 <li>git checkout master</li>
@@ -136,6 +137,7 @@
 <ul>
 <li>git checkout -b ReallyCoolFeature master</li>
 <li>... stuff gets done ...</li>
+<li>git add .</li>
 <li>git add -u .</li>
 <li>git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful</li>
 <li>git checkout master</li>

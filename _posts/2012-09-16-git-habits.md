@@ -25,6 +25,7 @@ How does that look from the comamnd line?
 
  - git checkout -b ReallyCoolFeature master
  - ... stuff gets done ...
+ - git add .
  - git add -u .
  - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
  - git checkout master
@@ -105,6 +106,7 @@ How does that look from the comamnd line?
 
  - git checkout -b ReallyCoolFeature master
  - ... stuff gets done ...
+ - git add .
  - git add -u .
  - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
  - git checkout master
