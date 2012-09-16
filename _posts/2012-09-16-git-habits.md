@@ -25,8 +25,8 @@ How does that look from the comamnd line?
 
  - git checkout -b ReallyCoolFeature master
  - ... stuff gets done ...
- - git add .
- - git add -u .
+ - git add -u . -- add all removes and modifies to the staging area
+ - git add .    -- add new files to the staging area
  - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
  - git checkout master
  - git pull origin/master
@@ -106,8 +106,8 @@ How does that look from the comamnd line?
 
  - git checkout -b ReallyCoolFeature master
  - ... stuff gets done ...
- - git add .
- - git add -u .
+ - git add -u . -- add all removes and modifies to the staging area
+ - git add .    -- add new files to the staging area
  - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
  - git checkout master
  - git pull origin/master master

@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 16 Sep 2012 17:44:52 +1000</pubDate>
-    <lastBuildDate>Sun, 16 Sep 2012 17:44:52 +1000</lastBuildDate>
+    <pubDate>Sun, 16 Sep 2012 17:52:31 +1000</pubDate>
+    <lastBuildDate>Sun, 16 Sep 2012 17:52:31 +1000</lastBuildDate>
 
     
     <item>
@@ -37,8 +37,8 @@
 &lt;ul&gt;
 &lt;li&gt;git checkout -b ReallyCoolFeature master&lt;/li&gt;
 &lt;li&gt;... stuff gets done ...&lt;/li&gt;
-&lt;li&gt;git add .&lt;/li&gt;
-&lt;li&gt;git add -u .&lt;/li&gt;
+&lt;li&gt;git add -u . -- add all removes and modifies to the staging area&lt;/li&gt;
+&lt;li&gt;git add .    -- add new files to the staging area&lt;/li&gt;
 &lt;li&gt;git commit -m &quot;#1234 implemented&quot; -- associating commits with work items is awesomely helpful&lt;/li&gt;
 &lt;li&gt;git checkout master&lt;/li&gt;
 &lt;li&gt;git pull origin/master&lt;/li&gt;
@@ -136,8 +136,8 @@
 &lt;ul&gt;
 &lt;li&gt;git checkout -b ReallyCoolFeature master&lt;/li&gt;
 &lt;li&gt;... stuff gets done ...&lt;/li&gt;
-&lt;li&gt;git add .&lt;/li&gt;
-&lt;li&gt;git add -u .&lt;/li&gt;
+&lt;li&gt;git add -u . -- add all removes and modifies to the staging area&lt;/li&gt;
+&lt;li&gt;git add .    -- add new files to the staging area&lt;/li&gt;
 &lt;li&gt;git commit -m &quot;#1234 implemented&quot; -- associating commits with work items is awesomely helpful&lt;/li&gt;
 &lt;li&gt;git checkout master&lt;/li&gt;
 &lt;li&gt;git pull origin/master master&lt;/li&gt;
