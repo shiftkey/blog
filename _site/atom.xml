@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-09-16T16:51:10+10:00</updated>
+ <updated>2012-09-16T17:31:53+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -38,7 +38,7 @@
 <ul>
 <li>git checkout -b ReallyCoolFeature master</li>
 <li>... stuff gets done ...</li>
-<li>git add .</li>
+<li>git add -u .</li>
 <li>git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful</li>
 <li>git checkout master</li>
 <li>git pull origin/master</li>
@@ -107,6 +107,8 @@
 
 <p>All of this is possible by using interactive rebase - before it kicks off the operation, it displays the commits available and allows you to specify the operations to perform.</p>
 
+<p><strong>Note:</strong> There's two minor differences when you squash commits together. One operation, <code>fixup</code>, is intended to merge a commit without including the commit message. The other, <code>squash</code>, will bring the commit message across and allow you to edit the commit message after the squash.</p>
+
 <h3>Merging is overrated anyway</h3>
 
 <p>Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in.</p>
@@ -134,7 +136,7 @@
 <ul>
 <li>git checkout -b ReallyCoolFeature master</li>
 <li>... stuff gets done ...</li>
-<li>git add .</li>
+<li>git add -u .</li>
 <li>git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful</li>
 <li>git checkout master</li>
 <li>git pull origin/master master</li>

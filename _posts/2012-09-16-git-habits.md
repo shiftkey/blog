@@ -25,7 +25,7 @@ How does that look from the comamnd line?
 
  - git checkout -b ReallyCoolFeature master
  - ... stuff gets done ...
- - git add .
+ - git add -u .
  - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
  - git checkout master
  - git pull origin/master
@@ -80,6 +80,8 @@ So what do I use rebasing for?
 
 All of this is possible by using interactive rebase - before it kicks off the operation, it displays the commits available and allows you to specify the operations to perform.
 
+**Note:** There's two minor differences when you squash commits together. One operation, `fixup`, is intended to merge a commit without including the commit message. The other, `squash`, will bring the commit message across and allow you to edit the commit message after the squash.
+
 ### Merging is overrated anyway
 
 Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in. 
@@ -103,7 +105,7 @@ How does that look from the comamnd line?
 
  - git checkout -b ReallyCoolFeature master
  - ... stuff gets done ...
- - git add .
+ - git add -u .
  - git commit -m "#1234 implemented" -- associating commits with work items is awesomely helpful
  - git checkout master
  - git pull origin/master master

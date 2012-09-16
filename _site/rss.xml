@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 16 Sep 2012 16:51:10 +1000</pubDate>
-    <lastBuildDate>Sun, 16 Sep 2012 16:51:10 +1000</lastBuildDate>
+    <pubDate>Sun, 16 Sep 2012 17:31:53 +1000</pubDate>
+    <lastBuildDate>Sun, 16 Sep 2012 17:31:53 +1000</lastBuildDate>
 
     
     <item>
@@ -37,7 +37,7 @@
 &lt;ul&gt;
 &lt;li&gt;git checkout -b ReallyCoolFeature master&lt;/li&gt;
 &lt;li&gt;... stuff gets done ...&lt;/li&gt;
-&lt;li&gt;git add .&lt;/li&gt;
+&lt;li&gt;git add -u .&lt;/li&gt;
 &lt;li&gt;git commit -m &quot;#1234 implemented&quot; -- associating commits with work items is awesomely helpful&lt;/li&gt;
 &lt;li&gt;git checkout master&lt;/li&gt;
 &lt;li&gt;git pull origin/master&lt;/li&gt;
@@ -106,6 +106,8 @@
 
 &lt;p&gt;All of this is possible by using interactive rebase - before it kicks off the operation, it displays the commits available and allows you to specify the operations to perform.&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; There's two minor differences when you squash commits together. One operation, &lt;code&gt;fixup&lt;/code&gt;, is intended to merge a commit without including the commit message. The other, &lt;code&gt;squash&lt;/code&gt;, will bring the commit message across and allow you to edit the commit message after the squash.&lt;/p&gt;
+
 &lt;h3&gt;Merging is overrated anyway&lt;/h3&gt;
 
 &lt;p&gt;Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in.&lt;/p&gt;
@@ -133,7 +135,7 @@
 &lt;ul&gt;
 &lt;li&gt;git checkout -b ReallyCoolFeature master&lt;/li&gt;
 &lt;li&gt;... stuff gets done ...&lt;/li&gt;
-&lt;li&gt;git add .&lt;/li&gt;
+&lt;li&gt;git add -u .&lt;/li&gt;
 &lt;li&gt;git commit -m &quot;#1234 implemented&quot; -- associating commits with work items is awesomely helpful&lt;/li&gt;
 &lt;li&gt;git checkout master&lt;/li&gt;
 &lt;li&gt;git pull origin/master master&lt;/li&gt;
