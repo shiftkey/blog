@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<!-- 
+320 and Up boilerplate extension
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup 
+-->
+
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->
+<!-- TODO: appcache definition -->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<title>Why You Should Care About Git Alias</title>
+<meta name="description" content="">
+<meta name="author" content="brendan forster">
+
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS feed"> 
+<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="ATOM feed"> 
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+
+<!-- robots -->
+<meta name="robots" content="/robots.txt" />
+
+<!-- For less capable mobile browsers
+<link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+<!-- For all browsers -->
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" media="screen" href="/css/style.css?v=1">
+
+<link rel="stylesheet" media="print" href="/css/print.css?v=1">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/css/480.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/css/768.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/css/992.css?v=1">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/css/1382.css?v=1">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/css/2x.css?v=1">
+
+<link rel="stylesheet" media="screen" href="/css/custom.css?v=1">
+
+<!-- JavaScript at bottom except for Modernizr -->
+<script src="/js/libs/modernizr-1.7.min.js"></script>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- http://t.co/y1jPVnT -->
+<link rel="canonical" href="/notes/git-alias.html">
+
+
+</head>
+
+<body class="clearfix">
+
+<header role="banner" class="clearfix">
+	<h1>Why You Should Care About Git Alias</h1>
+</header>
+
+<div class="content clearfix">
+
+	<div id="post">
+<h3>Why do I need alias?</h3>
+
+<p>One of my favourite bits of "feedback" from Mercurial users is that "you don't need to type out the full command with hg - git is dumb" or something like that. While they're not totally incorrect here, they are comparing the out of the box experiences between git and hg.</p>
+
+<p>Mercurial will recognise shorthand for commands when you type enough characters to distingush the right command, like:</p>
+
+<pre><code>hg com -&gt; hg commit
+hg sta -&gt; hg status
+hg sum -&gt; hg summary
+hg ci -&gt; hg commit 
+</code></pre>
+
+<p>That's right, hg does <a href="http://mercurial.selenic.com/wiki/AliasExtension">aliases</a> too...</p>
+
+<p>Git however will scream at you when you mistype a command. And you will swear in return (either at yourself or at git).</p>
+
+<p>So to save yourself from screaming in the future, you can customise git to recognise custom commands. It will save you so much time.</p>
+
+<p>Aliases are stored per-user in the <code>.gitconfig</code> file - or in the <code>.git/config</code> file for a repository. All the below scripts will install in the global config file - but you can drop the <code>--global</code> parameter if you don't want that behaviour.</p>
+
+<h3>Adding shorthand as aliases</h3>
+
+<p>Here's some shorthand commands for the common git tasks:</p>
+
+<pre><code># git st
+git config --global alias.st "status"   
+# git co 
+git config --global alias.co "checkout" 
+# git ci
+git config --global alias.ci "commit"   
+# git br
+git config --global alias.br "branch"   
+# git df
+git config --global alias.df "diff"     
+# git lp
+git config --global alias.lp "log -p"   
+</code></pre>
+
+<p>These are some of the common examples from the <a href="http://gitready.com/intermediate/2009/02/06/helpful-command-aliases.html">here</a>.</p>
+
+<h3>Customising existing commands</h3>
+
+<p>My favourite example of this is a prettier output from <code>git log</code> - so you can see at a glance the activity on the branch you are currently working on:</p>
+
+<pre><code># git lg
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+</code></pre>
+
+<p>Of course, someone far smarter than me <a href="http://www.jukie.net/bart/blog/pimping-out-git-log">wrote this one</a>...</p>
+
+<p>A few simpler ones:</p>
+
+<pre><code># git com -&gt; checkout master
+git config --global alias.com "checkout master"
+
+# git fe -&gt; fetch latest changes
+git config --global alias.fe "fetch origin"
+
+# git hr -&gt; hard reset state of master
+git config --global alias.hr "reset origin/master --hard"
+
+# git me -&gt; get my user name
+git config --global alias.me "config user.name"
+</code></pre>
+
+<p>And you can even embed scripts into an alias. Here's a couple of simple scripts to see what commits have been added for today (by me any by others):</p>
+
+<pre><code># git today
+git config --global alias.today "!git all --since='12am' --committer=\"`git me`\""
+
+# git today-all
+git config --global alias.today-all "!git all --since='12am'"
+
+# git bn -&gt; get current branch name
+git config --global alias.bn "!git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`"
+</code></pre>
+
+<p>Do you see where we're going with this? :)</p>
+
+<h3>Mashing commands together</h3>
+
+<p>Remember how in my <a href="/notes/my-git-habits.html">last post</a> I mentioned a rather verbose workflow for merging in changes?</p>
+
+<p>Well let's take it away with one simple command: <code>sync</code></p>
+
+<pre><code># git sync
+git config --global alias.sync "!git update &amp;&amp; git co master &amp;&amp; git pull &amp;&amp; git co @{-1}" 
+</code></pre>
+
+<p>But that's rather basic - it doesn't actually rebase my branch that I'm on.</p>
+
+<p>Let's do a slightly different command: <code>resync</code></p>
+
+<pre><code># git resync -&gt; sync repository and rebase current branch    
+git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git com &amp;&amp; git fe &amp;&amp; git hr &amp;&amp; git rebase master $BRANCH_NAME'"
+</code></pre>
+
+<p>Note how this one uses aliases defined earlier in the post for readability? Yeah, it's rad.</p>
+
+<h3>I'm lazy, give me the gist of it (lol pun)</h3>
+
+<p>I'm checking some other git repos I have lying around to ensure I have all my aliases in one spot, but in the meantime open your <code>~/.gitconfig</code> file (check <code>C:\Users\{username}\</code> if you're on Windows) and paste these values under the <code>[alias]</code> node. If the <code>[alias]</code> node doesn't exist, create it.</p>
+
+<script src="https://gist.github.com/3732023.js?file=.gitconfig"></script>
+
+
+<p>Got a cool alias you want to share? Fork the gist above!</p>
+
+</div>
+
+
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://shiftkey.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/DOMAssistantCompressed-2.8.js"></script>
+<script src="/js/libs/selectivizr-1.0.1.js"></script>
+<script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+
+<script>
+var _gaq=[['_setAccount','UA-8441214-1'],['_trackPageview']]; 
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+</body>
+</html>

@@ -6,9 +6,125 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 16 Sep 2012 17:52:31 +1000</pubDate>
-    <lastBuildDate>Sun, 16 Sep 2012 17:52:31 +1000</lastBuildDate>
+    <pubDate>Sun, 16 Sep 2012 21:25:38 +1000</pubDate>
+    <lastBuildDate>Sun, 16 Sep 2012 21:25:38 +1000</lastBuildDate>
 
+    
+    <item>
+      <title>Why You Should Care About Git Alias</title>
+      <link>http://brendanforster.com//notes/git-alias.html</link>
+      <pubDate>Sun, 16 Sep 2012 22:30:00 +1000</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com//notes/git-alias.html</guid>
+      <description>&lt;h3&gt;Why do I need alias?&lt;/h3&gt;
+
+&lt;p&gt;One of my favourite bits of &quot;feedback&quot; from Mercurial users is that &quot;you don't need to type out the full command with hg - git is dumb&quot; or something like that. While they're not totally incorrect here, they are comparing the out of the box experiences between git and hg.&lt;/p&gt;
+
+&lt;p&gt;Mercurial will recognise shorthand for commands when you type enough characters to distingush the right command, like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hg com -&amp;gt; hg commit
+hg sta -&amp;gt; hg status
+hg sum -&amp;gt; hg summary
+hg ci -&amp;gt; hg commit 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That's right, hg does &lt;a href=&quot;http://mercurial.selenic.com/wiki/AliasExtension&quot;&gt;aliases&lt;/a&gt; too...&lt;/p&gt;
+
+&lt;p&gt;Git however will scream at you when you mistype a command. And you will swear in return (either at yourself or at git).&lt;/p&gt;
+
+&lt;p&gt;So to save yourself from screaming in the future, you can customise git to recognise custom commands. It will save you so much time.&lt;/p&gt;
+
+&lt;p&gt;Aliases are stored per-user in the &lt;code&gt;.gitconfig&lt;/code&gt; file - or in the &lt;code&gt;.git/config&lt;/code&gt; file for a repository. All the below scripts will install in the global config file - but you can drop the &lt;code&gt;--global&lt;/code&gt; parameter if you don't want that behaviour.&lt;/p&gt;
+
+&lt;h3&gt;Adding shorthand as aliases&lt;/h3&gt;
+
+&lt;p&gt;Here's some shorthand commands for the common git tasks:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git st
+git config --global alias.st &quot;status&quot;   
+# git co 
+git config --global alias.co &quot;checkout&quot; 
+# git ci
+git config --global alias.ci &quot;commit&quot;   
+# git br
+git config --global alias.br &quot;branch&quot;   
+# git df
+git config --global alias.df &quot;diff&quot;     
+# git lp
+git config --global alias.lp &quot;log -p&quot;   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These are some of the common examples from the &lt;a href=&quot;http://gitready.com/intermediate/2009/02/06/helpful-command-aliases.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Customising existing commands&lt;/h3&gt;
+
+&lt;p&gt;My favourite example of this is a prettier output from &lt;code&gt;git log&lt;/code&gt; - so you can see at a glance the activity on the branch you are currently working on:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git lg
+git config --global alias.lg &quot;log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, someone far smarter than me &lt;a href=&quot;http://www.jukie.net/bart/blog/pimping-out-git-log&quot;&gt;wrote this one&lt;/a&gt;...&lt;/p&gt;
+
+&lt;p&gt;A few simpler ones:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git com -&amp;gt; checkout master
+git config --global alias.com &quot;checkout master&quot;
+
+# git fe -&amp;gt; fetch latest changes
+git config --global alias.fe &quot;fetch origin&quot;
+
+# git hr -&amp;gt; hard reset state of master
+git config --global alias.hr &quot;reset origin/master --hard&quot;
+
+# git me -&amp;gt; get my user name
+git config --global alias.me &quot;config user.name&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And you can even embed scripts into an alias. Here's a couple of simple scripts to see what commits have been added for today (by me any by others):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git today
+git config --global alias.today &quot;!git all --since='12am' --committer=\&quot;`git me`\&quot;&quot;
+
+# git today-all
+git config --global alias.today-all &quot;!git all --since='12am'&quot;
+
+# git bn -&amp;gt; get current branch name
+git config --global alias.bn &quot;!git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Do you see where we're going with this? :)&lt;/p&gt;
+
+&lt;h3&gt;Mashing commands together&lt;/h3&gt;
+
+&lt;p&gt;Remember how in my &lt;a href=&quot;/notes/my-git-habits.html&quot;&gt;last post&lt;/a&gt; I mentioned a rather verbose workflow for merging in changes?&lt;/p&gt;
+
+&lt;p&gt;Well let's take it away with one simple command: &lt;code&gt;sync&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git sync
+git config --global alias.sync &quot;!git update &amp;amp;&amp;amp; git co master &amp;amp;&amp;amp; git pull &amp;amp;&amp;amp; git co @{-1}&quot; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But that's rather basic - it doesn't actually rebase my branch that I'm on.&lt;/p&gt;
+
+&lt;p&gt;Let's do a slightly different command: &lt;code&gt;resync&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git resync -&amp;gt; sync repository and rebase current branch    
+git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&amp;amp; git com &amp;amp;&amp;amp; git fe &amp;amp;&amp;amp; git hr &amp;amp;&amp;amp; git rebase master $BRANCH_NAME'&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note how this one uses aliases defined earlier in the post for readability? Yeah, it's rad.&lt;/p&gt;
+
+&lt;h3&gt;I'm lazy, give me the gist of it (lol pun)&lt;/h3&gt;
+
+&lt;p&gt;I'm checking some other git repos I have lying around to ensure I have all my aliases in one spot, but in the meantime open your &lt;code&gt;~/.gitconfig&lt;/code&gt; file (check &lt;code&gt;C:\Users\{username}\&lt;/code&gt; if you're on Windows) and paste these values under the &lt;code&gt;[alias]&lt;/code&gt; node. If the &lt;code&gt;[alias]&lt;/code&gt; node doesn't exist, create it.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/3732023.js?file=.gitconfig&quot;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Got a cool alias you want to share? Fork the gist above!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>My Git Habits</title>
@@ -723,170 +839,6 @@ Which causes my build to break.&lt;/p&gt;
 &lt;li&gt;some documentation on managing upstream dependencies&lt;/li&gt;
 &lt;/ul&gt;
 
-</description>
-    </item>
-    
-    <item>
-      <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
-      <link>http://brendanforster.com/inotifypropertychanged-stop-the-madness.html</link>
-      <pubDate>Sat, 18 Jun 2011 14:00:00 +1000</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com/inotifypropertychanged-stop-the-madness.html</guid>
-      <description>&lt;p&gt;Its time to stop with this madness.&lt;/p&gt;
-
-&lt;p&gt;Apologies again to &lt;a href=&quot;http://twitter.com/kiwipom&quot;&gt;Ian&lt;/a&gt; as I picked on him unnecessarily when I read yet another &quot;Let's make OnPropertyChanged compile safe&quot; &lt;a href=&quot;http://xaml.geek.nz/binding/5&quot;&gt;blog post&lt;/a&gt; yesterday.&lt;/p&gt;
-
-&lt;p&gt;I don't have an issue with the approach, but I had an issue with the bigger picture - how little had changed for XAML developers in this regard. Keep in mind that lambdas were first made available in C# 3.0 - which itself was made available in 2007, with .NET 3.5.&lt;/p&gt;
-
-&lt;p&gt;I've been summoned into this debate &lt;a href=&quot;http://www.mail-archive.com/ozdotnet@ozdotnet.com/msg03903.html&quot;&gt;before&lt;/a&gt; (and was assumed to be a &quot;cool kid&quot;) so I thought I'd put down some thoughts on the issue, and what I think needs to change:&lt;/p&gt;
-
-&lt;h2&gt;Stop writing plumbing code&lt;/h2&gt;
-
-&lt;p&gt;Every time you write logic in the setter of a property, an angel disappoints her family by taking up stripping.&lt;/p&gt;
-
-&lt;p&gt;There have been compelling reasons to do so. After dealing with the resulting pain, I've explored other options to take all those needs away. So let's break it down:&lt;/p&gt;
-
-&lt;p&gt;To start off with the &lt;em&gt;worst&lt;/em&gt; case scenario, we have:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private string _someProperty;
-public string SomeProperty
-{
-    get { return _someProperty; }
-    set 
-    { 
-        _someProperty = value;
-        OnPropertyChanged(&quot;SomeProperty&quot;);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3&gt;Make it refactor-friendly - let's use a lambda instead!&lt;/h3&gt;
-
-&lt;p&gt;Yes, this is better than magic strings - that's about it. Don't you get that sinking feeling when adding a new property to the viewmodel, and the code inside the setter looks almost identical to all the others?&lt;/p&gt;
-
-&lt;p&gt;So let's change the property to look like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private string _someProperty;
-public string SomeProperty
-{
-    get { return _someProperty; }
-    set 
-    { 
-        _someProperty = value;
-        OnPropertyChanged(() =&amp;gt; SomeProperty);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For an example implementation that accepts lambda statements, &lt;a href=&quot;http://stackoverflow.com/questions/141370/inotifypropertychanged-property-name-hardcode-vs-reflection/1209104#1209104&quot;&gt;this Stackoverflow answer&lt;/a&gt; is a good starting point.&lt;/p&gt;
-
-&lt;h3&gt;I only want to raise the change when the backing value actually changes!&lt;/h3&gt;
-
-&lt;p&gt;&quot;Wait,&quot; the audience exlaims in shock, &quot;you're going to raise the event each time now.&quot; The author relents, and adds some code to end the pain for the audience:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private string _someProperty;
-public string SomeProperty
-{
-    get { return _someProperty; }
-    set 
-    { 
-        if (_someProperty == value)
-            return;
-
-        _someProperty = value;
-        OnPropertyChanged(() =&amp;gt; SomeProperty);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I'd better ensure this is defined in all the setters, and that the right backing field is used in each case. I'd look pretty silly if I'd used the wrong field, like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// elsewhere in the codebase
-private string _someOtherProperty;
-
-// ...
-
-private string _someProperty;
-public string SomeProperty
-{
-    get { return _someProperty; }
-    set 
-    { 
-        if (_someOtherProperty == value)
-            return;
-
-        _someProperty = value;
-        OnPropertyChanged(() =&amp;gt; SomeProperty);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;so I'd better do it real carefully...&lt;/p&gt;
-
-&lt;h3&gt;We need caching now!&lt;/h3&gt;
-
-&lt;p&gt;Really? That's what comes to mind next? You crazy developers.&lt;/p&gt;
-
-&lt;p&gt;Fine, let's add a dictionary to capture the event arguments, instead of recreating them each time (adapted from this &lt;a href=&quot;http://www.paulstovell.com/strong-property-names&quot;&gt;blog post&lt;/a&gt;):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public class ViewModelBase
-{
-    protected void OnPropertyChanged(Expression&amp;lt;Func&amp;lt;object&amp;gt;&amp;gt; lambda)
-    {
-        // Go read Paul (and especially Miguel's comment) about this [here][6]. I'll wait...
-    }
-
-    private IDictionary&amp;lt;string, PropertyChangedEventArgs&amp;gt; _handlers = new Dictionary&amp;lt;string, PropertyChangedEventArgs&amp;gt;      
-
-    protected void OnPropertyChanged(string propertyName)
-    {
-        PropertyChangedEventArgs args;
-
-        if (!_handlers.ContainsKey(propertyName))
-        {
-            _handlers.Add(propertyName, new PropertyChangedEventArgs(propertyName));
-        }
-
-        args = _handlers[propertyName];
-
-        PropertyChanged(this, args);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Have we saved much? Perhaps. Perhaps not...&lt;/p&gt;
-
-&lt;h3&gt;Wait, what about cross-thread issues? I do a lot on the background thread!&lt;/h3&gt;
-
-&lt;p&gt;Ah yes. Have you ever been bitten by this one - a background thread updates a property, which triggers the PropertyChanged event, which asplodes because the UI can only be updated from the main thread?&lt;/p&gt;
-
-&lt;h2&gt;Stop. Put down the keyboard for a minute.&lt;/h2&gt;
-
-&lt;p&gt;See how quickly all these features around INotifyPropertyChanged can spiral out of control? You've worked out the code and classes necessary to solve a common problem, but some overhead remains for writing boilerplate code everywhere the solution is required. And while it is a manual process, it is prone to human error.&lt;/p&gt;
-
-&lt;p&gt;Go back and read that last sentence again. Did something click about what you've been doing all along with INotifyPropertyChanged?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/posts/Achievement.jpg&quot; alt=&quot;Huzzah!&quot; /&gt;&lt;/p&gt;
-
-&lt;h2&gt;A what?&lt;/h2&gt;
-
-&lt;p&gt;INotifyPropertyChanged is a very specialised example of a cross-cutting concern.&lt;/p&gt;
-
-&lt;p&gt;We use INotifyPropertyChanged in many places when doing XAML-based applications - as it is critical when databinding POCO objects without requiring the use of DependencyProperty instances. Although we spent a lot of time optimising the behaviour of invoking INotifyPropertyChanged, we didn't improve &lt;strong&gt;how&lt;/strong&gt; this code is used - we're still copying-and-pasting the same code around, and having to make manual changes to each instance to suit the property.&lt;/p&gt;
-
-&lt;p&gt;We need the ability to apply the INotifyPropertyChanged behaviour in an automatic way. Of course, there are various tradeoffs to consider - which I'll outline from my experiences.&lt;/p&gt;
-
-&lt;h2&gt;What Next?&lt;/h2&gt;
-
-&lt;p&gt;I need to wrap this post up before it becomes even longer, so until my next post - where I'll discuss how AOP flips all this discussion on its ear - readers can get ahead by reading these links:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sacha Barber - &lt;a href=&quot;http://www.codeproject.com/KB/library/Aspects.aspx&quot;&gt;Aspect Examples (INotifyPropertyChanged via Aspects)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://twitter.com/philiplaureano&quot;&gt;Philip Laureano&lt;/a&gt; linked me this yesterday. A large read, but lots of demo code for people who want to see something more concrete.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://code.google.com/p/notifypropertyweaver/&quot;&gt;NotifyPropertyWeaver&lt;/a&gt; - a .NET library for weaving INotifyPropertyChanged code into IL&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This is my library of choice for automating INotifyPropertyChanged usage. I definitely owe &lt;a href=&quot;http://twitter.com/simoncropp&quot;&gt;Simon&lt;/a&gt; a beer (or drink of choice) next time we cross paths - its been a joy to use.&lt;/p&gt;
 </description>
     </item>
     
