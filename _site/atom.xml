@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-09-16T21:25:38+10:00</updated>
+ <updated>2012-09-22T21:06:57+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -15,7 +15,7 @@
    <title>Why You Should Care About Git Alias</title>
    <link href="http://brendanforster.com//notes/git-alias.html" />
    <updated>2012-09-16T22:30:00+10:00</updated>
-   <id>http://brendanforster.com//notes/git-alias.html</id>
+   <id>http://brendanforster.com/notes/git-alias.html</id>
    <content type="html">
 	<![CDATA[<h3>Why do I need alias?</h3>
 
@@ -133,7 +133,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
    <title>My Git Habits</title>
    <link href="http://brendanforster.com//notes/my-git-habits.html" />
    <updated>2012-09-16T16:30:00+10:00</updated>
-   <id>http://brendanforster.com//notes/my-git-habits.html</id>
+   <id>http://brendanforster.com/notes/my-git-habits.html</id>
    <content type="html">
 	<![CDATA[<p>First up, a disclaimer: <strong>This is just one person's opinion and should be treated as such.</strong></p>
 
@@ -285,7 +285,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>Sharing my personal backlog with the world</title>
-   <link href="http://brendanforster.com/visible-personal-backlog.html" />
+   <link href="http://brendanforster.com//visible-personal-backlog.html" />
    <updated>2012-07-16T20:30:00+10:00</updated>
    <id>http://brendanforster.com/visible-personal-backlog.html</id>
    <content type="html">
@@ -331,7 +331,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>So I accidentally a web guy MVP</title>
-   <link href="http://brendanforster.com/so-i-accidentally-a-web-guy-mvp.html" />
+   <link href="http://brendanforster.com//so-i-accidentally-a-web-guy-mvp.html" />
    <updated>2012-07-08T20:30:00+10:00</updated>
    <id>http://brendanforster.com/so-i-accidentally-a-web-guy-mvp.html</id>
    <content type="html">
@@ -352,7 +352,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>Introducing code52</title>
-   <link href="http://brendanforster.com/introducing-code52.html" />
+   <link href="http://brendanforster.com//introducing-code52.html" />
    <updated>2012-01-03T21:30:00+11:00</updated>
    <id>http://brendanforster.com/introducing-code52.html</id>
    <content type="html">
@@ -374,7 +374,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>2011 - Where did the time go?</title>
-   <link href="http://brendanforster.com/2011-recap.html" />
+   <link href="http://brendanforster.com//2011-recap.html" />
    <updated>2011-12-20T23:00:00+11:00</updated>
    <id>http://brendanforster.com/2011-recap.html</id>
    <content type="html">
@@ -497,7 +497,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>ALT.NET Open Spaces Recap</title>
-   <link href="http://brendanforster.com/alt-net-open-spaces-2011.html" />
+   <link href="http://brendanforster.com//alt-net-open-spaces-2011.html" />
    <updated>2011-12-03T19:00:00+11:00</updated>
    <id>http://brendanforster.com/alt-net-open-spaces-2011.html</id>
    <content type="html">
@@ -561,7 +561,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
-   <link href="http://brendanforster.com/jquery-knockout-win8.html" />
+   <link href="http://brendanforster.com//jquery-knockout-win8.html" />
    <updated>2011-10-26T00:00:00+11:00</updated>
    <id>http://brendanforster.com/jquery-knockout-win8.html</id>
    <content type="html">
@@ -686,7 +686,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>I'm speaking at DDD Brisbane</title>
-   <link href="http://brendanforster.com/ddd-brisbane.html" />
+   <link href="http://brendanforster.com//ddd-brisbane.html" />
    <updated>2011-10-23T00:00:00+11:00</updated>
    <id>http://brendanforster.com/ddd-brisbane.html</id>
    <content type="html">
@@ -710,7 +710,7 @@ git config --global alias.resync "!sh -c 'BRANCH_NAME=$(git bn) &amp;&amp; git c
  
  <entry>
    <title>Doing the build server dance with NuGet</title>
-   <link href="http://brendanforster.com/doing-the-build-server-dance-with-nuget.html" />
+   <link href="http://brendanforster.com//doing-the-build-server-dance-with-nuget.html" />
    <updated>2011-07-08T14:00:00+10:00</updated>
    <id>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</id>
    <content type="html">
@@ -865,7 +865,7 @@ Which causes my build to break.</p>
  
  <entry>
    <title>Soapbox: INotifyPropertyChanged - Stop the Madness</title>
-   <link href="http://brendanforster.com/inotifypropertychanged-stop-the-madness.html" />
+   <link href="http://brendanforster.com//inotifypropertychanged-stop-the-madness.html" />
    <updated>2011-06-18T14:00:00+10:00</updated>
    <id>http://brendanforster.com/inotifypropertychanged-stop-the-madness.html</id>
    <content type="html">
@@ -1031,7 +1031,7 @@ public string SomeProperty
  
  <entry>
    <title>On the Windows 8 Preview Video</title>
-   <link href="http://brendanforster.com/on-the-windows-8-preview.html" />
+   <link href="http://brendanforster.com//on-the-windows-8-preview.html" />
    <updated>2011-06-08T14:00:00+10:00</updated>
    <id>http://brendanforster.com/on-the-windows-8-preview.html</id>
    <content type="html">
@@ -1107,7 +1107,7 @@ public string SomeProperty
  
  <entry>
    <title>slsvcutil - Workaround StackOverflowException</title>
-   <link href="http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html" />
+   <link href="http://brendanforster.com//slsvcutil-stackoverflowexception-workaround.html" />
    <updated>2011-05-06T14:00:00+10:00</updated>
    <id>http://brendanforster.com/slsvcutil-stackoverflowexception-workaround.html</id>
    <content type="html">
@@ -1139,7 +1139,7 @@ Process is terminated due to StackOverflowException.
  
  <entry>
    <title>Musing - Simpler UI Testing for WPF Apps</title>
-   <link href="http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html" />
+   <link href="http://brendanforster.com//simpler-ui-testing-for-wpf-apps.html" />
    <updated>2011-03-26T14:00:00+11:00</updated>
    <id>http://brendanforster.com/simpler-ui-testing-for-wpf-apps.html</id>
    <content type="html">
@@ -1257,7 +1257,7 @@ just needed to write this post.</p>
  
  <entry>
    <title>Arguments about Project Structure</title>
-   <link href="http://brendanforster.com/arguments-about-project-structure.html" />
+   <link href="http://brendanforster.com//arguments-about-project-structure.html" />
    <updated>2011-02-23T14:00:00+11:00</updated>
    <id>http://brendanforster.com/arguments-about-project-structure.html</id>
    <content type="html">
@@ -1365,7 +1365,7 @@ just needed to write this post.</p>
  
  <entry>
    <title>Using Rx to Implement Filtering in MahTweets</title>
-   <link href="http://brendanforster.com/using-rx-to-implement-filtering-in-mahtweets.html" />
+   <link href="http://brendanforster.com//using-rx-to-implement-filtering-in-mahtweets.html" />
    <updated>2011-02-19T14:00:00+11:00</updated>
    <id>http://brendanforster.com/using-rx-to-implement-filtering-in-mahtweets.html</id>
    <content type="html">
@@ -1492,7 +1492,7 @@ just needed to write this post.</p>
  
  <entry>
    <title>WP7 - Memory Profiling Adventures - Navigation (Updated)</title>
-   <link href="http://brendanforster.com/wp7-memory-profiling-navigation.html" />
+   <link href="http://brendanforster.com//wp7-memory-profiling-navigation.html" />
    <updated>2011-02-04T14:00:00+11:00</updated>
    <id>http://brendanforster.com/wp7-memory-profiling-navigation.html</id>
    <content type="html">
@@ -1612,7 +1612,7 @@ Main - Loaded - ApplicationPeakMemoryUsage: 39899136
  
  <entry>
    <title>MEF and Chaining Dependencies</title>
-   <link href="http://brendanforster.com/mef-and-chaining-dependencies.html" />
+   <link href="http://brendanforster.com//mef-and-chaining-dependencies.html" />
    <updated>2010-12-20T14:00:00+11:00</updated>
    <id>http://brendanforster.com/mef-and-chaining-dependencies.html</id>
    <content type="html">
@@ -1754,7 +1754,7 @@ public class ActualProxy : IServiceProxy
  
  <entry>
    <title>MEF - [Import] vs [ImportingConstructor]</title>
-   <link href="http://brendanforster.com/mef-import-vs-importingconstructor.html" />
+   <link href="http://brendanforster.com//mef-import-vs-importingconstructor.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
    <id>http://brendanforster.com/mef-import-vs-importingconstructor.html</id>
    <content type="html">
@@ -1909,7 +1909,7 @@ container.RegisterComposablePartCatalog(catalog);
  
  <entry>
    <title>IoC Tips - Autofac Factory Adapters</title>
-   <link href="http://brendanforster.com/ioc-tips-autofac-factory-adapters.html" />
+   <link href="http://brendanforster.com//ioc-tips-autofac-factory-adapters.html" />
    <updated>2010-10-23T14:00:00+11:00</updated>
    <id>http://brendanforster.com/ioc-tips-autofac-factory-adapters.html</id>
    <content type="html">
@@ -2017,7 +2017,7 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
  
  <entry>
    <title>Amped Web 2010 Recap</title>
-   <link href="http://brendanforster.com/amped-web-2010-recap.html" />
+   <link href="http://brendanforster.com//amped-web-2010-recap.html" />
    <updated>2010-10-16T14:00:00+11:00</updated>
    <id>http://brendanforster.com/amped-web-2010-recap.html</id>
    <content type="html">
@@ -2061,7 +2061,7 @@ public void ElapsedTimer_WhenServiceResumes_StartsAgain()
  
  <entry>
    <title>Hello World</title>
-   <link href="http://brendanforster.com/hello-world.html" />
+   <link href="http://brendanforster.com//hello-world.html" />
    <updated>2010-09-23T10:50:44+10:00</updated>
    <id>http://brendanforster.com/hello-world.html</id>
    <content type="html">

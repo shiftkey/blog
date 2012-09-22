@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 16 Sep 2012 21:25:38 +1000</pubDate>
-    <lastBuildDate>Sun, 16 Sep 2012 21:25:38 +1000</lastBuildDate>
+    <pubDate>Sat, 22 Sep 2012 21:06:57 +1000</pubDate>
+    <lastBuildDate>Sat, 22 Sep 2012 21:06:57 +1000</lastBuildDate>
 
     
     <item>
@@ -15,7 +15,7 @@
       <link>http://brendanforster.com//notes/git-alias.html</link>
       <pubDate>Sun, 16 Sep 2012 22:30:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com//notes/git-alias.html</guid>
+      <guid>http://brendanforster.com/notes/git-alias.html</guid>
       <description>&lt;h3&gt;Why do I need alias?&lt;/h3&gt;
 
 &lt;p&gt;One of my favourite bits of &quot;feedback&quot; from Mercurial users is that &quot;you don't need to type out the full command with hg - git is dumb&quot; or something like that. While they're not totally incorrect here, they are comparing the out of the box experiences between git and hg.&lt;/p&gt;
@@ -131,7 +131,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
       <link>http://brendanforster.com//notes/my-git-habits.html</link>
       <pubDate>Sun, 16 Sep 2012 16:30:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com//notes/my-git-habits.html</guid>
+      <guid>http://brendanforster.com/notes/my-git-habits.html</guid>
       <description>&lt;p&gt;First up, a disclaimer: &lt;strong&gt;This is just one person's opinion and should be treated as such.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;If you workflow is similar, that's great. If you workflow is radically different, that's great too. With things like git its very easy to have different workflows, so I'll just be speaking from my experiences here.&lt;/p&gt;
@@ -280,7 +280,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>Sharing my personal backlog with the world</title>
-      <link>http://brendanforster.com/visible-personal-backlog.html</link>
+      <link>http://brendanforster.com//visible-personal-backlog.html</link>
       <pubDate>Mon, 16 Jul 2012 20:30:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/visible-personal-backlog.html</guid>
@@ -324,7 +324,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>So I accidentally a web guy MVP</title>
-      <link>http://brendanforster.com/so-i-accidentally-a-web-guy-mvp.html</link>
+      <link>http://brendanforster.com//so-i-accidentally-a-web-guy-mvp.html</link>
       <pubDate>Sun, 08 Jul 2012 20:30:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/so-i-accidentally-a-web-guy-mvp.html</guid>
@@ -343,7 +343,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>Introducing code52</title>
-      <link>http://brendanforster.com/introducing-code52.html</link>
+      <link>http://brendanforster.com//introducing-code52.html</link>
       <pubDate>Tue, 03 Jan 2012 21:30:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/introducing-code52.html</guid>
@@ -363,7 +363,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>2011 - Where did the time go?</title>
-      <link>http://brendanforster.com/2011-recap.html</link>
+      <link>http://brendanforster.com//2011-recap.html</link>
       <pubDate>Tue, 20 Dec 2011 23:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/2011-recap.html</guid>
@@ -484,7 +484,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>ALT.NET Open Spaces Recap</title>
-      <link>http://brendanforster.com/alt-net-open-spaces-2011.html</link>
+      <link>http://brendanforster.com//alt-net-open-spaces-2011.html</link>
       <pubDate>Sat, 03 Dec 2011 19:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/alt-net-open-spaces-2011.html</guid>
@@ -546,7 +546,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>jQuery and KnockoutJS in Win8? Sure, why not!</title>
-      <link>http://brendanforster.com/jquery-knockout-win8.html</link>
+      <link>http://brendanforster.com//jquery-knockout-win8.html</link>
       <pubDate>Wed, 26 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/jquery-knockout-win8.html</guid>
@@ -669,7 +669,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>I'm speaking at DDD Brisbane</title>
-      <link>http://brendanforster.com/ddd-brisbane.html</link>
+      <link>http://brendanforster.com//ddd-brisbane.html</link>
       <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/ddd-brisbane.html</guid>
@@ -691,7 +691,7 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
     
     <item>
       <title>Doing the build server dance with NuGet</title>
-      <link>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</link>
+      <link>http://brendanforster.com//doing-the-build-server-dance-with-nuget.html</link>
       <pubDate>Fri, 08 Jul 2011 14:00:00 +1000</pubDate>
       <author>shift.key@gmail.com (Brendan Forster)</author>
       <guid>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</guid>

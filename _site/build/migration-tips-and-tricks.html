@@ -387,7 +387,7 @@ public async Task&lt;string&gt; Get(string url)
 
         But Task&lt;T&gt; is a BCL type, not a WinRT type:
 
-Liquid error: undefined method `map' for #<String:0x007f8b334a24d0>
+<blockquote><p>'MyProject.MyClass.Get(System.String)' returns 'System.Threading.Tasks.Task&lt;System.String&gt;', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.</p></blockquote>
 
         The solution I've used - which I'm uncertain about, as I now have at worst 2x the methods defined (one private and at least one public method - excluding overloads) simply to support the ceremony of the WinRT bits - is from one of the talks:<br /><br />
 
