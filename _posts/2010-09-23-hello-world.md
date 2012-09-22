@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Hello World
-permalink: hello-world.html
+permalink: /hello-world.html
 description: Just a quick introductory post to kick things off.
 date: 2010-09-23 10:50:44 +10:00
 comments: false

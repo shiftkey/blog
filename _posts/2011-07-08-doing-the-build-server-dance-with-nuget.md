@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Doing the build server dance with NuGet
-permalink: doing-the-build-server-dance-with-nuget.html
+permalink: /doing-the-build-server-dance-with-nuget.html
 description: After a few hours of hacking, I've put together a guide for setting up TeamCity to consume NuGet packages as part of a build.
 funnelweb_id: 17
 date: 2011-07-08 14:00:00 +10:00

@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: IoC Tips - Autofac Factory Adapters
-permalink: ioc-tips-autofac-factory-adapters.html
+permalink: /ioc-tips-autofac-factory-adapters.html
 description: A recap of leveraging inversion of control techniques to simplify an existing application
 funnelweb_id: 4
 date: 2010-10-23 14:00:00 +11:00

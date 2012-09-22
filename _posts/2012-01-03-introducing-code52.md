@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Introducing code52
-permalink: introducing-code52.html
+permalink: /introducing-code52.html
 description: My first side project of the new year is just beginning...
 date: 2012-01-03 21:00:00 +10:30
 icon: /img/main/soapbox.jpg

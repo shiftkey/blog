@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: jQuery and KnockoutJS in Win8? Sure, why not!
-permalink: jquery-knockout-win8.html
+permalink: /jquery-knockout-win8.html
 description: A brief experiment after a couple of questions from a user group event tonight
 date: 2011-10-25 23:00:00 +10:00
 icon: /img/main/win8.jpg

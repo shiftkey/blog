@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: So I accidentally a web guy MVP
-permalink: so-i-accidentally-a-web-guy-mvp.html
+permalink: /so-i-accidentally-a-web-guy-mvp.html
 description: I was humbled and honoured to be named an Microsoft MVP for ASP.NET/IIS recently...
 date: 2012-07-08 21:00:00 +10:30
 icon: /img/main/mvp-banner.png

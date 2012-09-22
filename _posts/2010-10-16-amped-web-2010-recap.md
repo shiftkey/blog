@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Amped Web 2010 Recap
-permalink: amped-web-2010-recap.html
+permalink: /amped-web-2010-recap.html
 description: The Amped Web day is a hack event for developers and designers to throw ideas around. This is the story of what happened to me and my team.
 funnelweb_id: 3
 date: 2010-10-16 14:00:00 +11:00

@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: MEF - [Import] vs [ImportingConstructor]
-permalink: mef-import-vs-importingconstructor.html
+permalink: /mef-import-vs-importingconstructor.html
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for
 funnelweb_id: 5
 date: 2010-10-23 14:00:00 +11:00

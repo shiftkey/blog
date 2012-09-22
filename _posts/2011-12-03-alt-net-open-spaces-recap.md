@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: ALT.NET Open Spaces Recap
-permalink: alt-net-open-spaces-2011.html
+permalink: /alt-net-open-spaces-2011.html
 description: For those who missed it, a gaggle of geeks caught up in Melbourne on Saturday 3rd December to talk about stuff. Geeks talking - who'da thunk it? Anyway, this is my recap...
 date: 2011-12-03 18:00:00 +10:00
 icon: /img/main/soapbox.jpg

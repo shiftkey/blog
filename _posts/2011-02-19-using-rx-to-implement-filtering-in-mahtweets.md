@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Using Rx to Implement Filtering in MahTweets
-permalink: using-rx-to-implement-filtering-in-mahtweets.html
+permalink: /using-rx-to-implement-filtering-in-mahtweets.html
 description: A thought process about leveraging the Rx Framework to implement a new filtering solution for MahTweets vNext.
 funnelweb_id: 10
 date: 2011-02-19 14:00:00 +11:00

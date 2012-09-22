@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: On the Windows 8 Preview Video
-permalink: on-the-windows-8-preview.html
+permalink: /on-the-windows-8-preview.html
 funnelweb_id: 15
 date: 2011-06-08 14:00:00 +10:00
 tags: "windows windows8 wpf silverlight"

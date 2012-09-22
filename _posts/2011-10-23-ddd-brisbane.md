@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: I'm speaking at DDD Brisbane
-permalink: ddd-brisbane.html
+permalink: /ddd-brisbane.html
 description: Stock up on your rotten vegetables, Brisvegas. I'll be in your neck of the woods in November, talking about how Windows 8 impacts developers!
 date: 2011-10-22 23:00:00 +10:00
 icon: /img/main/ddd.png

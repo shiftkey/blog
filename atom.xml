@@ -18,7 +18,7 @@ layout: nil
    <title>{{ post.title }}</title>
    <link href="http://brendanforster.com/{{ post.url }}" />
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://brendanforster.com/{{ post.url }}</id>
+   <id>http://brendanforster.com{{ post.url }}</id>
    <content type="html">
 	<![CDATA[{{ post.content   }}]]>
    </content>
