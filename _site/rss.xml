@@ -6,8 +6,8 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 23 Sep 2012 20:39:46 +1000</pubDate>
-    <lastBuildDate>Sun, 23 Sep 2012 20:39:46 +1000</lastBuildDate>
+    <pubDate>Sun, 23 Sep 2012 20:47:49 +1000</pubDate>
+    <lastBuildDate>Sun, 23 Sep 2012 20:47:49 +1000</lastBuildDate>
 
     
     <item>
@@ -62,7 +62,6 @@
 &lt;ul&gt;
 &lt;li&gt;learn about Neo4J and graph database concepts by building a proof-of-concept accounting webapp&lt;/li&gt;
 &lt;li&gt;learn about DirectX and de-rust on my C++ skills by building a Windows 8 app&lt;/li&gt;
-&lt;li&gt;give feedback to the &lt;a href=&quot;https://github.com/github/shimmer&quot;&gt;Shimmer&lt;/a&gt; team by creating an installer for &lt;a href=&quot;https://github.com/Code52/DownmarkerWPF&quot;&gt;MarkPad&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 

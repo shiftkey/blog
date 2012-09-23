@@ -4,7 +4,7 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-09-23T20:39:46+10:00</updated>
+ <updated>2012-09-23T20:47:49+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
@@ -63,7 +63,6 @@
 <ul>
 <li>learn about Neo4J and graph database concepts by building a proof-of-concept accounting webapp</li>
 <li>learn about DirectX and de-rust on my C++ skills by building a Windows 8 app</li>
-<li>give feedback to the <a href="https://github.com/github/shimmer">Shimmer</a> team by creating an installer for <a href="https://github.com/Code52/DownmarkerWPF">MarkPad</a></li>
 </ul>
 
 

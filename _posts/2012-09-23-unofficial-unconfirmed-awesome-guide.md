@@ -57,7 +57,6 @@ To illustrate this, here's a few goals which I would like to work on over the co
 
  - learn about Neo4J and graph database concepts by building a proof-of-concept accounting webapp
  - learn about DirectX and de-rust on my C++ skills by building a Windows 8 app
- - give feedback to the [Shimmer](https://github.com/github/shimmer) team by creating an installer for [MarkPad](https://github.com/Code52/DownmarkerWPF)
 
 See how they can be considered daunting goals?
 
