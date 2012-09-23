@@ -6,9 +6,150 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 23 Sep 2012 19:04:11 +1000</pubDate>
-    <lastBuildDate>Sun, 23 Sep 2012 19:04:11 +1000</lastBuildDate>
+    <pubDate>Sun, 23 Sep 2012 20:39:46 +1000</pubDate>
+    <lastBuildDate>Sun, 23 Sep 2012 20:39:46 +1000</lastBuildDate>
 
+    
+    <item>
+      <title>What's my secret? An unoffical unconfirmed guide</title>
+      <link>http://brendanforster.com//blog/unofficial-unconfirmed-awesome-guide.html</link>
+      <pubDate>Sun, 23 Sep 2012 22:30:00 +1000</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com/blog/unofficial-unconfirmed-awesome-guide.html</guid>
+      <description>&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;After surviving &lt;a href=&quot;http://australia.msteched.com/&quot;&gt;TechEd Australia&lt;/a&gt; - as well as hitting some important deadlines for a client - I was looking forward to getting back into various side-projects again now that things are coming back to (realtively) normal.&lt;/p&gt;
+
+&lt;p&gt;I fired off an email looking for tips from my colleagues what they do to help get creative, and one of the replies I got back was this:&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;I find the third question silly coming from you. You are one of the the most productive and creative people I know and I wish I knew your secret to it. &lt;br/&gt; &lt;br/&gt;Sorry mate; but you don't get to be an MVP, a main member on Code52, talk at conferences and so on and then ask others how they are productive and creative :p&lt;br/&gt; &lt;br/&gt;Share your secret already ;-)&lt;/p&gt;&lt;/blockquote&gt;
+
+
+&lt;p&gt;So I owe someone a blog post to explain myself.&lt;/p&gt;
+
+&lt;h2&gt;Brendan's Unofficial Unconfirmed Guide To Being Awesome&lt;/h2&gt;
+
+&lt;p&gt;First up, some warnings:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is me speaking from my experiences only.&lt;/li&gt;
+&lt;li&gt;I will often suggest things which I do not do. Yes, that makes me appear hypocritical. No, it is not intended.&lt;/li&gt;
+&lt;li&gt;Please consult with a medical professional before taking any of the below advice.&lt;/li&gt;
+&lt;li&gt;This is all subject to change.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;Without further ado, let's dive in...&lt;/p&gt;
+
+&lt;h3&gt;Make time for it&lt;/h3&gt;
+
+&lt;p&gt;While I appreciate that there are many developers who are happy &lt;a href=&quot;http://www.hanselman.com/blog/DarkMatterDevelopersTheUnseen99.aspx&quot;&gt;&quot;dark matter&quot; developers&lt;/a&gt;, I've always seen a correlation between awesome developers and developers who will spend time improving themselves outside of work hours.&lt;/p&gt;
+
+&lt;p&gt;Don't feel bad if you're not someone who obsesses over code outside of work. But don't feel that it's out of reach.&lt;/p&gt;
+
+&lt;p&gt;Not sure where to start? Start small. Set aside a half hour once a week.&lt;/p&gt;
+
+&lt;p&gt;Can't find time in the evenings? Why not try and &lt;a href=&quot;http://99u.com/tips/6954/The-1-Step-Plan-for-Super-Productivity&quot;&gt;get up earlier&lt;/a&gt; instead?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; As many people who know me will testify, I am not a morning person.  I'll generally find a couple of evenings each week to hack on various things late into the night - it's an old habit I still haven't shaken from my university days - as that's when things are quieter and I can focus better on things. Your milage will vary.&lt;/p&gt;
+
+&lt;h3&gt;Set yourself goals (even small ones)&lt;/h3&gt;
+
+&lt;p&gt;To ensure you're making the best of youur spare time, set some goals up front to ensure you work towards something tangible and useful. Starting small with your goals will help.&lt;/p&gt;
+
+&lt;p&gt;To illustrate this, here's a few goals which I would like to work on over the coming weeks/months:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;learn about Neo4J and graph database concepts by building a proof-of-concept accounting webapp&lt;/li&gt;
+&lt;li&gt;learn about DirectX and de-rust on my C++ skills by building a Windows 8 app&lt;/li&gt;
+&lt;li&gt;give feedback to the &lt;a href=&quot;https://github.com/github/shimmer&quot;&gt;Shimmer&lt;/a&gt; team by creating an installer for &lt;a href=&quot;https://github.com/Code52/DownmarkerWPF&quot;&gt;MarkPad&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;See how they can be considered daunting goals?&lt;/p&gt;
+
+&lt;p&gt;Let's break that first item down a bit:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Read up on concepts behind graph databases&lt;/li&gt;
+&lt;li&gt;Getting Neo4J setup on my local machine&lt;/li&gt;
+&lt;li&gt;Experimenting with working with Neo4J and the REST API&lt;/li&gt;
+&lt;li&gt;Getting a simple webapp setup to interact with Neo4J (Ruby/Python?)&lt;/li&gt;
+&lt;li&gt;Sketching out the app idea&lt;/li&gt;
+&lt;li&gt;Build out a small piece to demonstrate the app&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;You get the picture - take a big piece of work and break it down into manageable chunks.&lt;/p&gt;
+
+&lt;p&gt;By tackling something in chunks you also get a number of other benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;be able to demonstrate learning earlier on (e.g. interacting with an API first before building the app)&lt;/li&gt;
+&lt;li&gt;get feedback without investing significant amounts of time (and put it aside if its not fun)&lt;/li&gt;
+&lt;li&gt;be able to work on multiple goals at the same thing (rather than procrastinating because you're stumped on something)&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;Don't just read and watch&lt;/h3&gt;
+
+&lt;p&gt;It's easy to sit down and read some blogs on a topic and think to yourself &quot;Well that was easy!&quot; It's easy to watch some screencasts on a subject and think &quot;I know X now, great!&quot;&lt;/p&gt;
+
+&lt;p&gt;I want to challenge you to go beyond the passive learning and build something based on what you've learned. The size of it doesn't really matter, but I've always found it important to take the things I've learned and apply them to the real world.&lt;/p&gt;
+
+&lt;p&gt;This helps in several ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;demonstrating that I was paying attention&lt;/li&gt;
+&lt;li&gt;leaving the hand-holding of the blog posts/screencasts and work without that safety net&lt;/li&gt;
+&lt;li&gt;reinforcing the learning while it is fresh in my mind&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;I love blog posts and screencasts, but these days I try and balancing consuming posts/screencasts and creating things.&lt;/p&gt;
+
+&lt;h3&gt;Don't be afraid to fail&lt;/h3&gt;
+
+&lt;p&gt;It can be daunting when faced with something completely new and unfamiliar. With the amazing pace that technology and software moves at these days, it's impossible to keep up with everything. And that's OK.&lt;/p&gt;
+
+&lt;p&gt;Focus on what you could use at work.&lt;/p&gt;
+
+&lt;p&gt;Focus on what you're interested in.&lt;/p&gt;
+
+&lt;p&gt;Focus on what might make you a better developer.&lt;/p&gt;
+
+&lt;p&gt;Dive in, try something, don't be afraid to make a mistake. Because you will. And that's OK.&lt;/p&gt;
+
+&lt;p&gt;Just make sure you learn from your mistakes, or that you make different mistakes.&lt;/p&gt;
+
+&lt;p&gt;Here's a couple of little experiments I've worked on in the past that haven't come to fruition (yet?):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bringing WebRat syntax tests to &lt;a href=&quot;/simpler-ui-testing-for-wpf-apps.html&quot;&gt;automating testing of WPF apps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;weaving async/await code to trace when &lt;a href=&quot;https://github.com/shiftkey/Fody.AsyncErrorHandling&quot;&gt;background tasks fail silently&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/shiftkey/winrt-backport-hilarity&quot;&gt;backporting WinRT APIs&lt;/a&gt; to .NET so that libraries and apps can transition to the new APIs more easily&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;I could weep for things that didn't eventuate, but life's too short.&lt;/p&gt;
+
+&lt;h3&gt;Share all the things!&lt;/h3&gt;
+
+&lt;p&gt;And how will we know how awesome you are if you don't tell us?&lt;/p&gt;
+
+&lt;p&gt;After parking my blog ages ago (mostly because I was never really &quot;happy&quot; with it and I'd compulsively tweak things), I've started to come around to Hanselman's words: &lt;a href=&quot;http://www.hanselman.com/blog/YourWordsAreWasted.aspx&quot;&gt;&quot;Every developer should have a blog&quot;&lt;/a&gt;. I'm a habitual Twitter user and thoroughly enjoy the medium for what it is, and I know that I spend time which I should be spending on blogging.&lt;/p&gt;
+
+&lt;p&gt;To compensate for this, I publish a lot of my stuff on &lt;a href=&quot;https://github.com/shiftkey&quot;&gt;GitHub&lt;/a&gt;. Yeah, its lazy. But its out there at least. Even this blog is &lt;a href=&quot;https://github.com/shiftkey/blog&quot;&gt;public&lt;/a&gt; - and its just a static site generated using &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll&lt;/a&gt; and hosted on &lt;a href=&quot;http://www.heroku.com/&quot;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Don't be afraid to write - for example, my last post on &lt;a href=&quot;http://brendanforster.com/notes/git-alias.html&quot;&gt;git aliases&lt;/a&gt; got several &quot;Hey you missed X&quot; comments on it because I wrote it in a rush and missed a couple of details with the end script.&lt;/p&gt;
+
+&lt;p&gt;If people only blogged perfect posts I'd never end up blogging anything.&lt;/p&gt;
+
+&lt;h2&gt;Feedback&lt;/h2&gt;
+
+&lt;p&gt;I'm running out of words and I bet you guys are getting tired of me over-sharing, so I'll tie this one off here. What have I missed? What did I say wrong? Let me know in the comments.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Why You Should Care About Git Alias</title>
@@ -686,159 +827,6 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
 &lt;p&gt;The slides are available on &lt;a href=&quot;http://ddd-windows8.heroku.com&quot;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The source code for the slides are available on &lt;a href=&quot;http://github.com/shiftkey/dddbrisbane&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Doing the build server dance with NuGet</title>
-      <link>http://brendanforster.com//doing-the-build-server-dance-with-nuget.html</link>
-      <pubDate>Fri, 08 Jul 2011 14:00:00 +1000</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com/doing-the-build-server-dance-with-nuget.html</guid>
-      <description>&lt;p&gt;I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.&lt;/p&gt;
-
-&lt;p&gt;And with NuGet in the enterprise being the &lt;a href=&quot;http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx&quot;&gt;upcoming hotness&lt;/a&gt;, I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.&lt;/p&gt;
-
-&lt;h2&gt;The Goal&lt;/h2&gt;
-
-&lt;p&gt;I have two projects, A and B. A has no upstream dependencies (that have NuGet packages, anyway), but B requires A.&lt;/p&gt;
-
-&lt;p&gt;So, after A builds and passes its tests, I want to:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Create a new package for A, using it's build number.&lt;/li&gt;
-&lt;li&gt;Publish the package for A somewhere&lt;/li&gt;
-&lt;li&gt;Trigger a new build for B, using the newest version of A.&lt;/li&gt;
-&lt;li&gt;Verify B builds and passes tests.&lt;/li&gt;
-&lt;li&gt;Create a new package for B, using it's build number.&lt;/li&gt;
-&lt;li&gt;Publish the package for B somewhere.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;After a couple of hours work, I'm 95% of the way there.&lt;/p&gt;
-
-&lt;h2&gt;Defining the package specification&lt;/h2&gt;
-
-&lt;p&gt;As I wasn't really familiar with the process of creating the .nuspec file (sorry &lt;a href=&quot;http://twitter.com/damianedwards&quot;&gt;Damo&lt;/a&gt;, your NDC talk was a long time ago :)) I decided to go and craft it by hand. I used this &lt;a href=&quot;http://lostechies.com/joshuaflanagan/2011/06/23/tips-for-building-nuget-packages/&quot;&gt;blog post&lt;/a&gt; by &lt;a href=&quot;http://twitter.com/jflanagan&quot;&gt;Joshua Flanagan&lt;/a&gt; (including a good reference &lt;a href=&quot;https://github.com/DarthFubuMVC/bottles/blob/6d82e063fd889ac1909c98adc369a97b4c1e377e/packaging/nuget/bottles.nuspec&quot;&gt;nuspec file&lt;/a&gt;) to get started.&lt;/p&gt;
-
-&lt;p&gt;And that's about it. Put that into my build folder along with the NuGet.exe - I grabbed the latest one from the 1.4 OOB build on &lt;a href=&quot;http://ci.nuget.org:8080/&quot;&gt;NuGet CI server&lt;/a&gt; due to an issue with how it parses the &amp;lt;files&amp;gt; element. This should be part of the next release.&lt;/p&gt;
-
-&lt;h2&gt;Building the package on the server&lt;/h2&gt;
-
-&lt;p&gt;So, I'm using TeamCity to build the project. Thus, I can use the build number directly against the NuGet package.&lt;/p&gt;
-
-&lt;p&gt;NOTE: Using the default value TeamCity provides for a project, which is just an incrementing integer, will fail with a &quot;Version string portion was too short or too long&quot; error. To fix that, go to General Settings and make it something more descriptive:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;img/posts/NuGet/BuildNumber.png&quot; alt=&quot;General Settings&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With that in place, the next step is to add in a post-build step:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/img/posts/NuGet/PackageStep.png&quot;&gt;&lt;img src=&quot;/img/posts/NuGet/PackageStep-Small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-
-&lt;p&gt;The script I've used (duplicated for two different packages):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;del *.nupkg
-
-.\NuGet.exe pack Package.nuspec -Version %system.build.number%
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That script is courtesy of Scott Kirkland, who also has a decent guide to using NuGet on TC &lt;a href=&quot;http://weblogs.asp.net/srkirkland/archive/2011/03/29/deploy-nuget-packages-during-ci-build-with-teamcity.aspx&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2&gt;Publishing the package&lt;/h2&gt;
-
-&lt;p&gt;I didn't want to publish these packages to the NuGet gallery immediately, so what other options do I have? I could set up my own NuGet gallery. Or I could use &lt;a href=&quot;http://www.myget.org/&quot;&gt;MyGet&lt;/a&gt; and skip all the hassle.&lt;/p&gt;
-
-&lt;p&gt;For those who aren't familiar with MyGet, its a service to create custom NuGet feeds. All I've done so far is create a private feed (which anyone can consume) and obtained an API key.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/myget.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/myget-small.png&quot; alt=&quot;Post Build Step&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-
-&lt;p&gt;While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server.&lt;/p&gt;
-
-&lt;p&gt;This required an additional line in the script:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;del *.nupkg
-
-.\NuGet.exe pack Package.nuspec -Version %system.build.number%
-
-forfiles /m *.nupkg /c &quot;cmd /c NuGet.exe push @FILE &amp;lt;your-key&amp;gt; -Source https://www.myget.org/F/mahapps/&quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;which will find all .nupkg files and invoke &lt;em&gt;push&lt;/em&gt; against the specific repository - in this case, my private feed.&lt;/p&gt;
-
-&lt;h2&gt;Trigger a new build&lt;/h2&gt;
-
-&lt;p&gt;This isn't directly related to NuGet, but I wanted to force a new build when upstream packages change in TeamCity.&lt;/p&gt;
-
-&lt;p&gt;Under Build Triggering in the Project Configuration, add a trigger for &quot;Finish Build&quot; and select the upstream project.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/buildtriggering.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/buildtriggering-small.png&quot; alt=&quot;Add Build Trigger&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-
-&lt;h2&gt;Update the package for A and test&lt;/h2&gt;
-
-&lt;p&gt;Right, this is where things get rough.&lt;/p&gt;
-
-&lt;p&gt;I added a step before building the project, and executed this command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;which will look through all the projects in my solution and update to the newest packages it can find. I've added in my MyGet feed URL to grab the latest packages from the specific feed.&lt;/p&gt;
-
-&lt;p&gt;And this works. Kinda.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/updatescripts.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/updatescripts-small.png&quot; alt=&quot;Success?&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-
-&lt;p&gt;It updates my projects, but doesn't store updated packages locally.
-Which causes my build to break.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/compileerrors.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/compileerrors-small.png&quot; alt=&quot;Oops&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-
-&lt;p&gt;Scouring the forums produced &lt;a href=&quot;http://nuget.codeplex.com/discussions/264082&quot;&gt;this discussion&lt;/a&gt; on this issue, which recommended this workaround:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nuget install MyProj\packages.config -o packages
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: a minor grievance with the &lt;em&gt;install&lt;/em&gt; command. Unlike the &lt;em&gt;update&lt;/em&gt; command, this works against a project's repository. This seems subpar, when I can call &lt;em&gt;update&lt;/em&gt; against a solution file. Can we get some consistency with this? Or have I missed something with how install behaves?&lt;/p&gt;
-
-&lt;p&gt;Fine, not all workarounds are pretty.&lt;/p&gt;
-
-&lt;p&gt;Let's modify my script to suit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-
-.\Nuget.exe install ..\src\Identica\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-
-.\Nuget.exe install ..\src\NET4\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-
-.\Nuget.exe install ..\src\Tests\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-
-.\Nuget.exe install ..\src\WP7\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Icky. Whatever, I've got awesome to do.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;https://go.microsoft.com/fwlink/?LinkID=206669&lt;/em&gt; is the path to the official NuGet feed (the build server couldn't find some packages), and it is explicitly after my local feed (I may have some custom packages which I prefer). And I've added the &quot;-o&quot; parameter to point to the default packages location, just in case.&lt;/p&gt;
-
-&lt;p&gt;Aaaaand...&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;img/posts/NuGet/installedpackages.png&quot;&gt;&lt;img src=&quot;img/posts/NuGet/installedpackages-small.png&quot; alt=&quot;Success!&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-
-&lt;p&gt;Booyah!&lt;/p&gt;
-
-&lt;h2&gt;TODO&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;submit patch for making update more &quot;correct&quot; ?&lt;/li&gt;
-&lt;li&gt;demonstrate how to add to VS tooling and how it changes dev story&lt;/li&gt;
-&lt;li&gt;some documentation on managing upstream dependencies&lt;/li&gt;
-&lt;/ul&gt;
-
 </description>
     </item>
     

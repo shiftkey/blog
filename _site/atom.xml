@@ -4,12 +4,155 @@
  <title>brendan forster</title>
  <link href="http://brendanforster.com/atom.xml" rel="self" />
  <link href="http://brendanforster.com/" />
- <updated>2012-09-23T19:04:11+10:00</updated>
+ <updated>2012-09-23T20:39:46+10:00</updated>
  <author>
    <name>Brendan Forster</name>
    <email>shift.key@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>What's my secret? An unoffical unconfirmed guide</title>
+   <link href="http://brendanforster.com//blog/unofficial-unconfirmed-awesome-guide.html" />
+   <updated>2012-09-23T22:30:00+10:00</updated>
+   <id>http://brendanforster.com/blog/unofficial-unconfirmed-awesome-guide.html</id>
+   <content type="html">
+	<![CDATA[<h2>Introduction</h2>
+
+<p>After surviving <a href="http://australia.msteched.com/">TechEd Australia</a> - as well as hitting some important deadlines for a client - I was looking forward to getting back into various side-projects again now that things are coming back to (realtively) normal.</p>
+
+<p>I fired off an email looking for tips from my colleagues what they do to help get creative, and one of the replies I got back was this:</p>
+
+<blockquote><p>I find the third question silly coming from you. You are one of the the most productive and creative people I know and I wish I knew your secret to it. <br/> <br/>Sorry mate; but you don't get to be an MVP, a main member on Code52, talk at conferences and so on and then ask others how they are productive and creative :p<br/> <br/>Share your secret already ;-)</p></blockquote>
+
+
+<p>So I owe someone a blog post to explain myself.</p>
+
+<h2>Brendan's Unofficial Unconfirmed Guide To Being Awesome</h2>
+
+<p>First up, some warnings:</p>
+
+<ul>
+<li>This is me speaking from my experiences only.</li>
+<li>I will often suggest things which I do not do. Yes, that makes me appear hypocritical. No, it is not intended.</li>
+<li>Please consult with a medical professional before taking any of the below advice.</li>
+<li>This is all subject to change.</li>
+</ul>
+
+
+<p>Without further ado, let's dive in...</p>
+
+<h3>Make time for it</h3>
+
+<p>While I appreciate that there are many developers who are happy <a href="http://www.hanselman.com/blog/DarkMatterDevelopersTheUnseen99.aspx">"dark matter" developers</a>, I've always seen a correlation between awesome developers and developers who will spend time improving themselves outside of work hours.</p>
+
+<p>Don't feel bad if you're not someone who obsesses over code outside of work. But don't feel that it's out of reach.</p>
+
+<p>Not sure where to start? Start small. Set aside a half hour once a week.</p>
+
+<p>Can't find time in the evenings? Why not try and <a href="http://99u.com/tips/6954/The-1-Step-Plan-for-Super-Productivity">get up earlier</a> instead?</p>
+
+<p><strong>Note:</strong> As many people who know me will testify, I am not a morning person.  I'll generally find a couple of evenings each week to hack on various things late into the night - it's an old habit I still haven't shaken from my university days - as that's when things are quieter and I can focus better on things. Your milage will vary.</p>
+
+<h3>Set yourself goals (even small ones)</h3>
+
+<p>To ensure you're making the best of youur spare time, set some goals up front to ensure you work towards something tangible and useful. Starting small with your goals will help.</p>
+
+<p>To illustrate this, here's a few goals which I would like to work on over the coming weeks/months:</p>
+
+<ul>
+<li>learn about Neo4J and graph database concepts by building a proof-of-concept accounting webapp</li>
+<li>learn about DirectX and de-rust on my C++ skills by building a Windows 8 app</li>
+<li>give feedback to the <a href="https://github.com/github/shimmer">Shimmer</a> team by creating an installer for <a href="https://github.com/Code52/DownmarkerWPF">MarkPad</a></li>
+</ul>
+
+
+<p>See how they can be considered daunting goals?</p>
+
+<p>Let's break that first item down a bit:</p>
+
+<ul>
+<li>Read up on concepts behind graph databases</li>
+<li>Getting Neo4J setup on my local machine</li>
+<li>Experimenting with working with Neo4J and the REST API</li>
+<li>Getting a simple webapp setup to interact with Neo4J (Ruby/Python?)</li>
+<li>Sketching out the app idea</li>
+<li>Build out a small piece to demonstrate the app</li>
+</ul>
+
+
+<p>You get the picture - take a big piece of work and break it down into manageable chunks.</p>
+
+<p>By tackling something in chunks you also get a number of other benefits:</p>
+
+<ul>
+<li>be able to demonstrate learning earlier on (e.g. interacting with an API first before building the app)</li>
+<li>get feedback without investing significant amounts of time (and put it aside if its not fun)</li>
+<li>be able to work on multiple goals at the same thing (rather than procrastinating because you're stumped on something)</li>
+</ul>
+
+
+<h3>Don't just read and watch</h3>
+
+<p>It's easy to sit down and read some blogs on a topic and think to yourself "Well that was easy!" It's easy to watch some screencasts on a subject and think "I know X now, great!"</p>
+
+<p>I want to challenge you to go beyond the passive learning and build something based on what you've learned. The size of it doesn't really matter, but I've always found it important to take the things I've learned and apply them to the real world.</p>
+
+<p>This helps in several ways:</p>
+
+<ul>
+<li>demonstrating that I was paying attention</li>
+<li>leaving the hand-holding of the blog posts/screencasts and work without that safety net</li>
+<li>reinforcing the learning while it is fresh in my mind</li>
+</ul>
+
+
+<p>I love blog posts and screencasts, but these days I try and balancing consuming posts/screencasts and creating things.</p>
+
+<h3>Don't be afraid to fail</h3>
+
+<p>It can be daunting when faced with something completely new and unfamiliar. With the amazing pace that technology and software moves at these days, it's impossible to keep up with everything. And that's OK.</p>
+
+<p>Focus on what you could use at work.</p>
+
+<p>Focus on what you're interested in.</p>
+
+<p>Focus on what might make you a better developer.</p>
+
+<p>Dive in, try something, don't be afraid to make a mistake. Because you will. And that's OK.</p>
+
+<p>Just make sure you learn from your mistakes, or that you make different mistakes.</p>
+
+<p>Here's a couple of little experiments I've worked on in the past that haven't come to fruition (yet?):</p>
+
+<ul>
+<li>bringing WebRat syntax tests to <a href="/simpler-ui-testing-for-wpf-apps.html">automating testing of WPF apps</a></li>
+<li>weaving async/await code to trace when <a href="https://github.com/shiftkey/Fody.AsyncErrorHandling">background tasks fail silently</a></li>
+<li><a href="https://github.com/shiftkey/winrt-backport-hilarity">backporting WinRT APIs</a> to .NET so that libraries and apps can transition to the new APIs more easily</li>
+</ul>
+
+
+<p>I could weep for things that didn't eventuate, but life's too short.</p>
+
+<h3>Share all the things!</h3>
+
+<p>And how will we know how awesome you are if you don't tell us?</p>
+
+<p>After parking my blog ages ago (mostly because I was never really "happy" with it and I'd compulsively tweak things), I've started to come around to Hanselman's words: <a href="http://www.hanselman.com/blog/YourWordsAreWasted.aspx">"Every developer should have a blog"</a>. I'm a habitual Twitter user and thoroughly enjoy the medium for what it is, and I know that I spend time which I should be spending on blogging.</p>
+
+<p>To compensate for this, I publish a lot of my stuff on <a href="https://github.com/shiftkey">GitHub</a>. Yeah, its lazy. But its out there at least. Even this blog is <a href="https://github.com/shiftkey/blog">public</a> - and its just a static site generated using <a href="https://github.com/mojombo/jekyll">Jekyll</a> and hosted on <a href="http://www.heroku.com/">Heroku</a>.</p>
+
+<p>Don't be afraid to write - for example, my last post on <a href="http://brendanforster.com/notes/git-alias.html">git aliases</a> got several "Hey you missed X" comments on it because I wrote it in a rush and missed a couple of details with the end script.</p>
+
+<p>If people only blogged perfect posts I'd never end up blogging anything.</p>
+
+<h2>Feedback</h2>
+
+<p>I'm running out of words and I bet you guys are getting tired of me over-sharing, so I'll tie this one off here. What have I missed? What did I say wrong? Let me know in the comments.</p>
+]]>
+   </content>
+   
+ </entry>
  
  <entry>
    <title>Why You Should Care About Git Alias</title>
