@@ -4,7 +4,7 @@ title: My Git Habits
 permalink: /notes/my-git-habits.html
 description: Someone asked me to write down some notes about my git habits. I'm putting them up here as well for anyone else who cares.
 date: 2012-09-16 17:00:00 +10:30
-icon: /img/main/soapbox.jpg
+icon: /img/main/git.png
 comments: true
 ---
  
