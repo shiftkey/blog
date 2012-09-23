@@ -77,6 +77,8 @@ By tackling something in chunks you also get a number of other benefits:
  - get feedback without investing significant amounts of time (and put it aside if its not fun)
  - be able to work on multiple goals at the same thing (rather than procrastinating because you're stumped on something)
 
+Of course it looks like Dave Tchepak beat me to the punch on this with a [more detailed post](http://davesquared.net/2012/02/goals-for-devs.html) earlier in the year, so I'll defer to him on this.
+
 
 ### Don't just read and watch
 
