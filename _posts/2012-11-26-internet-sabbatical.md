@@ -22,15 +22,15 @@ I am burned out - plain and simple.
 I would love to just "power on through" like it wasn't a problem but I've been doing that for the past few weeks already and its not changing much. 
 
 
-{% img center /img/posts/internet/swanson.gif %}
+<img src="/img/posts/internet/swanson.gif" />
 
 Plus I intend to spend a bunch of time here:
 
-{% img center /img/posts/internet/beach.jpg %}
+<img src="/img/posts/internet/beach.jpg" />
 
 Doing stuff like this:
 
-{% img center /img/posts/internet/hammock.jpg %}
+<img src="/img/posts/internet/hammock.jpg" />
 
 And it has terrible phone reception anyway (yay!)
 
