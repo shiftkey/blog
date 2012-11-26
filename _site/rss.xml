@@ -6,9 +6,67 @@
     <atom:link href="http://brendanforster.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 23 Sep 2012 21:24:56 +1000</pubDate>
-    <lastBuildDate>Sun, 23 Sep 2012 21:24:56 +1000</lastBuildDate>
+    <pubDate>Mon, 26 Nov 2012 19:18:32 +1100</pubDate>
+    <lastBuildDate>Mon, 26 Nov 2012 19:18:32 +1100</lastBuildDate>
 
+    
+    <item>
+      <title>Internet Sabbatical - An Experiment</title>
+      <link>http://brendanforster.com//blog/experiment-internet-sabbatical.html</link>
+      <pubDate>Mon, 26 Nov 2012 23:00:00 +1100</pubDate>
+      <author>shift.key@gmail.com (Brendan Forster)</author>
+      <guid>http://brendanforster.com/blog/experiment-internet-sabbatical.html</guid>
+      <description>&lt;p&gt;As this year comes to a close (a few more things to do yet) I wanted to try something different over the holiday season - an internet sabbatical.&lt;/p&gt;
+
+&lt;h3&gt;A What?&lt;/h3&gt;
+
+&lt;p&gt;From 21 December (when I jump on a plane for the holidays) to 6 January (when I jump on a plane to come back for work) I plan to &quot;go to ground&quot; and avoid the internet.&lt;/p&gt;
+
+&lt;h3&gt;Why?&lt;/h3&gt;
+
+&lt;p&gt;I am burned out - plain and simple.&lt;/p&gt;
+
+&lt;p&gt;I would love to just &quot;power on through&quot; like it wasn't a problem but I've been doing that for the past few weeks already and its not changing much.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class='center ' src='/img/posts/internet/swanson.gif' width='' height='' alt='' title=''&gt;&lt;/p&gt;
+
+&lt;p&gt;Plus I intend to spend a bunch of time here:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class='center ' src='/img/posts/internet/beach.jpg' width='' height='' alt='' title=''&gt;&lt;/p&gt;
+
+&lt;p&gt;Doing stuff like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class='center ' src='/img/posts/internet/hammock.jpg' width='' height='' alt='' title=''&gt;&lt;/p&gt;
+
+&lt;p&gt;And it has terrible phone reception anyway (yay!)&lt;/p&gt;
+
+&lt;h3&gt;The Ground Rules&lt;/h3&gt;
+
+&lt;p&gt;Here's the low-down:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No Internet Access&lt;/li&gt;
+&lt;li&gt;No Twitter/Facebook&lt;/li&gt;
+&lt;li&gt;No checking emails&lt;/li&gt;
+&lt;li&gt;No computers or things that will let me code&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;But I won't go completely off the reservation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Phone - to keep in contact with friends and family, but that's it&lt;/li&gt;
+&lt;li&gt;Xbox - I'm keen to play some Assassin's Creed III (or other games) so that's included&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;And given I won't have technology to report on my progress (pen and paper perhaps?), you'll just have to wait and see how I go.&lt;/p&gt;
+
+&lt;h3&gt;Happy Holidays&lt;/h3&gt;
+
+&lt;p&gt;If you need to get in touch with me over the holidays, there are &quot;old-school&quot; methods (see above) but otherwise I wish you all a happy and safe holiday season and we'll see you all in 2013!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>What's my secret? An unoffical unconfirmed guide</title>
@@ -806,28 +864,6 @@ git config --global alias.resync &quot;!sh -c 'BRANCH_NAME=$(git bn) &amp;amp;&a
 &lt;p&gt;In particular the use of &lt;em&gt;textContent&lt;/em&gt; instead of &lt;em&gt;text&lt;/em&gt; to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.&lt;/p&gt;
 
 &lt;p&gt;I'll formulate some more opinions on the WinJS side as I delve deeper....&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>I'm speaking at DDD Brisbane</title>
-      <link>http://brendanforster.com//ddd-brisbane.html</link>
-      <pubDate>Sun, 23 Oct 2011 00:00:00 +1100</pubDate>
-      <author>shift.key@gmail.com (Brendan Forster)</author>
-      <guid>http://brendanforster.com/ddd-brisbane.html</guid>
-      <description>&lt;p&gt;&lt;img src='/img/main/metro-preview.png' width='400' height='300' alt='' title='' style='float: right;margin-left: 1.5em;'&gt;&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;http://dddbrisbane.com&quot;&gt;dddBrisbane&lt;/a&gt; organisers sent out a call over the weekend to finalise the schedule - some very cool talks that I'm looking forward to seeing (look for the schedule to appear early this week).&lt;/p&gt;
-
-&lt;p&gt;I'm especially honoured to see my session was picked - especially after seeing the depth of Windows 8 talks submitted.&lt;/p&gt;
-
-&lt;p&gt;So what am I talking about?&lt;/p&gt;
-
-&lt;h2&gt;Windows 8 - Who Moved My Cheese?&lt;/h2&gt;
-
-&lt;p&gt;The slides are available on &lt;a href=&quot;http://ddd-windows8.heroku.com&quot;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The source code for the slides are available on &lt;a href=&quot;http://github.com/shiftkey/dddbrisbane&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
