@@ -1,6 +1,13 @@
 #Derived from https://github.com/avdgaag/arjanvandergaag.nl/blob/28539bc736a05b28f2aa4ef81e4f61f3f91375a0/Rakefile
 task :default => :dev
 
+namespace :assets do
+  desc 'Precompile assets'
+  task :precompile do
+    sh "bundle exec jekyll"
+  end
+end
+
 MY_URL = "http://www.brendanforster.com"
 MY_NAME = "Brendan Forster"
 
