@@ -1,8 +1,8 @@
 auto: true
 
-markdown: rdiscount
+markdown: kramdown
 
-exclude: ["LICENSE.md"]
+exclude: [LICENSE.md, config.ru, Gemfile, Gemfile.lock, Procfile, rakefile.rb, README.md, vendor]
 
 owner-name: brendan forster
 owner-page: http://brendanforster.com
