@@ -255,6 +255,14 @@
 	max-width: 100%;
 }
 
+.subpage #content header h2 {
+	font-size: 2.2em;
+}
+
+.subpage #content header h3 {
+	font-size: 1.3em;
+}
+
 .subpage ul {
 	list-style-type: disc;
 	margin-left: 2em;
@@ -279,7 +287,8 @@ pre {
 }
 
 pre code {
-	font-family: sans-serif;
+	font-family: 'Cutive Mono', serif;
+	line-height: 1em;
 }
 
 strong {
