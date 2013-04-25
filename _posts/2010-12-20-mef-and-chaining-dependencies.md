@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: MEF and Chaining Dependencies
 permalink: /mef-and-chaining-dependencies.html
 description: A quick blog example of how to use contracts within MEF to handle complex dependency chains

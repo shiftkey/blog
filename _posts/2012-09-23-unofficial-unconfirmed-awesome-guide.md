@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: What's my secret? An unoffical unconfirmed guide
 permalink: /blog/unofficial-unconfirmed-awesome-guide.html
 description: A colleague called me out recently when I asked a question about how to be more productive. This blog post is for him.

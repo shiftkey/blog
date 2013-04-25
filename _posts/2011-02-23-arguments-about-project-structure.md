@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: Arguments about Project Structure
 permalink: /arguments-about-project-structure.html
 description: Putting pen to paper about some back and forth I've been having over IM about the 'right' way to set up projects...

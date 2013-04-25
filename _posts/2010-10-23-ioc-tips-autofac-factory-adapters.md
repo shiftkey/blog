@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: IoC Tips - Autofac Factory Adapters
 permalink: /ioc-tips-autofac-factory-adapters.html
 description: A recap of leveraging inversion of control techniques to simplify an existing application

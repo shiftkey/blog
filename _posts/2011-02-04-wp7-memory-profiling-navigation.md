@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: WP7 - Memory Profiling Adventures - Navigation (Updated)
 permalink: /wp7-memory-profiling-navigation.html
 description: The joys of a new platform... documenting a strange behaviour found when profiling a WP7 app. Somewhat resolved...

@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: Internet Sabbatical - An Experiment
 permalink: /blog/experiment-internet-sabbatical.html
 description: Putting pen to paper (and committing to) about an idea I was discussing with a friend recently. 

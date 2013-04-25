@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: MEF - [Import] vs [ImportingConstructor]
 permalink: /mef-import-vs-importingconstructor.html
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for
@@ -8,6 +8,8 @@ date: 2010-10-23 14:00:00 +11:00
 tags: "mef .net "
 comments: true
 ---
+
+
 A short discussion on Twitter recently started as a result of Jeremy Likness' article on MEF at [InformIT][1]. I recommend reading it for anyone who is looking for an introduction to the MEF concepts.
 
 The healthy debate was ultimately about [Import] being easier than [ImportingConstructor] to use. I disagreed, but at the time couldn't really put my finger on why I preferred it.

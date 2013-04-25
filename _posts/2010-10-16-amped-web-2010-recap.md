@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: Amped Web 2010 Recap
 permalink: /amped-web-2010-recap.html
 description: The Amped Web day is a hack event for developers and designers to throw ideas around. This is the story of what happened to me and my team.
@@ -8,6 +8,7 @@ date: 2010-10-16 14:00:00 +11:00
 tags: "amped"
 comments: true
 ---
+
 **Disclaimer:** I'm currently running on a few hours of sleep so corrections may be required as the memories return. I'm also waiting for some of the photos to surface from the day - including [@Rog42][1]'s crazy photography experiments!
 
 Yesterday was the [Amped Web][2] day, a hack day following the Web Directions South conference held in Sydney. The day is for teams to compete in specific categories - around design and development - and put together a solution in a few hours. It may have been an all-day event, but the time flew by. The solutions were reviewed by judges over the afternoon - providing feedback and suggestions as the teams polished their ideas.

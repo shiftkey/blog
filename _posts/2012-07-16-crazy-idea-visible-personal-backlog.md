@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: Sharing my personal backlog with the world
 permalink: /visible-personal-backlog.html
 description: To try and motivate myself back into action, I'm trying out making my personal backlog visible to the world. This could end badly...

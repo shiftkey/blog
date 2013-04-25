@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: jQuery and KnockoutJS in Win8? Sure, why not!
 permalink: /jquery-knockout-win8.html
 description: A brief experiment after a couple of questions from a user group event tonight

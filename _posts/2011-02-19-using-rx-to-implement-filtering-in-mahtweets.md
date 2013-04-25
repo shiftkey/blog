@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: Using Rx to Implement Filtering in MahTweets
 permalink: /using-rx-to-implement-filtering-in-mahtweets.html
 description: A thought process about leveraging the Rx Framework to implement a new filtering solution for MahTweets vNext.

@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: slsvcutil - Workaround StackOverflowException
 permalink: /slsvcutil-stackoverflowexception-workaround.html
 description: Mental reminder for an issue I hit today with generating Silverlight proxies using slsvcutil

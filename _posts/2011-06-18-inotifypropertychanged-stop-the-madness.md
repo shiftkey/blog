@@ -1,5 +1,5 @@
 --- 
-layout: post
+layout: old-post
 title: "Soapbox: INotifyPropertyChanged - Stop the Madness"
 permalink: /inotifypropertychanged-stop-the-madness.html
 description: Just wanted to recap why I see the argument over INotifyPropertyChanged usage as absurd.
