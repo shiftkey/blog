@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<!--
+	Halcyonic 3.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{{ page.title }}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+		<script src="/new/js/jquery-1.9.1.min.js"></script>
+		<script src="/new/js/config.js"></script>
+		<script src="/new/js/5grid.min.js"></script>
+		<script src="/new/js/5grid-ui.min.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="/new/css/5grid-noscript.css" />
+			<link rel="stylesheet" href="/new/css/style.css" />
+			<link rel="stylesheet" href="/new/css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="/new/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="/new/js/html5shiv.js"></script><![endif]-->
+	</head>
+	<body class="subpage">
+		<div id="header-wrapper">
+			<header id="header" class="5grid 5grid-container">
+				<div class="row">
+					<div class="12u">
+						<h1><a href="/" id="logo">brendan forster</a></h1>
+						<nav id="nav">
+							<a href="/">Home</a>
+							<a href="/projects/">Projects</a>
+							<a href="/blog/">Blog</a>
+							<a href="/notes/">Drafts &amp; Notes</a>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<div id="content-wrapper">
+			<div id="content">
+				<div class="5grid 5grid-container">
+					<div class="row">
+						<div class="12u">
+							<section>
+								<header>
+									<h2>{{page.title}}</h2>
+									<h3>{{page.description}}</h3>
+								</header>
+								{{content}}
+								<ul>
+									{% for ps in site.pages %}
+										{% unless ps.url contains '/notes/' %}
+											{% continue %}
+										{% endunless %}
+
+										{% if ps.url == '/notes/index.html' %}
+										 	{% continue %}
+										{% endif %}
+
+										 <li><a href="{{ ps.url }}">{{ps.date | date: "%Y-%m-%d" }} - {{ps.title}}</a></li>
+									{% endfor %}
+								</ul>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<div id="footer-wrapper">
+			<footer id="footer" class="5grid 5grid-container">
+				<div class="row">
+					<div class="12u">
+						<section>
+							<h2>An Informative Text Blurb</h2>
+							<p>
+								Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. Suspendisse eu 
+								varius nibh. Suspendisse vitae magna eget odio amet mollis. Duis neque nisi, 
+								dapibus sed mattis quis, sed rutrum accumsan sed. Suspendisse eu varius nibh 
+								lorem ipsum amet dolor sit amet lorem ipsum consequat gravida justo mollis.
+							</p>
+						</section>
+					</div>
+				</div>
+			</footer>
+		</div>-->
+
+		{% include copyright.html %}
+
+	</body>
+</html>

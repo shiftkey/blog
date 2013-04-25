@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: notes_list
 title: Drafts & Notes
 ---
 
