@@ -27,21 +27,25 @@ As MEF uses the concept of a "contract" to resolve the `[Import]` and `[Export]`
 
 If the Proxy and Service implementations are equivalent - so we can avoid using distinct interfaces for behaviour which is identical - then we can use the same interface and specify a different contract for each extensibiity point defined in the application.
 
-    public class ConsumingApplication
-    {
-        [ImportMany("Contoso.Application", typeof(IServiceProxy))]
-        public IEnumerable<IServiceProxy> Services { get; set; }
-        
-        // implementation here
-    }
+{% highlight csharp %}
+public class ConsumingApplication
+{
+    [ImportMany("Contoso.Application", typeof(IServiceProxy))]
+    public IEnumerable<IServiceProxy> Services { get; set; }
+    
+    // implementation here
+}
+{% endhighlight %}
 
 And our simple client can use the corresponding [Export] statement.
 
-    [Export("Contoso.Application", typeof(IServiceProxy))]
-    public class StandaloneProxy : IServiceProxy
-    {
-        // implementation here 
-    }
+{% highlight csharp %}
+[Export("Contoso.Application", typeof(IServiceProxy))]
+public class StandaloneProxy : IServiceProxy
+{
+    // implementation here 
+}
+{% endhighlight %}
 
 Our complex dependency has a bit more code, but it can be broken down into two main features:
 
@@ -50,14 +54,16 @@ Our complex dependency has a bit more code, but it can be broken down into two m
     
 Which looks like this:
 
-    [Export("Contoso.Application", typeof(IServiceProxy))]
-    public class ActualProxy : IServiceProxy
-    {
-        [ImportMany("Contoso.External")]
-        public IEnumerable<IServiceProxy> Services { get; set; }
+{% highlight csharp %}
+[Export("Contoso.Application", typeof(IServiceProxy))]
+public class ActualProxy : IServiceProxy
+{
+    [ImportMany("Contoso.External")]
+    public IEnumerable<IServiceProxy> Services { get; set; }
 
-        // implementation here
-    }
+    // implementation here
+}
+{% endhighlight %}
 
 So while reusing the same interface, we can specify *how* the parts relate.
 
@@ -65,21 +71,25 @@ So while reusing the same interface, we can specify *how* the parts relate.
 
 If the behaviour of the proxy and the actual service are different, then we can just use the types to represent the contract.
 
-    public class ConsumingApplication
-    {
-        [ImportMany(typeof(IServiceProxy))]
-        public IEnumerable<IServiceProxy> Services { get; set; }
+{% highlight csharp %}
+public class ConsumingApplication
+{
+    [ImportMany(typeof(IServiceProxy))]
+    public IEnumerable<IServiceProxy> Services { get; set; }
 
-        // implementation here
-    }
+    // implementation here
+}
+{% endhighlight %}
 
 The exported contract becomes:
 
-    [Export(typeof(IServiceProxy))]
-    public class StandaloneProxy : IServiceProxy
-    {
-        // implementation here
-    }
+{% highlight csharp %}
+[Export(typeof(IServiceProxy))]
+public class StandaloneProxy : IServiceProxy
+{
+    // implementation here
+}
+{% endhighlight %}
 
 And our complex part still has two contracts:
 
@@ -89,15 +99,16 @@ And our complex part still has two contracts:
 
 Which looks like this:
 
-    [Export(typeof(IServiceProxy))]
-    public class ActualProxy : IServiceProxy
-    {
-        [ImportMany]
-        public IEnumerable<IService> Services { get; set; }
+{% highlight csharp %}
+[Export(typeof(IServiceProxy))]
+public class ActualProxy : IServiceProxy
+{
+    [ImportMany]
+    public IEnumerable<IService> Services { get; set; }
 
-        // implementation here
-    }
-
+    // implementation here
+}
+{% endhighlight %}
 
 ## And finally, InheritedExport
 
@@ -105,34 +116,36 @@ To really simplify the contracts, you can decorate the interface with the `[Inhe
 
 So I annotate both interfaces:
 
-    [InheritedExport]
-    public interface IServiceProxy
-    {
-        // code here
-    }
+{% highlight csharp %}
+[InheritedExport]
+public interface IServiceProxy
+{
+    // code here
+}
 
-    [InheritedExport]
-    public interface IService
-    {
-        // code here
-    }
+[InheritedExport]
+public interface IService
+{
+    // code here
+}
+{% endhighlight %}
 
 and can eliminate all other [Export] attributes from the codebase:
 
-    public class StandaloneProxy : IServiceProxy
-    {
-        // implementation here
-    }
+{% highlight csharp %}
+public class StandaloneProxy : IServiceProxy
+{
+    // implementation here
+}
 
-    public class ActualProxy : IServiceProxy
-    {
-        [ImportMany]
-        public IEnumerable<IService> Services { get; set; }
+public class ActualProxy : IServiceProxy
+{
+    [ImportMany]
+    public IEnumerable<IService> Services { get; set; }
 
-        // implementation here
-    }
-
-
+    // implementation here
+}
+{% endhighlight %}
 
 Thoughts?
 
