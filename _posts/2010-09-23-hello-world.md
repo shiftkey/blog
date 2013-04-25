@@ -10,8 +10,9 @@ Starting off this blog with a simple post. More styling to come during the comin
 
 **Side note:** here's the Factorial function in F#:
 
-    let rec factorial n =
-    match n with
-    | 0 -> 1
-    | _ -> n * factorial (n - 1)
-
+{% highlight fsharp %}
+let rec factorial n =
+match n with
+| 0 -> 1
+| _ -> n * factorial (n - 1)
+{% endhighlight %}
