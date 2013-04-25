@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: WP7 - Memory Profiling Adventures - Navigation (Updated)
 permalink: /wp7-memory-profiling-navigation.html
 description: The joys of a new platform... documenting a strange behaviour found when profiling a WP7 app. Somewhat resolved...
@@ -22,11 +22,11 @@ Side note: I've seen various samples floating around which will use a timer to i
 Read on for the rest of the saga...
 
 
-Before We Begin...
------------------------------
+## Before We Begin...
+
 One of the requirements a WP7 application needs to satisfy is around memory consumption
 
-<h3>5.2.5 Memory Consumption</h3>
+### 5.2.5 Memory Consumption
 
 *An application must not exceed 90 MB of RAM usage, except on devices that have more than 256 MB of memory. You can use the **DeviceExtendedProperties** class to query the amount of memory that is available on the device and modify the application behavior at runtime to take advantage of additional memory. For more information, see the DeviceExtendedProperties class in MSDN.*
 
@@ -40,8 +40,7 @@ Source [Microsoft][1]
 
 **Note** - Disregard the "devices with > 256MB" exception mentioned, as I want to see how we can optimise memory usage on SL without sacrificing features.
 
-How Do I Work Out My Memory Usage?
------------------------------
+## How Do I Work Out My Memory Usage?
 
 As mentioned above, the **DeviceExtendedProperties** class contains a lot of runtime information about the application.
 
@@ -78,8 +77,7 @@ and see a message like in the Output Window:
 	Main - Loaded - ApplicationPeakMemoryUsage: 39899136
 
 
-And now things get interesting...
------------------------------
+## And now things get interesting...
 
 Testing out a simple application - two screens, both use the Panorama Control and independent ViewModels which display a "large" list of items (270-ish items, but text only).
 
@@ -101,8 +99,7 @@ Repeating the scenario a few times, and the behaviour is the same.
 
 Puzzling...
 
-And the adventure begins
------------------------------
+## And the adventure begins
 
 The underlying _why_ is what I want to understand more. Even with this simple application - which is displaying a large list of items - the size of the application is already close to the 90MB limit.
 
@@ -117,7 +114,6 @@ I've only been able to throw a couple of hours of spare time at this so far, but
  - Paging data from isolated storage could be worth attempting, but I don't think this is a temporary fix - as the application would load the full file, select a subset of the data, and then dispose the file. Chunking data in isolated storage would increase complexity.
 
  - Avoiding the use of navigation - and rolling some custom controls to support transitions instead - is the method that needs most work, but gives more control back to the application.
-
 
   [1]:http://go.microsoft.com/?linkid=9730556
   [2]:http://brendanforster.com/get/panoramasample.zip

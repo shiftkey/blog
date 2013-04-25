@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: On the Windows 8 Preview Video
 permalink: /on-the-windows-8-preview.html
 funnelweb_id: 15

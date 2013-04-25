@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: Arguments about Project Structure
 permalink: /arguments-about-project-structure.html
 description: Putting pen to paper about some back and forth I've been having over IM about the 'right' way to set up projects...
@@ -8,15 +8,15 @@ date: 2011-02-23 14:00:00 +11:00
 tags: "projects"
 comments: true
 ---
+
 Whenever it comes time to kick off a new project, how do you structure it?
 
 Given a greenfields situation - or even one of my side projects - I go for this layout:
 
  - build
  - lib
- - licenses
- - samples
  - src
+   - samples
    - Project.ModuleA
    - Project.ModuleB
    - Project.Shell
@@ -28,8 +28,6 @@ And what do those these folders represent?
 **build** - scripts for building and deploying the application. As soon as the application is required to be deployed to different environments, this should be scripted and added to source control.
 
 **lib** - dependencies required by the application. I generally group the dependent assemblies if required, but will generally drop the dll-xml combination into the root folder.
-
-**licenses** - when doing OSS development, this is a must. I should bring this into my general projects, especially if it has a significant mix of dependencies and licenses to manage.
 
 **samples** - once the main solution gets beyond a specific size, it may be beneficial to separate the sample code out rather than compiling it within the main build.
 
@@ -50,9 +48,7 @@ But I'd happily include these tools:
 
 as not all developers would have them installed on their machines.
 
-
-Why this structure?
------------
+## Why this structure?
 
 **Folder Names** 
 

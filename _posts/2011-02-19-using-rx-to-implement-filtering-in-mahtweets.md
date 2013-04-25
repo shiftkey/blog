@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: Using Rx to Implement Filtering in MahTweets
 permalink: /using-rx-to-implement-filtering-in-mahtweets.html
 description: A thought process about leveraging the Rx Framework to implement a new filtering solution for MahTweets vNext.
@@ -8,12 +8,12 @@ date: 2011-02-19 14:00:00 +11:00
 tags: "mahtweets reactive-extensions "
 comments: true
 ---
+
 As we're kicking development off for the next version of MahTweets in the coming weeks, the team has been looking at experimenting with new technology and bringing the most useful stuff into the application.
 
 Filtering is one of the things that MahTweets is famous for, but we're always looking for ways to make it better and easier. We've been experimenting with using the [Reactive Extensions (Rx) for .NET][1] to simplify the entire pipeline and provide more freedom in the application.
 
-The Current Status
---------------------
+## The Current Status
 
 MahTweets allow the user to filter streams by update type, contact or text. Filters can be applied to individual streams or globally.
 
@@ -29,8 +29,7 @@ Limitations about this approach:
 - Custom filtering was implemented per update type.
 - UI was coupled to stream container and specific parameters.
 
-First Cut using Rx
---------------------
+## First Cut using Rx
 
 FYI: If you're not familiar with the Observer Pattern, check out the [Wikipedia article][2] for starters. Rx uses the Observer pattern heavily.
 
@@ -54,8 +53,7 @@ Limitations about this approach:
  - Excluded updates may be propogated through other subscribers in the same view.
  - Global Ignores still not supported.
 
-Back to the Drawing Board
---------------------------
+## Back to the Drawing Board
 
 So after some shut-eye and sun, I revisited the initial design for the IObservable implementation. What stood out to me was that:
 
@@ -82,8 +80,7 @@ On the other hand, the use cases for include filters can be like:
 
 Compare and contract (perhaps your experiences differ).
 
-Second Cut using Rx
---------------------
+## Second Cut using Rx
 
 The second cut of the design allows for three subscriber hooks:
 
@@ -95,8 +92,7 @@ The second cut of the design allows for three subscriber hooks:
 
 An internal subscriber verifies a status against a list of exclusions, and propogates the status further if it is valid. Each view only requires its inclusion rules (or a wildcard rule if no rules specified) to display results.
 
-The Next Step
---------------------
+## The Next Step
 
  - Debate with [@aeoth][3] on this
  - Performance Testing against a large set of data.
@@ -106,4 +102,3 @@ The Next Step
 [1]: http://msdn.microsoft.com/en-us/devlabs/ee794896
 [2]: http://en.wikipedia.org/wiki/Observer_pattern
 [3]: http://twitter.com/aeoth
-

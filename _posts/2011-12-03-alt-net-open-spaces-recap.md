@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: ALT.NET Open Spaces Recap
 permalink: /alt-net-open-spaces-2011.html
 description: For those who missed it, a gaggle of geeks caught up in Melbourne on Saturday 3rd December to talk about stuff. Geeks talking - who'da thunk it? Anyway, this is my recap...

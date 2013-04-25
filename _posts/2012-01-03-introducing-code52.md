@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: Introducing code52
 permalink: /introducing-code52.html
 description: My first side project of the new year is just beginning...
