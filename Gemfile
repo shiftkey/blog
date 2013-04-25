@@ -8,7 +8,6 @@ gem "jekyll", "~> 0.12.0"
 gem "flickraw", "~> 0.9.6"
 gem "pygmentize", "~> 0.0.3"
 gem 'rdiscount'
-gem 'RedCloth'
 
 gem "jekyll-assets", "~> 0.3.1"
 gem "compass", "~> 0.12.2"

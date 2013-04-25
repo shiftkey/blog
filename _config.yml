@@ -1,6 +1,7 @@
-auto: true
+auto: false
+pygments: true
 
-markdown: kramdown
+markdown: rdiscount
 
 exclude: [LICENSE.md, config.ru, Gemfile, Gemfile.lock, Procfile, rakefile.rb, README.md, vendor]
 
