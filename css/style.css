@@ -266,10 +266,10 @@
 }
 
 blockquote {
-  font: 14px/22px normal helvetica, sans-serif;
+  font: 1em normal helvetica, sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 30px;
+  margin-left: 15px;
   padding-left: 15px;
   border-left: 3px solid #ccc;
 } 
