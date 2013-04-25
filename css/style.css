@@ -288,7 +288,8 @@ pre {
 
 pre code {
 	font-family: 'Droid Sans Mono', serif;
-	line-height: 1em;
+	line-height: 0.9em;
+	font-size: 0.9em;
 }
 
 strong {

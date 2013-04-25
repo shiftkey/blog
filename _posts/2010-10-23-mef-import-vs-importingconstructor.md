@@ -23,43 +23,47 @@ Compare these two segments of code:
 
 The [Import] version...
 
-    public class TwitterPlugin : IMicroblog
+{% highlight csharp %}
+public class TwitterPlugin : IMicroblog
+{
+    [Import]
+    private IApplicationSettingsService _applicationSettings;
+
+    [Import]
+    private IStatusUpdatesService _statusUpdatesService;
+
+    [Import]
+    private IContactsService _contacts;
+
+    public TwitterPlugin()
     {
-        [Import]
-        private IApplicationSettingsService _applicationSettings;
-
-        [Import]
-        private IStatusUpdatesService _statusUpdatesService;
-
-        [Import]
-        private IContactsService _contacts;
-
-        public TwitterPlugin()
-        {
-            // some constructor logic
-        }
+        // some constructor logic
     }
+}
+{% endhighlight %}
 
 Or the [ImportingConstructor] version...
 
-    public class TwitterPlugin : IMicroblog
-    {
-        private readonly IApplicationSettingsProvider _applicationSettings;
-        private readonly IStatusUpdateService _statusUpdatesService;
-        private readonly IContactsService _contactsService;
+{% highlight csharp %}
+public class TwitterPlugin : IMicroblog
+{
+    private readonly IApplicationSettingsProvider _applicationSettings;
+    private readonly IStatusUpdateService _statusUpdatesService;
+    private readonly IContactsService _contactsService;
 
-        [ImportingConstructor]
-        public Twitter(IApplicationSettingsProvider applicationSettings,
-                       IStatusUpdateService statusUpdateService
-                       IContactsService contactsService)
-        {
-           _applicationSettings = applicationSettings;
-           _statusUpdatesService = statusUpdateService;
-           _contactsService = contactsService;
-        
-           // some constructor logic
-        }
+    [ImportingConstructor]
+    public Twitter(IApplicationSettingsProvider applicationSettings,
+                   IStatusUpdateService statusUpdateService
+                   IContactsService contactsService)
+    {
+       _applicationSettings = applicationSettings;
+       _statusUpdatesService = statusUpdateService;
+       _contactsService = contactsService;
+    
+       // some constructor logic
     }
+}
+{% endhighlight %}
 
 So the second approach requires more code, but a good tool should have you saving many keystrokes - even Visual Studio 2010 will help out with that.
 
@@ -85,30 +89,34 @@ Something these snippets don't demonstrate is that attributes can be combined wi
 
 For example, using [ImportMany]
 
-    private readonly IEnumerable<ICreditService> _creditServices;
+{% highlight csharp %}
+private readonly IEnumerable<ICreditService> _creditServices;
 
-    [ImportingConstructor]
-    public BankService([ImportMany] IEnumerable<IProductServices> productServices)
-    {
-        _productServices = productServices;
-        
-        // some constructor logic
-    }
+[ImportingConstructor]
+public BankService([ImportMany] IEnumerable<IProductServices> productServices)
+{
+    _productServices = productServices;
+    
+    // some constructor logic
+}
+{% endhighlight %}
 
 Or using AllowDefault to allow for scenarios where a component is not known:
 
-    private readonly ILogger _logger;
+{% highlight csharp %}
+private readonly ILogger _logger;
 
-    [ImportingConstructor]
-    public BankService([Import(AllowDefault=true)] ILogger logger)
-    {
-        if (logger == null)
-            _logger = new DefaultLogger();
-        else
-            _logger = logger;
-        
-        // some constructor logic
-    }
+[ImportingConstructor]
+public BankService([Import(AllowDefault=true)] ILogger logger)
+{
+    if (logger == null)
+        _logger = new DefaultLogger();
+    else
+        _logger = logger;
+    
+    // some constructor logic
+}
+{% endhighlight %}
 
 And this still keeps all the composition "magic" in one location. MEF supports importing [properties, fields and collections][2], which could be scattered around the same class. 
 
@@ -118,8 +126,7 @@ Ultimately, I guess I'm advocating the [ImportingConstructor] approach because o
 
 For getting start with MEF, [Import] works fine - the barrier to entry is lowered greatly. But as the composition graph grows in an application - e.g. A &lt;-&gt; B &lt;-&gt; C &lt;-&gt; D - then I'd start simplifying the classes and pushing more "magic" into the constructor for readability's sake.
 
-While we're talking managing MEF parts
-----------------------------------------
+## While we're talking managing MEF parts
 
 When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought "*Why add a constructor parameter to the constructor when I can just add an attribute?*" 
 
@@ -133,20 +140,22 @@ For an upcoming release, I'm currently refactoring the MahTweets internals to re
 
 On the Autofac side, we can declare components in the container to be available for MEF composition. 
 
-    container.RegisterType<ApplicationSettingsProvider>()
-             .As<IApplicationSettingsProvider&gt;()
-             .Exported(x => x.As<IApplicationSettingsProvider>()) // make this part visible to MEF components
-             .SingleInstance();
+{% highlight csharp %}
+container.RegisterType<ApplicationSettingsProvider>()
+         .As<IApplicationSettingsProvider&gt;()
+         .Exported(x => x.As<IApplicationSettingsProvider>()) // make this part visible to MEF components
+         .SingleInstance();
 
-    container.RegisterType<PluginSettingsProvider>()
-             .As<IPluginSettingsProvider>()
-             .Exported(x => x.As<IPluginSettingsProvider>())
-             .SingleInstance();
+container.RegisterType<PluginSettingsProvider>()
+         .As<IPluginSettingsProvider>()
+         .Exported(x => x.As<IPluginSettingsProvider>())
+         .SingleInstance();
 
-    ...
+...
 
-    // register external plugins for consumption
-    container.RegisterComposablePartCatalog(catalog);
+// register external plugins for consumption
+container.RegisterComposablePartCatalog(catalog);
+{% endhighlight %}
 
 This allows for better separation between the application and external parts, and reduces effort required to register a component with both the IoC container and the CompositionContainer.
 
