@@ -1,10 +1,12 @@
 ---
 layout: post
-title: Why enable custom headers if they're a security risk?
+title: Why enable custom IIS headers by default if they're a security risk?
 date: 2013-04-25 16:00:00 +10:00
 ---
 
-Another customer is going through a pentest soon, and of course we have to switch off all the headers that IIS and ASP.NET serve up.
+I'm guiding another customer through a pentest review soon for an upcoming release, and of course we have to switch off all the headers that IIS and ASP.NET serve up to the user.
+
+In particuar:
 
  - Server
  - X-Powered-By
@@ -16,4 +18,4 @@ The worst part of all this is how there's three different spots to remove this:
  - X-Powered-By - defined in IIS
  - X-AspNet-Version - web.config setting
 
- Ugh
+Ugh. Someone tell me why they're enabled by default?
