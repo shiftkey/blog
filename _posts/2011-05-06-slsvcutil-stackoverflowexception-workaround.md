@@ -9,6 +9,7 @@ tags: "silverlight"
 icon: /img/main/error.jpg
 comments: true
 ---
+
 I've hit this issue before, but it took a bit of googling to remember the fix - especially since that little site called [stackoverflow][1] came into the mix :)
 
 [1]: http://www.stackoverflow.com/

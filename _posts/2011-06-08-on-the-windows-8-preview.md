@@ -9,6 +9,7 @@ icon: /img/main/win8.jpg
 description: Some thoughts on the initial reaction to the announcement of HTML/JS within Windows 8
 comments: true
 ---
+
 For those who haven't seen it, this video was announced last week about how the Windows 8 UI is changing: [http://www.youtube.com/watch?v=p92QfWOw88I][1]
 
 [1]: http://www.youtube.com/watch?v=p92QfWOw88I

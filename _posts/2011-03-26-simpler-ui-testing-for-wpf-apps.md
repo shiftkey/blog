@@ -8,10 +8,11 @@ date: 2011-03-26 14:00:00 +11:00
 tags: "wpf testing"
 comments: true
 ---
+
 After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
 to paper and revisit why I started down this path. 
 
-**Some background**
+## Some background
 
 The current project I am working on is a large data-driven WPF application, with a lot of complex scenarios to
 identify, develop and test. There is a group of testers on the project, but I can see an opportunity to use 
@@ -20,7 +21,7 @@ automated testing to verify functionality and allow testers to focus on areas of
 Yes, there are frameworks like [White][2] or Coded UI Tests, but these tools were designed with developers in mind.
 You have to write code like [this][1] to drive the tests, and the tests are commonly written after the feature is implemented.
 
-**Enter Automated Acceptance Testing**
+## Enter Automated Acceptance Testing
 
 In an ideal world, business users would define tests in an English-like language, which can then be translated into an executable 
 script and run against the application. 
@@ -31,7 +32,7 @@ What I'm looking for in a framework for defining use cases:
  - flexible with syntax for test cases - tailor scripts to suit people involved, while remaining declarative
  - integrate into deployment process to verify builds automated
 
-**Some inspiration from obscure corners**
+## Some inspiration from obscure corners
 
 When I first saw the syntax for [webrat][1], I was intrigued and jealous. To declare a test like this:
 
@@ -52,7 +53,7 @@ So I spent some time this week experimenting with various ways of achieving this
 
 I'm using rspec at the moment to run the test cases, and IronRuby and White to support the integration with the hosted WPF application.
 
-**What does a test for the WPF application look like?**
+## What does a test for the WPF application look like?
 
     describe "new customers screen" do
 

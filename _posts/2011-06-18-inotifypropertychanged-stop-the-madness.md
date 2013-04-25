@@ -9,6 +9,7 @@ tags: "wpf silverlight wp7 soapbox"
 icon: /img/main/soapbox.jpg
 comments: true
 ---
+
 Its time to stop with this madness.
 
 Apologies again to [Ian][1] as I picked on him unnecessarily when I read yet another "Let's make OnPropertyChanged compile safe" [blog post][2] yesterday.
@@ -106,7 +107,7 @@ Fine, let's add a dictionary to capture the event arguments, instead of recreati
     {
         protected void OnPropertyChanged(Expression<Func<object>> lambda)
         {
-            // Go read Paul (and especially Miguel's comment) about this [here][6]. I'll wait...
+            // magic happens here
         }
 		
         private IDictionary<string, PropertyChangedEventArgs> _handlers = new Dictionary<string, PropertyChangedEventArgs>		
@@ -148,9 +149,9 @@ We use INotifyPropertyChanged in many places when doing XAML-based applications 
 
 We need the ability to apply the INotifyPropertyChanged behaviour in an automatic way. Of course, there are various tradeoffs to consider - which I'll outline from my experiences.
 
-## What Next?
+## Further Reading
 
-I need to wrap this post up before it becomes even longer, so until my next post - where I'll discuss how AOP flips all this discussion on its ear - readers can get ahead by reading these links:
+I need to wrap this post up before it becomes even longer, but you can go and read on about these concepts:
 
 **Sacha Barber - [Aspect Examples (INotifyPropertyChanged via Aspects)][8]**
 

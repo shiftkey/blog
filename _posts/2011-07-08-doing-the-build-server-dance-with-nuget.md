@@ -9,6 +9,7 @@ icon: /img/main/nuget.png
 tags: "nuget myget teamcity"
 comments: true
 ---
+
 I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with. 
 
 And with NuGet in the enterprise being the [upcoming hotness][1], I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.
@@ -130,12 +131,6 @@ Aaaaand...
 <p><a href="img/posts/NuGet/installedpackages.png"><img src="img/posts/NuGet/installedpackages-small.png" alt="Success!" /></a></p>
 
 Booyah!
-
-## TODO
-
- - submit patch for making update more "correct" ?
- - demonstrate how to add to VS tooling and how it changes dev story
- - some documentation on managing upstream dependencies
 
   [1]: http://www.hanselman.com/blog/NuGetForTheEnterpriseNuGetInAContinuousIntegrationAutomatedBuildSystem.aspx
   [2]: http://twitter.com/damianedwards
