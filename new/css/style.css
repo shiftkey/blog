@@ -256,6 +256,11 @@
 	margin-left: 2em;
 }
 
+.subpage ol {
+	list-style-type: decimal;
+	margin-left: 2em;
+}
+
 blockquote {
   font: 14px/22px normal helvetica, sans-serif;
   margin-top: 10px;
@@ -264,3 +269,19 @@ blockquote {
   padding-left: 15px;
   border-left: 3px solid #ccc;
 } 
+
+pre { 
+	margin-bottom: 1em;
+}
+
+pre code {
+	font-family: sans-serif;
+}
+
+strong {
+	font-weight: 800;
+}
+
+em {
+	font-style: italic;
+}

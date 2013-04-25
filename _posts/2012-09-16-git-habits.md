@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: My Git Habits
 permalink: /notes/my-git-habits.html
 description: Someone asked me to write down some notes about my git habits. I'm putting them up here as well for anyone else who cares.
