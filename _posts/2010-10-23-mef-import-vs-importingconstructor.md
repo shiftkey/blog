@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: MEF - [Import] vs [ImportingConstructor]
 permalink: /mef-import-vs-importingconstructor.html
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for

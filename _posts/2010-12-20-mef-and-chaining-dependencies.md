@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: MEF and Chaining Dependencies
 permalink: /mef-and-chaining-dependencies.html
 description: A quick blog example of how to use contracts within MEF to handle complex dependency chains
@@ -10,8 +10,8 @@ comments: true
 ---
 A [question][1] came up on the MEF discussion board recently (today?) about how to handle a complex graph of dependencies. Although it was "solved" - and I suspect it was a case of missing the required assembly, going by what info was at hand - it still prompted me to dig into how one can go beyond the basics.
 
-Scenario
------------------------------
+## Scenario
+
 Imagine you have an application that calls off different services to execute tasks. Rather than hard-coding the services into the application, these can be defined as parts which are composed at runtime using MEF.
 
 But the relationship between the application and the services is not straightforward, which gives a dependency graph similar to the below image:
@@ -20,11 +20,10 @@ But the relationship between the application and the services is not straightfor
 
 What should we do now?
 
-As MEF uses the concept of a "contract" to resolve the [Import] and [Export]; statements sprinkled within an application, this ultimately comes down to two similar approaches.
+As MEF uses the concept of a "contract" to resolve the `[Import]` and `[Export]` statements sprinkled within an application, this ultimately comes down to two similar approaches.
 
 
-Using Contract Names
------------------------------
+## Using Contract Names
 
 If the Proxy and Service implementations are equivalent - so we can avoid using distinct interfaces for behaviour which is identical - then we can use the same interface and specify a different contract for each extensibiity point defined in the application.
 
@@ -46,10 +45,11 @@ And our simple client can use the corresponding [Export] statement.
 
 Our complex dependency has a bit more code, but it can be broken down into two main features:
 
-The contract which it satisfies - **Contoso.Application** and **IServiceProxy**
-
-The contract which it requires - **Contoso.External** and **IServiceProxy**
+ - The contract which it satisfies - **Contoso.Application** and **IServiceProxy**
+ - The contract which it requires - **Contoso.External** and **IServiceProxy**
     
+Which looks like this:
+
     [Export("Contoso.Application", typeof(IServiceProxy))]
     public class ActualProxy : IServiceProxy
     {
@@ -59,19 +59,16 @@ The contract which it requires - **Contoso.External** and **IServiceProxy**
         // implementation here
     }
 
-
 So while reusing the same interface, we can specify *how* the parts relate.
 
-
-Using Contract Types
------------------------------
+## Using Contract Types
 
 If the behaviour of the proxy and the actual service are different, then we can just use the types to represent the contract.
 
     public class ConsumingApplication
     {
         [ImportMany(typeof(IServiceProxy))]
-        public IEnumerable&lt;IServiceProxy&gt; Services { get; set; }
+        public IEnumerable<IServiceProxy> Services { get; set; }
 
         // implementation here
     }
@@ -86,26 +83,25 @@ The exported contract becomes:
 
 And our complex part still has two contracts:
 
-The contract which it satisfies - the **IServiceProxy** contract.
+ - The contract which it satisfies - the **IServiceProxy** contract.
 
-The contract which it requires - the **IService** contract (implicit due to the awesomeness of ImportMany)
+ - The contract which it requires - the **IService** contract (implicit due to the awesomeness of ImportMany)
+
+Which looks like this:
 
     [Export(typeof(IServiceProxy))]
     public class ActualProxy : IServiceProxy
     {
         [ImportMany]
-        public IEnumerable&lt;IService&gt; Services { get; set; }
+        public IEnumerable<IService> Services { get; set; }
 
         // implementation here
     }
 
-No more magic strings, while still being able to declare
 
+## And finally, InheritedExport
 
-And finally, InheritedExport
------------------------------
-
-To really simplify the contracts, you can use [InheritedExport] on the interface. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.
+To really simplify the contracts, you can decorate the interface with the `[InheritedExport]` attribute. This declares to MEF that all types which implement the interface should be used as exported parts, using the interface type as the contract.
 
 So I annotate both interfaces:
 
@@ -115,7 +111,7 @@ So I annotate both interfaces:
         // code here
     }
 
-    &#91;InheritedExport&#92;
+    [InheritedExport]
     public interface IService
     {
         // code here
@@ -131,7 +127,7 @@ and can eliminate all other [Export] attributes from the codebase:
     public class ActualProxy : IServiceProxy
     {
         [ImportMany]
-        public IEnumerable&lt;IService&gt; Services { get; set; }
+        public IEnumerable<IService> Services { get; set; }
 
         // implementation here
     }
