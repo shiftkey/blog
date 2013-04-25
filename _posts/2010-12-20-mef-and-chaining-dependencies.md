@@ -30,7 +30,7 @@ If the Proxy and Service implementations are equivalent - so we can avoid using 
     public class ConsumingApplication
     {
         [ImportMany("Contoso.Application", typeof(IServiceProxy))]
-        public IEnumerable&lt;IServiceProxy&gt; Services { get; set; }
+        public IEnumerable<IServiceProxy> Services { get; set; }
         
         // implementation here
     }
@@ -54,7 +54,7 @@ Which looks like this:
     public class ActualProxy : IServiceProxy
     {
         [ImportMany("Contoso.External")]
-        public IEnumerable&lt;IServiceProxy&gt; Services { get; set; }
+        public IEnumerable<IServiceProxy> Services { get; set; }
 
         // implementation here
     }
