@@ -22,9 +22,13 @@
 	{
 		color: #474f51;
 		font-size: 13.5pt;
-		font-family: 'Yanone Kaffeesatz';
+		font-family: 'Droid Sans', sans-serif;
 		line-height: 1.85em;
-		font-weight: 300;
+		font-weight: 400;
+	}
+
+	h1,h2,h3,h4,h5,h6,h7 {
+		font-family: 'Yanone Kaffeesatz';
 	}
 
 	ul, ol, p, dl

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Projects
-icon: /img/main/git.png
 ---
 So this is where I'll list off the various projects I've worked on/am working on.
 

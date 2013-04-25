@@ -170,6 +170,7 @@ body, input, textarea, select
 
 		#content section
 		{
+			font-size: 0.8em;
 			background: #fff;
 			box-shadow: inset 0px 0px 0px 1px rgba(128,128,128,0.2);
 			padding: 30px 15px 30px 15px;
@@ -178,7 +179,7 @@ body, input, textarea, select
 	
 		#content h2
 		{
-			font-size: 1.25em;
+			font-size: 1.8em;
 			color: #373f42;
 			margin: 0 0 0.1em 0;
 		}
@@ -186,7 +187,7 @@ body, input, textarea, select
 		#content h3
 		{
 			color: #96a9b5;
-			font-size: 1em;
+			font-size: 1.5em;
 		}
 		
 		#content a
