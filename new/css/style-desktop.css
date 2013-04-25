@@ -83,7 +83,7 @@
 		{
 			position: absolute;
 			right: 0;
-			bottom: 35px;
+			bottom: 25px;
 			font-weight: 200;
 		}
 	
@@ -91,7 +91,7 @@
 			{
 				color: #c6c8c8;
 				text-decoration: none;
-				font-size: 1.4em;
+				font-size: 2.0em;
 				margin-left: 60px;
 				outline: 0;
 			}

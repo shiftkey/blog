@@ -289,3 +289,8 @@ strong {
 em {
 	font-style: italic;
 }
+
+#header nav a {
+	font-family: 'Yanone Kaffeesatz';
+	font-size: 1.9em;
+}
