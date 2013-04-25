@@ -1,6 +1,4 @@
 ---
 layout: blog_list
-title: Blog
+title: Blog Archive
 ---
-
-Here's an archive of all my blog posts
