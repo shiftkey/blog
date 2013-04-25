@@ -250,3 +250,8 @@
 .subpage #content section img {
 	max-width: 100%;
 }
+
+.subpage ul {
+	list-style-type: disc;
+	margin-left: 2em;
+}
