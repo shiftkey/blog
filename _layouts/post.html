@@ -24,78 +24,61 @@
 		<!--[if lte IE 8]><script src="/new/js/html5shiv.js"></script><![endif]-->
 	</head>
 	<body class="subpage">
-	
-		<!-- Header -->
-			<div id="header-wrapper">
-				<header id="header" class="5grid 5grid-container">
+		<div id="header-wrapper">
+			<header id="header" class="5grid 5grid-container">
+				<div class="row">
+					<div class="12u">
+						<h1><a href="/" id="logo">brendan forster</a></h1>
+						<nav id="nav">
+							<a href="/">Home</a>
+							<a href="/projects/">Projects</a>
+							<a href="/blog/">Blog</a>
+							<a href="/notes/">Drafts &amp; Notes</a>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<div id="content-wrapper">
+			<div id="content">
+				<div class="5grid 5grid-container">
 					<div class="row">
 						<div class="12u">
-
-							<!-- Logo -->
-								<h1><a href="/" id="logo">brendan forster</a></h1>
-							
-							<!-- Nav -->
-								<nav id="nav">
-									<a href="/projects/">Projects</a>
-									<a href="/blog/">Blog</a>
-									<a href="/notes/">Drafts &amp; Notes</a>
-									<a href="/">Home</a>
-								</nav>
-
-						</div>
-					</div>
-				</header>
-			</div>
-
-		<!-- Content -->
-			<div id="content-wrapper">
-				<div id="content">
-					<div class="5grid 5grid-container">
-						<div class="row">
-							<div class="12u">
-							
-								<!-- Main Content -->
-									<section>
-										<header>
-											<h2>{{page.title}}</h2>
-											<h3>{{page.description}}</h3>
-										</header>
-
-										{{content}}
-										
-									</section>
-
-							</div>
+							<section>
+								<header>
+									<h2>{{page.title}}</h2>
+									<h3>{{page.description}}</h3>
+								</header>
+								{{content}}
+							</section>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-		<!-- Footer -->
-			<div id="footer-wrapper">
-				<footer id="footer" class="5grid 5grid-container">
-					<div class="row">
-						<div class="12u">
-							
-							<!-- Blurb -->
-								<section>
-									<h2>An Informative Text Blurb</h2>
-									<p>
-										Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. Suspendisse eu 
-										varius nibh. Suspendisse vitae magna eget odio amet mollis. Duis neque nisi, 
-										dapibus sed mattis quis, sed rutrum accumsan sed. Suspendisse eu varius nibh 
-										lorem ipsum amet dolor sit amet lorem ipsum consequat gravida justo mollis.
-									</p>
-								</section>
-						
-						</div>
+		<!--<div id="footer-wrapper">
+			<footer id="footer" class="5grid 5grid-container">
+				<div class="row">
+					<div class="12u">
+						<section>
+							<h2>An Informative Text Blurb</h2>
+							<p>
+								Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. Suspendisse eu 
+								varius nibh. Suspendisse vitae magna eget odio amet mollis. Duis neque nisi, 
+								dapibus sed mattis quis, sed rutrum accumsan sed. Suspendisse eu varius nibh 
+								lorem ipsum amet dolor sit amet lorem ipsum consequat gravida justo mollis.
+							</p>
+						</section>
 					</div>
-				</footer>
-			</div>
+				</div>
+			</footer>
+		</div>-->
 
 		<!-- Copyright -->
 			<div id="copyright">
-				&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a> | Images: <a href="http://fotogrph.com">fotogrph</a>
+				&copy; Brendan Forster. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike</a> license unless otherwise stated. | Design: <a href="http://html5up.net">HTML5 UP</a> | Images: <a href="http://fotogrph.com">fotogrph</a>
 			</div>
 
 	</body>
