@@ -5,7 +5,7 @@
 */
 
 window._5grid_config = {
-	prefix: 'css/style',
+	prefix: '/new/css/style',
 	preset: 'legacy'
 };
 
