@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: Hello World
 permalink: /hello-world.html
 description: Just a quick introductory post to kick things off.

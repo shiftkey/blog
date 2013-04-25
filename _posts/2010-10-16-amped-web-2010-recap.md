@@ -1,5 +1,5 @@
 --- 
-layout: old-post
+layout: post
 title: Amped Web 2010 Recap
 permalink: /amped-web-2010-recap.html
 description: The Amped Web day is a hack event for developers and designers to throw ideas around. This is the story of what happened to me and my team.

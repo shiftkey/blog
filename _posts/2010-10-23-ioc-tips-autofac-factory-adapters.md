@@ -1,15 +1,15 @@
 --- 
-layout: old-post
+layout: post
 title: IoC Tips - Autofac Factory Adapters
 permalink: /ioc-tips-autofac-factory-adapters.html
-description: A recap of leveraging inversion of control techniques to simplify an existing application
+description: A walkthough about applying inversion of control techniques to simplify an existing application
 funnelweb_id: 4
 date: 2010-10-23 14:00:00 +11:00
 tags: "autofac .net"
 comments: true
 ---
-Scenario
------------------------------
+
+## Scenario
 
 A team has a change request come in from the business. For one of their screens, a timer should count up when a user pauses the current task.
 
@@ -28,7 +28,7 @@ As the application was already using an IoC container (Autofac), and a timer was
 
 And from there they added in the additional code required, and the business was happy. And there was much rejoicing. But the team noticed that they were duplicating the same type in the constructor. Can the team do it better?
 
-Rather than explicitly defining the two instances, the team can replace both instances with a factory adapter. In .NET, this can be represented as a Func%lt;T%gt; object - a method which requires no inputs and returns an instance of type T:
+Rather than explicitly defining the two instances, the team can replace both instances with a factory adapter. In .NET, this can be represented as a `Func<T>` object - a method which requires no inputs and returns an instance of type T:
 
 	public ScheduledBackupService(
 	      ... , 
@@ -48,9 +48,7 @@ To fix the compiler error from changing the constructor signature, the test code
 		            () => MockRepository.GenerateStub<ITimer>());
 	}
 
-
-What about those unit tests?
------------------------------
+## What about those unit tests?
 
 What if we need to use the mock object in a unit test - to raise events or stub methods? We can't track them if we use the function defined above...
 
@@ -101,8 +99,7 @@ And our tests remain clean and readable:
     }
 
 
-What else can I do from the container?
------------------------------
+## What else can I do from the container?
 
 Nicholas Blumhardt, maintainer of Autofac, has a [detailed entry][1] which discusses the different possible relationships between components, and how Autofac defines them. While the article is Autofac-centric, many of the other inversion of control containers for the .NET Framework support some of the features already.
 
