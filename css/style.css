@@ -1,434 +1,296 @@
-/* @import url(mylibs/forms.css); */
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
 
-/* 320
-
-_____________________________________________________
-
-320 and Up boilerplate extension
-
-Author: Andy Clarke
-Version: 0.9b
-URL: http://stuffandnonsense.co.uk/projects/320andup/
-License: http://creativecommons.org/licenses/MIT/
-_____________________________________________________
-
-1.ROOT
-2.HEADINGS
-3.TYPOGRAPHY
-4.LINKS
-5.FIGURES & IMAGES
-6.TABLES
-7.FORMS (See css/mylibs/forms.css)
-8.BANNER — header[role="banner"]
-9.NAVIGATION — nav[role="navigation"]
-10.CONTENT
-11.MAIN — div[role="main"]
-12.COMPLIMENTARY — div[role="complementary"]
-13.CONTENTINFO — footer[role="contentinfo"]
-14.GLOBAL OBJECTS
-15.VENDOR-SPECIFIC 
-16.TEMPLATE SPECIFICS
-17.MODERNIZR
-
-COLOURS 
-
+/*
+	Halcyonic 3.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-margin : 0;
-padding : 0;
-border : 0;
-font-size : 100%;
-font : inherit;
-vertical-align : baseline; }
+/*********************************************************************************/
+/* Global                                                                        */
+/*********************************************************************************/
 
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-display : block; }
+/* Basic */
 
-blockquote, q { 
-quotes : none; }
+	body
+	{
+		background: #D4D9DD url('images/bg03.jpg');
+	}
 
-blockquote:before, 
-blockquote:after,
-q:before, 
-q:after { 
-content : ""; content: none; }
+	body, input, textarea, select
+	{
+		color: #474f51;
+		font-size: 13.5pt;
+		font-family: 'Droid Sans', sans-serif;
+		line-height: 1.85em;
+		font-weight: 400;
+	}
 
-del { 
-text-decoration : line-through; }
+	h1,h2,h3,h4,h5,h6,h7 {
+		font-family: 'Yanone Kaffeesatz';
+	}
 
-ins { 
-background-color : rgb(255,255,153); 
-color : rgb(0,0,0); 
-text-decoration : none; }
+	ul, ol, p, dl
+	{
+		margin: 0 0 1em 0;
+	}
 
-mark { 
-background-color : rgb(255,255,153); 
-color : rgb(0,0,0); 
-font-style : italic; 
-font-weight : bold; }
+	a
+	{
+		text-decoration: none;
+	}
+	
+	a:hover
+	{
+		text-decoration: underline;
+	}
 
-abbr[title], 
-dfn[title] { 
-border-bottom : 1px dotted; 
-cursor : help; }
+	section > :last-child, .last-child
+	{
+		margin-bottom: 0 !important;
+	}
 
-table { 
-border-collapse : collapse; 
-border-spacing : 0; }
+/* Multi-use */
 
-hr { 
-display : block; 
-height : 1px; 
-border : 0; 
-border-top : 1px solid rgb(204,204,204);
-margin : 1em 0; 
-padding : 0; }
+	.link-list
+	{
+	}
+	
+		.link-list li
+		{
+			padding: 0.2em 0 0.2em 0;
+		}
+		
+		.link-list li:first-child
+		{
+			padding-top: 0 !important;
+			border-top: 0 !important;
+		}
+		
+		.link-list li:last-child
+		{
+			padding-bottom: 0 !important;
+			border-bottom: 0 !important;
+		}
 
-/* 1.ROOT */
+		#content .link-list li
+		{
+			border-bottom: solid 1px #e2e6e8;
+		}
 
-html {
-overflow-y : scroll;
-background : rgb(255,255,255) /* url(../img/tmp/grid.png) repeat-y 50% 0 */; }
+		#footer .link-list li
+		{
+			border-top: solid 1px #e0e4e6;
+			border-bottom: solid 1px #b5bec3;
+		}
 
-body { 
-margin : 0 auto;
-padding : 24px 0;
-width : 90% /* 252px */;
-font : 100%/1.4 Calibri, Cambria, 'Droid Sans', Georgia, sans-serif;
-color : rgb(40,40,40); 
-background-color : transparent; }
+	.quote-list
+	{
+	}
+	
+		.quote-list li
+		{
+			padding: 1em 0 1em 0;
+			overflow: hidden;
+		}
+		
+		.quote-list li:first-child
+		{
+			padding-top: 0 !important;
+			border-top: 0 !important;
+		}
 
-/* 2.HEADINGS */
+		.quote-list li:last-child
+		{
+			padding-bottom: 0 !important;
+			border-bottom: 0 !important;
+		}
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6 {
-font-family : "Helvetica Neue", Helvetica, Arial;
-font-weight : bold; }
+			.quote-list li img
+			{
+				float: left;
+			}
 
-h1 { 
-margin-bottom : .75em;
-font-size : 3em; /* 48 / 16 = 3 */
-line-height : 1.2; }
+			.quote-list li p
+			{
+				margin: 0 0 0 90px;
+				font-size: 1.2em;
+				font-style: italic;
+			}
+			
+			.quote-list li span
+			{
+				display: block;
+				margin-left: 90px;
+				font-size: 0.9em;
+				font-weight: 400;
+			}
 
-h2 { 
-margin-bottom : .75em;
-font-size : 2em; /* 36 / 16 = 2 */
-line-height : 1.2; }
+		#content .quote-list li
+		{
+			border-bottom: solid 1px #e2e6e8;
+		}
 
-h3 { 
-margin-bottom : 1em;
-font-size : 1.5em; /* 24 / 16 = 1.5 */
-line-height : 1.3; }
+		#footer .quote-list li
+		{
+			border-top: solid 1px #e0e4e6;
+			border-bottom: solid 1px #b5bec3;
+		}
+	
+	.check-list
+	{
+	}
 
-h4 { 
-margin-bottom : 1.25em;
-font-size : 1.25em; /* 20 / 16 = 1.25 */
-line-height : 1.25; }
+		.check-list li
+		{
+			padding: 0.7em 0 0.7em 45px;
+			font-size: 1.2em;
+			background: url('images/icon-checkmark.png') 0px 1.05em no-repeat;
+		}
+		
+		.check-list li:first-child
+		{
+			padding-top: 0 !important;
+			border-top: 0 !important;
+			background-position: 0 0.3em;
+		}
 
-h5 { 
-margin-bottom : 1.5em;
-font-size : 1em; /* 16 / 16 = 1 */ }
+		.check-list li:last-child
+		{
+			padding-bottom: 0 !important;
+			border-bottom: 0 !important;
+		}
 
-h6 { 
-font-size : 1em; /* 16 / 16 = 1 */ }
+		#content .check-list li
+		{
+			border-bottom: solid 1px #e2e6e8;
+		}
 
-/* 3.TYPOGRAPHY */
+		#footer .check-list li
+		{
+			border-top: solid 1px #e0e4e6;
+			border-bottom: solid 1px #b5bec3;
+		}
+		
+	.feature-image
+	{
+		display: block;
+		margin: 0 0 2em 0;
+		outline: 0;
+	}
+	
+		.feature-image img
+		{
+			display: block;
+			width: 100%;
+		}
 
-p, 
-ol, 
-ul, 
-dl, 
-address { 
-margin-bottom : 1.5em; 
-font-size : 1em; /* 16 / 16 = 1 */ }
+	.bordered-feature-image
+	{
+		display: block;
+		background: #fff url('images/bg04.png');
+		padding: 3px;
+		box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.15);
+		margin: 0 0 1.5em 0;
+		outline: 0;
+	}
+	
+		.bordered-feature-image img
+		{
+			display: block;
+			width: 100%;
+		}
+	
+	.button-big
+	{
+		display: inline-block;
+		background: #ed391b;
+		color: #fff;
+		text-decoration: none;
+		font-size: 1.75em;
+		font-weight: 300;
+		padding: 15px 45px 15px 45px;
+		outline: 0;
+		border-radius: 10px;
+		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.75), inset 0px 2px 0px 0px rgba(255,192,192,0.5), inset 0px 0px 0px 2px rgba(255,96,96,0.85), 3px 3px 3px 1px rgba(0,0,0,0.15);
+		background-image: -moz-linear-gradient(top, #ed391b, #ce1a00);
+		background-image: -webkit-linear-gradient(top, #ed391b, #ce1a00);
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ed391b), to(#ce1a00));
+		background-image: -ms-linear-gradient(top, #ed391b, #ce1a00);
+		background-image: -o-linear-gradient(top, #ed391b, #ce1a00);
+		background-image: linear-gradient(top, #ed391b, #ce1a00);
+		text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
+	}
 
-ul, 
-ol { 
-margin : 0 0 1.5em 0px; 
-padding-left : 24px; }
+	.button-big:hover
+	{
+		background: #fd492b;
+		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.75), inset 0px 2px 0px 0px rgba(255,192,192,0.5), inset 0px 0px 0px 2px rgba(255,96,96,0.85), 3px 3px 3px 1px rgba(0,0,0,0.15);
+		background-image: -moz-linear-gradient(top, #fd492b, #de2a10);
+		background-image: -webkit-linear-gradient(top, #fd492b, #de2a10);
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fd492b), to(#de2a10));
+		background-image: -ms-linear-gradient(top, #fd492b, #de2a10);
+		background-image: -o-linear-gradient(top, #fd492b, #de2a10);
+		background-image: linear-gradient(top, #fd492b, #de2a10);
+	}
 
-ul { 
-list-style-type : disc; }
+	.button-big:active
+	{
+		background: #ce1a00;
+		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.75), inset 0px 2px 0px 0px rgba(255,192,192,0.5), inset 0px 0px 0px 2px rgba(255,96,96,0.85), 3px 3px 3px 1px rgba(0,0,0,0.15);
+		background-image: -moz-linear-gradient(top, #ce1a00, #ed391b);
+		background-image: -webkit-linear-gradient(top, #ce1a00, #ed391b);
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ce1a00), to(#ed391b));
+		background-image: -ms-linear-gradient(top, #ce1a00, #ed391b);
+		background-image: -o-linear-gradient(top, #ce1a00, #ed391b);
+		background-image: linear-gradient(top, #ce1a00, #ed391b);
+	}
 
-ol { 
-list-style-type : decimal; }
 
-li ul, 
-li ol { 
-margin : 0;
-font-size : 1em; /* 16 / 16 = 1 */ }
 
-dl, 
-dd { 
-margin-bottom : 1.5em; }
+/* custom styles */
 
-dt { 
-font-weight : normal; }
+.subpage #content section img {
+	max-width: 100%;
+}
 
-blockquote  { 
-margin : 0 0 1.5em -24px; 
-padding-left : 24px; 
-border-left : 1px solid rgb(200,200,200);
-font-style : italic; }
+.subpage ul {
+	list-style-type: disc;
+	margin-left: 2em;
+}
 
-blockquote:before, 
-blockquote:after, 
-q:before, 
-q:after {
-content : '';
-content : none; }
+.subpage ol {
+	list-style-type: decimal;
+	margin-left: 2em;
+}
 
-b, 
-strong	{ 
-font-weight : bold; }
-
-i, 
-em { 
-font-style : italic; }
-
-sup, 
-sub { 
-position : relative;
-font-size : 75%; 
-line-height : 0; }
-
-sup { 
-top : -.5em; }
-
-sub { 
-bottom : -.25em; }
-
-address { 
-font-style : normal; }
+blockquote {
+  font: 14px/22px normal helvetica, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
+} 
 
 pre { 
-margin-bottom : 1.5em; 
-white-space : pre; 
-white-space : pre-wrap; 
-word-wrap : break-word; }
+	margin-bottom: 1em;
+}
 
-pre, 
-code { 
-font : .875em 'andale mono', 'lucida console', monospace; 
-line-height : 1.5; }
+pre code {
+	font-family: sans-serif;
+}
 
-small {
-font-size : 1em; /* 16 / 16 = 1 */ }
+strong {
+	font-weight: 800;
+}
 
-/* 4.LINKS */
+em {
+	font-style: italic;
+}
 
-a, 
-a:visited {
-outline : none;
-color : rgb(23,119,175);
-text-decoration : none; }
- 
-a:hover { 
-outline : none;
-color : rgb(40,40,40); 
-text-decoration : underline; }
- 
-a:active, 
-a:focus { 
-outline : none;
-color : rgb(0,0,0); }
-
-/* 5.FIGURES & IMAGES */
-
-figure {
-margin-bottom : 1.5em; }
-
-figure img,
-figure object,
-figure embed {
-margin-bottom : .75em;
-max-width : 100%; }
-
-figcaption {
-display : block;
-font-weight : normal; }
-
-/* 6.TABLES */
-
-table { 
-border-collapse : collapse;
-border-spacing : 0;
-margin-bottom : 1.4em; 
-width : 100%;
-font-size : .875em; /* 14 / 16 = .875 */ }
-
-th { 
-font-weight : bold; }
-
-th, td, caption { 
-padding : .25em 10px .25em 5px; }
-
-tfoot { 
-font-style : italic; }
-
-caption { 
-background-color : transparent; }
-
-/* 7.FORMS (See css/mylibs/forms.css) */
-
-/* 8.BANNER */
-/* 9.NAVIGATION */
-/* 10.CONTENT */
-/* 11.MAIN */
-/* 12.COMPLIMENTARY */
-/* 13.CONTENTINFO */
-
-/* 14.GLOBAL OBJECTS */
-
-.clearfix { 
-zoom : 1; }
-
-.clearfix:before, 
-.clearfix:after { 
-content : "\0020"; 
-display : block; 
-height : 0; 
-overflow : hidden; }
-
-.clearfix:after { 
-clear : both; }
-
-/* 15.VENDOR-SPECIFIC */
-
-body {
--webkit-text-size-adjust : 100%; 
--ms-text-size-adjust : 100%; }
-
-a:link { 
--webkit-tap-highlight-color : rgb(52,158,219); }
-
-::-webkit-selection { 
-background : rgb(23,119,175); 
-color : rgb(250,250,250); 
-text-shadow : none; }
-
-::-moz-selection { 
-background : rgb(23,119,175); 
-color : rgb(250,250,250); 
-text-shadow : none; }
-
-::selection { 
-background : rgb(23,119,175); 
-color : rgb(250,250,250); 
-text-shadow : none; }
-
-/* input[type=search] {
--webkit-appearance : none; }
-
-input[type="search"]::-webkit-search-decoration, 
-input[type="search"]::-webkit-search-cancel-button {
-display : none; } */
-
-::-webkit-input-placeholder {
-padding : 10px;
-font-size : .875em; 
-line-height : 1.4; }
-
-input:-moz-placeholder { 
-padding : 10px;
-font-size : .875em; 
-line-height : 1.4; }
-
-.ie7 img,
-.iem7 img { 
--ms-interpolation-mode : bicubic; }
-
-div,
-input,
-textarea  { 
--webkit-box-sizing : border-box;
--moz-box-sizing : border-box;
--o-box-sizing : border-box;
-box-sizing : border-box; }
-
-/* Non-semantic helper classes */
-
-/* Image replacement */
-.ir { 
-display : block; 
-text-indent : -999em; 
-overflow : hidden; 
-background-repeat : no-repeat; 
-text-align : left; 
-direction : ltr; }
-
-/* Hide for screenreaders and visual browsers */
-.hidden { 
-display : none; 
-visibility : hidden; }
-
-/* Hide visually */
-.visuallyhidden { 
-position : absolute;
-clip : rect(0 0 0 0); 
-overflow : hidden;
-margin: -1px;
-padding : 0;
-height : 1px;      
-width : 1px;
-border : 0; }
-
-/* Allow an element to be focusable via keyboard  */
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus { 
-position : static;
-clip : auto; 
-overflow : visible;
-height : auto; 
-margin : 0;   
-width : auto; }
-
-/* Hide but maintain layout */
-.invisible { 
-visibility : hidden; }
-
-/* 16.TEMPLATE SPECIFICS */
-
-#goog-fixurl ul  {
-list-style-type : none; }
-
-#goog-fixurl input  {
-margin-bottom : 1.5em; }
-
-/* 17.MODERNIZR */
-
-/* 
-Sources: 
-http://meyerweb.com/eric/tools/css/reset
-http://people.opera.com/patrickl/experiments/keyboard/test
-http://gist.github.com/413930
-http://pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap
-http://sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars
-http://tjkdesign.com/ez-css/css/base.css
-http://viget.com/inspire/styling-the-button-element-in-internet-explorer
-http://code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing
-http://html5doctor.com/html-5-reset-stylesheet/
-http://praegnanz.de/weblog/htmlcssjs-kickstart/
-http://camendesign.com/design/
-http://yui.yahooapis.com/2.8.1/build/base/base.css
-http://webaim.org/techniques/css/invisiblecontent/
-http://drupal.org/node/897638
-*/
+#header nav a {
+	font-family: 'Yanone Kaffeesatz';
+	font-size: 1.9em;
+}
