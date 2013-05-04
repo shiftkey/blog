@@ -8,7 +8,7 @@ icon: /img/main/me.jpg
 comments: true
 ---
 
-I'm guiding another customer through a pentest review soon for an upcoming release, and of course we have to switch off all the headers that IIS and ASP.NET serve up to the user.
+I just finished another project with a customer which involved a pentest (penetration testing) review for their upcoming launch. And as usual, this involves hiding a bunch of headers that IIS and ASP.NET serve up on each response.
 
 In particuar:
 
