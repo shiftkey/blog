@@ -13,21 +13,97 @@ In particuar:
  - X-AspNet-Version (from ASP.NET)
  - X-AspNetMvc-Version (from ASP.NET MVC)
 
-It's not a hard process, but you have to do three different things to switch them all off:
+Why? Because sending these headers in your response exposes information about your server to clients (including bad guys)
 
- - Server - add an ASP.NET Module to wireup an event handler for the PreSendRequestHeaders 
- - X-Powered-By - configure IIS or web.config change
- - X-AspNet-Version - web.config change
- - X-AspNetMvc-Version - code change
+## NuGet all my pain away
 
-And of course I had to stop myself midway through explaining these steps and ask "Why are these even enabled by default?"
+So I was going to write a NuGet package to solve this problem but I was then pointed to this package from David Duffett - [Dinheiro.RemoveUnnecessaryHeaders](https://github.com/davidduffett/Dinheiro/tree/master/Dinheiro.RemoveUnnecessaryHeaders),=.
 
-## Let's solve this with NuGet
+You can do this by hand if you want, so I'll describe the package behaviour here to help understand what's going on:
 
-So I can picture a hypothetical NuGet package which will do all this:
+First, it applies a config transform to remove the `X-Powered-By` and `X-AspNet-Version` headers:
 
- - drop in a handler under the root of the project which solves 1
- - add in a web config transform to apply 1, 2 and 3.
- - use WebActivator and wireup a module to set the `MvcHandler` on startup
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <system.web>
+    <httpRuntime enableVersionHeader="false" />
+  </system.web>
+  <system.webServer>
+    <httpProtocol>
+      <customHeaders>
+        <remove name="X-Powered-By" />
+      </customHeaders>
+    </httpProtocol>
+  </system.webServer>
+</configuration>
+{% endhighlight %}
 
- 
+Next, we use `WebActivator` to hook into the `PreApplicationStart` event to run some custom behaviour:
+
+{% highlight csharp %}
+[assembly: WebActivator.PreApplicationStartMethod(typeof(MyWebApplication.App_Start.RemoveUnnecessaryHeaders), "Start")]
+{% endhighlight %}
+
+This method takes care of two things. The first is disabling the `X-AspNetMvc-Version` header, and then registering a module to remove the `Server` header.
+
+{% highlight csharp %}
+public static class RemoveUnnecessaryHeaders
+{
+    public static void Start()
+    {
+        DynamicModuleUtility.RegisterModule(typeof(RemoveUnnecessaryHeadersModule));
+        MvcHandler.DisableMvcResponseHeader = true;
+    }
+}
+{% endhighlight %}
+
+And there's an important note about this code - it's only supported for IIS7+. Just a heads up.
+
+{% highlight csharp %}
+public class RemoveUnnecessaryHeadersModule : IHttpModule
+{
+    public void Init(HttpApplication context)
+    {
+        // This only works if running in IIS7+ Integrated Pipeline mode
+        if (!HttpRuntime.UsingIntegratedPipeline) return;
+
+        context.PreSendRequestHeaders += (sender, e) =>
+        {
+            var app = sender as HttpApplication;
+            if (app != null && app.Context != null)
+            {
+                app.Context.Response.Headers.Remove("Server");
+            }
+        };
+    }
+
+    public void Dispose() { }
+}
+{% endhighlight %}
+
+## Defaults are good - except when they're not
+
+Just about all of the teams I've worked with have had this requirement as part of their go-live checklist (or raised by a security review) which made me think...
+
+*Why aren't these headers disabled by default?*
+
+I'm sure there's better (and safer) ways to track server statistics than serving this information to every client.
+
+## A footnote on X- Headers
+
+If this is the first you are reading about this issue, HTTP headers which are prefixed by X- are custom headers which are not part of the HTTP spec. It allows servers, frameworks and applications to include custom metadata in HTTP requests and responses.
+
+My favourite example of this is Twitter's Rate Limiting API, which sends custom headers with each API call that an application makes:
+
+    X-RateLimit-Limit: 350
+    X-RateLimit-Remaining: 350
+    X-RateLimit-Reset: 1277485629
+
+As a consumer of Twitter's API, my application would need to look for these headers and understand the values.
+
+Recently [Cristian](http://cprieto.com) pointed me at [RFC 6648](http://tools.ietf.org/html/rfc6648) which, as it clearly states, is about:
+
+> "Deprecating the "X-" Prefix and Similar Constructs in Application Protocols"
+
+It's very RFC-y in it's wording, but something to keep in mind when designing custom headers for your application to serve or handle in the future.
