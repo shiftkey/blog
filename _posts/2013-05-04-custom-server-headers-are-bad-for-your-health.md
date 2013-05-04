@@ -1,7 +1,11 @@
 ---
 layout: post
-title: Custom IIS headers are a security risk - why are they on by default?
-date: 2013-04-25 16:00:00 +10:00
+title: Custom server headers are bad for your health
+date: 2013-05-04 16:00:00 +10:00
+description: Wherein I jump up and down about something seemingly silly
+permalink: /blog/custom-server-headers-bad-for-your-health.html
+icon: /img/main/me.jpg
+comments: true
 ---
 
 I'm guiding another customer through a pentest review soon for an upcoming release, and of course we have to switch off all the headers that IIS and ASP.NET serve up to the user.
@@ -13,13 +17,17 @@ In particuar:
  - X-AspNet-Version (from ASP.NET)
  - X-AspNetMvc-Version (from ASP.NET MVC)
 
-Why? Because sending these headers in your response exposes information about your server to clients (including bad guys)
+Why? Because sending these headers in your response exposes information about your server to clients (including the bad guys).
 
-## NuGet all my pain away
+## NuGet all the pain away
 
-So I was going to write a NuGet package to solve this problem but I was then pointed to this package from David Duffett - [Dinheiro.RemoveUnnecessaryHeaders](https://github.com/davidduffett/Dinheiro/tree/master/Dinheiro.RemoveUnnecessaryHeaders),=.
+So I was going to write a NuGet package to solve this problem but I was then pointed to this package from David Duffett - [Dinheiro.RemoveUnnecessaryHeaders](https://github.com/davidduffett/Dinheiro/tree/master/Dinheiro.RemoveUnnecessaryHeaders). Thanks for saving me the time, David!
 
-You can do this by hand if you want, so I'll describe the package behaviour here to help understand what's going on:
+So go grab it from NuGet:
+
+    PM> Install-Package Dinheiro.RemoveUnnecessaryHeaders
+
+You can do this by hand if you want - in fact, I'll explain the package behaviour here.
 
 First, it applies a config transform to remove the `X-Powered-By` and `X-AspNet-Version` headers:
 
@@ -88,7 +96,11 @@ Just about all of the teams I've worked with have had this requirement as part o
 
 *Why aren't these headers disabled by default?*
 
-I'm sure there's better (and safer) ways to track server statistics than serving this information to every client.
+*And why does it require changes in so many different places?*
+
+I'm sure there's better (and safer) ways to track server statistics than serving this information to every client. 
+
+And one could perhaps argue that attackers don't need to know your server details to try various attack vectors - they'll just try all possible attack vendors anyway.
 
 ## A footnote on X- Headers
 

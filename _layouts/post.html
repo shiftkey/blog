@@ -35,6 +35,10 @@
 									<h3>{{page.description}}</h3>
 								</header>
 								{{content}}
+
+								{% if page.comments %}
+									{% include disqus.html %}
+								{% endif %}
 							</section>
 						</div>
 					</div>
