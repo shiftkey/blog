@@ -17,11 +17,11 @@ In particuar:
  - X-AspNet-Version (from ASP.NET)
  - X-AspNetMvc-Version (from ASP.NET MVC)
 
-Why? Because sending these headers in your response exposes information about your server to clients (including the bad guys). [Troy Hunt](http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html) explains it in more detail but our approaches differ slightly in switching off these values:
+Why? Because sending these headers in your response exposes information about your server to clients (including the bad guys). [Troy Hunt](http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html) explains it in more detail but our approaches differ slightly:
 
  - I've just focused on the ASP.NET stack
  - this approach doesn't require any changes to IIS
- - I don't care about IIS 6 - shipped with Windows Server 2003, happy 10th birthday!
+ - I don't care about IIS 6 (it shipped with Windows Server 2003, so that'll be 10 years soon!)
 
 ## NuGet all the pain away
 
