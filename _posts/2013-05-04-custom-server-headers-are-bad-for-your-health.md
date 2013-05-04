@@ -94,6 +94,8 @@ public class RemoveUnnecessaryHeadersModule : IHttpModule
 }
 {% endhighlight %}
 
+That `PreSendRequestHeaders` event is the last opportunity ASP.NET gets to intercept the response (including reading headers set by IIS) before it gets sent to the client. 
+
 ## Defaults are good - except when they're not
 
 Just about all of the teams I've worked with have had this requirement as part of their go-live checklist (or raised by a security review) which made me think...
@@ -118,4 +120,4 @@ Recently [Cristian](http://cprieto.com) pointed me at [RFC 6648](http://tools.ie
 
 > "Deprecating the "X-" Prefix and Similar Constructs in Application Protocols"
 
-It's very RFC-y in it's wording, but something to keep in mind when designing custom headers for your application to serve or handle in the future.
+It's very RFC-y in it's wording - and it's also only a year old which is really young in RFC time - but it's definitely something to keep in mind when designing custom headers for your application to serve or handle in the future.
