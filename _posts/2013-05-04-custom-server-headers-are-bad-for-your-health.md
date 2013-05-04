@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Custom server headers are bad for your health
+title: Custom server headers - bad for your health?
 date: 2013-05-04 16:00:00 +10:00
 description: Wherein I jump up and down about something seemingly silly
 permalink: /blog/custom-server-headers-bad-for-your-health.html
@@ -17,7 +17,11 @@ In particuar:
  - X-AspNet-Version (from ASP.NET)
  - X-AspNetMvc-Version (from ASP.NET MVC)
 
-Why? Because sending these headers in your response exposes information about your server to clients (including the bad guys).
+Why? Because sending these headers in your response exposes information about your server to clients (including the bad guys). [Troy Hunt](http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html) explains it in more detail but our approaches differ slightly in switching off these values:
+
+ - I've just focused on the ASP.NET stack
+ - this approach doesn't require any changes to IIS
+ - I don't care about IIS 6 - shipped with Windows Server 2003, happy 10th birthday!
 
 ## NuGet all the pain away
 
@@ -96,11 +100,7 @@ Just about all of the teams I've worked with have had this requirement as part o
 
 *Why aren't these headers disabled by default?*
 
-*And why does it require changes in so many different places?*
-
-I'm sure there's better (and safer) ways to track server statistics than serving this information to every client. 
-
-And one could perhaps argue that attackers don't need to know your server details to try various attack vectors - they'll just try all possible attack vendors anyway.
+*And why does it require changes in so many different places in IIS and ASP.NET?*
 
 ## A footnote on X- Headers
 
