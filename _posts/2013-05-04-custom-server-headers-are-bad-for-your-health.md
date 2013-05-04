@@ -4,7 +4,7 @@ title: Custom server headers - bad for your health?
 date: 2013-05-04 16:00:00 +10:00
 description: Wherein I jump up and down about something seemingly silly
 permalink: /blog/custom-server-headers-bad-for-your-health.html
-icon: /img/main/me.jpg
+icon: /img/main/web.png
 comments: true
 ---
 
