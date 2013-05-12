@@ -9,7 +9,7 @@ gem "flickraw", "~> 0.9.6"
 gem "pygmentize", "~> 0.0.3"
 gem 'rdiscount'
 
-gem "jekyll-assets", "~> 0.3.8"
+gem "jekyll-assets", "~> 0.5.0"
 gem "compass", "~> 0.12.2"
 gem "coffee-script", "~> 2.2.0"
 gem "uglifier", "~> 1.3.0"
