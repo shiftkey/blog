@@ -20,7 +20,7 @@ gem "rack-rewrite", "~> 1.3.3"
 gem "puma", "~> 1.6.3"
 
 gem "rack-cache", "1.2"
-gem "memcached",  "1.5.0"
+gem "dalli",  "~> 2.6.3"
 
 group :development do
   gem "foreman", "~> 0.61"

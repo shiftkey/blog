@@ -2,7 +2,7 @@ require "rack/rewrite"
 require 'rack/contrib/try_static'
 require 'rack/contrib/not_found'
 require 'rack/cache'
-require 'memcached'
+require 'dalli'
 
 use Rack::Rewrite do
 	rewrite '/feed/', '/rss.xml'
@@ -16,7 +16,7 @@ use Rack::Rewrite do
     }
 end
 
-$cache = Memcached.new
+$cache = Dalli::Client.new
 
 use Rack::Cache,
   :verbose => true,
