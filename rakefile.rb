@@ -20,6 +20,13 @@ task :build do
   puts `jekyll build`
 end
 
+desc 'Test site as it would run in Heroku'
+task :test do
+    sh "bundle exec jekyll build"
+    sh "bundle exec puma -p 6459 config.ru"
+end
+
+
 desc 'Push source code to remotes'
 task :push do
   puts '* Pushing to GitHub'

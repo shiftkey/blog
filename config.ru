@@ -2,6 +2,8 @@ require "rack/rewrite"
 require 'rack/contrib/try_static'
 require 'rack/contrib/not_found'
 require 'rack/cache'
+require 'rack/static'
+require 'rack/deflater'
 require 'dalli'
 
 use Rack::Rewrite do
@@ -15,6 +17,12 @@ use Rack::Rewrite do
         end
     }
 end
+
+use Rack::Static,
+  :urls => ["/img", "/js", "/css"],
+  :root => "_site"
+use Rack::Deflater
+
 
 $cache = Dalli::Client.new
 
