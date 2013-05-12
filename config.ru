@@ -5,6 +5,7 @@ require 'rack/cache'
 require 'rack/static'
 require 'rack/deflater'
 require 'dalli'
+require './cache-response'
 
 use Rack::Rewrite do
 	rewrite '/feed/', '/rss.xml'
@@ -18,12 +19,11 @@ use Rack::Rewrite do
     }
 end
 
-$cache = Dalli::Client.new
-
-use Rack::Cache,
-  :verbose => true,
-  :metastore => $cache,
-  :entitystore => $cache
+use CacheSettings, {
+  /\/js\// => { :cache_control => "max-age=86400, public", :expires => 86400 },
+  /\/css\// => { :cache_control => "max-age=86400, public", :expires => 86400 },
+  /\/img\// => { :cache_control => "max-age=86400, public", :expires => 86400 }
+}
 
 use Rack::TryStatic,
   :root => "_site",
