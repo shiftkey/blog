@@ -18,12 +18,6 @@ use Rack::Rewrite do
     }
 end
 
-use Rack::Static,
-  :urls => ["/img", "/js", "/css"],
-  :root => "_site"
-use Rack::Deflater
-
-
 $cache = Dalli::Client.new
 
 use Rack::Cache,
@@ -35,5 +29,6 @@ use Rack::TryStatic,
   :root => "_site",
   :urls => %w[/],
   :try  => ['index.html', '/index.html']
- 
+use Rack::Deflater
+
 run Rack::NotFound.new('_site/404.html')
