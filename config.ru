@@ -4,7 +4,6 @@ require 'rack/contrib/not_found'
 require 'rack/cache'
 require 'rack/static'
 require 'rack/deflater'
-require 'dalli'
 require './cache-response'
 
 use Rack::Rewrite do
