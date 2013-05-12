@@ -1,5 +1,4 @@
-#require "rack/jekyll"
-#require "rack/rewrite"
+require "rack/rewrite"
 require 'rack/contrib/try_static'
 require 'rack/contrib/not_found'
 
@@ -15,7 +14,6 @@ use Rack::Rewrite do
     }
 end
 
-use Rack::Deflater 
 use Rack::TryStatic,
   :root => "_site",
   :urls => %w[/],
