@@ -16,10 +16,12 @@ use Rack::Rewrite do
     }
 end
 
+$cache = Dalli::Client.new
+
 use Rack::Cache,
   :verbose => true,
-  :metastore => :dalli_store,
-  :entitystore => :dalli_store
+  :metastore => $cache,
+  :entitystore => $cache
 
 use Rack::TryStatic,
   :root => "_site",
