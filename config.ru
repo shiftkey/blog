@@ -1,6 +1,8 @@
 require "rack/rewrite"
 require 'rack/contrib/try_static'
 require 'rack/contrib/not_found'
+require 'rack/cache'
+require 'memcached'
 
 use Rack::Rewrite do
 	rewrite '/feed/', '/rss.xml'
@@ -13,6 +15,13 @@ use Rack::Rewrite do
         end
     }
 end
+
+$cache = Memcached.new
+
+use Rack::Cache,
+  :verbose => true,
+  :metastore => $cache,
+  :entitystore => $cache
 
 use Rack::TryStatic,
   :root => "_site",
