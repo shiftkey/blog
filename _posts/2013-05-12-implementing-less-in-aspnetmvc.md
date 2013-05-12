@@ -28,7 +28,7 @@ Go run that in a new project. I'll wait.
 
 Done? Great, so go write a little LESS code:
 
-{% highlight less %}
+{% highlight css %}
 @color: #4D926F;
 
 .site-title a {
