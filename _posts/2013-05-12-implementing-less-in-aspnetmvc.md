@@ -26,7 +26,7 @@ NOTE: This uses the bundling features in MVC4. If you're using a version of MVC 
 
 Go run that in a new project. I'll wait.
 
-Done? Great, so go write a little LESS code:
+Done? Great, so go write a little LESS code (I've just called this file `sample.less` for the purposes of this demo):
 
 {% highlight css %}
 @color: #4D926F;
