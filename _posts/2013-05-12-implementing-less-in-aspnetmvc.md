@@ -4,7 +4,7 @@ title: Yet Another "Add LESS to your ASP.NET MVC Project" Post
 date: 2013-05-12 23:00:00 +10:00
 description: I had to write this because it was really annoying the last time I did it
 permalink: /blog/yet-another-implement-less-in-aspnetmvc-post.html
-icon: /img/main/web.png
+icon: /img/main/less.png
 comments: true
 ---
 
