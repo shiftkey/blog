@@ -129,7 +129,7 @@ So these handlers allow you to compile an individual LESS file and see the resul
 
 ![](/img/posts/less/dev-experience.png)
 
-Oh, and don't forget to remove the handlers in your config transforms when you go to production (this is an example of the `Web.Release.Config` config transforms file).
+Oh, and don't forget to remove the handlers in your config transforms when you go to production (this is an example of the `Web.Release.config` transforms file).
 
 {% highlight xml %}
 <?xml version="1.0"?>
