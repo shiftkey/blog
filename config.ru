@@ -1,7 +1,6 @@
 require "rack/rewrite"
 require 'rack/contrib/try_static'
 require 'rack/contrib/not_found'
-require 'rack/cache'
 require 'rack/static'
 require 'rack/deflater'
 require './cache-response'
