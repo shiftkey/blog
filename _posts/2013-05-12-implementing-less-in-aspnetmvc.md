@@ -22,6 +22,8 @@ NOTE: This uses the bundling features in MVC4. If you're using a version of MVC 
 
 ## Step 1 - The Installer-ation
 
+To NuGet! 
+
     PM> Install-Package dotLess
 
 Go run that in a new project. I'll wait.
@@ -61,7 +63,7 @@ But you're application doesn't know about *how* it can transform LESS code into 
 
 Bundles are an easy way to merge and minify resources in your application (such as JavaScript files and CSS stylesheets). In addition to being a lovely convenience, it's actually a great way to improve site performance (fewer HTTP requests, reducing size of response payload).
 
-So go install this library from NuGet:
+So go back to NuGet and use this:
 
     PM> Install-Package System.Web.Optimization.Less
 
@@ -75,26 +77,24 @@ public class BundleConfig
     	// NOTE: existing bundles are here 
 
     	// add this line
-        bundles.Add(new LessBundle("~/Content/less").Include("~/Content/*.less"));
+      bundles.Add(new LessBundle("~/Content/less").Include("~/Content/*.less"));
     }
 }
 {% endhighlight %}
 
 Bundles support a limited subset of wildcard syntax, but you can include multiple folders within a bundle.
 
-The details about the history of this code project are a bit thin, but I initially found this code in a [gist](https://gist.github.com/benfoster/3924025) from [@benfosterdev](http://ben.onfabrik.com/) so I'll give him kudos for it.
+So this `LessBundle` gives you the ability to combine and minify files when running the application in `<compilation debug="false" />` mode, and it takes care of transforming LESS code into CSS - without needing to update the layout everytime you add a new file to the project.
 
-So this `LessBundle` gives you the ability to combine and minify files when running the application in `<compilation debug="false" />` mode, without needing to update the layout everytime you add a new file to the project - it's all centralized in the bundle configuration.
+Editor's note: I wasn't aware of this package on the last runthrough - instead I found this `LessBundle` code in a [gist](https://gist.github.com/benfoster/3924025) from [@benfosterdev](http://ben.onfabrik.com/) which looks very similar to the source for that package, so I'll give him kudos for it. 
 
 ## Step 3 - But wait, there's more!
 
-But what about when you're just testing locally? 
-
-Bundles are rather lazy in development mode:
+But what about when testing locally? Well, bundles are rather lazy in development mode:
 
  - no minification
  - no bundling
- - in fact the files just ship as LESS resources to the browser
+ - in fact the files just appear as LESS resources to the browser
 
 So you *still* need to tell your application how it can serve LESS files to the browser, independent all this bundling work.
 
