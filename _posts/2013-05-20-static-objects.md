@@ -19,17 +19,15 @@ So I wanted to put together a simple guide on how to determine *when* the [Singl
 
 ## How expensive is it to create?
 
-Imagine you have a database connection, let's say [SqlConnection](http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.aspx) - and you create an instance of it to connect to a database?
+Imagine you have a database connection - say [SqlConnection](http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.aspx) - and you create an instance of it to connect to a database?
 
 **TODO:** show windbg object dump of a SqlConnection object
 
-Inside this database connection you should see a bunch of underlying resources - these are the components which make the magic happen when you perform a "SELECT * FROM Table" in your application.
+Inside this SqlConnection object you should see a bunch of underlying resources - these are the components which make the magic happen when you perform a "SELECT * FROM Table" in your application.
 
-Many of the classes you create in your application are probably simpler than this - classes to hold data, for example - but once you start interacting with the underlying platform and identify various bottlenecks in your applications this sort of knowledge is invaluable.
+Many of the objects you create in your application are probably simpler than this - classes to hold data, for example - but once you start interacting with the underlying platform and identify various bottlenecks in your applications understanding what resources are hiding where is invaluable knowledge.
 
-The other thing to keep in mind with objects is what they represent. 
-
-If your application components interacts with the network, storage or attached devices, you are likely to face specific constraints with how you use these resources. 
+The other thing to keep in mind with objects is what they represent. If your classes interacts with the network, storage or attached devices, for example, you are likely to face specific constraints with how you use these resources. 
 
 An example: if you're ever making concurrent web requests to a specific domain, .NET will actually throttle you to two concurrent requests. You can change this if you [know where to look](http://msdn.microsoft.com/en-us/library/fb6y0fyc.aspx) but the defaults are designed to be "good enough" for most scenarios.
 
