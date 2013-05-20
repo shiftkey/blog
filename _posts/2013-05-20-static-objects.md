@@ -67,11 +67,15 @@ Please don't. This introduces unnecessary coupling into your application, at the
 
 Ok, so if you've read this far - I thank you.
 
-To sum up when you need to consider:
+So when you should consider making a class or object into a singleton?
 
  - If it's expensive to create, consider it.
  - If it's touching underlying system resources, consider it.
  - If you need to optimise for memory usage, consider it.
  - Go learn how multi-threading *actually* works - no, the TPL is cheating.
 
-Did I miss something? Get something wrong? Leave a comment.
+## Feedback is Welcome
+
+Did I miss something? Get something wrong? 
+
+Leave a comment and let me know.
