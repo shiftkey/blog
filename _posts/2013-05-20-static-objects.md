@@ -2,6 +2,10 @@
 layout: post
 title: Should I make this object static? 
 date: 2013-05-20 10:30:00 +10:00
+description: Sketching out when to think about designing your objects in a singleton-esque way
+permalink: /blog/should-i-make-this-object-static.html
+icon: /img/main/me.jpg
+comments: true
 ---
 
 Someone asked me a question yesterday along the lines of, well, this:
