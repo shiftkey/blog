@@ -2,7 +2,7 @@
 layout: post
 title: Should I make this object a singleton? 
 date: 2013-05-20 10:30:00 +10:00
-description: Some thoughts on how to determine when to 
+description: Some thoughts on class design and limitations you might face
 permalink: /blog/should-i-make-this-object-a-singleton.html
 icon: /img/main/me.jpg
 comments: true
@@ -60,6 +60,14 @@ The first thing to check for is immutability.
 If your object is [immutable](http://en.wikipedia.org/wiki/Immutable_object) (that is, you can call the same function on an object **as many times as possible until the end of time** and you'll always get the same result) then it becomes a candidate for being used in this fashion.
 
 **TODO:** discuss multi-threaded hooha annoyances
+
+## But I just want to use it as a global object
+
+Please don't. This introduces unnecessary coupling into your application, at the value of saving a few keystrokes.
+
+**TODO:** explain the god object pattern and why it is bad
+
+**TODO:** outline where this is utterly unavoidable and you need to suck it up and just God Object that sucker
 
 ## What's the damn answer, Brendan?
 
