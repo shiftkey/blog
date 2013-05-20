@@ -1,21 +1,21 @@
 ---
 layout: post
-title: Should I make this object static? 
+title: Should I make this object a singleton? 
 date: 2013-05-20 10:30:00 +10:00
-description: Some thoughts on how object design impacts how and when you can use them
-permalink: /blog/should-i-make-this-object-static.html
+description: Some thoughts on how to determine when to 
+permalink: /blog/should-i-make-this-object-a-singleton.html
 icon: /img/main/me.jpg
 comments: true
 ---
+
+**Note**: This is just a first pass on the post, as I need to touch on various tools I've used in the past to identify these constraints. But let's start with the concepts.
 
 Someone asked me a question yesterday along the lines of, well, this:
 
 <blockquote class="twitter-tweet" data-conversation="none"><p>@<a href="https://twitter.com/nickhodgemsft">nickhodgemsft</a> Roger, cheers @<a href="https://twitter.com/shiftkey">shiftkey</a> thoughts? Will it be better to create a life long Crypto obj rather than this <a href="http://t.co/bn3hRIiGdt" title="http://twitter.com/HDizzle84/status/336104817707589633/photo/1">twitter.com/HDizzle84/stat…</a></p>&mdash; HDizzle (@HDizzle84) <a href="https://twitter.com/HDizzle84/status/336104817707589633">May 19, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-So I want to address that along with some other common scenarios around something we take for granted - creating objects.
-
-**Note**: This is just a first pass on the post, as I need to touch on various tools I've used in the past to identify these constraints. But let's start with the concepts.
+So I wanted to put together a simple guide on how to determine *when* the [Singleton pattern](http://en.wikipedia.org/wiki/Singleton_pattern) is a suitable use case - yes, it gets a bad reputation due to misuse, but there are some scenarios where it does add value (and is often necessary).
 
 ## How expensive is it to create?
 
@@ -65,7 +65,7 @@ If your object is [immutable](http://en.wikipedia.org/wiki/Immutable_object) (th
 
 Ok, so if you've read this far - I thank you.
 
-To sum up:
+To sum up when you need to consider:
 
  - If it's expensive to create, consider it.
  - If it's touching underlying system resources, consider it.
