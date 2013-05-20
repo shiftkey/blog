@@ -15,6 +15,10 @@ Someone asked me a question yesterday along the lines of, well, this:
 <blockquote class="twitter-tweet" data-conversation="none"><p>@<a href="https://twitter.com/nickhodgemsft">nickhodgemsft</a> Roger, cheers @<a href="https://twitter.com/shiftkey">shiftkey</a> thoughts? Will it be better to create a life long Crypto obj rather than this <a href="http://t.co/bn3hRIiGdt" title="http://twitter.com/HDizzle84/status/336104817707589633/photo/1">twitter.com/HDizzle84/stat…</a></p>&mdash; HDizzle (@HDizzle84) <a href="https://twitter.com/HDizzle84/status/336104817707589633">May 19, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+Singletons? My first instinct was to reach for the hose and dampen such discussion down immediately before someone got hurt. 
+
+But no, that's not right. I need to explain myself.
+
 So I wanted to put together a simple guide on how to determine *when* the [Singleton pattern](http://en.wikipedia.org/wiki/Singleton_pattern) is a suitable use case - yes, it gets a bad reputation due to misuse, but there are some scenarios where it does add value (and is often necessary).
 
 ## How expensive is it to create?
@@ -27,15 +31,15 @@ Inside this SqlConnection object you should see a bunch of underlying resources 
 
 Many of the objects you create in your application are probably simpler than this - classes to hold data, for example - but once you start interacting with the underlying platform and identify various bottlenecks in your applications understanding what resources are hiding where is invaluable knowledge.
 
-The other thing to keep in mind with objects is what they represent. If your classes interacts with the network, storage or attached devices, for example, you are likely to face specific constraints with how you use these resources. 
+The other thing to keep in mind with objects is what they encapsulate. If your classes interacts with the network, storage or attached devices, for example, you are likely to face specific rules with how you use access these resources. 
 
 An example: if you're ever making concurrent web requests to a specific domain, .NET will actually throttle you to two concurrent requests. You can change this if you [know where to look](http://msdn.microsoft.com/en-us/library/fb6y0fyc.aspx) but the defaults are designed to be "good enough" for most scenarios.
 
-Another example: [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are maintained and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
+Another example: [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are managed and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
 
 ## What about my memory footprint?
 
-So assuming the previous two constraints aren't affecting your code, sure, you might be able to get away with creating objects whenever necessary.
+So assuming the above constraint isn't affecting your classes, you might be able to get away with creating objects whenever necessary.
 
 But what if you're making a mobile app? Memory becomes a significant constraint on any mobile applications - and the more moving parts you have in a mobile application, the more you need to optimise to reduce the impact of those moving parts.
 
@@ -51,7 +55,11 @@ This is the hardest part to discuss, because multi-threaded code is hard. Really
 
 If your object is [immutable](http://en.wikipedia.org/wiki/Immutable_object) (that is, you can call the same function on an object **as many times as possible until the end of time** and you'll always get the same result) then it might be possible for it to be used as a singleton object.
 
-**TODO:** discuss multi-threaded hooha annoyances
+**TODO:** discuss the simplest gotcha - two threads entering a function at the same time
+
+**TODO:** discuss where basic locking will cause you different sorts of headaches
+
+**TODO:** what would Ayende do?
 
 ## But I just want to use it as a global object
 
@@ -65,13 +73,13 @@ Please don't. This introduces unnecessary coupling into your application, at the
 
 Ok, so if you've read this far - I thank you.
 
-So when you should consider making a class or object into a singleton?
+So when should you consider wrapping an object in the singleton pattern?
 
+ - Firstly, beware of how multi-threading *actually* works - no, the TPL is cheating.
  - If it's expensive to create, consider it.
  - If it's touching underlying system resources, consider it.
  - If you need to optimise for memory usage, consider it.
- - Go learn how multi-threading *actually* works - no, the TPL is cheating.
-
+ 
 ## Feedback is Welcome
 
 Did I miss something? Get something wrong? 
