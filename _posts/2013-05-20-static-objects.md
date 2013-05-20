@@ -27,37 +27,31 @@ Inside this database connection you should see a bunch of underlying resources -
 
 Many of the classes you create in your application are probably simpler than this - classes to hold data, for example - but once you start interacting with the underlying platform and identify various bottlenecks in your applications this sort of knowledge is invaluable.
 
-## Does an object reflect an underlying resource?
-
 The other thing to keep in mind with objects is what they represent. 
 
-If your application interacts with the network, storage or attached devices, you are likely to face specific constraints on interacting with these resources. 
+If your application components interacts with the network, storage or attached devices, you are likely to face specific constraints with how you use these resources. 
 
 An example: if you're ever making concurrent web requests to a specific domain, .NET will actually throttle you to two concurrent requests. You can change this if you [know where to look](http://msdn.microsoft.com/en-us/library/fb6y0fyc.aspx) but the defaults are designed to be "good enough" for most scenarios.
 
-Another example is [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are maintained and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
+Another example: [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are maintained and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
 
 ## What about my memory footprint?
 
 So assuming the previous two constraints aren't affecting your code, sure, you might be able to get away with creating objects whenever necessary.
 
-Wait, no, you're on a mobile device. Memory becomes a significant constraint on any mobile applications - and the more moving parts you have in a mobile application, the more you need to optimise to reduce the impact of those moving parts.
+But what if you're making a mobile app? Memory becomes a significant constraint on any mobile applications - and the more moving parts you have in a mobile application, the more you need to optimise to reduce the impact of those moving parts.
 
 > I don't need to worry about that, my stack has generational garbage collection (GC).
 
-But that's not really a solution - just a crutch. GC isn't a free lunch - it's overhead that you're now invoking periodically because you were lazy with how you structured your application. 
+But that's not actually a solution - more like a crutch. GC isn't a free lunch - it's overhead that you're now invoking periodically (technically GC will run whenever it needs to, which is often at the worst possible time due to memory pressure) because you were lazy with how you structured your application. 
 
 **TODO:** demonstrate .NET performance counters around GC, with a sample that does stupid things
 
-And in the mobile space every clock cycle matters.
-
 ## What about multi-threaded code?
 
-This is the hardest part to discuss, because multi-threaded code is hard. Like, really hard.
+This is the hardest part to discuss, because multi-threaded code is hard. Really hard.
 
-The first thing to check for is immutability.
-
-If your object is [immutable](http://en.wikipedia.org/wiki/Immutable_object) (that is, you can call the same function on an object **as many times as possible until the end of time** and you'll always get the same result) then it becomes a candidate for being used in this fashion.
+If your object is [immutable](http://en.wikipedia.org/wiki/Immutable_object) (that is, you can call the same function on an object **as many times as possible until the end of time** and you'll always get the same result) then it might be possible for it to be used as a singleton object.
 
 **TODO:** discuss multi-threaded hooha annoyances
 
