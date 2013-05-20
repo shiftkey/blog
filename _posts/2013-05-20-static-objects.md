@@ -2,7 +2,7 @@
 layout: post
 title: Should I make this object static? 
 date: 2013-05-20 10:30:00 +10:00
-description: Sketching out when to think about designing your objects in a singleton-esque way
+description: Some thoughts on how object design impacts how and when you can use them
 permalink: /blog/should-i-make-this-object-static.html
 icon: /img/main/me.jpg
 comments: true
@@ -35,7 +35,7 @@ If your application interacts with the network, storage or attached devices, you
 
 An example: if you're ever making concurrent web requests to a specific domain, .NET will actually throttle you to two concurrent requests. You can change this if you [know where to look](http://msdn.microsoft.com/en-us/library/fb6y0fyc.aspx) but the defaults are designed to be "good enough" for most scenarios.
 
-Another example is [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca(v=vs.110).aspx) - a finite number of connections which are maintained and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
+Another example is [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are maintained and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
 
 ## What about my memory footprint?
 
@@ -71,3 +71,5 @@ To sum up:
  - If it's touching underlying system resources, consider it.
  - If you need to optimise for memory usage, consider it.
  - Go learn how multi-threading *actually* works - no, the TPL is cheating.
+
+Did I miss something? Get something wrong? Leave a comment.
