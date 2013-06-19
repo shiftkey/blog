@@ -23,7 +23,7 @@
 	{
 		color: #474f51;
 		font-size: 13.5pt;
-		font-family: 'Droid Sans', sans-serif;
+		font-family: 'Sans 119', sans-serif;
 		line-height: 1.85em;
 		font-weight: 400;
 	}
@@ -115,7 +115,7 @@
 
 			.quote-list li p
 			{
-				margin: 0 0 0 90px;
+				margin: 0 0 0 0px;
 				font-size: 1.2em;
 				font-style: italic;
 			}
@@ -123,7 +123,6 @@
 			.quote-list li span
 			{
 				display: block;
-				margin-left: 90px;
 				font-size: 0.9em;
 				font-weight: 400;
 			}
