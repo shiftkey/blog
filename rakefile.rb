@@ -11,7 +11,7 @@ end
 desc 'Run Jekyll in development mode'
 task :dev do
   puts '* Running Jekyll with auto-generation and server'
-  puts `jekyll serve auto`
+  puts `jekyll serve --watch`
 end
 
 desc 'Run Jekyll to generate the site'
