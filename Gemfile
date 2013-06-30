@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.0.0"
 
-gem "rake", "~> 10.0.3"
+gem "rake"
 gem "activesupport", "~> 3.2.13"
 
 gem "jekyll", "~> 1.0.0"
@@ -17,7 +17,7 @@ gem "directory_watcher", "1.4.1"
 
 gem "rack-contrib", "~> 1.1.0"
 gem "rack-rewrite", "~> 1.3.3"
-gem "puma", "~> 1.6.3"
+gem "puma"
 
 group :development do
   gem "foreman", "~> 0.61"
