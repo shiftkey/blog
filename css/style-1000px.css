@@ -43,7 +43,7 @@
 		
 			.quote-list li p
 			{
-				margin: 0 0 0 80px;
+				margin: 0;
 				font-size: 1em;
 				font-style: italic;
 				line-height: 1.8em;
@@ -52,7 +52,7 @@
 			.quote-list li span
 			{
 				display: block;
-				margin-left: 80px;
+				margin-left: 0;
 				font-size: 0.8em;
 				font-weight: 400;
 				line-height: 1.8em;
