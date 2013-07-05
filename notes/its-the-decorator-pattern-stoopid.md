@@ -65,10 +65,8 @@ Have you heard of the [**Hollywood Principle**](http://en.wikipedia.org/wiki/Hol
 
 While Ian has gone a way to make this `RetrieveAndCache<T>` method reusable, it's still doing the same two steps:
 
- - "hey girl*, do you have this thing in the cache?"
- - "hey girl*, can you put this thing in the cache?"
-
-* [Programmer Ryan Gosling](http://programmerryangosling.tumblr.com/)
+ - "[hey girl](http://programmerryangosling.tumblr.com/), do you have this thing in the cache?"
+ - "[hey girl](http://programmerryangosling.tumblr.com/), can you put this thing in the cache?"
 
 I see this "get, or get then add" pattern as being the responsibility of the cache itself, not of the consuming code. More on this later.
 
@@ -94,7 +92,7 @@ So we're heading in the right direction:
 
     IEnumerable<Order> alicesOrders = cachingGetOrders(alicesId);  
 
-And yes, that `Encacheify` method is rather hard to grok.
+And yes, that `Encacheify` method is a bit hard to grok.
 
 ## What were we doing again?
 
@@ -105,6 +103,7 @@ So having gone down this path (which is excellent and helps to highlight some of
 That was from the first post, and I do like that goal.
 
 > "We want to improve our separation of concerns"
+
 > "We want to compose features and behaviour"
 
 So Ian nerd-sniped me to jump into this discussion and as I read more I got a bit grumpy that we hadn't really moved beyond code snippets and concepts. So I cloned down the [MVC Music Store](http://mvcmusicstore.codeplex.com) app to see how applying these concepts impacts a real application.
@@ -226,3 +225,8 @@ Our caching code is separated from the repository implementation and encapsulate
  - for example, expire frequently-changing components quicker than others
  - inject a strategy object into the cache and control when the cache is used
 
+## TODO: 
+
+ - simplify the cache repos to subclass
+ - injecting a strategy object?
+ - EF context per HttpContext?
