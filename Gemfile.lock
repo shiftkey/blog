@@ -92,10 +92,10 @@ DEPENDENCIES
   activesupport
   coffee-script (~> 2.2.0)
   compass (~> 0.12.2)
-  directory_watcher
+  directory_watcher (= 1.4.1)
   flickraw (~> 0.9.6)
   foreman (~> 0.61)
-  jekyll (~> 1.0.0)
+  jekyll (~> 1.0.3)
   jekyll-assets
   puma
   pygmentize (~> 0.0.3)
