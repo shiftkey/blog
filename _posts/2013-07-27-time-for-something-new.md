@@ -14,7 +14,7 @@ But with the [introductory post and gif](https://github.com/blog/1575-brendan-fo
 
 - I finished up at Readify in June
 - I started at GitHub last month
-- I'm not writing that "leaving .NET post just yet"
+- I'm not writing that "leaving .NET" post just yet
 - I'll still be in Sydney (but travelling around a bit)
 - If you're using the [latest release of GitHub for Windows](https://github.com/blog/1604-better-password-security-in-github-for-windows) then some of my code is already being used :metal:
 
