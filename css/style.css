@@ -41,7 +41,7 @@
 	{
 		text-decoration: none;
 	}
-	
+
 	a:hover
 	{
 		text-decoration: underline;
@@ -57,18 +57,18 @@
 	.link-list
 	{
 	}
-	
+
 		.link-list li
 		{
 			padding: 0.2em 0 0.2em 0;
 		}
-		
+
 		.link-list li:first-child
 		{
 			padding-top: 0 !important;
 			border-top: 0 !important;
 		}
-		
+
 		.link-list li:last-child
 		{
 			padding-bottom: 0 !important;
@@ -89,13 +89,13 @@
 	.quote-list
 	{
 	}
-	
+
 		.quote-list li
 		{
 			padding: 1em 0 1em 0;
 			overflow: hidden;
 		}
-		
+
 		.quote-list li:first-child
 		{
 			padding-top: 0 !important;
@@ -119,7 +119,7 @@
 				font-size: 1.2em;
 				font-style: italic;
 			}
-			
+
 			.quote-list li span
 			{
 				display: block;
@@ -137,7 +137,7 @@
 			border-top: solid 1px #e0e4e6;
 			border-bottom: solid 1px #b5bec3;
 		}
-	
+
 	.check-list
 	{
 	}
@@ -148,7 +148,7 @@
 			font-size: 1.2em;
 			background: url('images/icon-checkmark.png') 0px 1.05em no-repeat;
 		}
-		
+
 		.check-list li:first-child
 		{
 			padding-top: 0 !important;
@@ -172,14 +172,14 @@
 			border-top: solid 1px #e0e4e6;
 			border-bottom: solid 1px #b5bec3;
 		}
-		
+
 	.feature-image
 	{
 		display: block;
 		margin: 0 0 2em 0;
 		outline: 0;
 	}
-	
+
 		.feature-image img
 		{
 			display: block;
@@ -195,13 +195,13 @@
 		margin: 0 0 1.5em 0;
 		outline: 0;
 	}
-	
+
 		.bordered-feature-image img
 		{
 			display: block;
 			width: 100%;
 		}
-	
+
 	.button-big
 	{
 		display: inline-block;
@@ -280,9 +280,9 @@ blockquote {
   margin-left: 15px;
   padding-left: 15px;
   border-left: 3px solid #ccc;
-} 
+}
 
-pre { 
+pre {
 	margin-bottom: 1em;
 }
 
@@ -301,4 +301,9 @@ em {
 #header nav a {
 	font-family: 'Yanone Kaffeesatz';
 	font-size: 1.9em;
+}
+
+
+#features .row p {
+  font-size: 0.85em;
 }
