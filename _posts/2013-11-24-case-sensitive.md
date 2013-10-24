@@ -195,10 +195,19 @@ I suspect is a bug - you can see it here on
 [Connect](https://connect.microsoft.com/VisualStudio/feedback/details/806423/httpwebrequest-uppercases-some-http-actions-and-not-others)
 for yourself.
 
+EDIT: Someone pointed me to [RFC 5789](http://tools.ietf.org/html/rfc5789)
+where `PATCH` was moved from a custom verb to an official verb - which might
+explain the differences in behaviour (RFC 2616 was written in June 1999,
+  RFC 5789 in March 2010 - that's forever in Internet time).
+
 I've also thrown the repro up [on GitHub](https://github.com/shiftkey/HttpWebRequest-CaseSensitiveMethods)
 - I don't care at this stage to test with the newer HttpClient bits, but I
-suspect those work as advertised due to using enums over plain strings.
+suspect those work as advertised due to using ~~enums~~ classes over plain strings.
 
+EDIT: so the always-friendly [Darrel Miller](https://darrelmiller.com/) pointed out
+that the
+[System.Net.Http.HttpMethod](http://msdn.microsoft.com/en-us/library/system.net.http.httpmethod.aspx)
+used in HttpClient is actually a class in it's own right (and thus extensible).
 ### The Server
 
 RFC 2616 Section 5.1.1 also states:
@@ -226,10 +235,6 @@ problem at hand.
 In both examples above, I got two different results - neither of which aligned
 with what the specification indicated.
 
-EDIT: Someone pointed me to [RFC 5789](http://tools.ietf.org/html/rfc5789)
-where `PATCH` was moved from a custom verb to an official verb - which might
-explain the differences in behaviour (RFC 2616 was written in June 1999,
-  RFC 5789 in March 2010 - that's forever in Internet time).
 
 ### Appendix: The Vibe Of The Thing
 
