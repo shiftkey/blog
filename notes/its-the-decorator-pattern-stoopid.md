@@ -7,7 +7,7 @@ description: So someone nerd-sniped me to jump in on an internet debate. He migh
 
 You can get to the gory details on [how this started](ifrb.info/2013/07/02/funcy-love.html) and then [went further](http://developer.greenbutton.com/make-my-func-the-higher-order-func/) and [further still](http://developer.greenbutton.com/func-ier-and-func-ier/) before some [dissenting voices](http://blog.computercraft.co.nz/2013/07/04/DontGetTooFuncy.aspx) came along.
 
-While I was initially nodding along, as the discusson wore on I kept hearing this in my head...
+While I was initially nodding along, as the discussion wore on I kept hearing this in my head...
 
 <iframe width="640" height="360" src="http://www.youtube.com/embed/r9Zimpr_8zs?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
 
@@ -16,14 +16,14 @@ Well, that was the good part. The part I didn't like comes down to two points:
  - the example scenario used distracted from the initial discussion significantly
  - if we're going to address the example, there's a different way which short-circuits the whole "readability debate"
 
-## We need to tak about The Example 
+## We need to tak about The Example
 
 So it all started with code like this:
 
     public IEnumerable<Order> GetOrders(int customerId)
     {
         string cacheKey = string.Format("OrdersForCustomer{0}", customerId);
-    
+
         var result = _cacheService.Get<IEnumerable<Order>>(cacheKey);
         if (result == null)
         {
@@ -33,7 +33,7 @@ So it all started with code like this:
         return result;
     }
 
-Which roughly matches this 
+Which roughly matches this
 
     - Get the value from the cache
     - If it's null:
@@ -61,7 +61,7 @@ And we're done, right? I'm not so sure.
 
 ## Tell, don't ask
 
-Have you heard of the [**Hollywood Principle**](http://en.wikipedia.org/wiki/Hollywood_principle)? While it sounds like a thing struggling movie stars have to face, it's a popular buzzword with programmers to discuss how code should have low coupling and high cohesion. 
+Have you heard of the [**Hollywood Principle**](http://en.wikipedia.org/wiki/Hollywood_principle)? While it sounds like a thing struggling movie stars have to face, it's a popular buzzword with programmers to discuss how code should have low coupling and high cohesion.
 
 While Ian has gone a way to make this `RetrieveAndCache<T>` method reusable, it's still doing the same two steps:
 
@@ -87,7 +87,7 @@ I loved how Ivan brought out this example which allows you to achieve this:
 So we're heading in the right direction:
 
     var cachingGetOrders = _cacheService.Encacheify(
-    	(int id) => _ordersRepository.GetForCustomer(id), 
+    	(int id) => _ordersRepository.GetForCustomer(id),
     	(int id) => String.Format("OrdersForCustomer{0}", id));
 
     IEnumerable<Order> alicesOrders = cachingGetOrders(alicesId);  
@@ -139,7 +139,7 @@ And it has a simple implementation:
 
             var newValue = produceResult();
             storage[key] = newValue;
-    
+
             return newValue;
         }
     }
@@ -167,7 +167,7 @@ Which has a simple implementation:
         // **boring Dispose code here**
     }
 
-Boring, boring, boring stuff. 
+Boring, boring, boring stuff.
 
 So rather than adding the caching code into this class (Func or no Func), I can create a new component which matches the `IArtistRepository` interface and decorates this behaviour with the necessary caching code:
 
@@ -212,7 +212,7 @@ At this point you need an IoC container to do the wireup of the components at st
     // register the caching providers as decorators
     builder.RegisterDecorator<IArtistsRepository>(
         (c, inner) => new ArtistsRepositoryCache(inner, c.Resolve<ICacheService>()), "repository");
-    
+
     var container = builder.Build();
     DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
@@ -225,7 +225,7 @@ Our caching code is separated from the repository implementation and encapsulate
  - for example, expire frequently-changing components quicker than others
  - inject a strategy object into the cache and control when the cache is used
 
-## TODO: 
+## TODO:
 
  - simplify the cache repos to subclass
  - injecting a strategy object?
