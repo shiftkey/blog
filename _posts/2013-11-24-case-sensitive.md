@@ -138,7 +138,7 @@ Patch /repos/shiftkey-tester/test/git/refs/heads/master HTTP/1.1
 
 ![](http://i.imgur.com/0IE7YeS.gif)
 
-The sample code for this request is actually some good old `HttpWebRequest` code:
+The sample code for this request is just some good old `HttpWebRequest` code:
 
 ```
 var webRequest = WebRequest.Create(sourceUrl);
