@@ -226,6 +226,11 @@ problem at hand.
 In both examples above, I got two different results - neither of which aligned
 with what the specification indicated.
 
+EDIT: Someone pointed me to [RFC 5789](http://tools.ietf.org/html/rfc5789)
+where `PATCH` was moved from a custom verb to an official verb - which might
+explain the differences in behaviour (RFC 2616 was written in June 1999,
+  RFC 5789 in March 2010 - that's forever in Internet time).
+
 ### Appendix: The Vibe Of The Thing
 
 Specifications are important.
