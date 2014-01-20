@@ -47,7 +47,7 @@ So here's my first tip about remapping VS shortcuts:
 
 Under **Tools** | **Options** you can change commands from Visual Studio and other extensions. But a limitation of the Mac keyboard is that the right Alt key doesn't respond to the Alt+Enter context menu that ReSharper surfaces based on youe cursor position (or perhaps this is Parallels making up for a lack of right CTRL?)
 
-To fix this, select the **ReSharper_AltEnter** command **Text Editor** under **Use new shortcut in**, then press the gesture you want, and click **Assign**. Repeat it for **XAML UI Designer** and your setup should be like this:
+To fix this, select the **ReSharper_AltEnter** command. Under **Use new shortcut in** find **Text Editor**, then press the gesture you want, and click **Assign**. Repeat it for **XAML UI Designer** and your setup should be like this:
 
 ![](/img/posts/wrist/resharper.png)
 
@@ -55,7 +55,7 @@ Given how so much of ReSharper's shortcuts use CTRL, this is going to be an abso
 
 ## Non-Work Stuff
 
-While these above paragraphs do make me sound pretty depressied, being surrounded by colleagues throughout at the time has provided for much entertainment to cheer me up.
+While these above paragraphs do make me sound pretty depressied, being surrounded by colleagues throughout all this has provided for much entertainment to cheer me up.
 
 Some examples:
 
