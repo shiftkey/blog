@@ -13,7 +13,7 @@ So on Wednesday my left wrist was put into a splint due to a scaphoid fracture.
 
 I have the x-rays with me but don't travel with a CD drive, so I'll post those another time.
 
-When I put this out on Twitter I got a lot of awesome replies (thanks everyone!) as well as hearing some worse stories (shoutout to [@thomasvjames](https://twitter.com/thomasvjames), [@ammeep](https://twitter.com/ammeep) and [@evilsnoofy](https://twitter.com/evilsnoofy)) which made me feel much better about my relatively good fortunes.
+When I put this out on Twitter I got a lot of awesome replies (thanks everyone!) as well as hearing some worse stories (shoutout to [@thomasvjames](https://twitter.com/thomasvjames), [@ammeep](https://twitter.com/ammeep) and [@evilsnoofy](https://twitter.com/evilsnoofy)) which made me feel much better about my situation.
 
 So what can I do right now? While I have some use of the fingers on my left hand (not without pain), the thumb and all wrist movement are out of the question. 
 
