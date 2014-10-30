@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DDD Brisbane - Audience Participation
-date: 2014-01-19 10:30:00 -7:00
+date: 2014-10-31 01:30:00 -7:00
 description: I'll be doing a talk soon, and I'd love to make it interactive
 icon: /img/main/github2.png
 comments: false
