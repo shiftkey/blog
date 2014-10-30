@@ -21,5 +21,5 @@ I left a footnote in the talk that I hope people noticed:
 > if I can work the best ones into the talk
 
 Even if you're not attending the talk, I'd love to hear the questions you have
-about Git. I have an issue tracker open where you can send me things:
-[https://github.com/shiftkey/talks](https://github.com/shiftkey/talks) 
+about Git. I have an issue tracker open where you can send me questions:
+[https://github.com/shiftkey/talks](https://github.com/shiftkey/talks)
