@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.0.0"
+ruby "2.1.2"
 
 gem "rake"
 gem "activesupport"
@@ -22,4 +22,3 @@ gem "puma"
 group :development do
   gem "foreman", "~> 0.61"
 end
-
