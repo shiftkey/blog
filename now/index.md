@@ -46,3 +46,5 @@ Stay tuned.
 ## I want to get in touch!
 
 My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
+
+###### *Last updated: 22 October 2015*
