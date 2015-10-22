@@ -18,7 +18,7 @@ Here's what I'm working on at the moment:
     - making build scripts more automated
     - reviewing and reviewing and reviewing
 
- - [up-for-grabs](https://github.com) - a place to connect project maintainers with people who are interested in getting started with open source
+ - [up-for-grabs](http://up-for-grabs.net) - a place to connect project maintainers with people who are interested in getting started with open source
     - rewrite the vision and provide supporting documentation
     - general site design
     - automate the boring bits
