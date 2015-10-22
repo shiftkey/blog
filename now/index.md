@@ -43,6 +43,10 @@ No speaking plans for the foreseeable future - I need to sit down and build some
 
 Stay tuned.
 
+## What about XYZ?
+
+I'm trying to narrow the amount of things I have going on at once to get a better work-life balance. I don't mind making myself available to bounce ideas around if time permits, but I'd have to take things off my plate before considering new work.
+
 ## I want to get in touch!
 
 My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
