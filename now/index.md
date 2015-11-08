@@ -14,14 +14,12 @@ I'll be on campus for MVP Summit in November, but aside from that I'll be heads-
 Here's what I'm working on at the moment:
 
  - [Octokit.net](https://github.com/octokit/octokit.net) - .NET bindings for the GitHub API
-    - migrating stuff to VS2015
     - making build scripts more automated
-    - reviewing and reviewing and reviewing
+    - targeting .NET Core
 
  - [up-for-grabs](http://up-for-grabs.net) - a place to connect project maintainers with people who are interested in getting started with open source
     - rewrite the vision and provide supporting documentation
     - general site design
-    - automate the boring bits
 
  - [ReactiveGit](https://github.com/shiftkey/ReactiveGit) - proof-of-concept for combining Reactive Extensions with [libgit2sharp](https://github.com/libgit2/libgit2sharp)
     - basically needs a rewrite after getting some good feedback about the Rx
@@ -51,4 +49,4 @@ I'm trying to narrow the amount of things I have going on at once to get a bette
 
 My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
 
-###### *Last updated: 22 October 2015*
+###### *Last updated: 8 November 2015*
