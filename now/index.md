@@ -5,9 +5,8 @@ title: What I'm Doing Now
 
 ## Where?
 
-I'm currently in Europe, and will be on the west coast of the US for November before heading back to Australia to enjoy the summer and be in one spot for a while.
-
-I'll be on campus for MVP Summit in November, but aside from that I'll be heads-down in work during this time.
+I'm hiding out on the west coast for a couple of weeks, trying to get as much
+work done as possible before I head back to Australia for the summer. 
 
 ## Side Projects
 
