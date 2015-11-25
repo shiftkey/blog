@@ -5,8 +5,8 @@ title: What I'm Doing Now
 
 ## Where?
 
-I'm hiding out on the west coast for a couple of weeks, trying to get as much
-work done as possible before I head back to Australia for the summer. 
+After a long road trip, I'm back in Australia for the summer (and the silly season)
+recharging and just hopefully enjoying the warm weather.
 
 ## Side Projects
 
