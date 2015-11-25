@@ -48,4 +48,4 @@ I'm trying to narrow the amount of things I have going on at once to get a bette
 
 My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
 
-###### *Last updated: 8 November 2015*
+###### *Last updated: 26 November 2015*
