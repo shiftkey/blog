@@ -5,32 +5,29 @@ title: What I'm Doing Now
 
 ## Where?
 
-After a long road trip, I'm back in Australia for the summer (and the silly season)
-recharging and just hopefully enjoying the warm weather.
+Taking a bit of time off after the Christmas break, but after that I'll be back on deck to kick off 2016 properly.
 
 ## Side Projects
 
 Here's what I'm working on at the moment:
 
  - [Octokit.net](https://github.com/octokit/octokit.net) - .NET bindings for the GitHub API
-    - making build scripts more automated
+    - complete API audit for v1
+    - documentation effort
     - targeting .NET Core
 
  - [up-for-grabs](http://up-for-grabs.net) - a place to connect project maintainers with people who are interested in getting started with open source
     - rewrite the vision and provide supporting documentation
-    - general site design
 
- - [ReactiveGit](https://github.com/shiftkey/ReactiveGit) - proof-of-concept for combining Reactive Extensions with [libgit2sharp](https://github.com/libgit2/libgit2sharp)
-    - basically needs a rewrite after getting some good feedback about the Rx
-
- - lackey - a proof-of-concept for supporting project maintainers
-    - Coming Soon™
+ - lackey - supporting project maintainers
+    - proof of concept using live data
+    - write up and open source the goals
 
 There's also some async stuff working with the [libgit2](https://github.com/libgit2) and [Git for Windows](https://github.com/git-for-windows) teams, but that's work-related.
 
 When I have time I've been looking at:
 
- - **golang** - for some simple web services
+ - **Elixir** - for some simple web services
  - **Elm** - a promising way to build webapps
  - **Rust** - as an alternative way to do systems programming
 
@@ -48,4 +45,4 @@ I'm trying to narrow the amount of things I have going on at once to get a bette
 
 My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
 
-###### *Last updated: 26 November 2015*
+###### *Last updated: 1 January 2016*
