@@ -31,6 +31,10 @@ When I have time I've been looking at:
  - **Elm** - a promising way to build webapps
  - **Rust** - as an alternative way to do systems programming
 
+### Research
+
+I found myself involved in a lengthy Twitter discussion last year about open source projects and various funding models that they use. I wanted to blog about it but it turns out the topic is much broader and deep than anticipated - and a couple of blog posts would not do it justice, so I put it aside to revisit in the new year.
+
 ## The Future
 
 No speaking plans for the foreseeable future - I need to sit down and build some stuff now I've got my burnout under control again. Oh, and write more.
