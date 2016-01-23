@@ -6,6 +6,7 @@ gem "activesupport"
 
 gem "jekyll", "~> 3.0.2"
 gem "jekyll-assets"
+gem 'jekyll-feed'
 
 gem "flickraw", "~> 0.9.6"
 gem "pygmentize", "~> 0.0.3"
