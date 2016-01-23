@@ -2,150 +2,140 @@
 <html>
 	<head>
 		<title>brendan forster</title>
+		<meta charset="utf-8" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Sitewide ATOM Feed">
 		{% include resources.html %}
 	</head>
+
 	<body>
 
-		<!-- Header -->
-			<div id="header-wrapper">
-				<header id="header" class="5grid 5grid-container">
-					<div class="row">
-						<div class="12u">
-
-							<!-- Logo -->
-								<h1><a href="/" id="logo">brendan forster</a></h1>
-
-							<!-- Nav -->
-								<nav id="nav">
-									<a href="/projects/">Projects</a>
-									<a href="/blog/">Blog</a>
-									<a href="/notes/">Drafts &amp; Notes</a>
-								</nav>
-
-						</div>
-					</div>
+		<div id="wrapper">
+				<header id="header">
+					<h1><a href="/">brendan forster</a></h1>
+					<nav class="links">
+						<ul>
+							<li><a href="/projects/">Projects</a></li>
+							<li><a href="/blog/">Blog</a></li>
+							<li><a href="/now/">Now</a></li>
+							<li><a href="/notes/">Drafts &amp; Notes</a></li>
+						</ul>
+					</nav>
+					<nav class="main">
+						<ul>
+							<li class="search">
+								<a class="fa-search" href="#search">Search</a>
+								<form id="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</li>
+							<li class="menu">
+								<a class="fa-bars" href="#menu">Menu</a>
+							</li>
+						</ul>
+					</nav>
 				</header>
-			</div>
 
+				<!-- Main -->
+					<div id="main">
 
-		<!-- Content -->
-			<div id="content-wrapper">
-				<div id="content">
-					<div class="5grid 5grid-container">
-						<div class="row">
-							<div class="4u">
-								<section>
-									<header>
-										<h2>about me</h2>
-									</header>
-									<p>
-										By day, I work for GitHub, but I live in Sydney, Australia. At the moment I'm working on a mix of product work and open source projects, but who knows what tomorrow will bring?
-									</p>
-									<p>
-										When you can tear me away from a computer, you'll likely find me hanging out at community events - sometimes up the front presenting, sometimes up the back heckling, and sometimes holding down the bar at the after party.
-									</p>
-
-								</section>
-							</div>
-							<div class="4u">
-								<section>
-									<header>
-										<h2>things of note</h2>
-									</header>
-									<p>
-										In my spare time I hack on a bunch of open source projects, including MahApps.Metro and a bunch of Code52 apps.
-									</p>
-									<p>
-										I've been awarded an Microsoft MVP award in 2012 and 2013 by the ASP.NET/IIS teams for work with the community.
-									</p>
-
-								</section>
-							</div>
-							<div class="4u">
-
-								<!-- Box #3 -->
-									<section>
-										<header>
-											<h2>upcoming things</h2>
-										</header>
-										<ul class="quote-list">
-											<li>
-												<p>MVP Summit</p>
-												<span>I think I'll be back in Redmond in November to hang out with all my favourite Microsoft blue badges and nerds.</span>
-											</li>
-										</ul>
-									</section>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-		<!-- Features -->
-			<div id="features-wrapper">
-				<div id="features">
-					<div class="5grid 5grid-container">
-
-						<div class="row">
 							{% for ps in site.posts limit:4 %}
-							<div class="3u">
-								<section>
-									<a href="{{ps.url}}" class="bordered-feature-image"><img src="{{ps.icon}}" alt="" /></a>
-									<h2><a href="{{ps.url}}">{{ps.title}}</a></h2>
-									<p>
-										{{ps.description}}
-									</p>
-								</section>
-							</div>
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="{{ps.url}}">{{ps.title}}</a></h2>
+										<p>	{{ps.description}}</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">November 1, 2015</time>
+										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+							</article>
 							{% endfor %}
-						</div>
+				 </div>
 
-						<div class="row">
-							{% for ps in site.posts offset:4 limit:4 %}
-							<div class="3u">
-								<section>
-									<a href="{{ps.url}}" class="bordered-feature-image"><img src="{{ps.icon}}" alt="" /></a>
-									<h2><a href="{{ps.url}}">{{ps.title}}</a></h2>
-									<p>
-										{{ps.description}}
-									</p>
-								</section>
-							</div>
-							{% endfor %}
-						</div>
 
-						<div class="row">
-							{% for ps in site.posts offset:8 limit:4 %}
-							<div class="3u">
-								<section>
-									<a href="{{ps.url}}" class="bordered-feature-image"><img src="{{ps.icon}}" alt="" /></a>
-									<h2><a href="{{ps.url}}">{{ps.title}}</a></h2>
-									<p>
-										{{ps.description}}
-									</p>
-								</section>
-							</div>
-							{% endfor %}
-						</div>
+			<section id="sidebar">
 
-					</div>
-				</div>
-			</div>
+					<section id="intro">
+						<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+						<header>
+							<h2>brendan forster</h2>
+						</header>
+					</section>
 
-			<div id="footer-wrapper">
-				<footer id="footer" class="5grid 5grid-container">
-				</footer>
-			</div>
+					<section class="blurb">
+						<h2>About</h2>
+						<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+					</section>
 
-		{% include scripts.html %}
-		{% include copyright.html %}
-		{% include analytics.html %}
+				<!-- Posts List -->
+					<section>
+						<ul class="posts">
+							<li>
+								<article>
+									<header>
+										<h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
+										<time class="published" datetime="2015-10-20">October 20, 2015</time>
+									</header>
+									<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+								</article>
+							</li>
+							<li>
+								<article>
+									<header>
+										<h3><a href="#">Convallis maximus nisl mattis nunc id lorem</a></h3>
+										<time class="published" datetime="2015-10-15">October 15, 2015</time>
+									</header>
+									<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+								</article>
+							</li>
+							<li>
+								<article>
+									<header>
+										<h3><a href="#">Euismod amet placerat vivamus porttitor</a></h3>
+										<time class="published" datetime="2015-10-10">October 10, 2015</time>
+									</header>
+									<a href="#" class="image"><img src="images/pic10.jpg" alt="" /></a>
+								</article>
+							</li>
+							<li>
+								<article>
+									<header>
+										<h3><a href="#">Magna enim accumsan tortor cursus ultricies</a></h3>
+										<time class="published" datetime="2015-10-08">October 8, 2015</time>
+									</header>
+									<a href="#" class="image"><img src="images/pic11.jpg" alt="" /></a>
+								</article>
+							</li>
+							<li>
+								<article>
+									<header>
+										<h3><a href="#">Congue ullam corper lorem ipsum dolor</a></h3>
+										<time class="published" datetime="2015-10-06">October 7, 2015</time>
+									</header>
+									<a href="#" class="image"><img src="images/pic12.jpg" alt="" /></a>
+								</article>
+							</li>
+						</ul>
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<ul class="icons">
+							<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+							<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+					</section>
+			</section>
 	</body>
 </html>
