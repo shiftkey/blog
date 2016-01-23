@@ -11,46 +11,65 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		{% include resources.html %}
 	</head>
-	
-	<body class="subpage">
-		<div id="header-wrapper">
-			<header id="header" class="5grid 5grid-container">
-				<div class="row">
-					<div class="12u">
-						<h1><a href="/" id="logo">brendan forster</a></h1>
-						<nav id="nav">
-							<a href="/projects/">Projects</a>
-							<a href="/blog/">Blog</a>
-							<a href="/notes/">Drafts &amp; Notes</a>
-						</nav>
-					</div>
-				</div>
+
+	<body>
+		<div id="wrapper">
+			<header id="header">
+				<h1><a href="/">brendan forster</a></h1>
+				<nav class="links">
+					<ul>
+						<li><a href="/projects/">Projects</a></li>
+						<li><a href="/blog/">Blog</a></li>
+						<li><a href="/now/">Now</a></li>
+						<li><a href="/notes/">Drafts &amp; Notes</a></li>
+					</ul>
+				</nav>
+				<nav class="main">
+					<ul>
+						<li class="search">
+							<a class="fa-search" href="#search">Search</a>
+							<form id="search" method="get" action="#">
+								<input type="text" name="query" placeholder="Search" />
+							</form>
+						</li>
+						<li class="menu">
+							<a class="fa-bars" href="#menu">Menu</a>
+						</li>
+					</ul>
+				</nav>
 			</header>
-		</div>
 
-		<div id="content-wrapper">
-			<div id="content">
-				<div class="5grid 5grid-container">
-					<div class="row">
-						<div class="12u">
-							<section>
-								<header>
-									<h2>{{page.title}}</h2>
-									<h3>{{page.description}}</h3>
-								</header>
-								{{content}}
-
-								{% if page.comments %}
-									{% include disqus.html %}
-								{% endif %}
-							</section>
-						</div>
-					</div>
+			<div id="main">
+					<article class="post">
+						<header>
+							<div class="title">
+								<h2><a href="#">{{page.title}}</a></h2>
+								<p>{{page.description}}</p>
+							</div>
+							{% if page.date <> nil %}
+							<div class="meta">
+								<time class="published" datetime="2015-11-01">{{ page.date | date_to_long_string }}</time>
+							</div>
+							{% endif %}
+						</header>
+						{{content}}
+						{% if page.comments %}
+							{% include disqus.html %}
+						{% endif %}
+						<footer>
+							<ul class="actions">
+								<li><a href="#" class="button big">Continue Reading</a></li>
+							</ul>
+							<ul class="stats">
+								<li><a href="#">General</a></li>
+								<li><a href="#" class="icon fa-heart">28</a></li>
+								<li><a href="#" class="icon fa-comment">128</a></li>
+							</ul>
+						</footer>
+					</article>
+					{% include scripts.html %}
+					{% include copyright.html %}
+					{% include analytics.html %}
 				</div>
-			</div>
-		</div>
-		{% include scripts.html %}
-		{% include copyright.html %}
-		{% include analytics.html %}
 	</body>
 </html>
