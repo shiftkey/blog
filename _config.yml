@@ -1,6 +1,6 @@
-pygments: true
+highlighter: pygments
 
-markdown: rdiscount
+markdown: kramdown
 
 exclude: [LICENSE.md, config.ru, Gemfile, Gemfile.lock, Procfile, rakefile.rb, README.md, vendor]
 
@@ -9,3 +9,16 @@ owner-page: http://brendanforster.com
 owner-email: me@brendanforster.com
 
 license: bsd
+
+gems:
+  - jekyll-feed
+
+# feed options
+feed:
+  path: atom.xml
+
+name: brendan forster
+url: http://brendanforster.com
+author:
+  name: Brendan Forster
+  email: me@brendanforster.com
