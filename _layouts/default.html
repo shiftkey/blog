@@ -8,7 +8,6 @@
 	</head>
 
 	<body>
-
 		<div id="wrapper">
 				<header id="header">
 					<h1><a href="/">brendan forster</a></h1>
@@ -35,26 +34,23 @@
 					</nav>
 				</header>
 
-				<!-- Main -->
-					<div id="main">
-
-							{% for ps in site.posts limit:4 %}
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="{{ps.url}}">{{ps.title}}</a></h2>
-										<p>	{{ps.description}}</p>
-									</div>
+				<div id="main">
+						{% for ps in site.posts limit:10 %}
+						<article class="post">
+							<header class="summary">
+								<div class="title">
+									<h2><a href="{{ps.url}}">{{ps.title}}</a></h2>
+									{% if ps.date <> nil %}
 									<div class="meta">
-										<time class="published" datetime="2015-11-01">November 1, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+										<time class="published" datetime="{{ ps.date | date_to_xmlschema }}">{{ ps.date | date_to_long_string }}</time>
 									</div>
-								</header>
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-							</article>
-							{% endfor %}
-				 </div>
+									{% endif %}
+									<p class="description">	{{ps.description}}</p>
+								</div>
+							</header>
+						</article>
+						{% endfor %}
+			 </div>
 
 
 			<section id="sidebar">
@@ -67,10 +63,10 @@
 					</section>
 
 					<section class="blurb">
-						<h2>About</h2>
-						<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+						<p>I work for GitHub. I live somewhere in Australia. I'm involved
+							with various open source projects. This is my neglected blog.</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="#" class="button">contact</a></li>
 						</ul>
 					</section>
 

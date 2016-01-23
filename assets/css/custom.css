@@ -1,0 +1,20 @@
+.post > header .meta
+{
+  padding: 0;
+  border-left: 0;
+  text-align:left;
+  min-width: 0;
+  width: auto;
+}
+
+.post > .summary
+{
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.post > header .description
+{
+  padding-top: 3em;
+  font-size: 1em;
+}
