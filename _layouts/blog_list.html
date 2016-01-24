@@ -1,51 +1,51 @@
 <!DOCTYPE HTML>
 <html>
+	<!--
+		Future Imperfect by HTML5 UP
+		html5up.net | @n33co
+		Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	-->
 	<head>
 		<title>{{ page.title }}</title>
+		<meta charset="utf-8" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
 		{% include resources.html %}
 	</head>
-	<body class="subpage">
-		<div id="header-wrapper">
-			<header id="header" class="5grid 5grid-container">
-				<div class="row">
-					<div class="12u">
-						<h1><a href="/" id="logo">brendan forster</a></h1>
-						<nav id="nav">
-							<a href="/projects/">Projects</a>
-							<a href="/blog/">Blog</a>
-							<a href="/notes/">Drafts &amp; Notes</a>
-						</nav>
-					</div>
-				</div>
-			</header>
-		</div>
 
-		<div id="content-wrapper">
-			<div id="content">
-				<div class="5grid 5grid-container">
-					<div class="row">
-						<div class="12u">
-							<section>
-								<header>
-									<h2>{{page.title}}</h2>
-									<h3>{{page.description}}</h3>
-								</header>
-								{{content}}
-								<ul>
-									{% for ps in site.posts %}
-										<li><a href="{{ ps.url }}">{{ps.date | date: "%Y-%m-%d" }} - {{ps.title}}</a></li>
-									{% endfor %}
-								</ul>
-							</section>
+	<body>
+		<div id="wrapper">
+			<header id="header">
+				<h1><a href="/">brendan forster</a></h1>
+				<nav class="links">
+					<ul>
+						<li><a href="/now/">Now</a></li>
+						<li><a href="/projects/">Projects</a></li>
+						<li><a href="/blog/">Archive</a></li>
+					</ul>
+				</nav>
+
+			</header>
+
+			<div id="main">
+				<article class="post">
+					<header>
+						<div class="title">
+							<h2>{{page.title}}</h2>
 						</div>
-					</div>
+					</header>
+					{{content}}
+					<ul>
+						{% for ps in site.posts %}
+							<li><a href="{{ ps.url }}">{{ps.date | date: "%Y-%m-%d" }} - {{ps.title}}</a></li>
+						{% endfor %}
+					</ul>
+				</article>
+
+				<section id="footer">
+					{% include copyright.html %}
+				</section>
 				</div>
-			</div>
-		</div>
-		{% include copyright.html %}
+		{% include scripts.html %}
 		{% include analytics.html %}
 	</body>
 </html>
