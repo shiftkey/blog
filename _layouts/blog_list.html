@@ -34,7 +34,7 @@
 						</div>
 					</header>
 					{{content}}
-					<ul>
+					<ul class="archive">
 						{% for ps in site.posts %}
 							<li><a href="{{ ps.url }}">{{ps.date | date: "%Y-%m-%d" }} - {{ps.title}}</a></li>
 						{% endfor %}

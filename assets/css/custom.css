@@ -43,3 +43,13 @@ ul.posts article header p
   font-size: 0.6em;
   text-transform: none;
 }
+
+ul.archive
+{
+  padding-left: 0;
+}
+
+ul.archive li
+{
+  list-style-type: none;
+}
