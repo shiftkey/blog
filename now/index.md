@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What I'm Doing Now
+date: 2016-01-24 21:00:00 +11:00
 ---
 
 If you're not familiar with the whole [/now](http://nownownow.com/) thing,
@@ -61,5 +62,3 @@ considering new work.
 ## I want to get in touch!
 
 My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
-
-###### *Last updated: 24 January 2016*
