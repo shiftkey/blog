@@ -2,7 +2,7 @@ highlighter: pygments
 
 markdown: kramdown
 
-exclude: [LICENSE.md, config.ru, Gemfile, Gemfile.lock, Procfile, rakefile.rb, README.md, vendor]
+exclude: [LICENSE.md, config.ru, Gemfile, Gemfile.lock, Procfile, rakefile.rb, README.md, vendor, _drafts]
 
 owner-name: brendan forster
 owner-page: http://brendanforster.com
