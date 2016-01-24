@@ -2,6 +2,7 @@
 layout: old-build
 title: WinRT - API Design Notes
 comments: true
+permalink: /build/migration-tips-and-tricks.html
 ---
 
 <header>
@@ -49,9 +50,9 @@ comments: true
         You won't see this level of detail in your Output Window unless you switch the MSBuild output under <strong>Tools | Options | Projects and Solutions | Build and Run</strong> to Diagnostic or higher.<br /><br />
 
         You will see the errors and warnings though: <br /><br />
-        
+
         {% img center /img/posts/Win8/error-output.png %} <br /><br />
-        
+
     </section>
 
     <section>
@@ -120,7 +121,7 @@ public sealed class MyClass
         </pre>
 
         now we get multiple errors, such as: <br /><br />
-    
+
     <pre>Method 'MyProject.MyClass.MyProperty.get()' has a parameter of type 'System.Collections.Generic.List&lt;System.String&gt;' in its signature.  Although this type is not a valid Windows Runtime type, it implements interfaces which are valid Windows Runtime types.  Consider changing the method signature to instead use one of the following types: 'System.Collections.Generic.IList&lt;System.String&gt;, System.Collections.Generic.IReadOnlyList&lt;System.String&gt;, System.Collections.Generic.IEnumerable&lt;System.String&gt;'.</pre>
 
     <br />
@@ -163,13 +164,13 @@ public static class MyStaticClass
 
         And we get scolded rather badly:<br /><br />
 
-        
+
         <pre>'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' is a generic method.  Windows Runtime methods may not be generic.<br />
 Method 'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' has a generic type parameter of type 'T' in its signature.  Generic type parameters may not appear in method signatures of Windows Runtime methods.<br />
 Method 'MyProject.MyStaticClass.Parse&lt;T&gt;(System.String)' returns 'T', which is not a valid Windows Runtime type.  Methods exposed to Windows Runtime must only return Windows Runtime types.
         </pre>
-        
-        
+
+
         The Solution? Uh, don't do it.<br /><br />
 
         So, for all those MVVM frameworks who use helper methods like this:<br /><br />
@@ -207,7 +208,7 @@ public interface IPager&lt;T&gt; : IEnumerable&lt;T&gt;
     <pre>Interface 'MyProject.IPager&lt;T&gt;' requires interface 'System.Collections.Generic.IEnumerable&lt;T&gt;' which is not a Windows Runtime interface.  Exported interfaces may only require other Windows Runtime interfaces.
     Type 'MyProject.IPager&lt;T&gt;' is generic.  Windows Runtime types may not be generic.</pre>
 
-    
+
 
         Damn. Another brick wall.<br /><br />
 
@@ -253,7 +254,7 @@ public class SomeClass
         <header>
             <h5>Fields! How do they work?</h5>
         </header>
-        
+
         This gist describes it fairly well:<br /><br />
 
         <script src="https://gist.github.com/1256866.js"> </script>
@@ -264,14 +265,14 @@ public class SomeClass
         <header>
             <h5>Empty Class?</h5>
         </header>
-        
-        
+
+
         And if the tool finds an empty class:<br /><br />
 
         <pre>
 public sealed class SomeClass
 {
-    
+
 }
         </pre>
 
@@ -288,8 +289,8 @@ public sealed class SomeClass
         <header>
             <h5>Don't do async everywhere</h5>
         </header>
-        
-        
+
+
         You may be inclined to use async and await everywhere, seeing as they are the new black:<br /><br />
 
         <pre>

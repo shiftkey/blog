@@ -2,6 +2,7 @@
 layout: old-build
 title: WinRT Fun &amp; Games
 comments: true
+permalink: /build/customize-a-winmd-file.html
 ---
 
 <header>
@@ -22,11 +23,11 @@ comments: true
 public sealed class ShellViewModel : ViewModelBase
 {
     private string someProperty;
-    public string SomeProperty   
-    { 
+    public string SomeProperty
+    {
         get { return someProperty; }
-        set 
-        { 
+        set
+        {
             someProperty = value;
             OnPropertyChanged("SomeProperty");
         }
@@ -56,7 +57,7 @@ public sealed class ShellViewModel : INotifyPropertyChanged
         <pre>
 &lt;Project&gt;
     &lt;!-- existing project file elements --&gt;
-    &lt;UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" 
+    &lt;UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask"
                 AssemblyFile="$(SolutionDir)lib\NotifyPropertyWeaverMsBuildTask.dll" /&gt;
     &lt;Target Name="AfterCompile"&gt;
         <strong>&lt;NotifyPropertyWeaverMsBuildTask.WeavingTask /&gt;</strong>
@@ -86,7 +87,7 @@ public sealed class ShellViewModel : INotifyPropertyChanged
 
         Take a deep breath, Alice. The adventure is just beginning.
     </section>
-    
+
     <section>
         <header><h4>Step Four: To the rabbit hole!</h4></header>
 
@@ -102,9 +103,9 @@ public sealed class ShellViewModel : INotifyPropertyChanged
 
         You will need to switch the File Type to <strong>Any Type (*.*)</strong> to see the files.<br /><br />
 
-        Select the .winmd file and open it.<br /><br />   
+        Select the .winmd file and open it.<br /><br />
 
-        {% img center /img/posts/Win8/ildasm-preview.png %} 
+        {% img center /img/posts/Win8/ildasm-preview.png %}
 
     </section>
 
@@ -136,10 +137,10 @@ public sealed class ShellViewModel : INotifyPropertyChanged
 <strong>[ExclusiveTo(typeof (ShellViewModel))]</strong>
 internal interface IShellViewModelClass
 {
-    string SomeProperty 
-    { 
-        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> get; 
-        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> set; 
+    string SomeProperty
+    {
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> get;
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> set;
     }
 
     event PropertyChangedEventHandler PropertyChanged;
@@ -156,10 +157,10 @@ internal interface IShellViewModelClass
 [SpecialName]</strong>
 public sealed class ShellViewModel : INotifyPropertyChanged, <strong>IShellViewModelClass</strong>
 {
-    public string SomeProperty 
-    { 
-        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> get; 
-        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> set; 
+    public string SomeProperty
+    {
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> get;
+        <strong>[MethodImpl(MethodCodeType = MethodCodeType.Runtime)]</strong> set;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -205,7 +206,7 @@ internal sealed class &lt;CLR&gt;ShellViewModel : INotifyPropertyChanged, IShell
 
     <strong>public void OnPropertyChanged(string propertyName)
     {
-      EventRegistrationTokenTable&lt;PropertyChangedEventHandler&gt; 
+      EventRegistrationTokenTable&lt;PropertyChangedEventHandler&gt;
             registrationTokenTable = this.PropertyChanged;
 
       if (registrationTokenTable == null)
