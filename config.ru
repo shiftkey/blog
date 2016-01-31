@@ -8,9 +8,9 @@ require './cache-response'
 use Rack::Rewrite do
 	rewrite '/feed/', '/rss.xml'
 	rewrite '/blog/feed/', '/rss.xml'
-    rewrite %r{/(.+)}, lambda {     |match, rack_env| 
+    rewrite %r{/(.+)}, lambda {     |match, rack_env|
         if File.exists?('_site/' + match[1] + '.html')
-            return '/' + match[1] + '.html' 
+            return '/' + match[1] + '.html'
         else
             return '/' + match[1]
         end
@@ -28,5 +28,3 @@ use Rack::TryStatic,
   :urls => %w[/],
   :try  => ['index.html', '/index.html']
 use Rack::Deflater
-
-run Rack::NotFound.new('_site/404.html')
