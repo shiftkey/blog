@@ -53,3 +53,9 @@ ul.archive li
 {
   list-style-type: none;
 }
+
+@media screen and (max-width: 980px) {
+  #header .links {
+      display: inline;
+  }
+}
