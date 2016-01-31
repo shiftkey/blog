@@ -1,13 +1,12 @@
---- 
+---
 layout: post
 title: Sharing my personal backlog with the world
 permalink: /visible-personal-backlog.html
 description: To try and motivate myself back into action, I'm trying out making my personal backlog visible to the world. This could end badly...
 date: 2012-07-16 21:00:00 +10:30
-icon: /img/main/trello.png
 comments: true
 ---
- 
+
 Ever since I got back from holidays a few weeks ago I've been in a bit of a rut trying to tackle the backlog of stuff I've been meaning to do (projects half-done, contributions I've promised other people, things I've been meaning to blog about).
 
 ### The Experiment

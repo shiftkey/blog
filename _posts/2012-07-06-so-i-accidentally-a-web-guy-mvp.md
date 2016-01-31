@@ -1,13 +1,12 @@
---- 
+---
 layout: post
 title: So I accidentally a web guy MVP
 permalink: /so-i-accidentally-a-web-guy-mvp.html
 description: I was humbled and honoured to be named an Microsoft MVP for ASP.NET/IIS recently...
 date: 2012-07-08 21:00:00 +10:30
-icon: /img/main/mvp-banner.png
 comments: false
 ---
- 
+
 So I just had this little email land in my inbox last week.
 
 > Congratulations! We are pleased to present you with the 2012 Microsoft MVP Award! This award is given to exceptional technical community leaders who actively share their high quality, real world expertise with others. We appreciate your outstanding contributions in ASP.NET/IIS technical communities during the past year.

@@ -1,22 +1,20 @@
---- 
+---
 layout: post
 title: Doing the build server dance with NuGet
 permalink: /doing-the-build-server-dance-with-nuget.html
 description: After a few hours of hacking, I've put together a guide for setting up TeamCity to consume NuGet packages as part of a build.
-funnelweb_id: 17
 date: 2011-07-08 14:00:00 +10:00
-icon: /img/main/nuget.png
 tags: "nuget myget teamcity"
 comments: true
 ---
 
-I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with. 
+I started exploring NuGet package building yesterday evening, as a strategy for managing dependencies between projects I'm involved with.
 
 And with NuGet in the enterprise being the [upcoming hotness][1], I thought I'd see how I could get companies I work with to start doing similar things with their internal projects. It was much easier than I'd expected, with a couple of hurdles.
 
 ## The Goal
 
-I have two projects, A and B. A has no upstream dependencies (that have NuGet packages, anyway), but B requires A. 
+I have two projects, A and B. A has no upstream dependencies (that have NuGet packages, anyway), but B requires A.
 
 So, after A builds and passes its tests, I want to:
 
@@ -53,7 +51,7 @@ The script I've used (duplicated for two different packages):
 
     .\NuGet.exe pack Package.nuspec -Version %system.build.number%
 
-That script is courtesy of Scott Kirkland, who also has a decent guide to using NuGet on TC [here][10] 
+That script is courtesy of Scott Kirkland, who also has a decent guide to using NuGet on TC [here][10]
 
 ## Publishing the package
 
@@ -63,7 +61,7 @@ For those who aren't familiar with MyGet, its a service to create custom NuGet f
 
 <p><a href="img/posts/NuGet/myget.png"><img src="img/posts/NuGet/myget-small.png" alt="Post Build Step" /></a></p>
 
-While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server. 
+While MyGet supports the ability to upload or create packages within the admin UI, I was feeling lazy and wanted to push packages from the build server.
 
 This required an additional line in the script:
 
@@ -93,7 +91,7 @@ I added a step before building the project, and executed this command:
 
 which will look through all the projects in my solution and update to the newest packages it can find. I've added in my MyGet feed URL to grab the latest packages from the specific feed.
 
-And this works. Kinda. 
+And this works. Kinda.
 
 <p><a href="img/posts/NuGet/updatescripts.png"><img src="img/posts/NuGet/updatescripts-small.png" alt="Success?" /></a></p>
 
@@ -108,24 +106,24 @@ Scouring the forums produced [this discussion][16] on this issue, which recommen
 
 **NOTE**: a minor grievance with the *install* command. Unlike the *update* command, this works against a project's repository. This seems subpar, when I can call *update* against a solution file. Can we get some consistency with this? Or have I missed something with how install behaves?
 
-Fine, not all workarounds are pretty. 
+Fine, not all workarounds are pretty.
 
 Let's modify my script to suit:
 
     .\Nuget.exe update ..\MahApps.Twitter.sln -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-  
+
     .\Nuget.exe install ..\src\Identica\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-  
+
     .\Nuget.exe install ..\src\NET4\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-	
+
     .\Nuget.exe install ..\src\Tests\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
-	
+
     .\Nuget.exe install ..\src\WP7\packages.config -Source http://www.myget.org/f/mahapps -Source https://go.microsoft.com/fwlink/?LinkID=206669 -o ..\packages
 
 Icky. Whatever, I've got awesome to do.
 
 *https://go.microsoft.com/fwlink/?LinkID=206669* is the path to the official NuGet feed (the build server couldn't find some packages), and it is explicitly after my local feed (I may have some custom packages which I prefer). And I've added the "-o" parameter to point to the default packages location, just in case.
-	
+
 Aaaaand...
 
 <p><a href="img/posts/NuGet/installedpackages.png"><img src="img/posts/NuGet/installedpackages-small.png" alt="Success!" /></a></p>

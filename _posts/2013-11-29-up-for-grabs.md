@@ -3,9 +3,8 @@ layout: post
 title: Up For Grabs!
 date: 2013-11-29 10:30:00 -7:00
 description: A quick writeup on the brief history of a little side project I was nerd-sniped into collaborating on
-icon: /img/main/github2.png
 comments: true
----	
+---
 
 It's always fun when a brief discussion suddenly sparks something fun and entertaining. I've heard these events referred to as "serendipitious interactions" but it's always better to see these things happen in the real.
 
@@ -19,7 +18,7 @@ What was the purpose of this site? To have an easily-accessible listing of the v
  - had tasks which were small and well-defined enough that they could be done with a few nights of work
  - were happy to take time out to work with developers new to open source projects
 
-So Keith spun up a little GitHub Pages site, threw up a sample list of projects to start things off. 
+So Keith spun up a little GitHub Pages site, threw up a sample list of projects to start things off.
 
 This is how it looked in the beginning:
 
@@ -29,7 +28,7 @@ The URL was then passed around on Twitter (thanks for all those who RT'd it) and
 
 ![more projects](/img/posts/up-for-grabs/more-projects.png)
 
-At this point it was Wednesday evening and we all headed our separate ways to enjoy the nightlife of Seattle. Reconvening later in the evening, we realised we hadn't actually elaborated on the vision of what this site was for. 
+At this point it was Wednesday evening and we all headed our separate ways to enjoy the nightlife of Seattle. Reconvening later in the evening, we realised we hadn't actually elaborated on the vision of what this site was for.
 
 We didn't want it to end up as a dumping ground of links, so I put my hand up to write some words in the morning to succinctly explain what we were doing.
 
@@ -41,7 +40,7 @@ Of course, that collection of project links was looking rather plain now we had 
 
 So we restyled the project links to make them more professional, and randomized the order of the projects on each page load.
 
-This is what the current project links look like today (without the header and footer): 
+This is what the current project links look like today (without the header and footer):
 
 ![more projects](/img/posts/up-for-grabs/more-details.png)
 

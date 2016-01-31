@@ -4,7 +4,6 @@ title: Custom server headers - bad for your health?
 date: 2013-05-04 16:00:00 +10:00
 description: Wherein I jump up and down about something seemingly silly
 permalink: /blog/custom-server-headers-bad-for-your-health.html
-icon: /img/main/web.png
 comments: true
 ---
 
@@ -94,7 +93,7 @@ public class RemoveUnnecessaryHeadersModule : IHttpModule
 }
 {% endhighlight %}
 
-That `PreSendRequestHeaders` event is the last opportunity ASP.NET gets to intercept the response (including reading headers set by IIS) before it gets sent to the client. 
+That `PreSendRequestHeaders` event is the last opportunity ASP.NET gets to intercept the response (including reading headers set by IIS) before it gets sent to the client.
 
 ## Defaults are good - except when they're not
 

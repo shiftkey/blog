@@ -3,7 +3,6 @@ layout: post
 title: It's time for something new
 date: 2013-08-25 20:30:00 +10:00
 description: A quick recap of what happened over the past few months
-icon: /img/main/github.png
 comments: false
 ---
 

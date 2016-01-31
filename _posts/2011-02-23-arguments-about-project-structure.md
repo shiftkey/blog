@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: Arguments about Project Structure
 permalink: /arguments-about-project-structure.html
 description: Putting pen to paper about some back and forth I've been having over IM about the 'right' way to set up projects...
-funnelweb_id: 11
 date: 2011-02-23 14:00:00 +11:00
 tags: "projects"
 comments: true
@@ -50,7 +49,7 @@ as not all developers would have them installed on their machines.
 
 ## Why this structure?
 
-**Folder Names** 
+**Folder Names**
 
 Remember the days of 8.3 filesystems? I do. But thankfully this isn't about that.  
 
@@ -58,7 +57,7 @@ This structure also borrows from Unix conventions for arranging their codebases.
 
 As we're using Mercurial, we don't need to worry about using trunks or tags in the structure.
 
-**Experience** 
+**Experience**
 
 When I challenged [@aeoth's][1] project structure for the next version of MahTweets, he wanted to make it so that a developer with little experience in .NET (or programming) could download the source and try it out.
 
@@ -67,7 +66,7 @@ I'd argue the best introduction to a codebase is two things:
  - a README file to provide some notes about the application
  - a batch file or script to run the application and execute tests
  - sample projects to complement the source
- 
+
 **The build is important**
 
 We had various pain points with the last version of MahTweets around managing loosely-coupled modules under development, and then building a signed ClickOnce installer with a custom script.

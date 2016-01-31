@@ -1,10 +1,9 @@
 ---
 layout: post
-title: Should I make this object a singleton? 
+title: Should I make this object a singleton?
 date: 2013-05-20 10:30:00 +10:00
 description: Some thoughts on class design and limitations you might face
 permalink: /blog/should-i-make-this-object-a-singleton.html
-icon: /img/main/me.jpg
 comments: true
 ---
 
@@ -15,7 +14,7 @@ Someone asked me a question yesterday along the lines of, well, this:
 <blockquote class="twitter-tweet" data-conversation="none"><p>@<a href="https://twitter.com/nickhodgemsft">nickhodgemsft</a> Roger, cheers @<a href="https://twitter.com/shiftkey">shiftkey</a> thoughts? Will it be better to create a life long Crypto obj rather than this <a href="http://t.co/bn3hRIiGdt" title="http://twitter.com/HDizzle84/status/336104817707589633/photo/1">twitter.com/HDizzle84/stat…</a></p>&mdash; HDizzle (@HDizzle84) <a href="https://twitter.com/HDizzle84/status/336104817707589633">May 19, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Singletons? My first instinct was to reach for the hose and dampen such discussion down immediately before someone got hurt. 
+Singletons? My first instinct was to reach for the hose and dampen such discussion down immediately before someone got hurt.
 
 But no, that's not right. I need to explain myself.
 
@@ -31,11 +30,11 @@ Inside this SqlConnection object you should see a bunch of underlying resources 
 
 Many of the objects you create in your application are probably simpler than this - classes to hold data, for example - but once you start interacting with the underlying platform and identify various bottlenecks in your applications understanding what resources are hiding where is invaluable knowledge.
 
-The other thing to keep in mind with objects is what they encapsulate. If your classes interacts with the network, storage or attached devices, for example, you are likely to face specific rules with how you use access these resources. 
+The other thing to keep in mind with objects is what they encapsulate. If your classes interacts with the network, storage or attached devices, for example, you are likely to face specific rules with how you use access these resources.
 
 An example: if you're ever making concurrent web requests to a specific domain, .NET will actually throttle you to two concurrent requests. You can change this if you [know where to look](http://msdn.microsoft.com/en-us/library/fb6y0fyc.aspx) but the defaults are designed to be "good enough" for most scenarios.
 
-Another example: [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are managed and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them. 
+Another example: [database connection pools](http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx) - a finite number of connections which are managed and reused over the lifetime of an application - instead of arbitrarily creating, using, and then destroying connections each time we need them.
 
 ## What about my memory footprint?
 
@@ -45,7 +44,7 @@ But what if you're making a mobile app? Memory becomes a significant constraint 
 
 > I don't need to worry about that, my stack has generational garbage collection (GC).
 
-But that's not actually a solution - more like a crutch. GC isn't a free lunch - it's overhead that you're now invoking periodically (technically GC will run whenever it needs to, which is often at the worst possible time due to memory pressure) because you were lazy with how you structured your application. 
+But that's not actually a solution - more like a crutch. GC isn't a free lunch - it's overhead that you're now invoking periodically (technically GC will run whenever it needs to, which is often at the worst possible time due to memory pressure) because you were lazy with how you structured your application.
 
 **TODO:** demonstrate .NET performance counters around GC, with a sample that does stupid things
 
@@ -79,9 +78,9 @@ So when should you consider wrapping an object in the singleton pattern?
  - If it's expensive to create, consider it.
  - If it's touching underlying system resources, consider it.
  - If you need to optimise for memory usage, consider it.
- 
+
 ## Feedback is Welcome
 
-Did I miss something? Get something wrong? 
+Did I miss something? Get something wrong?
 
 Leave a comment and let me know.

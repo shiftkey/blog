@@ -3,7 +3,6 @@ layout: post
 title: Mentoring
 date: 2013-11-19 22:30:00 +11:00
 description: They say "be the change you want to see in the world", so let's do that
-icon: /img/main/github2.png
 comments: true
 ---
 

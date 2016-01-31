@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: Amped Web 2010 Recap
 permalink: /amped-web-2010-recap.html
 description: The Amped Web day is a hack event for developers and designers to throw ideas around. This is the story of what happened to me and my team.
-funnelweb_id: 3
 date: 2010-10-16 14:00:00 +11:00
 tags: "amped"
 comments: true
@@ -13,7 +12,7 @@ comments: true
 
 Yesterday was the [Amped Web][2] day, a hack day following the Web Directions South conference held in Sydney. The day is for teams to compete in specific categories - around design and development - and put together a solution in a few hours. It may have been an all-day event, but the time flew by. The solutions were reviewed by judges over the afternoon - providing feedback and suggestions as the teams polished their ideas.
 
-I teamed up with [Tatham Oddie][3] ([@tathamoddie][4]) and [Aaron Powell][5] ([@slace][6]) to create a platform and prototype client for a specific problem. 
+I teamed up with [Tatham Oddie][3] ([@tathamoddie][4]) and [Aaron Powell][5] ([@slace][6]) to create a platform and prototype client for a specific problem.
 
 What was that problem? Check out the video!
 

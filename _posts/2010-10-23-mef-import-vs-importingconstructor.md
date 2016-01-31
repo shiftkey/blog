@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: MEF - [Import] vs [ImportingConstructor]
 permalink: /mef-import-vs-importingconstructor.html
 description: A compare and contrast article on how Import and ImportingConstructor behave, and the potential pitfalls to watch for
-funnelweb_id: 5
 date: 2010-10-23 14:00:00 +11:00
 tags: "mef .net "
 comments: true
@@ -59,7 +58,7 @@ public class TwitterPlugin : IMicroblog
        _applicationSettings = applicationSettings;
        _statusUpdatesService = statusUpdateService;
        _contactsService = contactsService;
-    
+
        // some constructor logic
     }
 }
@@ -77,7 +76,7 @@ By using the [ImportingConstructor] attribute, the part declares to the containe
 
 **Maintainability**
 
-Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach. 
+Jeremy raised a concern about the constructor signature growing over time, and that a set of properties on the class was a cleaner approach.
 
 I see the "growing dependency count" as a design issue rather than a technical issue. Tacking on another [Import] attribute should be considered a code smell, just like adding an additional parameter to a constructor.
 
@@ -96,7 +95,7 @@ private readonly IEnumerable<ICreditService> _creditServices;
 public BankService([ImportMany] IEnumerable<IProductServices> productServices)
 {
     _productServices = productServices;
-    
+
     // some constructor logic
 }
 {% endhighlight %}
@@ -113,12 +112,12 @@ public BankService([Import(AllowDefault=true)] ILogger logger)
         _logger = new DefaultLogger();
     else
         _logger = logger;
-    
+
     // some constructor logic
 }
 {% endhighlight %}
 
-And this still keeps all the composition "magic" in one location. MEF supports importing [properties, fields and collections][2], which could be scattered around the same class. 
+And this still keeps all the composition "magic" in one location. MEF supports importing [properties, fields and collections][2], which could be scattered around the same class.
 
 **Closing Statements**
 
@@ -128,7 +127,7 @@ For getting start with MEF, [Import] works fine - the barrier to entry is lowere
 
 ## While we're talking managing MEF parts
 
-When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought "*Why add a constructor parameter to the constructor when I can just add an attribute?*" 
+When I first started using MEF, I avoided ImportingConstructor like the plague. Every time I saw ImportingConstructor being used, I thought "*Why add a constructor parameter to the constructor when I can just add an attribute?*"
 
 After all, it just worked.
 
@@ -138,7 +137,7 @@ I've been using MEF since the early previews (Preview 6 i think was the first dr
 
 For an upcoming release, I'm currently refactoring the MahTweets internals to replace StructureMap with Autofac. The [MEF integration extensions for Autofac][4] have been a great help to simplify the integration between Autofac's ContainerBuilder and MEF's ComposablePartCatalog, and I've found ways to reduce the required MEF syntax without changing existing functionality.
 
-On the Autofac side, we can declare components in the container to be available for MEF composition. 
+On the Autofac side, we can declare components in the container to be available for MEF composition.
 
 {% highlight csharp %}
 container.RegisterType<ApplicationSettingsProvider>()
@@ -166,4 +165,3 @@ I'll blog some more in the future on how you can use these parts to help manage 
   [2]: http://mef.codeplex.com/wikipage?title=Declaring%20Imports&referringTitle=Guide
   [3]: http://www.mahtweets.com/
   [4]: http://code.google.com/p/autofac/wiki/MefIntegration
-  

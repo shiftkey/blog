@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: WP7 - Memory Profiling Adventures - Navigation (Updated)
 permalink: /wp7-memory-profiling-navigation.html
 description: The joys of a new platform... documenting a strange behaviour found when profiling a WP7 app. Somewhat resolved...
-funnelweb_id: 8
 date: 2011-02-04 14:00:00 +11:00
 tags: "wp7 profiling"
 comments: true
@@ -34,7 +33,7 @@ One of the requirements a WP7 application needs to satisfy is around memory cons
 
 *The DeviceTotalMemory value returned by **DeviceExtendedProperties** indicates the physical RAM size in bytes. This value is less than the actual amount of device memory. For an application to pass certification, Microsoft recommends that the value returned by ApplicationPeakMemoryUsage is less than 90 MB when the DeviceTotalMemory is less than or equal to 256 MB*
 
-Source [Microsoft][1] 
+Source [Microsoft][1]
 
 90 MB sounds like a lot of space - and yes, it is, when one remembers the era of 1.44MB diskettes (or earlier) you can't help but think that perhaps we are spoiled - but what can you do with that amount of memory?
 
@@ -83,7 +82,7 @@ Testing out a simple application - two screens, both use the Panorama Control an
 
 Selecting an item in the main screen will navigate to the second screen. Pressing back will return the application to the main screen.
 
-The code is [here][2] and the sample output can be seen on [Gist][3] 
+The code is [here][2] and the sample output can be seen on [Gist][3]
 
 Graphing the memory at each step, the graph looks like this:
 
@@ -109,7 +108,7 @@ I've only been able to throw a couple of hours of spare time at this so far, but
 
  - Haven't found any memory profiling tools for SL & WP7 - if anyone has stuff in the works, I'd love to try them out. [EQUATEC][5] make a profiler for CPU performance, which works wonderfully from my limited testing.
 
- - Aggressive garbage collection helped somewhat, but this approach makes me feel unclean. Using timers on the device to trigger a GC Collect is bad for battery performance, and the demo above shows that memory usage can spike between events for a PhoneApplicationPage. 
+ - Aggressive garbage collection helped somewhat, but this approach makes me feel unclean. Using timers on the device to trigger a GC Collect is bad for battery performance, and the demo above shows that memory usage can spike between events for a PhoneApplicationPage.
 
  - Paging data from isolated storage could be worth attempting, but I don't think this is a temporary fix - as the application would load the full file, select a subset of the data, and then dispose the file. Chunking data in isolated storage would increase complexity.
 

@@ -1,14 +1,13 @@
---- 
+---
 layout: post
 title: My Git Habits
 permalink: /notes/my-git-habits.html
 description: Someone asked me to write down some notes about my git habits. I'm putting them up here as well for anyone else who cares.
 date: 2012-09-16 17:00:00 +10:30
-icon: /img/main/git.png
 comments: true
 ---
- 
-First up, a disclaimer: **This is just one person's opinion and should be treated as such.** 
+
+First up, a disclaimer: **This is just one person's opinion and should be treated as such.**
 
 If you workflow is similar, that's great. If you workflow is radically different, that's great too. With things like git its very easy to have different workflows, so I'll just be speaking from my experiences here.
 
@@ -85,11 +84,11 @@ All of this is possible by using interactive rebase - before it kicks off the op
 
 ### Merging is overrated anyway
 
-Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in. 
+Yes, that might be a controversial thing to say at this point. Merges are considered important to indicate when two branches have been brought together. But I submit to you, the jury of the internet - do we really need it? I'm not advocating abandoning merges at all - they have a purpose, which is to indicate changes additional to the branch being merged in.
 
 If I can rebase a branch on top of the current master, I've just avoided the need for a merge commit completely (it becomes a fast-forward merge and the pointers are moved forward). I can then push and get on with the next task.
 
-I guess this comes back to how you use branches. Git works excellently when you create a branch for a task, integrate the code into master, and delete the branch once its reached the end of its useful life. 
+I guess this comes back to how you use branches. Git works excellently when you create a branch for a task, integrate the code into master, and delete the branch once its reached the end of its useful life.
 
 Not everyone can work that way (that might be a rant for another day), but I see this a discipline issue rather than a pro/con of the tool itself.
 
@@ -124,4 +123,3 @@ I could go on about using `reset` and `cherry-pick` commands and head further do
 
  - `git alias` - seriously, this is like crack for scripters
  - a general rant about discipline when managing commits - git has corrupted my brain, and I've found myself applying concepts to situations where I have used other VCSes (even TFS, not using git-tfs or tf-git)
-

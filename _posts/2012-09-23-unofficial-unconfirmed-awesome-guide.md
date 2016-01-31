@@ -1,10 +1,9 @@
---- 
+---
 layout: post
 title: What's my secret? An unoffical unconfirmed guide
 permalink: /blog/unofficial-unconfirmed-awesome-guide.html
 description: A colleague called me out recently when I asked a question about how to be more productive. This blog post is for him.
 date: 2012-09-23 23:00:00 +10:30
-icon: /img/main/me.jpg
 comments: true
 ---
 
@@ -16,12 +15,12 @@ I fired off an email looking for tips from my colleagues what they do to help ge
 
 {% blockquote %}
 
-I find the third question silly coming from you. You are one of the the most productive and creative people I know and I wish I knew your secret to it. 
- 
+I find the third question silly coming from you. You are one of the the most productive and creative people I know and I wish I knew your secret to it.
+
 Sorry mate; but you don't get to be an MVP, a main member on Code52, talk at conferences and so on and then ask others how they are productive and creative :p
- 
+
 Share your secret already ;-)
- 
+
 {% endblockquote %}
 
 So I owe someone a blog post to explain myself.
@@ -30,7 +29,7 @@ So I owe someone a blog post to explain myself.
 
 First up, some warnings:
 
- - This is me speaking from my experiences only. 
+ - This is me speaking from my experiences only.
  - I will often suggest things which I do not do. Yes, that makes me appear hypocritical. No, it is not intended.
  - Please consult with a medical professional before taking any of the below advice.
  - This is all subject to change.
@@ -39,18 +38,18 @@ Without further ado, let's dive in...
 
 ### Make time for it
 
-While I appreciate that there are many developers who are happy ["dark matter" developers](http://www.hanselman.com/blog/DarkMatterDevelopersTheUnseen99.aspx), I've always seen a correlation between awesome developers and developers who will spend time improving themselves outside of work hours. 
+While I appreciate that there are many developers who are happy ["dark matter" developers](http://www.hanselman.com/blog/DarkMatterDevelopersTheUnseen99.aspx), I've always seen a correlation between awesome developers and developers who will spend time improving themselves outside of work hours.
 
 Don't feel bad if you're not someone who obsesses over code outside of work. But don't feel that it's out of reach.
 
-Not sure where to start? Start small. Set aside a half hour once a week. 
+Not sure where to start? Start small. Set aside a half hour once a week.
 
 Can't find time in the evenings? Why not try and [get up earlier](http://99u.com/tips/6954/The-1-Step-Plan-for-Super-Productivity) instead?
 
 **Note:** As many people who know me will testify, I am not a morning person.  I'll generally find a couple of evenings each week to hack on various things late into the night - it's an old habit I still haven't shaken from my university days - as that's when things are quieter and I can focus better on things. Your milage will vary.
 
 ### Set yourself goals (even small ones)
-  
+
 To ensure you're making the best of youur spare time, set some goals up front to ensure you work towards something tangible and useful. Starting small with your goals will help.
 
 To illustrate this, here's a few goals which I would like to work on over the coming weeks/months:
@@ -69,7 +68,7 @@ Let's break that first item down a bit:
  - Sketching out the app idea
  - Build out a small piece to demonstrate the app
 
-You get the picture - take a big piece of work and break it down into manageable chunks. 
+You get the picture - take a big piece of work and break it down into manageable chunks.
 
 By tackling something in chunks you also get a number of other benefits:
 
@@ -84,27 +83,27 @@ Of course it looks like Dave Tchepak beat me to the punch on this with a [more d
 
 It's easy to sit down and read some blogs on a topic and think to yourself "Well that was easy!" It's easy to watch some screencasts on a subject and think "I know X now, great!"
 
-I want to challenge you to go beyond the passive learning and build something based on what you've learned. The size of it doesn't really matter, but I've always found it important to take the things I've learned and apply them to the real world. 
+I want to challenge you to go beyond the passive learning and build something based on what you've learned. The size of it doesn't really matter, but I've always found it important to take the things I've learned and apply them to the real world.
 
 This helps in several ways:
- 
+
  - demonstrating that I was paying attention
- - leaving the hand-holding of the blog posts/screencasts and work without that safety net 
+ - leaving the hand-holding of the blog posts/screencasts and work without that safety net
  - reinforcing the learning while it is fresh in my mind
 
-I love blog posts and screencasts, but these days I try and balancing consuming posts/screencasts and creating things. 
+I love blog posts and screencasts, but these days I try and balancing consuming posts/screencasts and creating things.
 
 ### Don't be afraid to fail
 
 It can be daunting when faced with something completely new and unfamiliar. With the amazing pace that technology and software moves at these days, it's impossible to keep up with everything. And that's OK.
 
-Focus on what you could use at work. 
+Focus on what you could use at work.
 
-Focus on what you're interested in. 
+Focus on what you're interested in.
 
 Focus on what might make you a better developer.
 
-Dive in, try something, don't be afraid to make a mistake. Because you will. And that's OK. 
+Dive in, try something, don't be afraid to make a mistake. Because you will. And that's OK.
 
 Just make sure you learn from your mistakes, or that you make different mistakes.
 
@@ -120,7 +119,7 @@ I could weep for things that didn't eventuate, but life's too short.
 
 And how will we know how awesome you are if you don't tell us?
 
-After parking my blog ages ago (mostly because I was never really "happy" with it and I'd compulsively tweak things), I've started to come around to Hanselman's words: ["Every developer should have a blog"](http://www.hanselman.com/blog/YourWordsAreWasted.aspx). I'm a habitual Twitter user and thoroughly enjoy the medium for what it is, and I know that I spend time which I should be spending on blogging. 
+After parking my blog ages ago (mostly because I was never really "happy" with it and I'd compulsively tweak things), I've started to come around to Hanselman's words: ["Every developer should have a blog"](http://www.hanselman.com/blog/YourWordsAreWasted.aspx). I'm a habitual Twitter user and thoroughly enjoy the medium for what it is, and I know that I spend time which I should be spending on blogging.
 
 To compensate for this, I publish a lot of my stuff on [GitHub](https://github.com/shiftkey). Yeah, its lazy. But its out there at least. Even this blog is [public](https://github.com/shiftkey/blog) - and its just a static site generated using [Jekyll](https://github.com/mojombo/jekyll) and hosted on [Heroku](http://www.heroku.com/).
 

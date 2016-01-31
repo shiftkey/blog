@@ -1,14 +1,13 @@
---- 
+---
 layout: post
 title: Internet Sabbatical - An Experiment
 permalink: /blog/experiment-internet-sabbatical.html
-description: Putting pen to paper (and committing to) about an idea I was discussing with a friend recently. 
+description: Putting pen to paper (and committing to) about an idea I was discussing with a friend recently.
 date: 2012-11-26 23:00:00 +11:00
-icon: /img/main/me.jpg
 comments: false
 ---
 
-As this year comes to a close (a few more things to do yet) I wanted to try something different over the holiday season - an internet sabbatical. 
+As this year comes to a close (a few more things to do yet) I wanted to try something different over the holiday season - an internet sabbatical.
 
 ### A What?
 
@@ -16,10 +15,10 @@ From 21 December (when I jump on a plane for the holidays) to 6 January (when I 
 
 ### Why?
 
-I am burned out - plain and simple. 
+I am burned out - plain and simple.
 
 
-I would love to just "power on through" like it wasn't a problem but I've been doing that for the past few weeks already and its not changing much. 
+I would love to just "power on through" like it wasn't a problem but I've been doing that for the past few weeks already and its not changing much.
 
 
 <img src="/img/posts/internet/swanson.gif" />
@@ -45,7 +44,7 @@ Here's the low-down:
 
 But I won't go completely off the reservation:
 
- - Phone - to keep in contact with friends and family, but that's it 
+ - Phone - to keep in contact with friends and family, but that's it
  - Xbox - I'm keen to play some Assassin's Creed III (or other games) so that's included
 
 And given I won't have technology to report on my progress (pen and paper perhaps?), you'll just have to wait and see how I go.

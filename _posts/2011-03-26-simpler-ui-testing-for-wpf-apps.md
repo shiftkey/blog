@@ -1,21 +1,20 @@
---- 
+---
 layout: post
 title: Musing - Simpler UI Testing for WPF Apps
 permalink: /simpler-ui-testing-for-wpf-apps.html
 description: Instead of the existing tools, why not try some IronRuby and rspec code?
-funnelweb_id: 12
 date: 2011-03-26 14:00:00 +11:00
 tags: "wpf testing"
 comments: true
 ---
 
 After spending some time this week getting to know Ruby and some of its testing frameworks (Shoulda, rspec, and TestCase), I thought I'd put pen
-to paper and revisit why I started down this path. 
+to paper and revisit why I started down this path.
 
 ## Some background
 
 The current project I am working on is a large data-driven WPF application, with a lot of complex scenarios to
-identify, develop and test. There is a group of testers on the project, but I can see an opportunity to use 
+identify, develop and test. There is a group of testers on the project, but I can see an opportunity to use
 automated testing to verify functionality and allow testers to focus on areas of better value - exploratory testing, for example.
 
 Yes, there are frameworks like [White][2] or Coded UI Tests, but these tools were designed with developers in mind.
@@ -23,8 +22,8 @@ You have to write code like [this][1] to drive the tests, and the tests are comm
 
 ## Enter Automated Acceptance Testing
 
-In an ideal world, business users would define tests in an English-like language, which can then be translated into an executable 
-script and run against the application. 
+In an ideal world, business users would define tests in an English-like language, which can then be translated into an executable
+script and run against the application.
 
 What I'm looking for in a framework for defining use cases:
 
@@ -92,10 +91,10 @@ I'm using rspec at the moment to run the test cases, and IronRuby and White to s
         end
     end
 
-The fields used here are based off the UI Automation features of the .NET Framework (some reading [here][2] on recommendations) 
+The fields used here are based off the UI Automation features of the .NET Framework (some reading [here][2] on recommendations)
 which I'll dig into a bit later if people are interested.
 
-The method_missing method is used to reduce the noise of writing "subject." to start each line - I'm not quite sold on the approach, but it was cleaner than the previous approaches I'd tried. 
+The method_missing method is used to reduce the noise of writing "subject." to start each line - I'm not quite sold on the approach, but it was cleaner than the previous approaches I'd tried.
 Also, rspec has a [huge set of features][4] which I've barely scratched the surface on.
 
 So with a set of files like the file above, the testrunner is a simple script to load specific files found in the current directory:
@@ -104,12 +103,12 @@ So with a set of files like the file above, the testrunner is a simple script to
 	require 'rspec'
 	require 'host'
 
-	Dir[File.dirname(__FILE__) + '/*tests.rb'].each do |file| 
+	Dir[File.dirname(__FILE__) + '/*tests.rb'].each do |file|
 	    load file
 	end
 
 
-I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code), 
+I'll share some more as I polish additional features (I'm most certainly doing Ruby wrong at the moment, so I keep refactoring code),
 just needed to write this post.
 
 [1]: http://msdn.microsoft.com/en-us/magazine/dd483216.aspx

@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: IoC Tips - Autofac Factory Adapters
 permalink: /ioc-tips-autofac-factory-adapters.html
 description: A walkthough about applying inversion of control techniques to simplify an existing application
-funnelweb_id: 4
 date: 2010-10-23 14:00:00 +11:00
 tags: "autofac .net"
 comments: true
@@ -33,7 +32,7 @@ Rather than explicitly defining the two instances, the team can replace both ins
 
 {% highlight csharp %}
 public ScheduledBackupService(
-      ... , 
+      ... ,
       Func<ITimer> createTimer)
 {
       ...                 
@@ -62,19 +61,19 @@ As our existing tests relied on verifying the messages displayed using ITimer in
 {% highlight csharp %}
 Func<IDispatcherTimer> createTimers = () =>
 {
-    if (elapsedTimer == null) 
+    if (elapsedTimer == null)
     {
         // first call -> mock "elapsed" timer
         elapsedTimer = MockRepository.GenerateStub<ITimer>();
         return elapsedTimer;
     }
-    if (pausedTimer == null) 
+    if (pausedTimer == null)
     {
         // second call -> mock "paused" timer
-        pausedTimer = MockRepository.GenerateStub<ITimer>(); 
+        pausedTimer = MockRepository.GenerateStub<ITimer>();
         return pausedTimer;
     }
-      
+
     return null; // subsequent calls not supported - will raise errors if used
 };
 
@@ -115,5 +114,3 @@ Nicholas Blumhardt, maintainer of Autofac, has a [detailed entry][1] which discu
 It's a great read if you want to dive deeper into inversion of control concepts.
 
    [1]: http://nblumhardt.com/2010/01/the-relationship-zoo/
-
-

@@ -4,7 +4,6 @@ title: Yet Another "Add LESS to your ASP.NET MVC Project" Post
 date: 2013-05-12 23:00:00 +10:00
 description: I had to write this because it was really annoying the last time I did it
 permalink: /blog/yet-another-implement-less-in-aspnetmvc-post.html
-icon: /img/main/less.png
 comments: true
 ---
 
@@ -22,7 +21,7 @@ NOTE: This uses the bundling features in MVC4. If you're using a version of MVC 
 
 ## Step 1 - The Installer-ation
 
-To NuGet! 
+To NuGet!
 
     PM> Install-Package dotLess
 
@@ -74,7 +73,7 @@ public class BundleConfig
 {
     public static void RegisterBundles(BundleCollection bundles)
     {
-    	// NOTE: existing bundles are here 
+    	// NOTE: existing bundles are here
 
     	// add this line
       bundles.Add(new LessBundle("~/Content/less").Include("~/Content/*.less"));
@@ -86,7 +85,7 @@ Bundles support a limited subset of wildcard syntax, but you can include multipl
 
 So this `LessBundle` gives you the ability to combine and minify files when running the application in `<compilation debug="false" />` mode, and it takes care of transforming LESS code into CSS - without needing to update the layout everytime you add a new file to the project.
 
-Editor's note: I wasn't aware of this package on the last runthrough - instead I found this `LessBundle` code in a [gist](https://gist.github.com/benfoster/3924025) from [@benfosterdev](http://ben.onfabrik.com/) which looks very similar to the source for that package, so I'll give him kudos for it. 
+Editor's note: I wasn't aware of this package on the last runthrough - instead I found this `LessBundle` code in a [gist](https://gist.github.com/benfoster/3924025) from [@benfosterdev](http://ben.onfabrik.com/) which looks very similar to the source for that package, so I'll give him kudos for it.
 
 ## Step 3 - But wait, there's more!
 
@@ -123,7 +122,7 @@ dotLess will apply transforms to your web.config when you install it through NuG
 </configuration>
 {% endhighlight %}
 
-Editor's Note: when I last ran through these steps I didn't get these config transforms applied on install. I was really looking forward to a rant here because I'd gone through the hard yards to add these handlers by hand - but of course it worked this time. 
+Editor's Note: when I last ran through these steps I didn't get these config transforms applied on install. I was really looking forward to a rant here because I'd gone through the hard yards to add these handlers by hand - but of course it worked this time.
 
 So these handlers allow you to compile an individual LESS file and see the results in the browser.
 

@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: Using Rx to Implement Filtering in MahTweets
 permalink: /using-rx-to-implement-filtering-in-mahtweets.html
 description: A thought process about leveraging the Rx Framework to implement a new filtering solution for MahTweets vNext.
-funnelweb_id: 10
 date: 2011-02-19 14:00:00 +11:00
 tags: "mahtweets reactive-extensions "
 comments: true
@@ -21,7 +20,7 @@ Roughly speaking, this is how the filters are applied.
 
 <center><a href="img/posts/FiltersClassic.png"><img src="img/posts/FiltersClassic.png" width="700" /></a></center>
 
-Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters. 
+Updates from external services are added to the queue, which then raises CollectionChangedEvent notifications to each views. The view is responsible for running an update through its configured filters.
 
 Limitations about this approach:
 
@@ -37,7 +36,7 @@ We had a habit of using the phrase "filter" in many places of the application. T
 
  - **IStatusSubscriber** - an extension which subscribes to a stream of incoming requests.
  - **IConditionalSubscriber** : **IStatusSubscriber** - an extension which filters the updates before propogating to its consumers. Pass-thru or exclude filters can be specified.
- 
+
 Replacing the Queue of messages with an IObservable/IObserver dual allows the application to leverage the Subject&lt;T&gt; class to manage the interactions between the services and the clients. This class resides in System.Reactive.dll and implements both IObservable&lt;T&gt; and IObserver&lt;T&gt;.
 
 MahTweets also had some demo plugins for stream analytics, and abstracting away the queue support allows the application to plug in additional "global" services, using the same interfaces. Rx also allows observers to specify which thread to execute on, so the usage of the Dispatcher, TaskPool or ThreadPool (depending on scenario) can be configured without any plumbing code.
@@ -48,7 +47,7 @@ The interactions between these components now looks like:
 
 The biggest change is that subscribers interact with the IObservable, rather than being encompassed within the view. Each list still combines a set of filters, which display the combined set of results on-screen. However, when multiple filters are run in parallel, invalid items may appear.
 
-Limitations about this approach: 
+Limitations about this approach:
 
  - Excluded updates may be propogated through other subscribers in the same view.
  - Global Ignores still not supported.
@@ -97,7 +96,7 @@ An internal subscriber verifies a status against a list of exclusions, and propo
  - Debate with [@aeoth][3] on this
  - Performance Testing against a large set of data.
  - Demonstrating how external plugins can include their own rules.
- - Demonstrate user interface changes for vNext. 
+ - Demonstrate user interface changes for vNext.
 
 [1]: http://msdn.microsoft.com/en-us/devlabs/ee794896
 [2]: http://en.wikipedia.org/wiki/Observer_pattern

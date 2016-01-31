@@ -4,7 +4,6 @@ title: The Case of The Somewhat Case-Sensitive HTTP Method
 date: 2013-10-24 22:30:00 +11:00
 permalink: /blog/case-sensitive.html
 description: A cautionary tale about debugging and RFC specifications
-icon: /img/main/web.png
 comments: true
 ---
 

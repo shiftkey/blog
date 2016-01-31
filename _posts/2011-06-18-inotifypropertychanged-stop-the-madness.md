@@ -1,12 +1,10 @@
---- 
+---
 layout: post
 title: "Soapbox: INotifyPropertyChanged - Stop the Madness"
 permalink: /inotifypropertychanged-stop-the-madness.html
 description: Just wanted to recap why I see the argument over INotifyPropertyChanged usage as absurd.
-funnelweb_id: 16
 date: 2011-06-18 14:00:00 +10:00
 tags: "wpf silverlight wp7 soapbox"
-icon: /img/main/soapbox.jpg
 comments: true
 ---
 
@@ -30,8 +28,8 @@ To start off with the *worst* case scenario, we have:
     public string SomeProperty
 	{
 		get { return _someProperty; }
-		set 
-		{ 
+		set
+		{
 			_someProperty = value;
 			OnPropertyChanged("SomeProperty");
 		}
@@ -47,8 +45,8 @@ So let's change the property to look like:
     public string SomeProperty
 	{
 		get { return _someProperty; }
-		set 
-		{ 
+		set
+		{
 			_someProperty = value;
 			OnPropertyChanged(() => SomeProperty);
 		}
@@ -64,11 +62,11 @@ For an example implementation that accepts lambda statements, [this Stackoverflo
     public string SomeProperty
 	{
 		get { return _someProperty; }
-		set 
-		{ 
+		set
+		{
 			if (_someProperty == value)
 				return;
-				
+
 			_someProperty = value;
 			OnPropertyChanged(() => SomeProperty);
 		}
@@ -85,16 +83,16 @@ I'd better ensure this is defined in all the setters, and that the right backing
     public string SomeProperty
 	{
 		get { return _someProperty; }
-		set 
-		{ 
+		set
+		{
 			if (_someOtherProperty == value)
 				return;
-				
+
 			_someProperty = value;
 			OnPropertyChanged(() => SomeProperty);
 		}
 	}
-	
+
 so I'd better do it real carefully...
 
 ### We need caching now!
@@ -109,30 +107,30 @@ Fine, let's add a dictionary to capture the event arguments, instead of recreati
         {
             // magic happens here
         }
-		
+
         private IDictionary<string, PropertyChangedEventArgs> _handlers = new Dictionary<string, PropertyChangedEventArgs>		
-		
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventArgs args;
-		
+
             if (!_handlers.ContainsKey(propertyName))
             {
                 _handlers.Add(propertyName, new PropertyChangedEventArgs(propertyName));
             }
-			
+
             args = _handlers[propertyName];
-			
+
             PropertyChanged(this, args);
         }
     }
 
 Have we saved much? Perhaps. Perhaps not...
- 
+
 ### Wait, what about cross-thread issues? I do a lot on the background thread!
 
-Ah yes. Have you ever been bitten by this one - a background thread updates a property, which triggers the PropertyChanged event, which asplodes because the UI can only be updated from the main thread? 
- 
+Ah yes. Have you ever been bitten by this one - a background thread updates a property, which triggers the PropertyChanged event, which asplodes because the UI can only be updated from the main thread?
+
 ## Stop. Put down the keyboard for a minute.
 
 See how quickly all these features around INotifyPropertyChanged can spiral out of control? You've worked out the code and classes necessary to solve a common problem, but some overhead remains for writing boilerplate code everywhere the solution is required. And while it is a manual process, it is prone to human error.

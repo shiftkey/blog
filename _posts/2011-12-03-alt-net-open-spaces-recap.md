@@ -1,10 +1,9 @@
---- 
+---
 layout: post
 title: ALT.NET Open Spaces Recap
 permalink: /alt-net-open-spaces-2011.html
 description: For those who missed it, a gaggle of geeks caught up in Melbourne on Saturday 3rd December to talk about stuff. Geeks talking - who'da thunk it? Anyway, this is my recap...
 date: 2011-12-03 18:00:00 +10:00
-icon: /img/main/soapbox.jpg
 tags: "altdotnet events ddd"
 comments: true
 ---
@@ -35,7 +34,7 @@ I teamed up with [Richard](http://twitter.com/rbanks54) to talk about refactorin
 
 ### RAD Frameworks
 
-And here's where things got entertaining. What started out as a discussion of tools and libraries to simplify building apps. 
+And here's where things got entertaining. What started out as a discussion of tools and libraries to simplify building apps.
 
 **First things first:** as soon as 'RAD' was mentioned, it was a red rag to much of the audience. It wasn't the intent, but all attempts to refocus the discussion failed miserably.
 
@@ -64,4 +63,3 @@ Anyway, as we wrapped up at about 3ish a few of the group headed to the pub up t
 ### Wrapup
 
 Big thanks to [@pjimmy](http://twitter.com/pjimmy) for organising the event and to [Richard](http://twitter.com/rbanks54) for helping with herding cats in the morning. It was a great event, and hopefully it'll be back bigger and better next year - there's rumours abound about a Sydney event next year.
-

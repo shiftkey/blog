@@ -2,10 +2,9 @@
 layout: post
 title: How Can One Wrist Be So Important?
 date: 2014-01-19 10:30:00 -7:00
-description: Some thoughts on how I've been adjusting (and struggling) to a recent wrist injury
-icon: /img/main/thumb-small.png
+description: Some thoughts on how I've been adjusting (and struggling) with a recent wrist injury
 comments: true
----	
+---
 
 So on Wednesday my left wrist was put into a splint due to a scaphoid fracture.
 
@@ -15,13 +14,13 @@ I have the x-rays with me but don't travel with a CD drive, so I'll post those a
 
 When I put this out on Twitter I got a lot of awesome replies (thanks everyone!) as well as hearing some worse stories (shoutout to [@thomasvjames](https://twitter.com/thomasvjames), [@ammeep](https://twitter.com/ammeep) and [@evilsnoofy](https://twitter.com/evilsnoofy)) which made me feel much better about my situation.
 
-So what can I do right now? While I have some use of the fingers on my left hand (not without pain), the thumb and all wrist movement are out of the question. 
+So what can I do right now? While I have some use of the fingers on my left hand (not without pain), the thumb and all wrist movement are out of the question.
 
 I wanted to write something down about how this change has impacted me - both initially and over time. This might also be the longest blog post I've written - imagine me pecking at the keyboard, because it's not far off - so I hope you enjoy it!
 
 ## The Basics
 
-Getting ready each day is a slower task. Meals in general are a bit more frustrating (even after choosing something favurable to my current skillset). Sleep patterns are worse (getting up a couple of times each night is the norm). The discomfort and pain wear away at you, leaving you exhausted at the end of the day - when everyone is contemplating the night life. 
+Getting ready each day is a slower task. Meals in general are a bit more frustrating (even after choosing something favurable to my current skillset). Sleep patterns are worse (getting up a couple of times each night is the norm). The discomfort and pain wear away at you, leaving you exhausted at the end of the day - when everyone is contemplating the night life.
 
 All these things chip away at morale. It sucks, and I'm not good at asking for help with these physical limitations. I could do all this stuff just a few days ago, and despite all advice to the contrary I still feel that I can do this if I push myself just a bit further.
 
@@ -59,7 +58,7 @@ While these above paragraphs do make me sound pretty depressied, being surrounde
 
 Some examples:
 
- - people referring to me as "CAPS LOCK" 
+ - people referring to me as "CAPS LOCK"
  - suggestions for modifications to the cast so I could - hold a martini glass, carry a towel and act like a waiter, carry a protest sign
  - as my splint is set so I'm giving a "thumbs up" sign, people will ask me how I'm doing and then follow up with a "I don't understand, is there some sort of sign you can use?" joke
  - being called out in our Friday afternoon catchup about how I now "can't give bad feedback" but then turning the tables by demonstrating how (very slowly) I can give a thumbs down.

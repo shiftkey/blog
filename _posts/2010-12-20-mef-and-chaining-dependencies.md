@@ -1,9 +1,8 @@
---- 
+---
 layout: post
 title: MEF and Chaining Dependencies
 permalink: /mef-and-chaining-dependencies.html
 description: A quick blog example of how to use contracts within MEF to handle complex dependency chains
-funnelweb_id: 6
 date: 2010-12-20 14:00:00 +11:00
 tags: "mef composition .net "
 comments: true
@@ -32,7 +31,7 @@ public class ConsumingApplication
 {
     [ImportMany("Contoso.Application", typeof(IServiceProxy))]
     public IEnumerable<IServiceProxy> Services { get; set; }
-    
+
     // implementation here
 }
 {% endhighlight %}
@@ -43,7 +42,7 @@ And our simple client can use the corresponding [Export] statement.
 [Export("Contoso.Application", typeof(IServiceProxy))]
 public class StandaloneProxy : IServiceProxy
 {
-    // implementation here 
+    // implementation here
 }
 {% endhighlight %}
 
@@ -51,7 +50,7 @@ Our complex dependency has a bit more code, but it can be broken down into two m
 
  - The contract which it satisfies - **Contoso.Application** and **IServiceProxy**
  - The contract which it requires - **Contoso.External** and **IServiceProxy**
-    
+
 Which looks like this:
 
 {% highlight csharp %}
@@ -151,4 +150,3 @@ Thoughts?
 
 
   [1]: http://mef.codeplex.com/Thread/View
-

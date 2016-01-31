@@ -1,10 +1,9 @@
---- 
+---
 layout: post
 title: jQuery and KnockoutJS in Win8? Sure, why not!
 permalink: /jquery-knockout-win8.html
 description: A brief experiment after a couple of questions from a user group event tonight
 date: 2011-10-25 23:00:00 +10:00
-icon: /img/main/win8.jpg
 tags: "jquery knockoutjs windows8"
 comments: true
 ---
@@ -15,7 +14,7 @@ With Windows 8 supporting HTML/JS (I refuse to call anything HTML5 these days - 
 
  [3]:http://jquery.com/
 
-As I'd heard it mentioned at BUILD - and hadn't heard a major drama since people have been using the Developer Preview bits - I expected that it worked. However, to confirm this for myself, I found this [forum thread][1] on MSDN with a couple of caveats. 
+As I'd heard it mentioned at BUILD - and hadn't heard a major drama since people have been using the Developer Preview bits - I expected that it worked. However, to confirm this for myself, I found this [forum thread][1] on MSDN with a couple of caveats.
 
  [1]: http://social.msdn.microsoft.com/Forums/en-US/winappswithhtml5/thread/66273417-92cd-4a35-b9a1-281d962eff59
 
@@ -35,7 +34,7 @@ And at the bottom of the default.js file, I use a simple selector to find a DOM 
 <pre><code>            // other code
 
             WinJS.UI.process(<strong>$('#appbar')[0]</strong>)
-                .then(function () { 
+                .then(function () {
                     <strong>$('#home').click(navigateHome);</strong>
                 });
 
@@ -118,7 +117,7 @@ And then went to work making changes:
 &lt;/div&gt;
 </code></pre>
 
-So by moving the binding expressions to the UI (like the MVVM pattern that is popular with XAML application) we can lean on frameworks to make our Javascript code easier to maintain. Other components of the default templates have their own binding attributes - *data-win-bind* - which I'll explain later, but I find the KnockoutJS syntax more concise. 
+So by moving the binding expressions to the UI (like the MVVM pattern that is popular with XAML application) we can lean on frameworks to make our Javascript code easier to maintain. Other components of the default templates have their own binding attributes - *data-win-bind* - which I'll explain later, but I find the KnockoutJS syntax more concise.
 
 In particular the use of *textContent* instead of *text* to denote a text value? Why? Drop the 'Content' part unless there's a real good reason - it feels like ceremony.
 
