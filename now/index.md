@@ -10,9 +10,9 @@ up to. Every now and again, I'll update this.
 
 ## Where?
 
-All over the place. Read on for details:
+All over the place. Read on for details.
 
-Upcoming Conference Talks:
+## Upcoming Conference Talks:
 
  - **DevIt** - Thessaloniki, Greece - May 20
  - **de:code** - Tokyo, Japan - May 24-25
