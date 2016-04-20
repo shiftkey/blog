@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What I'm Doing Now
-date: 2016-01-24 21:00:00 +11:00
+date: 2016-04-21 9:00:00 +10:00
 ---
 
 If you're not familiar with the whole [/now](http://nownownow.com/) thing,
