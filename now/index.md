@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What I'm Doing Now
-date: 2016-04-21 9:00:00 +10:00
+date: 2016-06-27 21:30:00 +10:00
 ---
 
 If you're not familiar with the whole [/now](http://nownownow.com/) thing,
@@ -14,9 +14,7 @@ All over the place. Read on for details.
 
 ## Upcoming Conference Talks
 
- - **DevIt** - Thessaloniki, Greece - May 20
- - **de:code** - Tokyo, Japan - May 24-25
- - **NDC Oslo** - Oslo, Norway - June 6-10
+ - **.NET Fringe** - Portland, USA - June 6-10
  - **NDC Sydney** - Sydney, Australia - August 1-5
 
 ## Side Projects
@@ -24,15 +22,13 @@ All over the place. Read on for details.
 Here's what I'm working on at the moment:
 
  - [Octokit.net](https://github.com/octokit/octokit.net) - .NET bindings for the GitHub API
-    - rolling out pagination across the codebase
-    - targeting .NET Core
+    - reviews
 
  - [up-for-grabs](http://up-for-grabs.net) - a place to connect project maintainers with people who are interested in getting started with open source
     - rewrite the vision and provide supporting documentation
 
  - [Rx.NET](https://github.com/reactive-extensions/rx.net/)
-    - .NET Core support
-    - other administrivia
+    - administrivia
 
 ## What about XYZ?
 
