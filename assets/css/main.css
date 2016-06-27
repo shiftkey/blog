@@ -1610,6 +1610,12 @@
 		text-align: center;
 	}
 
+	img.align-center {
+		display:block;
+		margin-left: auto;
+    margin-right: auto;
+	}
+
 	.align-right {
 		text-align: right;
 	}
