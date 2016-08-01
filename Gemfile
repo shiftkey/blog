@@ -4,7 +4,7 @@ ruby "2.2.4"
 gem "rake"
 gem "activesupport"
 
-gem "jekyll", "~> 3.0.2"
+gem "jekyll", "~> 3.2.0"
 gem "jekyll-assets"
 gem 'jekyll-feed'
 
