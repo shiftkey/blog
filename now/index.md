@@ -1,34 +1,28 @@
 ---
 layout: post
 title: What I'm Doing Now
-date: 2016-06-27 21:30:00 +10:00
+date: 2017-02-27 23:00:00 +11:00
 ---
 
 If you're not familiar with the whole [/now](http://nownownow.com/) thing,
 have a look. TL;DR: this is a quick way for me to write up what I'm currently
-up to. Every now and again, I'll update this.
+up to. Every now and again I'll update this.
 
 ## Where?
 
-All over the place. Read on for details.
+Australia, mostly.
 
-## Upcoming Conference Talks
+## Upcoming Conferences
 
- - **.NET Fringe** - Portland, USA - June 6-10
- - **NDC Sydney** - Sydney, Australia - August 1-5
+ - **GitHub Satellite** - London, Belgium - May 22-23
+ - **Techorama** - Antwerp, Belgium - May 23-24
+ - **NDC Oslo** - Sydney, Australia - August 12-16 June
 
 ## Side Projects
 
-Here's what I'm working on at the moment:
-
- - [Octokit.net](https://github.com/octokit/octokit.net) - .NET bindings for the GitHub API
-    - reviews
-
- - [up-for-grabs](http://up-for-grabs.net) - a place to connect project maintainers with people who are interested in getting started with open source
-    - rewrite the vision and provide supporting documentation
-
- - [Rx.NET](https://github.com/reactive-extensions/rx.net/)
-    - administrivia
+I'm going to be busy shipping stuff over the next couple of months, so I'm not
+really going to be focused on anything existing beyond the normal triage of
+projects.
 
 ## What about XYZ?
 
