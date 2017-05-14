@@ -1,6 +1,9 @@
-highlighter: pygments
-
-markdown: kramdown
+kramdown:
+   input: GFM
+   hard_wrap: false
+gems:
+   - jekyll-assets
+   - jekyll-feed
 
 exclude: [LICENSE.md, config.ru, Gemfile, Gemfile.lock, Procfile, rakefile.rb, README.md, vendor, _drafts]
 
@@ -9,9 +12,6 @@ owner-page: http://brendanforster.com
 owner-email: me@brendanforster.com
 
 license: bsd
-
-gems:
-  - jekyll-feed
 
 # feed options
 feed:
