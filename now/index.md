@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What I'm Doing Now
-date: 2017-02-27 23:00:00 +11:00
+date: 2017-05-14 23:00:00 +11:00
 ---
 
 If you're not familiar with the whole [/now](http://nownownow.com/) thing,
@@ -10,13 +10,20 @@ up to. Every now and again I'll update this.
 
 ## Where?
 
-Australia, mostly.
+I'm going to be away from Australia for much of June and July, taking a
+long-overdue holiday around some conference commitments.
 
 ## Upcoming Conferences
 
- - **GitHub Satellite** - London, Belgium - May 22-23
  - **Techorama** - Antwerp, Belgium - May 23-24
- - **NDC Oslo** - Sydney, Australia - August 12-16 June
+
+I'll be doing two talks here - an introduction to Electron and revisiting my
+talk about distributed teams.
+
+ - **NDC Oslo** - Oslo, Norway - June 12-16
+
+I'll be doing an Electron workshop here, as well as a talk that I need to
+figure out what I'd signed up for.
 
 ## Side Projects
 
@@ -33,4 +40,6 @@ considering new work.
 
 ## I want to get in touch!
 
-My contact details are on my [GitHub](https://github.com/shiftkey/). I'm also on [Twitter](https://twitter.com/shiftkey), if that's your sort of thing.
+My contact details are on my [GitHub](https://github.com/shiftkey/).
+
+I'm also on [Twitter](https://twitter.com/shiftkey), if that's your scene.
