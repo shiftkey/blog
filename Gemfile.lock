@@ -16,9 +16,13 @@ GEM
     ethon (0.10.1)
       ffi (>= 1.3.0)
     execjs (2.7.0)
+    extras (0.1.0)
+      forwardable-extended (~> 2.5)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
+    fastimage (2.1.0)
     ffi (1.9.18)
+    forwardable-extended (2.6.0)
     gemoji (2.1.0)
     git-version-bump (0.15.1)
     github-pages (87)
@@ -60,6 +64,13 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
+    jekyll-assets (2.2.8)
+      extras (~> 0.1)
+      fastimage (~> 2.0, >= 1.8)
+      jekyll (~> 3.1, >= 3.0)
+      pathutil (>= 0.8)
+      rack (> 1, < 2)
+      sprockets (~> 3.3, < 3.7)
     jekyll-coffeescript (1.0.1)
       coffee-script (~> 2.2)
     jekyll-feed (0.5.1)
@@ -99,6 +110,8 @@ GEM
       mini_portile2 (~> 2.1.0)
     octokit (4.7.0)
       sawyer (~> 0.8.0, >= 0.5.3)
+    pathutil (0.14.0)
+      forwardable-extended (~> 2.6)
     public_suffix (1.5.3)
     puma (3.6.0)
     rack (1.6.4)
@@ -116,6 +129,9 @@ GEM
     sawyer (0.8.1)
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
+    sprockets (3.6.3)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
     terminal-table (1.7.3)
       unicode-display_width (~> 1.1.1)
     thread_safe (0.3.5)
@@ -131,6 +147,8 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   github-pages
+  jekyll-assets
+  jekyll-feed
   puma
   rack-contrib
   rack-rewrite

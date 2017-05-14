@@ -9,3 +9,8 @@ gem 'github-pages', group: :jekyll_plugins
 gem "rack-contrib"
 gem "rack-rewrite"
 gem "puma"
+
+ group :jekyll_plugins do
+   gem "jekyll-assets"
+   gem "jekyll-feed"
+ end
