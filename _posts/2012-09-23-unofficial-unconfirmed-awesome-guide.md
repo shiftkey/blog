@@ -13,7 +13,7 @@ After surviving [TechEd Australia](http://australia.msteched.com/) - as well as 
 
 I fired off an email looking for tips from my colleagues what they do to help get creative, and one of the replies I got back was this:
 
-{% blockquote %}
+<blockquote>
 
 I find the third question silly coming from you. You are one of the the most productive and creative people I know and I wish I knew your secret to it.
 
@@ -21,7 +21,7 @@ Sorry mate; but you don't get to be an MVP, a main member on Code52, talk at con
 
 Share your secret already ;-)
 
-{% endblockquote %}
+</blockquote>
 
 So I owe someone a blog post to explain myself.
 
